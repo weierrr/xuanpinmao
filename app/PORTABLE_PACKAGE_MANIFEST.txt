@@ -1,7 +1,5 @@
 .env.example
 .gitignore
-config/report-compositions/research-run-3d-yoga-pants-28f8bff32ab5-us.json
-config/report-conclusions/research-run-3d-yoga-pants-28f8bff32ab5-us.json
 docs/agent-usage.html
 docs/CODEX_USAGE.md
 docs/productization/Phase_4_First_Principles_Opportunity_Engine.md

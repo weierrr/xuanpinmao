@@ -22,7 +22,7 @@ const rootFiles = [
   "vitest.setup.ts",
 ];
 
-const directories = ["src", "public", "fixtures/T21", "prisma/migrations", "scripts", "config"];
+const directories = ["src", "public", "fixtures/T21", "prisma/migrations", "scripts"];
 const individualFiles: Array<[string, string]> = [
   ["docs/portable-package-readme.md", "README.md"],
   ["docs/CODEX_USAGE.md", "docs/CODEX_USAGE.md"],
