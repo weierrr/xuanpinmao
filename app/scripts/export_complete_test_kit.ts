@@ -73,6 +73,7 @@ codex plugin add product-research-workbench@xuanpinmao
 \`\`\`bash
 codex plugin marketplace add weierrr/xuanpinmao --ref main
 codex plugin add product-research-workbench@xuanpinmao
+node install-xuanpinmao.mjs
 \`\`\`
 
 安装后必须新建 Codex 对话，再输入“使用选品猫调研一个新类目”。
@@ -82,7 +83,10 @@ codex plugin add product-research-workbench@xuanpinmao
 \`\`\`bash
 codex plugin marketplace upgrade xuanpinmao
 codex plugin add product-research-workbench@xuanpinmao
+node install-xuanpinmao.mjs
 \`\`\`
+
+安装器把程序同步到 \`~/xuanpinmao-app\`，更新时保留本地环境、数据库、历史报告和日志。
 
 ## 正确流程
 
@@ -102,7 +106,8 @@ codex plugin add product-research-workbench@xuanpinmao
 历史 Run、密钥、浏览器状态和开发者本机数据库均未包含在分享包中。\`fixtures/T21\` 只用于回归测试，不能作为新类目的证据。
 `;
   await writeFile(path.join(target, "README.md"), readme, "utf8");
-  await writeFile(path.join(target, "AGENTS.md"), `# 选品猫发行仓库\n\n当用户要求安装本仓库时：\n\n1. 执行 \`codex plugin marketplace add weierrr/xuanpinmao --ref main\`。\n2. 执行 \`codex plugin add product-research-workbench@xuanpinmao\`。\n3. 在 \`app\` 目录运行 \`npm install && npm run setup && npm run test:portable\`。\n4. 告诉用户新建一个 Codex 对话，再调用选品猫。\n\n不要把 fixtures/T21 当作新类目的真实证据。\n`, "utf8");
+  await writeFile(path.join(target, "AGENTS.md"), `# 选品猫发行仓库\n\n当用户要求安装本仓库时：\n\n1. 执行 \`codex plugin marketplace add weierrr/xuanpinmao --ref main\`。\n2. 执行 \`codex plugin add product-research-workbench@xuanpinmao\`。\n3. 执行 \`node install-xuanpinmao.mjs\`，把应用同步到稳定目录 \`~/xuanpinmao-app\`。\n4. 在稳定目录运行 \`npm install\`；首次安装再运行 \`npm run setup && npm run test:portable\`。\n5. 告诉用户新建一个 Codex 对话，再调用选品猫。\n\n更新时再次运行安装器；它会保留 .env、数据库、output、logs、依赖和构建缓存。不要把 fixtures/T21 当作新类目的真实证据。\n`, "utf8");
+  await writeFile(path.join(target, "install-xuanpinmao.mjs"), `import { cp, mkdir, readFile, writeFile } from "node:fs/promises";\nimport os from "node:os";\nimport path from "node:path";\n\nconst distributionRoot = path.dirname(new URL(import.meta.url).pathname);\nconst source = path.join(distributionRoot, "app");\nconst targetArgument = process.argv.find((item) => item.startsWith("--target="));\nconst target = path.resolve(targetArgument?.slice(9) ?? path.join(os.homedir(), "xuanpinmao-app"));\nconst protectedNames = new Set([".env", "node_modules", ".next", "output", "logs"]);\nawait mkdir(target, { recursive: true });\nconst { readdir } = await import("node:fs/promises");\nfor (const entry of await readdir(source, { withFileTypes: true })) {\n  if (protectedNames.has(entry.name)) continue;\n  await cp(path.join(source, entry.name), path.join(target, entry.name), { recursive: true, force: true });\n}\nconst plugin = JSON.parse(await readFile(path.join(distributionRoot, "plugins", "product-research-workbench", ".codex-plugin", "plugin.json"), "utf8"));\nawait writeFile(path.join(target, ".xuanpinmao-release.json"), JSON.stringify({ version: plugin.version, source: "weierrr/xuanpinmao", updatedAt: new Date().toISOString() }, null, 2) + "\\n", "utf8");\nconsole.log(JSON.stringify({ status: "installed", target, version: plugin.version }, null, 2));\n`, "utf8");
   console.log(JSON.stringify({ status: "exported", target, pluginVersion: manifest.version }, null, 2));
 };
 

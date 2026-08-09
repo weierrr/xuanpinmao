@@ -9,8 +9,9 @@ Resolve the active Xuanpinmao application before acting. Use the first valid dir
 
 1. `XUANPINMAO_PROJECT_ROOT` when explicitly configured.
 2. The current workspace or its `app/` child.
-3. A nearby `cross-border-product-opportunity-agent/` developer workspace only when it independently passes the project checks below.
-4. The `app/` child of the configured `xuanpinmao` Git marketplace root returned by `codex plugin marketplace list`.
+3. `~/xuanpinmao-app`, the stable application directory created by the Git distribution installer.
+4. A nearby `cross-border-product-opportunity-agent/` developer workspace only when it independently passes the project checks below.
+5. The `app/` child of the configured `xuanpinmao` Git marketplace root returned by `codex plugin marketplace list`, only as an installation source.
 
 Never use an installed plugin cache as the writable application directory. Never treat an archived HTML report or another category's Research Run as current product evidence. In a shared Git marketplace checkout, keep `.env`, databases, `output/`, logs, and build caches untracked and local.
 
@@ -25,10 +26,11 @@ Never use an installed plugin cache as the writable application directory. Never
 
 1. Resolve the active project directory using the rules above, then verify it contains `package.json`, `src/app`, and the landing-page text `选品不该是猜爆款，而是把生意重新想明白`.
 2. Verify `git merge-base --is-ancestor 8d7c746 HEAD` when Git history is available.
-3. For a first-time Git marketplace installation only, if `node_modules` is absent run `npm install`; if `.env` or the local database is absent run `npm run setup`; then run `npm run test:portable`. Treat these as installation steps authorized by the user's request to install the GitHub package.
-4. Probe `http://localhost:3000`. Reuse it only if the listener belongs to the resolved project. Otherwise start `npm run dev -- -p 3001`, or the next free port, from the resolved project.
-5. Outside first-time installation, do not run setup, migrations, seeds, fixture resets, deployment, or destructive Git operations merely to open the app.
-6. Preserve unrelated uncommitted work. Use existing scripts and schemas, make focused changes, and run the narrowest relevant validation.
+3. For a Git marketplace installation, run `node <marketplace-root>/install-xuanpinmao.mjs`. It copies or updates the application in `~/xuanpinmao-app` while preserving `.env`, databases, `output/`, logs, dependencies, and build caches. Resolve the stable directory again after it finishes.
+4. In the stable directory, if `node_modules` is absent run `npm install`; if `.env` or the local database is absent run `npm run setup`; then run `npm run test:portable`. Treat these as installation steps authorized by the user's request to install the GitHub package.
+5. Probe `http://localhost:3000`. Reuse it only if the listener belongs to the resolved project. Otherwise start `npm run dev -- -p 3001`, or the next free port, from the resolved project.
+6. Outside installation, do not run setup, migrations, seeds, fixture resets, deployment, or destructive Git operations merely to open the app.
+7. Preserve unrelated uncommitted work. Use existing scripts and schemas, make focused changes, and run the narrowest relevant validation.
 
 ## Research a new category
 

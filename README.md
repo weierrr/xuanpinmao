@@ -2,7 +2,7 @@
 
 这不是单独的提示词插件，而是可运行的完整测试环境，包含选品猫应用、实时调研白板、最新版 Codex 插件和本地 Marketplace。
 
-插件版本：`0.2.0+codex.20260809045830`
+插件版本：`0.2.0+codex.20260809050603`
 
 ## 安装应用
 
@@ -31,6 +31,7 @@ codex plugin add product-research-workbench@xuanpinmao
 ```bash
 codex plugin marketplace add weierrr/xuanpinmao --ref main
 codex plugin add product-research-workbench@xuanpinmao
+node install-xuanpinmao.mjs
 ```
 
 安装后必须新建 Codex 对话，再输入“使用选品猫调研一个新类目”。
@@ -40,7 +41,10 @@ codex plugin add product-research-workbench@xuanpinmao
 ```bash
 codex plugin marketplace upgrade xuanpinmao
 codex plugin add product-research-workbench@xuanpinmao
+node install-xuanpinmao.mjs
 ```
+
+安装器把程序同步到 `~/xuanpinmao-app`，更新时保留本地环境、数据库、历史报告和日志。
 
 ## 正确流程
 
