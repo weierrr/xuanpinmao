@@ -25,9 +25,10 @@ Never use an installed plugin cache as the writable application directory. Never
 
 1. Resolve the active project directory using the rules above, then verify it contains `package.json`, `src/app`, and the landing-page text `选品不该是猜爆款，而是把生意重新想明白`.
 2. Verify `git merge-base --is-ancestor 8d7c746 HEAD` when Git history is available.
-3. Probe `http://localhost:3000`. Reuse it only if the listener belongs to the canonical directory. Otherwise start `npm run dev -- -p 3001`, or the next free port, from the canonical directory.
-4. Do not run setup, migrations, seeds, fixture resets, deployment, or destructive Git operations merely to open the app.
-5. Preserve unrelated uncommitted work. Use existing scripts and schemas, make focused changes, and run the narrowest relevant validation.
+3. For a first-time Git marketplace installation only, if `node_modules` is absent run `npm install`; if `.env` or the local database is absent run `npm run setup`; then run `npm run test:portable`. Treat these as installation steps authorized by the user's request to install the GitHub package.
+4. Probe `http://localhost:3000`. Reuse it only if the listener belongs to the resolved project. Otherwise start `npm run dev -- -p 3001`, or the next free port, from the resolved project.
+5. Outside first-time installation, do not run setup, migrations, seeds, fixture resets, deployment, or destructive Git operations merely to open the app.
+6. Preserve unrelated uncommitted work. Use existing scripts and schemas, make focused changes, and run the narrowest relevant validation.
 
 ## Research a new category
 
