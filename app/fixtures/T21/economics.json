@@ -1,0 +1,71 @@
+[
+  {
+    "id": "econ-single",
+    "kind": "single",
+    "quantity": 1,
+    "grossRevenue": 29,
+    "netRevenue": 29,
+    "currency": "USD",
+    "supplierCost": 2.6562,
+    "internationalShipping": 5.3,
+    "cm1": null,
+    "breakEvenCpa": null,
+    "breakEvenRoas": null,
+    "completenessStatus": "formal_unit_economics_incomplete",
+    "missingFields": [
+      "packaging",
+      "domesticShipping",
+      "ddpInclusions",
+      "paymentFee",
+      "refundReserve",
+      "chargebackReserve",
+      "defectAndReship"
+    ]
+  },
+  {
+    "id": "econ-bundle-2",
+    "kind": "bundle_2",
+    "quantity": 2,
+    "grossRevenue": 49.3,
+    "netRevenue": 49.3,
+    "currency": "USD",
+    "supplierCost": 5.3124,
+    "internationalShipping": 8.3,
+    "cm1": null,
+    "breakEvenCpa": null,
+    "breakEvenRoas": null,
+    "completenessStatus": "formal_unit_economics_incomplete",
+    "missingFields": [
+      "packaging",
+      "domesticShipping",
+      "ddpInclusions",
+      "paymentFee",
+      "refundReserve",
+      "chargebackReserve",
+      "defectAndReship"
+    ]
+  },
+  {
+    "id": "econ-bundle-3",
+    "kind": "bundle_3",
+    "quantity": 3,
+    "grossRevenue": 69.6,
+    "netRevenue": 69.6,
+    "currency": "USD",
+    "supplierCost": 7.9686,
+    "internationalShipping": 11.3,
+    "cm1": null,
+    "breakEvenCpa": null,
+    "breakEvenRoas": null,
+    "completenessStatus": "formal_unit_economics_incomplete",
+    "missingFields": [
+      "packaging",
+      "domesticShipping",
+      "ddpInclusions",
+      "paymentFee",
+      "refundReserve",
+      "chargebackReserve",
+      "defectAndReship"
+    ]
+  }
+]

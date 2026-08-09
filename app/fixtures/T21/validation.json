@@ -1,0 +1,24 @@
+{
+  "run_id": "T21-full-20260714",
+  "source_count": 25,
+  "claim_count": 77,
+  "module_count": 15,
+  "formal_status": "HOLD_SUPPLY",
+  "listing_allowed": false,
+  "ad_test_allowed": false,
+  "unicode_replacement_characters": 0,
+  "claim_source_forward_reference_valid": true,
+  "claim_source_reverse_reference_valid": true,
+  "source_claim_mapping_mismatch_count": 0,
+  "report_required_fields_missing": [],
+  "business_critical_missing": [
+    "¥18对应SKU及报价有效期",
+    "215g与230g重量口径",
+    "DDP包含项",
+    "完整阶梯价与真实MOQ",
+    "供应商主体",
+    "完整尺码表",
+    "材料比例与美国标签证据",
+    "正式单位经济变动成本"
+  ]
+}

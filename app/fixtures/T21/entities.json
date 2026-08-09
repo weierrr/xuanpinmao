@@ -1,0 +1,24 @@
+[
+  {
+    "id": "entity-target-product",
+    "projectId": "project-t21-fixture",
+    "type": "target_product",
+    "name": "目标女士塑形压缩短袖上衣",
+    "url": "https://detail.1688.com/offer/976047440170.html?offerId=976047440170",
+    "sku": null,
+    "variant": "S-3XL，颜色未锁定",
+    "market": "US",
+    "relationship": "target"
+  },
+  {
+    "id": "entity-supplier",
+    "projectId": "project-t21-fixture",
+    "type": "supplier",
+    "name": "1688目标供应商商品页",
+    "url": "https://detail.1688.com/offer/976047440170.html?offerId=976047440170",
+    "sku": "offerId=976047440170",
+    "variant": null,
+    "market": "CN",
+    "relationship": "supplier_page_observation"
+  }
+]

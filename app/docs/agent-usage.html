@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>商品尽调 Agent 使用说明</title>
+  <style>
+    body { max-width: 880px; margin: 48px auto; padding: 0 24px; color: #173d2d; background: #faf8f0; font: 16px/1.7 system-ui, sans-serif; }
+    h1, h2 { color: #102a20; }
+    code, pre { background: #fff; border: 1px solid #d8d8ce; }
+    code { padding: 2px 5px; }
+    pre { padding: 16px; overflow: auto; }
+    .note { border-left: 4px solid #bdff38; padding: 12px 16px; background: #fff; }
+  </style>
+</head>
+<body>
+  <h1>商品尽调 Agent</h1>
+  <p>输入商品名称、可选图片、目标市场、竞品链接和目标用户，输出市场机会、竞品商业洞察、产品定位、风险边界与打样决策。</p>
+  <h2>安装</h2>
+  <pre>npm install
+npm run setup
+npm run doctor
+npm run dev</pre>
+  <p class="note">不需要 DeepSeek 或 OpenAI API Key。真实联网依赖接收者 Codex 环境中已启用的 <code>web-access</code> Skill，它不是 npm 包。</p>
+  <h2>真实研究</h2>
+  <p>先创建唯一 Research Run，再由 Codex 使用 <code>web-access</code> 收集公开证据，最后执行严格校验、报告生成和导入。完整步骤见 <code>CODEX_USAGE.md</code>。</p>
+  <p>初始 T21 数据仅用于回归测试。不得把 Fixture、旧 Evidence 或示例报告描述成新的联网结果。</p>
+  <h2>第一性原理机会重构</h2>
+  <p>Atomic Claims 校验完成后，让 Codex 对当前 Run 执行 <code>prepare-first-principles</code>，生成并校验独立的 <code>first-principles-bundle.json</code>。该层拆解需求、供给和约束，形成 2–4 个机会组合与 7–14 天验证计划。完成后执行 <code>npm run workbench -- pre-sample-brief --current --json</code>，生成卖家可读的买样前决策简报。</p>
+  <p class="note">第一性原理推荐只决定下一步验证方向。缺少正式 SKU、报价、质量、标签、物流或单位经济证据时，Formal SKU 必须保持 <code>HOLD_SUPPLY</code>，Listing 与 Ad Test 继续禁止。</p>
+</body>
+</html>

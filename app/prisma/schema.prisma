@@ -1,0 +1,320 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-arm64-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id             String          @id
+  name           String
+  mode           String
+  targetMarket   String
+  status         String
+  dataOrigin     String
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  selectionSpecs SelectionSpec[]
+  runSpecs       RunSpec[]
+  entities       Entity[]
+  researchRuns   ResearchRun[]
+}
+
+model SelectionSpec {
+  id                  String   @id
+  projectId           String
+  version             Int
+  isCurrent           Boolean
+  targetCountry       String
+  acquisitionChannel  String
+  testBudget          String?
+  fulfillmentMode     String
+  targetPriceRange    String?
+  acceptableCostRange String?
+  excludedCategories  String
+  preferredCategories String
+  teamAdvantages      String
+  completenessStatus  String
+  createdAt           DateTime @default(now())
+  project             Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, version])
+}
+
+model RunSpec {
+  id                    String        @id
+  projectId             String
+  version               Int
+  isCurrent             Boolean
+  productName           String
+  productUrl            String?
+  sku                   String?
+  variant               String?
+  packageSpec           String?
+  targetCountry         String
+  targetUser            String?
+  salePrice             Decimal?
+  saleCurrency          String
+  offer                 String?
+  acquisitionChannel    String
+  fulfillmentMode       String
+  supplierCost          Decimal?
+  packagingCost         Decimal?
+  domesticShipping      Decimal?
+  internationalShipping Decimal?
+  testBudget            Decimal?
+  prohibitedConditions  String
+  completenessStatus    String
+  supersedesRunSpecId   String?
+  createdAt             DateTime      @default(now())
+  project               Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  researchRuns          ResearchRun[]
+
+  @@unique([projectId, version])
+}
+
+model Entity {
+  id           String   @id
+  projectId    String
+  type         String
+  name         String
+  url          String?
+  sku          String?
+  variant      String?
+  market       String?
+  relationship String
+  createdAt    DateTime @default(now())
+  project      Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  sources      Source[]
+  claims       Claim[]
+}
+
+model Source {
+  id              String      @id
+  researchRunId   String
+  entityId        String?
+  title           String
+  url             String
+  sourceType      String
+  evidenceCarrier String
+  accessedAt      String
+  accessStatus    String
+  targetEntity    String
+  skuOrVariant    String?
+  market          String?
+  notes           String?
+  createdAt       DateTime    @default(now())
+  researchRun     ResearchRun @relation(fields: [researchRunId], references: [id], onDelete: Cascade)
+  entity          Entity?     @relation(fields: [entityId], references: [id], onDelete: SetNull)
+  claims          Claim[]
+}
+
+model Claim {
+  id                   String      @id
+  researchRunId        String
+  sourceId             String
+  entityId             String?
+  atomicClaim          String
+  dataNature           String
+  sourceType           String
+  evidenceCarrier      String
+  sourceLocation       String
+  linkSpecificity      String
+  observedAt           String
+  informationNature    String
+  verificationStatus   String
+  timeStatus           String
+  runSpecApplicability String
+  dataCompleteness     String
+  decisionUse          String
+  confidence           String
+  inferenceBasis       String
+  missingEvidence      String
+  notes                String?
+  createdAt            DateTime    @default(now())
+  researchRun          ResearchRun @relation(fields: [researchRunId], references: [id], onDelete: Cascade)
+  source               Source      @relation(fields: [sourceId], references: [id], onDelete: Restrict)
+  entity               Entity?     @relation(fields: [entityId], references: [id], onDelete: SetNull)
+}
+
+model RiskModule {
+  id                  String      @id
+  researchRunId       String
+  moduleCode          String
+  moduleName          String
+  moduleType          String
+  relevance           String
+  executionStatus     String
+  evidenceSufficiency String
+  decisionUsability   String
+  nextAction          String
+  ownerRole           String
+  determiningClaimIds String
+  notes               String?
+  createdAt           DateTime    @default(now())
+  researchRun         ResearchRun @relation(fields: [researchRunId], references: [id], onDelete: Cascade)
+
+  @@unique([researchRunId, moduleCode])
+}
+
+model EconomicsScenario {
+  id                       String      @id
+  researchRunId            String
+  kind                     String
+  quantity                 Int
+  grossRevenue             Decimal?
+  discount                 Decimal?
+  netRevenue               Decimal?
+  currency                 String
+  supplierCost             Decimal?
+  packagingCost            Decimal?
+  domesticShipping         Decimal?
+  internationalShipping    Decimal?
+  unlistedDutyAndClearance Decimal?
+  paymentFee               Decimal?
+  refundReserve            Decimal?
+  chargebackReserve        Decimal?
+  defectAndReshipCost      Decimal?
+  otherVariableCost        Decimal?
+  landedCost               Decimal?
+  grossProfit              Decimal?
+  variableOperatingCost    Decimal?
+  cm1                      Decimal?
+  cm1Margin                Decimal?
+  breakEvenCpa             Decimal?
+  breakEvenRoas            Decimal?
+  completenessStatus       String
+  stopReason               String?
+  missingFields            String
+  calculationVersion       String
+  createdAt                DateTime    @default(now())
+  researchRun              ResearchRun @relation(fields: [researchRunId], references: [id], onDelete: Cascade)
+}
+
+model ResearchRun {
+  id                  String              @id
+  projectId           String
+  runSpecId           String
+  provider            String
+  model               String
+  instructionVersion  String
+  instructionChecksum String
+  status              String
+  startedAt           DateTime
+  completedAt         DateTime?
+  error               String?
+  tokenUsage          Int
+  estimatedCost       Decimal
+  currency            String
+  dataOrigin          String
+  createdAt           DateTime            @default(now())
+  project             Project             @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  runSpec             RunSpec             @relation(fields: [runSpecId], references: [id], onDelete: Restrict)
+  sources             Source[]
+  claims              Claim[]
+  riskModules         RiskModule[]
+  economicsScenarios  EconomicsScenario[]
+  workflowStageRuns   WorkflowStageRun[]
+  modelCalls          ModelCall[]
+  decision            Decision?
+  reports             Report[]
+}
+
+model WorkflowStageRun {
+  id                String      @id
+  researchRunId     String
+  stageCode         String
+  attempt           Int
+  status            String
+  inputArtifactRef  String
+  outputArtifactRef String?
+  startedAt         DateTime
+  completedAt       DateTime?
+  errorCode         String?
+  errorMessage      String?
+  retryOfId         String?
+  log               String
+  createdAt         DateTime    @default(now())
+  researchRun       ResearchRun @relation(fields: [researchRunId], references: [id], onDelete: Cascade)
+  modelCalls        ModelCall[]
+
+  @@unique([researchRunId, stageCode, attempt])
+}
+
+model ModelCall {
+  id                    String           @id
+  researchRunId         String
+  workflowStageRunId    String
+  provider              String
+  model                 String
+  taskKind              String
+  requestSchemaVersion  String
+  responseSchemaVersion String
+  promptVersion         String
+  instructionChecksum   String
+  idempotencyKey        String
+  status                String
+  startedAt             DateTime
+  completedAt           DateTime?
+  latencyMs             Int
+  inputTokens           Int
+  outputTokens          Int
+  estimatedCost         Decimal
+  currency              String
+  responseArtifactRef   String?
+  responseChecksum      String?
+  warning               String?
+  errorCode             String?
+  errorMessage          String?
+  researchRun           ResearchRun      @relation(fields: [researchRunId], references: [id], onDelete: Cascade)
+  workflowStageRun      WorkflowStageRun @relation(fields: [workflowStageRunId], references: [id], onDelete: Cascade)
+}
+
+model Decision {
+  id                  String            @id
+  researchRunId       String            @unique
+  formalStatus        String
+  applicableRunSpecId String
+  determiningClaimIds String
+  secondaryRisks      String
+  listingAllowed      Boolean
+  adTestAllowed       Boolean
+  rationale           String
+  createdAt           DateTime          @default(now())
+  researchRun         ResearchRun       @relation(fields: [researchRunId], references: [id], onDelete: Cascade)
+  missingDataItems    MissingDataItem[]
+}
+
+model MissingDataItem {
+  id                  String    @id
+  decisionId          String
+  priority            String
+  fieldCode           String
+  title               String
+  description         String
+  evidenceNeeded      String
+  minimumCaptureScope String
+  blockingArea        String
+  status              String
+  createdAt           DateTime  @default(now())
+  resolvedAt          DateTime?
+  decision            Decision  @relation(fields: [decisionId], references: [id], onDelete: Cascade)
+}
+
+model Report {
+  id                 String      @id
+  researchRunId      String
+  format             String
+  version            Int
+  filePath           String
+  checksum           String
+  formalStatus       String
+  generatedAt        DateTime
+  supersedesReportId String?
+  researchRun        ResearchRun @relation(fields: [researchRunId], references: [id], onDelete: Cascade)
+
+  @@unique([researchRunId, format, version])
+}

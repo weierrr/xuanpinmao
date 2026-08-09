@@ -1,0 +1,453 @@
+[
+  {
+    "id": "SRC-001",
+    "title": "T21真实输入",
+    "url": "内部文件，无公开URL",
+    "sourceType": "用户输入",
+    "evidenceCarrier": "项目输入文件",
+    "accessedAt": "2026-07-14 23:00 CST",
+    "accessStatus": "已读取",
+    "targetEntity": "目标女士塑形压缩短袖上衣",
+    "skuOrVariant": "计划S至3XL且颜色未锁定",
+    "market": "美国",
+    "notes": "内部商业输入不等于供应商外部证明",
+    "claimIds": [
+      "C001",
+      "C002",
+      "C003",
+      "C004",
+      "C005",
+      "C006",
+      "C007",
+      "C008",
+      "C010",
+      "C011",
+      "C012",
+      "C013",
+      "C014",
+      "C015",
+      "C016",
+      "C017",
+      "C018",
+      "C035"
+    ]
+  },
+  {
+    "id": "SRC-002",
+    "title": "T21 Offer定价截图",
+    "url": "内部文件，无公开URL",
+    "sourceType": "用户输入",
+    "evidenceCarrier": "截图",
+    "accessedAt": "2026-07-14 23:23 CST",
+    "accessStatus": "已读取",
+    "targetEntity": "目标商品Offer",
+    "skuOrVariant": "1件2件3件方案",
+    "market": "美国",
+    "notes": "截图仅支持显示文案与数字",
+    "claimIds": [
+      "C009"
+    ]
+  },
+  {
+    "id": "SRC-003",
+    "title": "1688目标供应商商品页公开源数据",
+    "url": "https://detail.1688.com/offer/976047440170.html?offerId=976047440170&forcePC=1782204175821",
+    "sourceType": "供应商声明",
+    "evidenceCarrier": "1688商品页公开源数据",
+    "accessedAt": "2026-07-14 23:05 CST",
+    "accessStatus": "PC源数据HTTP 200且字段可读",
+    "targetEntity": "目标供应商商品",
+    "skuOrVariant": "offerId=976047440170",
+    "market": "中国供应链",
+    "notes": "供应商页面观察不构成独立验证且不能证明内部18元报价",
+    "claimIds": [
+      "C019",
+      "C020",
+      "C021",
+      "C022",
+      "C023",
+      "C024",
+      "C025",
+      "C026",
+      "C027",
+      "C028",
+      "C029",
+      "C030",
+      "C031",
+      "C033",
+      "C036"
+    ]
+  },
+  {
+    "id": "SRC-004",
+    "title": "1688目标供应商商品页复访",
+    "url": "https://detail.1688.com/offer/976047440170.html?offerId=976047440170&forcePC=1782204175821",
+    "sourceType": "平台数据/页面",
+    "evidenceCarrier": "HTTP与页面源响应",
+    "accessedAt": "2026-07-14 23:36 CST",
+    "accessStatus": "HTTP 200但返回登录跳转脚本",
+    "targetEntity": "目标供应商商品",
+    "skuOrVariant": "offerId=976047440170",
+    "market": "中国供应链",
+    "notes": "未登录未使用Cookie未处理验证码未绕过访问控制",
+    "claimIds": [
+      "C032",
+      "C034"
+    ]
+  },
+  {
+    "id": "SRC-005",
+    "title": "Sculpt 3D Slim and Support Tee",
+    "url": "https://getionix.com/products/sculpt-3d-compression-tee?variant=56858451837263",
+    "sourceType": "平台数据/页面",
+    "evidenceCarrier": "竞品具体商品页",
+    "accessedAt": "2026-07-14 23:31 CST",
+    "accessStatus": "HTTP页面可读",
+    "targetEntity": "Getionix竞品",
+    "skuOrVariant": "variant=56858451837263",
+    "market": "美国",
+    "notes": "竞品属性和Claim不得迁移至目标商品",
+    "claimIds": [
+      "C037",
+      "C039",
+      "C040",
+      "C041",
+      "C042"
+    ]
+  },
+  {
+    "id": "SRC-006",
+    "title": "Sculpt 3D Shopify product JSON",
+    "url": "https://getionix.com/products/sculpt-3d-compression-tee.js",
+    "sourceType": "平台数据/页面",
+    "evidenceCarrier": "Shopify商品JSON",
+    "accessedAt": "2026-07-14 23:36 CST",
+    "accessStatus": "HTTP 200且JSON可读",
+    "targetEntity": "Getionix竞品",
+    "skuOrVariant": "12个Pink和Black尺码变体",
+    "market": "美国",
+    "notes": "JSON支持价格变体和图片字段但不支持销量",
+    "claimIds": [
+      "C038"
+    ]
+  },
+  {
+    "id": "SRC-007",
+    "title": "Memoi Short Sleeve Slimming Shaper Shirt",
+    "url": "https://www.target.com/p/-/A-1004930269",
+    "sourceType": "平台数据/页面",
+    "evidenceCarrier": "零售商具体商品页与评论",
+    "accessedAt": "2026-07-14 23:27 CST",
+    "accessStatus": "页面正文与评论可读",
+    "targetEntity": "MeMoi竞品",
+    "skuOrVariant": "Nude XL页面且可选Black和S至XL",
+    "market": "美国",
+    "notes": "Target Plus页面显示Sold and shipped by MeMoi",
+    "claimIds": [
+      "C043"
+    ]
+  },
+  {
+    "id": "SRC-008",
+    "title": "Lucy Short Sleeve T-Shirt Shaping Bodysuit",
+    "url": "https://www.yummie.com/products/lucy-shaping-bodysuit-seamless-black",
+    "sourceType": "平台数据/页面",
+    "evidenceCarrier": "品牌具体商品页",
+    "accessedAt": "2026-07-14 23:27 CST",
+    "accessStatus": "页面正文可读",
+    "targetEntity": "Yummie竞品",
+    "skuOrVariant": "Black多尺码连体衣",
+    "market": "美国",
+    "notes": "连体衣结构与目标短袖上衣不完全可比",
+    "claimIds": [
+      "C044"
+    ]
+  },
+  {
+    "id": "SRC-009",
+    "title": "Short Sleeve Round Neck Shaper Bodysuit",
+    "url": "https://www.leonisa.com/products/short-sleeve-round-neck-shaper-bodysuit?variant=44821561049220",
+    "sourceType": "平台数据/页面",
+    "evidenceCarrier": "品牌具体商品页",
+    "accessedAt": "2026-07-14 23:27 CST",
+    "accessStatus": "页面正文与尺码表可读",
+    "targetEntity": "Leonisa竞品",
+    "skuOrVariant": "variant=44821561049220",
+    "market": "美国",
+    "notes": "连体衣结构与目标短袖上衣不完全可比",
+    "claimIds": [
+      "C045"
+    ]
+  },
+  {
+    "id": "SRC-010",
+    "title": "Wear Ease Compression T Shirt",
+    "url": "https://www.shapewearusa.com/products/wearease-compression-t-shirt",
+    "sourceType": "平台数据/页面",
+    "evidenceCarrier": "零售商具体商品页与原始评论",
+    "accessedAt": "2026-07-14 23:27 CST",
+    "accessStatus": "页面正文与5条评论可读",
+    "targetEntity": "Wear Ease竞品",
+    "skuOrVariant": "White Black Ivory且XS至3X",
+    "market": "美国",
+    "notes": "医疗压缩用途偏强且不等同目标日常塑形定位",
+    "claimIds": [
+      "C046",
+      "C048",
+      "C049",
+      "C050"
+    ]
+  },
+  {
+    "id": "SRC-011",
+    "title": "HeatGear Women's Compression Short Sleeve",
+    "url": "https://www.underarmour.com/en-us/p/heatgear_womens_compression_short_sleeve/1365460.html",
+    "sourceType": "平台数据/页面",
+    "evidenceCarrier": "品牌具体商品页与原始评论",
+    "accessedAt": "2026-07-14 23:33 CST",
+    "accessStatus": "页面正文与评论可读",
+    "targetEntity": "Under Armour竞品",
+    "skuOrVariant": "Style 1365460",
+    "market": "美国",
+    "notes": "运动压缩用途对照而非塑形Claim同款",
+    "claimIds": [
+      "C047",
+      "C051",
+      "C052"
+    ]
+  },
+  {
+    "id": "SRC-012",
+    "title": "How to stop shapewear from rolling down",
+    "url": "https://www.reddit.com/r/femalefashionadvice/comments/1ocmep/how_to_stop_shapewear_from_rolling_down/",
+    "sourceType": "平台数据/页面",
+    "evidenceCarrier": "消费者公开讨论原帖",
+    "accessedAt": "2026-07-14 23:29 CST",
+    "accessStatus": "公开帖子可读",
+    "targetEntity": "塑形服饰消费者讨论",
+    "skuOrVariant": "非特定目标SKU",
+    "market": "美国相关消费者语境",
+    "notes": "自选样本不能推算发生率",
+    "claimIds": [
+      "C053"
+    ]
+  },
+  {
+    "id": "SRC-013",
+    "title": "What is your opinion on shapewear",
+    "url": "https://www.reddit.com/r/femalefashionadvice/comments/eolep8/what_is_your_opinion_on_shapewear/",
+    "sourceType": "平台数据/页面",
+    "evidenceCarrier": "消费者公开讨论原帖",
+    "accessedAt": "2026-07-14 23:29 CST",
+    "accessStatus": "公开帖子可读",
+    "targetEntity": "塑形服饰消费者讨论",
+    "skuOrVariant": "非特定目标SKU",
+    "market": "美国相关消费者语境",
+    "notes": "自选样本不能推算发生率",
+    "claimIds": [
+      "C054"
+    ]
+  },
+  {
+    "id": "SRC-014",
+    "title": "Apparel and Labeling",
+    "url": "https://www.ftc.gov/news-events/topics/tools-consumers/apparel-labeling",
+    "sourceType": "官方来源",
+    "evidenceCarrier": "FTC官方主题页",
+    "accessedAt": "2026-07-14 23:30 CST",
+    "accessStatus": "页面可读",
+    "targetEntity": "美国纺织服装标签要求",
+    "skuOrVariant": "一般纺织服装",
+    "market": "美国",
+    "notes": "适用细节仍需按最终商品和进口主体核验",
+    "claimIds": [
+      "C055"
+    ]
+  },
+  {
+    "id": "SRC-015",
+    "title": "Clothes Captioning Care Labeling Rule",
+    "url": "https://www.ftc.gov/business-guidance/resources/clothes-captioning-complying-care-labeling-rule",
+    "sourceType": "官方来源",
+    "evidenceCarrier": "FTC官方指南",
+    "accessedAt": "2026-07-14 23:30 CST",
+    "accessStatus": "页面可读",
+    "targetEntity": "美国服装护理标签要求",
+    "skuOrVariant": "一般纺织服装",
+    "market": "美国",
+    "notes": "护理指令必须有合理依据",
+    "claimIds": [
+      "C056"
+    ]
+  },
+  {
+    "id": "SRC-016",
+    "title": "Clothing FAQ",
+    "url": "https://www.cpsc.gov/FAQ/Clothing",
+    "sourceType": "官方来源",
+    "evidenceCarrier": "CPSC官方FAQ",
+    "accessedAt": "2026-07-14 23:30 CST",
+    "accessStatus": "页面可读",
+    "targetEntity": "美国服装阻燃要求",
+    "skuOrVariant": "一般穿着服装",
+    "market": "美国",
+    "notes": "最终材料和成衣适用性需专项核验",
+    "claimIds": [
+      "C057"
+    ]
+  },
+  {
+    "id": "SRC-017",
+    "title": "Health Products Compliance Guidance",
+    "url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+    "sourceType": "官方来源",
+    "evidenceCarrier": "FTC官方指南",
+    "accessedAt": "2026-07-14 23:30 CST",
+    "accessStatus": "页面可读",
+    "targetEntity": "美国广告客观与健康Claim",
+    "skuOrVariant": "姿态背部紧张及身体改善Claim",
+    "market": "美国",
+    "notes": "具体广告语需结合整体语境和证据审查",
+    "claimIds": [
+      "C058"
+    ]
+  },
+  {
+    "id": "SRC-018",
+    "title": "16 CFR 233.1 Former price comparisons",
+    "url": "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-233/section-233.1",
+    "sourceType": "官方来源",
+    "evidenceCarrier": "eCFR当前条文",
+    "accessedAt": "2026-07-14 23:32 CST",
+    "accessStatus": "页面可读且显示截至2026-07-10",
+    "targetEntity": "美国参考价宣传",
+    "skuOrVariant": "49美元参考价及50% off",
+    "market": "美国",
+    "notes": "州法与具体广告语境仍需另行核验",
+    "claimIds": [
+      "C059"
+    ]
+  },
+  {
+    "id": "SRC-019",
+    "title": "Federal Reserve H.10 July 13 2026",
+    "url": "https://www.federalreserve.gov/releases/h10/current/",
+    "sourceType": "官方来源",
+    "evidenceCarrier": "联储官方汇率发布",
+    "accessedAt": "2026-07-14 23:31 CST",
+    "accessStatus": "页面可读且最后更新2026-07-13",
+    "targetEntity": "人民币美元临时换算",
+    "skuOrVariant": "2026-07-10汇率",
+    "market": "美国",
+    "notes": "实际结算汇率待确认",
+    "claimIds": [
+      "C060"
+    ]
+  },
+  {
+    "id": "SRC-020",
+    "title": "US11839243B1 Therapeutic shirt with high compression support",
+    "url": "https://patents.google.com/patent/US11839243B1/en",
+    "sourceType": "平台数据/页面",
+    "evidenceCarrier": "Google Patents具体专利页",
+    "accessedAt": "2026-07-14 23:32 CST",
+    "accessStatus": "页面可读并链接USPTO记录",
+    "targetEntity": "姿态支撑压缩上衣专利线索",
+    "skuOrVariant": "US11839243B1",
+    "market": "美国",
+    "notes": "Google提示法律状态非法律结论且本轮未做权利要求比对",
+    "claimIds": [
+      "C061"
+    ]
+  },
+  {
+    "id": "SRC-021",
+    "title": "USPTO Public Search Facility guidance",
+    "url": "https://www.uspto.gov/learning-and-resources/support-centers/public-search-facility/using-public-search-facility",
+    "sourceType": "官方来源",
+    "evidenceCarrier": "USPTO官方检索入口说明",
+    "accessedAt": "2026-07-14 23:30 CST",
+    "accessStatus": "页面可读",
+    "targetEntity": "美国商标与专利检索",
+    "skuOrVariant": "目标商品品牌与结构",
+    "market": "美国",
+    "notes": "本轮仅快速关键词筛查不等于FTO或商标清查",
+    "claimIds": [
+      "C062"
+    ]
+  },
+  {
+    "id": "SRC-022",
+    "title": "Meta Ads Library Getionix US active search",
+    "url": "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=US&q=Getionix&search_type=keyword_unordered",
+    "sourceType": "平台数据/页面",
+    "evidenceCarrier": "保留条件的广告库搜索页",
+    "accessedAt": "2026-07-14 23:31 CST",
+    "accessStatus": "在线抓取被限流",
+    "targetEntity": "Getionix广告主体",
+    "skuOrVariant": "Getionix关键词",
+    "market": "美国",
+    "notes": "实际广告状态未知且搜索失败不等于无广告",
+    "claimIds": [
+      "C063"
+    ]
+  },
+  {
+    "id": "SRC-023",
+    "title": "Questions about bras and compression shirts",
+    "url": "https://www.reddit.com/r/ABraThatFits/comments/1u4b6wp/questions_about_bras_and_compression_shirts/",
+    "sourceType": "平台数据/页面",
+    "evidenceCarrier": "消费者公开讨论原帖",
+    "accessedAt": "2026-07-14 23:29 CST",
+    "accessStatus": "公开帖子可读",
+    "targetEntity": "女性压缩上衣消费者讨论",
+    "skuOrVariant": "非特定目标SKU",
+    "market": "美国",
+    "notes": "讨论提示尺码与支撑用途不能混为一谈",
+    "claimIds": []
+  },
+  {
+    "id": "SRC-024",
+    "title": "T21确定性Offer与成本下限计算",
+    "url": "内部文件，无公开URL",
+    "sourceType": "内部文件",
+    "evidenceCarrier": "Python标准库计算输出",
+    "accessedAt": "2026-07-14 23:40 CST",
+    "accessStatus": "脚本已成功运行",
+    "targetEntity": "当前RunSpec",
+    "skuOrVariant": "1件2件3件方案",
+    "market": "美国",
+    "notes": "输入来自SRC-001和SRC-002且汇率来自SRC-019",
+    "claimIds": [
+      "C064",
+      "C065",
+      "C066",
+      "C067",
+      "C068",
+      "C069",
+      "C070",
+      "C071",
+      "C072",
+      "C073"
+    ]
+  },
+  {
+    "id": "SRC-025",
+    "title": "T21跨来源模型推断",
+    "url": "无原始链接，仅模型推断",
+    "sourceType": "模型推断",
+    "evidenceCarrier": "跨来源分析记录",
+    "accessedAt": "2026-07-14 23:40 CST",
+    "accessStatus": "按项目指令保留低置信度推断",
+    "targetEntity": "当前RunSpec",
+    "skuOrVariant": "尚未锁定最终销售SKU",
+    "market": "美国",
+    "notes": "所有推断均不可作为决策依据且列明缺失证据",
+    "claimIds": [
+      "I001",
+      "I002",
+      "I003",
+      "I004"
+    ]
+  }
+]

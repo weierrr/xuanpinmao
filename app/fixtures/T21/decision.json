@@ -1,0 +1,21 @@
+{
+  "formalStatus": "HOLD_SUPPLY",
+  "listingAllowed": false,
+  "adTestAllowed": false,
+  "applicableRunSpecId": "runspec-t21-v1",
+  "determiningClaimIds": [
+    "C013",
+    "C022",
+    "C033",
+    "C034",
+    "C073"
+  ],
+  "secondaryRisks": [
+    "材料成分",
+    "尺码质量",
+    "Claim合规",
+    "知识产权",
+    "正式单位经济"
+  ],
+  "rationale": "供应商报价、SKU映射、MOQ、重量口径、供应商主体和DDP适用性未收口，当前RunSpec不可采购、不可发布Listing、不可启动广告。"
+}

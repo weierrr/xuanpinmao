@@ -1,0 +1,7 @@
+interface:
+  display_name: "选品猫"
+  short_description: "确认研究对象，在实时白板中执行可追溯跨类目调研"
+  default_prompt: "使用 $open-xuanpinmao 研究一个新类目。先自动打开并预填选品工作台；我在页面内确认研究对象后，立即打开实时调研白板，并在检索、采集、去重、分析和生成六大报告时持续更新白板。"
+
+policy:
+  allow_implicit_invocation: true

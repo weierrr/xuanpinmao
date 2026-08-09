@@ -1,0 +1,237 @@
+[
+  {
+    "moduleCode": "M01",
+    "moduleName": "商品身份与RunSpec",
+    "moduleType": "baseline",
+    "relevance": "基线相关",
+    "executionStatus": "已完成",
+    "evidenceSufficiency": "部分充分",
+    "decisionUsability": "仅可有限使用",
+    "nextAction": "补充证据",
+    "ownerRole": "主责",
+    "determiningClaimIds": [
+      "C001",
+      "C002",
+      "C003",
+      "C004"
+    ],
+    "notes": "实体已分离但最终销售SKU和颜色未锁定"
+  },
+  {
+    "moduleCode": "M02",
+    "moduleName": "基础产品安全",
+    "moduleType": "baseline",
+    "relevance": "基线相关",
+    "executionStatus": "已完成",
+    "evidenceSufficiency": "不足",
+    "decisionUsability": "不可使用",
+    "nextAction": "补充证据",
+    "ownerRole": "主责",
+    "determiningClaimIds": [
+      "C053",
+      "C054",
+      "C058"
+    ],
+    "notes": "标签护理和阻燃适用证据未取得"
+  },
+  {
+    "moduleCode": "M03",
+    "moduleName": "供应链报价与履约",
+    "moduleType": "baseline",
+    "relevance": "基线相关",
+    "executionStatus": "已完成",
+    "evidenceSufficiency": "不足",
+    "decisionUsability": "不可使用",
+    "nextAction": "补充证据",
+    "ownerRole": "主责",
+    "determiningClaimIds": [
+      "C013",
+      "C022",
+      "C033",
+      "C034",
+      "C073"
+    ],
+    "notes": "报价关系、SKU重量口径、MOQ、主体和DDP均未收口"
+  },
+  {
+    "moduleCode": "M04",
+    "moduleName": "单位经济",
+    "moduleType": "baseline",
+    "relevance": "基线相关",
+    "executionStatus": "已完成",
+    "evidenceSufficiency": "部分充分",
+    "decisionUsability": "仅可有限使用",
+    "nextAction": "补充证据",
+    "ownerRole": "主责",
+    "determiningClaimIds": [
+      "C064",
+      "C065",
+      "C066",
+      "C069",
+      "C073"
+    ],
+    "notes": "Offer和已知成本小计完成；正式CM1停止"
+  },
+  {
+    "moduleCode": "M05",
+    "moduleName": "一般质量与退货风险",
+    "moduleType": "baseline",
+    "relevance": "基线相关",
+    "executionStatus": "已完成",
+    "evidenceSufficiency": "部分充分",
+    "decisionUsability": "仅可有限使用",
+    "nextAction": "补充证据",
+    "ownerRole": "主责",
+    "determiningClaimIds": [
+      "C041",
+      "C042",
+      "C043"
+    ],
+    "notes": "已识别卷边薄透尺码和穿脱风险；无目标样品数据"
+  },
+  {
+    "moduleCode": "M06",
+    "moduleName": "知识产权快速筛查",
+    "moduleType": "baseline",
+    "relevance": "基线相关",
+    "executionStatus": "已完成",
+    "evidenceSufficiency": "部分充分",
+    "decisionUsability": "仅可有限使用",
+    "nextAction": "获取适用证据",
+    "ownerRole": "主责",
+    "determiningClaimIds": [
+      "C061",
+      "C062"
+    ],
+    "notes": "有效专利线索存在；未做商标图片和权利要求清查"
+  },
+  {
+    "moduleCode": "M07",
+    "moduleName": "材料与成分",
+    "moduleType": "conditional",
+    "relevance": "条件触发",
+    "executionStatus": "已完成",
+    "evidenceSufficiency": "部分充分",
+    "decisionUsability": "仅可有限使用",
+    "nextAction": "补充证据",
+    "ownerRole": "主责",
+    "determiningClaimIds": [
+      "C027",
+      "C055"
+    ],
+    "notes": "供应商声明锦纶或尼龙但无比例和报告"
+  },
+  {
+    "moduleCode": "M08",
+    "moduleName": "电气电池与发热",
+    "moduleType": "conditional",
+    "relevance": "不相关",
+    "executionStatus": "不适用",
+    "evidenceSufficiency": "不适用",
+    "decisionUsability": "不适用",
+    "nextAction": "不适用",
+    "ownerRole": "不适用",
+    "determiningClaimIds": [],
+    "notes": "当前RunSpec为普通纺织短袖上衣"
+  },
+  {
+    "moduleCode": "M09",
+    "moduleName": "儿童使用与小部件",
+    "moduleType": "conditional",
+    "relevance": "不相关",
+    "executionStatus": "不适用",
+    "evidenceSufficiency": "不适用",
+    "decisionUsability": "不适用",
+    "nextAction": "不适用",
+    "ownerRole": "不适用",
+    "determiningClaimIds": [],
+    "notes": "当前目标用户为成年女性"
+  },
+  {
+    "moduleCode": "M10",
+    "moduleName": "食品或口腔接触",
+    "moduleType": "conditional",
+    "relevance": "不相关",
+    "executionStatus": "不适用",
+    "evidenceSufficiency": "不适用",
+    "decisionUsability": "不适用",
+    "nextAction": "不适用",
+    "ownerRole": "不适用",
+    "determiningClaimIds": [],
+    "notes": "当前用途不涉及食品或口腔"
+  },
+  {
+    "moduleCode": "M11",
+    "moduleName": "皮肤黏膜或动物体表接触",
+    "moduleType": "conditional",
+    "relevance": "条件触发",
+    "executionStatus": "已完成",
+    "evidenceSufficiency": "不足",
+    "decisionUsability": "不可使用",
+    "nextAction": "补充证据",
+    "ownerRole": "主责",
+    "determiningClaimIds": [
+      "C055",
+      "C056",
+      "C057"
+    ],
+    "notes": "紧身直接皮肤接触且成分色牢度刺激证据不足"
+  },
+  {
+    "moduleCode": "M12",
+    "moduleName": "液体粉末气雾磁性等物流属性",
+    "moduleType": "conditional",
+    "relevance": "不相关",
+    "executionStatus": "不适用",
+    "evidenceSufficiency": "不适用",
+    "decisionUsability": "不适用",
+    "nextAction": "不适用",
+    "ownerRole": "不适用",
+    "determiningClaimIds": [],
+    "notes": "当前商品形态未出现这些属性"
+  },
+  {
+    "moduleCode": "M13",
+    "moduleName": "功效治疗安全和绝对化宣传",
+    "moduleType": "conditional",
+    "relevance": "条件触发",
+    "executionStatus": "已完成",
+    "evidenceSufficiency": "不足",
+    "decisionUsability": "不可使用",
+    "nextAction": "补充证据",
+    "ownerRole": "主责",
+    "determiningClaimIds": [
+      "C050",
+      "C051",
+      "C052",
+      "C058"
+    ],
+    "notes": "姿态脊柱背部紧张长期改善和绝对舒适均禁用"
+  },
+  {
+    "moduleCode": "M14",
+    "moduleName": "兼容替代授权与专项IP",
+    "moduleType": "conditional",
+    "relevance": "不相关",
+    "executionStatus": "不适用",
+    "evidenceSufficiency": "不适用",
+    "decisionUsability": "不适用",
+    "nextAction": "不适用",
+    "ownerRole": "不适用",
+    "determiningClaimIds": [],
+    "notes": "当前没有兼容替代或授权关系声明"
+  },
+  {
+    "moduleCode": "M15",
+    "moduleName": "实体SKU变体主体市场时间与证据适用性",
+    "moduleType": "conditional",
+    "relevance": "不相关",
+    "executionStatus": "不适用",
+    "evidenceSufficiency": "不适用",
+    "decisionUsability": "不适用",
+    "nextAction": "不适用",
+    "ownerRole": "不适用",
+    "determiningClaimIds": [],
+    "notes": "未证明发生SKU主体时间或证据归属错配；普通缺字段由M03处理"
+  }
+]

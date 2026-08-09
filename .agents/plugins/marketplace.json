@@ -1,0 +1,20 @@
+{
+  "name": "xuanpinmao",
+  "interface": {
+    "displayName": "选品猫测试版"
+  },
+  "plugins": [
+    {
+      "name": "product-research-workbench",
+      "source": {
+        "source": "local",
+        "path": "./plugins/product-research-workbench"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

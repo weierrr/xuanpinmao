@@ -1,0 +1,8 @@
+{
+  "schema_version": "report-composition.v1",
+  "primary_run_id": "research-run-3d-yoga-pants-dccf676c3167-us",
+  "audit_run_id": "research-run-3d-yoga-pants-28f8bff32ab5-us",
+  "primary_label": "过去积累的用户资料",
+  "audit_label": "这次重新核查的资料",
+  "boundary": "下面的用户洞察来自过去积累的多渠道资料；新增加的搜索记录和发布日期只代表这次核查，不能倒推旧资料当时是怎么搜到的、何时发布。"
+}

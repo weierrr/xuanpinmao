@@ -1,0 +1,28 @@
+{
+  "id": "runspec-t21-v1",
+  "projectId": "project-t21-fixture",
+  "version": 1,
+  "isCurrent": true,
+  "productName": "女士塑形压缩短袖上衣",
+  "productUrl": "https://detail.1688.com/offer/976047440170.html?offerId=976047440170",
+  "sku": null,
+  "variant": "S-3XL，颜色未锁定",
+  "packageSpec": "25x30袋装待确认",
+  "targetCountry": "US",
+  "targetUser": "成年女性",
+  "salePrice": 29,
+  "saleCurrency": "USD",
+  "offer": "1件$29，2件$49.30，3件$69.60",
+  "acquisitionChannel": "Meta Ads / 独立站测试",
+  "fulfillmentMode": "跨境小包或DDP待确认",
+  "supplierCost": 18,
+  "packagingCost": null,
+  "domesticShipping": null,
+  "internationalShipping": null,
+  "testBudget": null,
+  "prohibitedConditions": [
+    "不得发布Listing",
+    "不得启动广告测试"
+  ],
+  "completenessStatus": "关键供应链字段缺失"
+}

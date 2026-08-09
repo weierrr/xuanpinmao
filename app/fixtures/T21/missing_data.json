@@ -1,0 +1,35 @@
+[
+  {
+    "id": "MD-P0-01",
+    "priority": "P0",
+    "fieldCode": "supplier_quote_sku_validity",
+    "title": "¥18对应SKU及报价有效期",
+    "description": "用户输入¥18未绑定供应商主体、offerId、SKU、MOQ、含税口径和有效期。",
+    "evidenceNeeded": "供应商可追溯书面报价。",
+    "minimumCaptureScope": "价格与SKU联动区域、阶梯/MOQ、报价日期或有效期。",
+    "blockingArea": "供应链报价",
+    "status": "open"
+  },
+  {
+    "id": "MD-P0-02",
+    "priority": "P0",
+    "fieldCode": "weight_basis",
+    "title": "215g与230g重量口径",
+    "description": "两组重量未证明同一SKU、颜色、尺码、时间和重量类型。",
+    "evidenceNeeded": "同一目标SKU的裸衣净重、装袋毛重和计费重记录。",
+    "minimumCaptureScope": "SKU选择状态、对应重量字段、同一件样品称重照片。",
+    "blockingArea": "供应链履约",
+    "status": "open"
+  },
+  {
+    "id": "MD-P0-03",
+    "priority": "P0",
+    "fieldCode": "ddp_inclusions",
+    "title": "DDP包含项",
+    "description": "1/2/3件物流报价缺少承运商、路线、计费重、DDP包含/排除项和有效期。",
+    "evidenceNeeded": "正式物流报价单。",
+    "minimumCaptureScope": "报价金额、路线/邮编、计费重、DDP包含/排除项、有效期。",
+    "blockingArea": "供应链履约",
+    "status": "open"
+  }
+]

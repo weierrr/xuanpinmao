@@ -1,0 +1,1798 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>3D 瑜伽裤 · 可追溯调研报告完整版原型</title>
+  <meta name="description" content="使用现有瑜伽裤研究产物制作的选品猫可追溯调研报告完整版交互原型。" />
+  <style>
+    :root {
+      --paper: #f4f6f8;
+      --surface: #ffffff;
+      --ink: #142033;
+      --muted: #667184;
+      --line: #cfd8e4;
+      --blue: #2457d6;
+      --blue-soft: #eaf0ff;
+      --cyan: #1d8798;
+      --cyan-soft: #eaf7f8;
+      --violet: #7257b5;
+      --violet-soft: #f1edff;
+      --orange: #e9682c;
+      --orange-soft: #fff0e7;
+      --green: #32835a;
+      --green-soft: #edf8ef;
+      --yellow: #a87910;
+      --yellow-soft: #fff7dd;
+      --red: #a93e35;
+      --red-soft: #fdecea;
+      --shadow: 0 22px 70px rgba(24, 45, 78, 0.13);
+    }
+
+    * { box-sizing: border-box; }
+    html { min-width: 320px; background: var(--paper); }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle, rgba(72, 96, 132, 0.18) 1.1px, transparent 1.15px) 0 0 / 24px 24px,
+        var(--paper);
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, sans-serif;
+    }
+
+    button, a { font: inherit; }
+
+    .page {
+      width: min(1900px, 100%);
+      margin: 0 auto;
+      padding: 18px clamp(12px, 2vw, 34px) 30px;
+    }
+
+    .header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 14px;
+    }
+
+    .header-topline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .back-link { color: var(--blue); font-size: 12px; font-weight: 700; text-decoration: none; }
+    .prototype-label { color: var(--orange); font: 700 11px ui-monospace, "SFMono-Regular", Menlo, monospace; letter-spacing: 0.08em; }
+
+    h1 {
+      margin: 0;
+      font-family: "Songti SC", "Noto Serif CJK SC", STSong, serif;
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle { margin: 8px 0 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+
+    .headline-decision {
+      min-width: 310px;
+      padding: 13px 16px;
+      border: 1px solid var(--ink);
+      background: var(--yellow-soft);
+      box-shadow: 5px 5px 0 var(--ink);
+    }
+
+    .headline-decision span { color: var(--yellow); font: 700 10px ui-monospace, monospace; letter-spacing: 0.08em; }
+    .headline-decision strong { display: block; margin-top: 5px; font-size: 19px; }
+    .headline-decision small { display: block; margin-top: 5px; color: var(--muted); font-size: 12px; }
+
+    .research-intake {
+      margin-bottom: 18px;
+      border: 1px solid var(--ink);
+      background: rgba(255,255,255,.96);
+      box-shadow: 6px 6px 0 rgba(20,32,51,.16);
+    }
+
+    .intake-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: start;
+      padding: 20px clamp(18px, 3vw, 32px);
+      border-bottom: 1px solid var(--ink);
+      background: linear-gradient(90deg, var(--blue-soft), #fff 62%);
+    }
+
+    .intake-kicker { color: var(--blue); font: 700 10px ui-monospace, monospace; letter-spacing: .1em; }
+    .intake-head h2 { margin: 7px 0 0; font-family: "Songti SC", STSong, serif; font-size: clamp(23px, 3vw, 34px); line-height: 1.25; }
+    .intake-head p { max-width: 820px; margin: 8px 0 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
+    .scope-status { padding: 9px 11px; border: 1px solid var(--green); background: var(--green-soft); color: var(--green); font: 700 10px/1.4 ui-monospace, monospace; white-space: nowrap; }
+    .research-intake[data-scope-state="editing"] .scope-status { border-color: var(--yellow); background: var(--yellow-soft); color: var(--yellow); }
+
+    .intake-body {
+      display: grid;
+      grid-template-columns: minmax(220px, .58fr) minmax(0, 1.42fr);
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .intake-query, .scope-passport { padding: 20px clamp(18px, 2.2vw, 28px); background: #fff; }
+    .intake-query { background: #f7f9fc; }
+    .intake-label { display: block; color: var(--muted); font: 700 9px ui-monospace, monospace; letter-spacing: .09em; }
+    .intake-query blockquote { margin: 12px 0 0; padding: 14px 0 14px 15px; border-left: 4px solid var(--blue); font-size: 20px; font-weight: 700; line-height: 1.4; }
+    .intake-query p { margin: 12px 0 0; color: var(--muted); font-size: 11px; line-height: 1.65; }
+
+    .scope-passport-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+    .scope-passport h3 { margin: 5px 0 0; font-size: 20px; line-height: 1.4; }
+    .scope-passport-head > span { padding: 4px 6px; border: 1px solid var(--blue); color: var(--blue); font: 700 9px ui-monospace, monospace; }
+    .scope-definition { margin: 9px 0 0; color: #4f5d70; font-size: 12px; line-height: 1.7; }
+
+    .scope-facts { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1px; margin-top: 14px; background: var(--line); border: 1px solid var(--line); }
+    .scope-fact { padding: 10px; background: #f8fafc; }
+    .scope-fact span { display: block; color: var(--muted); font: 700 8px ui-monospace, monospace; }
+    .scope-fact strong { display: block; margin-top: 4px; font-size: 12px; }
+
+    .scope-anchor { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 10px; }
+    .scope-anchor b { margin-right: 2px; font-size: 10px; }
+    .scope-anchor span { padding: 4px 6px; border: 1px solid rgba(36,87,214,.35); background: var(--blue-soft); color: #294a93; font: 700 9px ui-monospace, monospace; }
+    .scope-anchor small { color: var(--muted); font-size: 9px; }
+
+    .scope-boundaries { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+    .scope-boundary-card { padding: 11px 12px; border: 1px solid var(--line); }
+    .scope-boundary-card.include { border-color: var(--green); background: var(--green-soft); }
+    .scope-boundary-card.exclude { border-color: var(--orange); background: var(--orange-soft); }
+    .scope-boundary-card b { display: block; margin-bottom: 5px; font-size: 11px; }
+    .scope-boundary-card p { margin: 0; color: #4f5d70; font-size: 10px; line-height: 1.6; }
+
+    .scope-focus { margin-top: 12px; }
+    .scope-focus b { display: block; margin-bottom: 7px; font-size: 11px; }
+    .scope-focus-list { display: flex; flex-wrap: wrap; gap: 6px; }
+    .scope-focus-list span { padding: 5px 7px; border: 1px solid var(--line); background: #fff; color: #4f5d70; font-size: 10px; }
+
+    .scope-editor { display: none; padding: 18px clamp(18px, 3vw, 32px); border-top: 1px solid var(--line); background: #f8fafc; }
+    .research-intake[data-scope-state="editing"] .scope-editor { display: block; }
+    .scope-editor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .scope-field { display: grid; gap: 5px; }
+    .scope-field.wide { grid-column: 1 / -1; }
+    .scope-field label { color: var(--muted); font-size: 10px; font-weight: 700; }
+    .scope-field input, .scope-field textarea { width: 100%; border: 1px solid var(--line); background: #fff; color: var(--ink); padding: 9px 10px; font: inherit; font-size: 12px; line-height: 1.55; resize: vertical; }
+    .scope-field input:focus, .scope-field textarea:focus { outline: 3px solid rgba(36,87,214,.16); border-color: var(--blue); }
+
+    .intake-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 14px clamp(18px, 3vw, 32px); border-top: 1px solid var(--line); background: #fff; }
+    .intake-actions p { flex: 1 1 420px; margin: 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
+    .scope-button { min-height: 38px; padding: 0 14px; border: 1px solid var(--ink); background: #fff; color: var(--ink); cursor: pointer; font-size: 11px; font-weight: 700; }
+    .scope-button.primary { border-color: var(--blue); background: var(--blue); color: #fff; }
+    .scope-button:hover, .scope-button:focus-visible { outline: 3px solid rgba(36,87,214,.18); outline-offset: 2px; }
+    .scope-confirm-button { display: none; }
+    .research-intake[data-scope-state="editing"] .scope-confirm-button { display: inline-block; }
+    .research-intake[data-scope-state="editing"] .scope-view-button { display: none; }
+
+    .workspace {
+      position: relative;
+      min-height: 760px;
+      border: 1px solid rgba(130, 148, 174, 0.72);
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .toolbar {
+      position: absolute;
+      z-index: 20;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      pointer-events: none;
+    }
+
+    .mode-switch,
+    .view-tools {
+      display: flex;
+      gap: 5px;
+      padding: 6px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 7px 20px rgba(24, 45, 78, 0.09);
+      pointer-events: auto;
+    }
+
+    .view-tools { margin-left: auto; }
+
+    .tool-button {
+      min-height: 34px;
+      padding: 0 11px;
+      border: 1px solid transparent;
+      color: var(--ink);
+      background: transparent;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .tool-button:hover { border-color: #c8d4f6; background: var(--blue-soft); }
+    .tool-button[aria-pressed="true"] { color: #fff; background: var(--blue); }
+    .tool-button:focus-visible { outline: 3px solid rgba(36, 87, 214, 0.24); outline-offset: 2px; }
+    .zoom-value { display: grid; place-items: center; min-width: 48px; color: var(--muted); font: 11px ui-monospace, monospace; }
+
+    .canvas {
+      width: 100%;
+      height: min(80vh, 980px);
+      min-height: 760px;
+      padding-top: 64px;
+      overflow: auto;
+      cursor: grab;
+      overscroll-behavior: contain;
+    }
+
+    .canvas.is-dragging { cursor: grabbing; user-select: none; }
+
+    .stage {
+      position: relative;
+      width: 1850px;
+      height: 1120px;
+      transform-origin: top left;
+      transition: transform 160ms ease;
+    }
+
+    .edges {
+      position: absolute;
+      inset: 0;
+      width: 1850px;
+      height: 1120px;
+      pointer-events: none;
+    }
+
+    .layer-label {
+      position: absolute;
+      left: var(--x, 34px);
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--muted);
+      font: 700 10px ui-monospace, "SFMono-Regular", Menlo, monospace;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .layer-label::before { content: ""; width: 22px; height: 2px; background: currentColor; }
+
+    .edge { fill: none; stroke: #8c99aa; stroke-width: 1.6; marker-end: url(#arrow); transition: opacity 180ms ease, stroke 180ms ease; }
+    .edge.evidence { stroke: var(--blue); }
+    .edge.execution { stroke: var(--green); }
+    .edge.feedback { stroke: var(--orange); stroke-dasharray: 7 5; }
+
+    .node {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      width: var(--w, 260px);
+      min-height: var(--h, 132px);
+      padding: 13px 14px;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      background: var(--surface);
+      text-align: left;
+      cursor: pointer;
+      box-shadow: 4px 4px 0 rgba(20, 32, 51, 0.16);
+      transition: opacity 180ms ease, transform 150ms ease, box-shadow 150ms ease;
+    }
+
+    .node:hover, .node:focus-visible { z-index: 4; transform: translateY(-2px); box-shadow: 6px 7px 0 rgba(20, 32, 51, 0.22); }
+    .node:focus-visible { outline: 3px solid rgba(36, 87, 214, 0.28); outline-offset: 3px; }
+    .node[data-group="source"] { border-color: var(--blue); background: var(--blue-soft); }
+    .node[data-group="process"] { border-color: var(--violet); background: var(--violet-soft); }
+    .node[data-group="analysis"] { border-color: var(--cyan); background: var(--cyan-soft); }
+    .node[data-group="decision"] { border-width: 2px; background: var(--yellow-soft); box-shadow: 7px 7px 0 var(--ink); }
+    .node[data-group="execution"] { border-color: var(--green); background: var(--green-soft); }
+    .node[data-group="risk"] { border-color: var(--orange); background: var(--orange-soft); }
+
+    .node-kicker {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 7px;
+      font: 700 10px ui-monospace, "SFMono-Regular", Menlo, monospace;
+      letter-spacing: 0.06em;
+    }
+
+    .node-index { color: var(--blue); }
+    .evidence-tag { padding: 3px 5px; border: 1px solid currentColor; color: var(--cyan); font-size: 9px; }
+    .evidence-tag.directional { color: var(--yellow); }
+    .evidence-tag.blocked { color: var(--red); }
+    .evidence-tag.derived { color: var(--orange); }
+
+    .node h2, .node h3 { margin: 0; line-height: 1.35; }
+    .node h2 { font-size: 21px; }
+    .node h3 { font-size: 16px; }
+    .node p { margin: 7px 0 0; color: #4f5d70; font-size: 12px; line-height: 1.55; }
+    .node strong.metric { display: block; margin-top: 7px; font: 700 22px ui-monospace, monospace; }
+    .node .micro { display: block; margin-top: 6px; color: var(--muted); font-size: 10px; line-height: 1.45; }
+
+    .source-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 10px;
+    }
+
+    .source-chip {
+      padding: 4px 6px;
+      border: 1px solid rgba(36, 87, 214, 0.35);
+      background: rgba(255,255,255,0.72);
+      color: #294a93;
+      font: 700 9px ui-monospace, "SFMono-Regular", Menlo, monospace;
+    }
+
+    .report-list {
+      display: grid;
+      gap: 7px;
+      margin: 13px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .report-list li {
+      display: grid;
+      grid-template-columns: 24px minmax(0, 1fr);
+      gap: 8px;
+      padding: 7px 0;
+      border-top: 1px solid rgba(20, 32, 51, 0.18);
+      color: #4f5d70;
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    .report-list b { color: var(--yellow); font: 700 10px ui-monospace, monospace; }
+
+    .board[data-mode="evidence"] .node[data-group="execution"] { opacity: 0.24; }
+    .board[data-mode="evidence"] .node[data-group="decision"] { opacity: 0.58; }
+    .board[data-mode="evidence"] .edge.execution,
+    .board[data-mode="evidence"] .edge.feedback { opacity: 0.2; }
+    .board[data-mode="execution"] .node[data-group="source"] { opacity: 0.24; }
+    .board[data-mode="execution"] .node[data-group="process"] { opacity: 0.3; }
+    .board[data-mode="execution"] .node[data-group="analysis"] { opacity: 0.4; }
+    .board[data-mode="execution"] .node[data-group="decision"] { opacity: 0.68; }
+    .board[data-mode="execution"] .node[data-group="risk"] { opacity: 0.62; }
+    .board[data-mode="execution"] .edge.evidence { opacity: 0.18; }
+
+    .drawer {
+      position: fixed;
+      z-index: 100;
+      top: 24px;
+      right: 24px;
+      bottom: 24px;
+      width: min(620px, calc(100% - 24px));
+      overflow: auto;
+      border: 1px solid var(--ink);
+      background: rgba(255,255,255,0.985);
+      box-shadow: 8px 8px 0 var(--ink);
+      transform: translateX(calc(100% + 30px));
+      transition: transform 190ms ease;
+    }
+
+    .drawer.is-open { transform: translateX(0); }
+
+    .drawer-head {
+      position: sticky;
+      top: 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 17px 18px;
+      border-bottom: 1px solid var(--ink);
+      background: #fff;
+    }
+
+    .drawer-eyebrow { color: var(--blue); font: 700 10px ui-monospace, monospace; letter-spacing: 0.08em; }
+    .drawer h2 { margin: 5px 0 0; font-size: 22px; }
+    .drawer-close { border: 0; background: transparent; cursor: pointer; font-size: 22px; }
+    .drawer-body { padding: 17px 18px 22px; }
+    .drawer-section + .drawer-section { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
+    .drawer-section h3 { margin: 0 0 8px; font-size: 13px; }
+    .drawer-section p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .drawer-section ul, .drawer-section ol { margin: 8px 0 0; padding-left: 20px; color: var(--muted); font-size: 13px; line-height: 1.65; }
+    .drawer-section li + li { margin-top: 5px; }
+    .drawer-section table { width: 100%; margin-top: 8px; border-collapse: collapse; font-size: 11px; line-height: 1.45; }
+    .drawer-section th, .drawer-section td { padding: 7px 8px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .drawer-section th { background: #f3f6fa; color: var(--ink); }
+    .status-line { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 9px; }
+    .status-pill { padding: 4px 7px; border: 1px solid var(--line); background: #f8fafc; color: var(--muted); font: 700 10px ui-monospace, monospace; }
+    .drawer-metrics { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; }
+    .drawer-metric { padding: 10px; border: 1px solid var(--line); background: #f8fafc; }
+    .drawer-metric strong { display: block; font: 700 17px ui-monospace, monospace; }
+    .drawer-metric span { display: block; margin-top: 4px; color: var(--muted); font-size: 10px; }
+    .source-list { margin: 0; padding: 0; list-style: none; }
+    .source-list li + li { margin-top: 7px; }
+    .source-list a { display: block; padding: 9px 10px; border: 1px solid var(--line); color: var(--blue); font-size: 12px; line-height: 1.45; text-decoration: none; }
+    .source-list a:hover { background: var(--blue-soft); }
+    .boundary { padding: 10px 11px; border-left: 4px solid var(--orange); background: var(--orange-soft); color: #703c24 !important; }
+    .next-action { padding: 10px 11px; border-left: 4px solid var(--green); background: var(--green-soft); color: #285a41 !important; }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin: 12px 2px 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .legend-item { display: inline-flex; align-items: center; gap: 7px; }
+    .legend-swatch { width: 18px; height: 9px; border: 1px solid var(--ink); background: #fff; }
+    .legend-swatch.source { border-color: var(--blue); background: var(--blue-soft); }
+    .legend-swatch.process { border-color: var(--violet); background: var(--violet-soft); }
+    .legend-swatch.analysis { border-color: var(--cyan); background: var(--cyan-soft); }
+    .legend-swatch.report { border-color: var(--yellow); background: var(--yellow-soft); }
+    .legend-swatch.execution { border-color: var(--green); background: var(--green-soft); }
+    .legend-swatch.hypothesis { border-color: var(--orange); background: var(--orange-soft); }
+    .legend-note { margin-left: auto; }
+
+    .full-report {
+      margin-top: 18px;
+      border: 1px solid rgba(130, 148, 174, 0.72);
+      background: rgba(255,255,255,0.94);
+      box-shadow: var(--shadow);
+    }
+
+    .full-report-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: end;
+      padding: 24px clamp(18px, 3vw, 34px);
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .full-report-eyebrow { color: var(--orange); font: 700 10px ui-monospace, monospace; letter-spacing: 0.1em; }
+    .full-report h2 { margin: 6px 0 0; font-family: "Songti SC", STSong, serif; font-size: clamp(24px, 3vw, 36px); }
+    .full-report-head p { max-width: 760px; margin: 8px 0 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+    .report-version { padding: 10px 12px; border: 1px solid var(--yellow); background: var(--yellow-soft); text-align: right; }
+    .report-version span { display: block; color: var(--yellow); font: 700 10px ui-monospace, monospace; }
+    .report-version strong { display: block; margin-top: 4px; font-size: 17px; }
+
+    .data-registry { padding: 20px clamp(18px, 3vw, 34px); border-bottom: 1px solid var(--line); background: #f8fafc; }
+    .data-registry-title { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 12px; }
+    .data-registry-title h3 { margin: 0; font-size: 15px; }
+    .data-registry-title p { margin: 0; color: var(--muted); font-size: 11px; }
+    .batch-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px; }
+    .batch-card { padding: 13px; border: 1px solid var(--line); background: #fff; }
+    .batch-card span { color: var(--blue); font: 700 9px ui-monospace, monospace; }
+    .batch-card strong { display: block; margin-top: 5px; font-size: 16px; }
+    .batch-card p { margin: 6px 0 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
+    .batch-card .batch-id { display: block; margin-top: 8px; color: var(--muted); font: 700 9px/1.35 ui-monospace, monospace; overflow-wrap: anywhere; }
+    .batch-card.is-partial { border-color: var(--orange); background: var(--orange-soft); }
+
+    .update-flow {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0,1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .update-step { position: relative; padding: 10px; border: 1px solid var(--violet); background: var(--violet-soft); font-size: 11px; line-height: 1.45; }
+    .update-step:not(:last-child)::after { content: "→"; position: absolute; right: -13px; top: 50%; color: var(--violet); font-weight: 800; transform: translateY(-50%); }
+    .update-step b { display: block; margin-bottom: 3px; color: var(--violet); font: 700 9px ui-monospace, monospace; }
+
+    .analysis-diff {
+      padding: 22px clamp(18px, 3vw, 34px) 26px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(114, 87, 181, 0.08) 0 25%, rgba(36, 87, 214, 0.06) 25% 50%, rgba(50, 131, 90, 0.07) 50% 75%, rgba(233, 104, 44, 0.08) 75% 100%),
+        #fff;
+    }
+
+    .analysis-diff-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 15px;
+    }
+
+    .analysis-diff-kicker { color: var(--violet); font: 700 10px ui-monospace, monospace; letter-spacing: 0.1em; }
+    .analysis-diff h3 { margin: 6px 0 0; font-size: clamp(20px, 2.2vw, 28px); }
+    .analysis-diff-head p { max-width: 760px; margin: 7px 0 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
+    .analysis-diff-version { padding: 8px 10px; border: 1px solid var(--violet); background: rgba(255,255,255,0.82); color: var(--violet); font: 700 10px/1.45 ui-monospace, monospace; }
+
+    .diff-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .diff-metric { padding: 7px 9px; border: 1px solid var(--line); background: rgba(255,255,255,0.86); font-size: 11px; }
+    .diff-metric b { color: var(--blue); font: 700 12px ui-monospace, monospace; }
+    .diff-metric span { margin-left: 5px; color: var(--muted); }
+
+    .diff-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 0.72fr) minmax(0, 1.08fr) minmax(0, 0.9fr);
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      gap: 1px;
+    }
+
+    .diff-column { min-width: 0; padding: 14px; background: rgba(255,255,255,0.97); }
+    .diff-column:nth-child(1) { background: var(--violet-soft); }
+    .diff-column:nth-child(2) { background: var(--blue-soft); }
+    .diff-column:nth-child(3) { background: var(--green-soft); }
+    .diff-column:nth-child(4) { background: var(--orange-soft); }
+    .diff-column-label { display: block; margin-bottom: 10px; font: 700 9px ui-monospace, monospace; letter-spacing: 0.08em; }
+    .diff-column:nth-child(1) .diff-column-label { color: var(--violet); }
+    .diff-column:nth-child(2) .diff-column-label { color: var(--blue); }
+    .diff-column:nth-child(3) .diff-column-label { color: var(--green); }
+    .diff-column:nth-child(4) .diff-column-label { color: var(--orange); }
+    .diff-column strong { display: block; margin-bottom: 7px; font-size: 14px; line-height: 1.45; }
+    .diff-column p, .diff-column > div { margin: 0; color: #4f5d70; font-size: 11px; line-height: 1.62; }
+    .diff-column ul { margin: 0; padding-left: 17px; color: #4f5d70; font-size: 11px; line-height: 1.62; }
+    .diff-column li + li { margin-top: 5px; }
+    .diff-boundary { margin: 11px 0 0; color: var(--muted); font-size: 10px; line-height: 1.55; }
+
+    .publication-desk {
+      padding: 22px clamp(18px, 3vw, 34px) 26px;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .publication-desk-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 16px;
+    }
+
+    .publication-desk-kicker { color: var(--green); font: 700 10px ui-monospace, monospace; letter-spacing: 0.1em; }
+    .publication-desk h3 { margin: 6px 0 0; font-size: clamp(20px, 2.2vw, 28px); }
+    .publication-desk-head p { max-width: 760px; margin: 7px 0 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
+
+    .publication-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+    .publication-action { min-height: 38px; padding: 0 13px; border: 1px solid var(--ink); background: #fff; color: var(--ink); cursor: pointer; font-size: 11px; font-weight: 700; }
+    .publication-action:hover, .publication-action:focus-visible { background: var(--green-soft); outline: 2px solid rgba(50,131,90,.22); outline-offset: 2px; }
+    .publication-action[disabled] { border-color: var(--line); background: #f4f6f8; color: #8b95a5; cursor: not-allowed; }
+
+    .publication-rail {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+      margin-bottom: 14px;
+    }
+
+    .publication-stage { position: relative; min-height: 112px; padding: 13px; border: 1px solid var(--line); background: #f8fafc; }
+    .publication-stage:not(:last-child)::after { content: "→"; position: absolute; top: 46%; right: -16px; color: var(--muted); font-weight: 800; }
+    .publication-stage.is-ready { border-color: var(--green); background: var(--green-soft); }
+    .publication-stage.is-pending { border-color: var(--yellow); background: var(--yellow-soft); }
+    .publication-stage.is-locked { border-color: var(--line); background: #f3f5f7; }
+    .publication-stage span { font: 700 9px ui-monospace, monospace; letter-spacing: .07em; }
+    .publication-stage.is-ready span { color: var(--green); }
+    .publication-stage.is-pending span { color: var(--yellow); }
+    .publication-stage.is-locked span { color: var(--muted); }
+    .publication-stage strong { display: block; margin-top: 7px; font-size: 15px; }
+    .publication-stage p { margin: 6px 0 0; color: var(--muted); font-size: 10px; line-height: 1.5; }
+
+    .draft-ledger { border: 1px solid var(--ink); }
+    .draft-ledger-head, .draft-ledger-row { display: grid; grid-template-columns: 120px minmax(0, 0.85fr) minmax(0, 1.15fr) 92px; gap: 1px; background: var(--line); }
+    .draft-ledger-head > span, .draft-ledger-row > span { min-width: 0; padding: 9px 10px; background: #fff; }
+    .draft-ledger-head > span { color: var(--muted); font: 700 9px ui-monospace, monospace; }
+    .draft-ledger-row + .draft-ledger-row { border-top: 1px solid var(--line); }
+    .draft-ledger-row > span { font-size: 10px; line-height: 1.5; }
+    .draft-ledger-row .draft-label { color: var(--blue); font-weight: 700; }
+    .draft-ledger-row .draft-status { color: var(--yellow); font: 700 9px ui-monospace, monospace; }
+    .publication-boundary { margin: 11px 0 0; color: var(--muted); font-size: 10px; line-height: 1.55; }
+
+    .theme-rank { display: grid; gap: 8px; margin-top: 10px; }
+    .theme-rank-item { display: grid; grid-template-columns: minmax(92px, 0.8fr) minmax(120px, 1.2fr) auto; gap: 8px; align-items: center; }
+    .theme-rank-item span { color: var(--ink); font-size: 11px; }
+    .theme-rank-bar { height: 7px; background: #e4eaf1; overflow: hidden; }
+    .theme-rank-bar i { display: block; height: 100%; background: var(--blue); }
+    .theme-rank-item b { color: var(--muted); font: 700 10px ui-monospace, monospace; }
+
+    .chapter-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1px; background: var(--line); }
+    .chapter-card { position: relative; min-height: 205px; padding: 22px 22px 48px; border: 0; background: #fff; color: var(--ink); text-align: left; cursor: pointer; }
+    .chapter-card:hover, .chapter-card:focus-visible { position: relative; z-index: 1; background: var(--blue-soft); outline: 2px solid var(--blue); outline-offset: -2px; }
+    .chapter-no { color: var(--blue); font: 700 10px ui-monospace, monospace; }
+    .chapter-card h3 { margin: 9px 0 0; font-size: 18px; }
+    .chapter-card p { margin: 8px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .chapter-card .status-line { margin-top: 12px; }
+    .chapter-open { position: absolute; left: 22px; bottom: 20px; color: var(--blue); font-size: 11px; font-weight: 700; }
+
+    @media (max-width: 820px) {
+      .page { padding-top: 12px; }
+      .header { grid-template-columns: 1fr; align-items: start; }
+      .headline-decision { min-width: 0; max-width: 460px; }
+      .intake-head { grid-template-columns: 1fr; }
+      .scope-status { justify-self: start; }
+      .intake-body { grid-template-columns: 1fr; }
+      .scope-editor-grid, .scope-boundaries { grid-template-columns: 1fr; }
+      .scope-field.wide { grid-column: auto; }
+      .toolbar { align-items: flex-start; }
+      .view-tools { margin-left: 0; }
+      .canvas { padding-top: 112px; min-height: 680px; height: 74vh; }
+      .drawer { top: 12px; right: 12px; bottom: 12px; width: calc(100% - 24px); }
+      .legend-note { width: 100%; margin-left: 0; }
+      .full-report-head { grid-template-columns: 1fr; }
+      .report-version { text-align: left; }
+      .batch-grid { grid-template-columns: 1fr 1fr; }
+      .update-flow { grid-template-columns: 1fr 1fr; }
+      .update-step:nth-child(2n)::after { display: none; }
+      .analysis-diff-head { grid-template-columns: 1fr; align-items: start; }
+      .analysis-diff-version { justify-self: start; }
+      .diff-grid { grid-template-columns: 1fr; }
+      .publication-desk-head { grid-template-columns: 1fr; align-items: start; }
+      .publication-actions { justify-content: flex-start; }
+      .publication-rail { grid-template-columns: 1fr 1fr; }
+      .publication-stage:nth-child(2n)::after { display: none; }
+      .draft-ledger-head { display: none; }
+      .draft-ledger-row { grid-template-columns: 1fr; gap: 0; }
+      .draft-ledger-row > span { border-top: 1px solid var(--line); }
+      .draft-ledger-row > span:first-child { border-top: 0; }
+      .draft-ledger-row > span:nth-child(2)::before,
+      .draft-ledger-row > span:nth-child(3)::before,
+      .draft-ledger-row > span:nth-child(4)::before {
+        display: block;
+        margin-bottom: 5px;
+        color: var(--muted);
+        font: 700 8px ui-monospace, monospace;
+        letter-spacing: .07em;
+      }
+      .draft-ledger-row > span:nth-child(2)::before { content: "当前正式结论"; }
+      .draft-ledger-row > span:nth-child(3)::before { content: "自动重算草案"; }
+      .draft-ledger-row > span:nth-child(4)::before { content: "审核状态"; }
+      .chapter-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .batch-grid, .update-flow { grid-template-columns: 1fr; }
+      .update-step::after { display: none; }
+      .theme-rank-item { grid-template-columns: minmax(86px, 0.9fr) minmax(80px, 1.1fr) auto; }
+      .publication-rail { grid-template-columns: 1fr; }
+      .publication-stage::after { display: none; }
+      .scope-facts { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <div>
+        <div class="header-topline">
+          <a class="back-link" href="xuanpinmao-evidence-platform-architecture.html">← 返回产品架构图</a>
+          <span class="prototype-label">TRACEABLE RESEARCH · FULL REPORT PROTOTYPE</span>
+        </div>
+        <h1>3D 瑜伽裤 · 可追溯调研报告</h1>
+        <p class="subtitle">最终形态交互原型：把“从哪里找数据、怎样整理分析、如何形成报告、最后怎么执行”完整外化。数据截至 2026-08-04。</p>
+      </div>
+      <aside class="headline-decision">
+        <span>白板阅读方式</span>
+        <strong>从左到右，沿着证据生成报告</strong>
+        <small>点击节点，可查看原始来源、证据边界与下一步补证任务。</small>
+      </aside>
+    </header>
+
+    <section class="research-intake" id="researchIntake" data-scope-state="confirmed" aria-labelledby="researchIntakeTitle">
+      <header class="intake-head">
+        <div>
+          <span class="intake-kicker">00 · RESEARCH INTAKE · 调研前确认</span>
+          <h2 id="researchIntakeTitle">先确认：你想卖的是这类 3D 瑜伽裤吗？</h2>
+          <p>关键词可能对应不同商品。选品猫先把商品、市场和研究边界说清楚，经你确认后才创建 Research Run，避免花很长时间研究错对象。</p>
+        </div>
+        <span class="scope-status" id="scopeStatus">已确认 · SCOPE-v1</span>
+      </header>
+
+      <div class="intake-body">
+        <aside class="intake-query">
+          <span class="intake-label">你的原始输入</span>
+          <blockquote id="scopeKeywordDisplay">3D 瑜伽裤</blockquote>
+          <p>系统不会直接把关键词当作完整商品定义。它会结合目标市场、常见商品形态和歧义项，先生成一份“研究对象身份证”。</p>
+        </aside>
+
+        <article class="scope-passport">
+          <header class="scope-passport-head">
+            <div><span class="intake-label">系统理解的研究对象</span><h3 id="scopeTitleDisplay">美国市场女性高腰塑形紧身裤</h3></div>
+            <span>研究对象身份证</span>
+          </header>
+          <p class="scope-definition" id="scopeDefinitionDisplay">面向美国女性的高腰紧身瑜伽裤，使用提臀缝、分区针织或轮廓结构强化臀腿外观；重点研究自然修饰、穿着稳定和真实使用体验，不把“3D”理解为三维建模、印花视觉或智能硬件。</p>
+          <div class="scope-facts">
+            <div class="scope-fact"><span>目标市场</span><strong id="scopeMarketDisplay">美国 · US</strong></div>
+            <div class="scope-fact"><span>商品类目</span><strong>女装 / Leggings</strong></div>
+            <div class="scope-fact"><span>研究模式</span><strong>选品机会调研</strong></div>
+          </div>
+          <div class="scope-anchor"><b>商品锚点</b><span>3D scrunch leggings</span><span>sculpting yoga pants</span><span>anti-cellulite leggings</span><small>仅用于确认研究对象，不代表这些商品卖得好。</small></div>
+          <div class="scope-boundaries">
+            <div class="scope-boundary-card include"><b>本次包含</b><p id="scopeIncludeDisplay">高腰紧身款、提臀或轮廓结构、塑形与自然修饰需求、运动及日常穿着场景。</p></div>
+            <div class="scope-boundary-card exclude"><b>本次排除</b><p id="scopeExcludeDisplay">宽松瑜伽裤、普通无塑形基础款、3D 印花裤、医用压力裤、带传感器的智能服装。</p></div>
+          </div>
+          <div class="scope-focus"><b>确认后重点回答</b><div class="scope-focus-list" id="scopeFocusDisplay"><span>值不值得卖</span><span>市场与竞争</span><span>谁会购买</span><span>竞品怎么卖</span><span>产品怎么定义</span><span>怎样找货与验证</span></div></div>
+        </article>
+      </div>
+
+      <form class="scope-editor" id="scopeEditor">
+        <div class="scope-editor-grid">
+          <div class="scope-field"><label for="scopeKeyword">输入关键词</label><input id="scopeKeyword" name="keyword" value="3D 瑜伽裤" /></div>
+          <div class="scope-field"><label for="scopeMarket">目标市场</label><input id="scopeMarket" name="market" value="美国 · US" /></div>
+          <div class="scope-field wide"><label for="scopeTitle">系统理解的具体商品</label><input id="scopeTitle" name="title" value="美国市场女性高腰塑形紧身裤" /></div>
+          <div class="scope-field wide"><label for="scopeDefinition">商品定义</label><textarea id="scopeDefinition" name="definition" rows="3">面向美国女性的高腰紧身瑜伽裤，使用提臀缝、分区针织或轮廓结构强化臀腿外观；重点研究自然修饰、穿着稳定和真实使用体验，不把“3D”理解为三维建模、印花视觉或智能硬件。</textarea></div>
+          <div class="scope-field"><label for="scopeInclude">本次包含</label><textarea id="scopeInclude" name="include" rows="3">高腰紧身款、提臀或轮廓结构、塑形与自然修饰需求、运动及日常穿着场景。</textarea></div>
+          <div class="scope-field"><label for="scopeExclude">本次排除</label><textarea id="scopeExclude" name="exclude" rows="3">宽松瑜伽裤、普通无塑形基础款、3D 印花裤、医用压力裤、带传感器的智能服装。</textarea></div>
+        </div>
+      </form>
+
+      <footer class="intake-actions">
+        <p id="scopeActionHint">本报告基于上面的 SCOPE-v1 运行。后续如改变市场、产品形态或研究重点，应创建新的范围版本并重新计算受影响结论。</p>
+        <button class="scope-button" type="button" id="scopeEditButton">调整研究范围</button>
+        <button class="scope-button primary scope-confirm-button" type="button" id="scopeConfirmButton">确认并锁定范围</button>
+        <button class="scope-button primary scope-view-button" type="button" id="scopeViewButton">进入调研白板 →</button>
+      </footer>
+    </section>
+
+    <section class="workspace" id="workspace" aria-label="3D 瑜伽裤决策白板">
+      <nav class="toolbar" aria-label="白板工具">
+        <div class="mode-switch">
+          <button class="tool-button" type="button" data-mode="decision" aria-pressed="true">全流程</button>
+          <button class="tool-button" type="button" data-mode="evidence" aria-pressed="false">证据链</button>
+          <button class="tool-button" type="button" data-mode="execution" aria-pressed="false">执行视角</button>
+        </div>
+        <div class="view-tools">
+          <button class="tool-button" type="button" data-action="zoom-out" aria-label="缩小">−</button>
+          <output class="zoom-value" id="zoomValue">100%</output>
+          <button class="tool-button" type="button" data-action="zoom-in" aria-label="放大">＋</button>
+          <button class="tool-button" type="button" data-action="reset">适应画布</button>
+          <button class="tool-button" type="button" data-action="fullscreen">全屏</button>
+        </div>
+      </nav>
+
+      <aside class="drawer" id="drawer" aria-live="polite" aria-hidden="true">
+        <header class="drawer-head">
+          <div><span class="drawer-eyebrow" id="drawerEyebrow">EVIDENCE DETAIL</span><h2 id="drawerTitle">节点详情</h2></div>
+          <button class="drawer-close" type="button" data-action="close-drawer" aria-label="关闭证据抽屉">×</button>
+        </header>
+        <div class="drawer-body" id="drawerBody"></div>
+      </aside>
+
+      <div class="canvas" id="canvas" tabindex="0" aria-label="可拖动和缩放的决策白板">
+        <div class="stage board" id="stage" data-mode="decision">
+          <span class="layer-label" style="--x:25px;top:28px">01 · 数据来源</span>
+          <span class="layer-label" style="--x:390px;top:28px">02 · Agent 采集记录</span>
+          <span class="layer-label" style="--x:750px;top:28px">03 · 整理分析</span>
+          <span class="layer-label" style="--x:1110px;top:28px">04 · 生成报告</span>
+          <span class="layer-label" style="--x:1480px;top:28px">05 · 执行方案</span>
+
+          <svg class="edges" viewBox="0 0 1850 1120" aria-hidden="true">
+            <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke" /></marker></defs>
+            <path class="edge evidence" d="M365 195 C378 195 378 200 390 200" />
+            <path class="edge evidence" d="M365 465 C378 465 378 475 390 475" />
+            <path class="edge evidence" d="M365 735 C378 735 378 750 390 750" />
+            <path class="edge evidence" d="M365 930 C520 1060 650 975 710 920" />
+            <path class="edge evidence" d="M710 200 C728 200 732 205 750 205" />
+            <path class="edge evidence" d="M710 475 C728 475 732 500 750 500" />
+            <path class="edge evidence" d="M710 750 C728 750 732 780 750 780" />
+            <path class="edge" d="M1050 205 C1080 205 1080 365 1110 365" />
+            <path class="edge" d="M1050 500 C1080 500 1080 465 1110 465" />
+            <path class="edge" d="M1050 780 C1080 780 1080 565 1110 565" />
+            <path class="edge execution" d="M1410 365 C1445 365 1445 155 1480 155" />
+            <path class="edge execution" d="M1410 415 C1445 415 1445 335 1480 335" />
+            <path class="edge execution" d="M1410 465 C1445 465 1445 515 1480 515" />
+            <path class="edge execution" d="M1410 515 C1445 515 1445 695 1480 695" />
+            <path class="edge execution" d="M1410 565 C1445 565 1445 875 1480 875" />
+            <path class="edge feedback" d="M1645 1035 C1220 1100 620 1095 245 1040 C90 1017 28 962 25 900" />
+          </svg>
+
+          <button class="node" type="button" data-node="marketEvidence" data-group="source" style="--x:25px;--y:75px;--w:340px;--h:240px">
+            <div class="node-kicker"><span class="node-index">市场与竞品入口</span><span class="evidence-tag">本次 Research Run</span></div>
+            <h3>品牌商品页与趋势入口</h3>
+            <strong class="metric">Ionix · Silix</strong>
+            <p>从商品页读取定位、价格和商家主张；Google Trends 入口尝试后被阻塞，未读取任何趋势数值。</p>
+            <div class="source-chips"><span class="source-chip">Ionix 商品页</span><span class="source-chip">Silix 官网</span><span class="source-chip">Google Trends 阻塞</span></div>
+          </button>
+
+          <button class="node" type="button" data-node="customerEvidence" data-group="source" style="--x:25px;--y:345px;--w:340px;--h:240px">
+            <div class="node-kicker"><span class="node-index">用户反馈入口</span><span class="evidence-tag">历史与本次分开</span></div>
+            <h3>评论、讨论与真实使用场景</h3>
+            <strong class="metric">本次新增 13 条</strong>
+            <p>当前可审计新增来自 2 个 Reddit 页面；699 条为过去积累的多平台语料，不算作本次新增。</p>
+            <div class="source-chips"><span class="source-chip">Reddit 页面 ×2</span><span class="source-chip">本次有效 13</span><span class="source-chip">历史语料 699</span></div>
+          </button>
+
+          <button class="node" type="button" data-node="supplyEvidence" data-group="source" style="--x:25px;--y:615px;--w:340px;--h:240px">
+            <div class="node-kicker"><span class="node-index">供应与合规入口</span><span class="evidence-tag directional">落地条件</span></div>
+            <h3>供应商目录与美国官方规则</h3>
+            <strong class="metric">4 个唯一来源</strong>
+            <p>供应端用于发现候选，不等于正式报价；CPSC 与 FTC 页面用于建立服装安全和护理标签边界。</p>
+            <div class="source-chips"><span class="source-chip">Alibaba</span><span class="source-chip">制造商目录</span><span class="source-chip">CPSC</span><span class="source-chip">FTC</span></div>
+          </button>
+
+          <button class="node" type="button" data-node="missing" data-group="risk" style="--x:25px;--y:885px;--w:340px;--h:145px">
+            <div class="node-kicker"><span class="node-index">等待增强的数据接口</span><span class="evidence-tag blocked">当前缺口</span></div>
+            <h3>SEMrush · FastMoss · 供应链实证</h3>
+            <p>搜索量、平台销量、正式报价、样品表现与真实广告转化尚未接入；接入后会增强同一条证据链。</p>
+          </button>
+
+          <button class="node" type="button" data-node="marketProcess" data-group="process" style="--x:390px;--y:85px;--w:320px;--h:230px">
+            <div class="node-kicker"><span class="node-index">市场检索流水账</span><span class="evidence-tag">2026-08-01</span></div>
+            <h3>5 次检索 → 2 个来源</h3>
+            <p>北京时间 20:50–20:56 执行。2 次找到来源、2 次无相关结果、Google Trends 1 次阻塞。</p>
+            <div class="source-chips"><span class="source-chip">site:getionix.com 3D yoga pants</span><span class="source-chip">3D yoga pants brand US</span><span class="source-chip">best seller US</span></div>
+          </button>
+
+          <button class="node" type="button" data-node="vocProcess" data-group="process" style="--x:390px;--y:355px;--w:320px;--h:240px">
+            <div class="node-kicker"><span class="node-index">用户反馈处理</span><span class="evidence-tag">可审计新增</span></div>
+            <h3>2 个页面 → 13 条有效观察</h3>
+            <p>北京时间 20:54–20:57 检索；提取 13 条，去重后仍为 13 条，有效 13 条，重复 0 条。</p>
+            <div class="source-chips"><span class="source-chip">scrunch leggings uncomfortable reddit</span><span class="source-chip">scrunch leggings love reddit</span><span class="source-chip">Amazon 检索未保留</span></div>
+          </button>
+
+          <button class="node" type="button" data-node="screenProcess" data-group="process" style="--x:390px;--y:625px;--w:320px;--h:240px">
+            <div class="node-kicker"><span class="node-index">来源筛选与去重</span><span class="evidence-tag directional">供应与合规</span></div>
+            <h3>7 次保留引用 → 4 个唯一来源</h3>
+            <p>北京时间 20:51–20:53 检索。去掉重复引用后保留 2 个供应来源、2 个官方规则来源。</p>
+            <div class="source-chips"><span class="source-chip">供应来源 2 · 待复核</span><span class="source-chip">官方来源 2 · 已验证</span><span class="source-chip">重复引用 3</span></div>
+          </button>
+
+          <button class="node" type="button" data-node="auditProcess" data-group="process" style="--x:390px;--y:900px;--w:320px;--h:130px">
+            <div class="node-kicker"><span class="node-index">本轮采集总账</span><span class="evidence-tag">约 10 分钟完成</span></div>
+            <h3>15 次检索 · 8 个唯一来源</h3>
+            <p>12 次保留引用；6 个来源已验证、2 个待复核；4 次无相关结果、1 次阻塞。</p>
+          </button>
+
+          <button class="node" type="button" data-node="market" data-group="analysis" style="--x:750px;--y:115px;--w:300px;--h:180px">
+            <div class="node-kicker"><span class="node-index">价格与趋势整理</span><span class="evidence-tag">历史 + 本次</span></div>
+            <h3>价格跨度大，普通款竞争偏高</h3>
+            <p>历史累积 7 个报价中位数为 $42；本次新增 2 个竞品来源，趋势数值仍缺失。</p>
+          </button>
+
+          <button class="node" type="button" data-node="customer" data-group="analysis" style="--x:750px;--y:410px;--w:300px;--h:180px">
+            <div class="node-kicker"><span class="node-index">人群与场景整理</span><span class="evidence-tag directional">历史 699 + 本次 13</span></div>
+            <h3>侧光、镜前与拍照会放大轮廓焦虑</h3>
+            <p>优先验证关注臀腿凹凸、腰腹断层，同时排斥夸张提臀结构的美国女性。</p>
+          </button>
+
+          <button class="node" type="button" data-node="opportunity" data-group="analysis" style="--x:750px;--y:680px;--w:300px;--h:200px">
+            <div class="node-kicker"><span class="node-index">竞品与机会整理</span><span class="evidence-tag directional">待验证</span></div>
+            <h3>机会指向视觉磨皮与自然轮廓</h3>
+            <p>竞争重点不应继续堆提臀功能，而是减弱侧光下的皮肤凹凸与轮廓断层，并用真实样裤证明。</p>
+          </button>
+
+          <button class="node" type="button" data-node="report" data-group="decision" style="--x:1110px;--y:245px;--w:300px;--h:480px">
+            <div class="node-kicker"><span class="node-index">选品猫调研报告</span><span class="evidence-tag directional">可追溯输出</span></div>
+            <h2>把证据转成一份可读报告</h2>
+            <p>每个结论保留来源、证据等级、适用边界和待补数据；最终判断只是报告中的一项。</p>
+            <ol class="report-list">
+              <li><b>01</b><span>市场价格、趋势与机会</span></li>
+              <li><b>02</b><span>用户画像、痛点与使用场景</span></li>
+              <li><b>03</b><span>竞品定位、卖点与转化路径</span></li>
+              <li><b>04</b><span>候选产品方向与证据边界</span></li>
+              <li><b>05</b><span>当前判断、未知项与下一步</span></li>
+            </ol>
+          </button>
+
+          <button class="node" type="button" data-node="missing" data-group="risk" style="--x:1110px;--y:765px;--w:300px;--h:180px">
+            <div class="node-kicker"><span class="node-index">报告中的证据缺口</span><span class="evidence-tag blocked">不会被藏起来</span></div>
+            <h3>缺什么数据，直接写在结论旁边</h3>
+            <p>没有销量就不宣称热卖；没有报价就不计算真实利润；没有样品就不承诺产品效果。</p>
+          </button>
+
+          <button class="node" type="button" data-node="product" data-group="execution" style="--x:1480px;--y:80px;--w:330px;--h:150px">
+            <div class="node-kicker"><span class="node-index">产品方案</span><span class="evidence-tag directional">候选概念</span></div>
+            <h3>高密哑光 + 隐藏轮廓结构</h3>
+            <p>稳定高腰、无前缝、防透、洗后回弹和多体型实穿。</p>
+          </button>
+
+          <button class="node" type="button" data-node="sourcing" data-group="execution" style="--x:1480px;--y:260px;--w:330px;--h:150px">
+            <div class="node-kicker"><span class="node-index">寻源起点</span><span class="evidence-tag">可立即执行</span></div>
+            <h3>拿着具体关键词去找货</h3>
+            <p>视觉磨皮瑜伽裤、无前缝自然提臀、哑光防透运动紧身裤。</p>
+          </button>
+
+          <button class="node" type="button" data-node="marketing" data-group="execution" style="--x:1480px;--y:440px;--w:330px;--h:150px">
+            <div class="node-kicker"><span class="node-index">营销表达</span><span class="evidence-tag directional">概念测试</span></div>
+            <h3>先讲可见差异，再讲证明</h3>
+            <p>表达侧光下更平滑、轮廓更自然，同时避开未经验证的功效话术。</p>
+          </button>
+
+          <button class="node" type="button" data-node="economics" data-group="risk" style="--x:1480px;--y:620px;--w:330px;--h:150px">
+            <div class="node-kicker"><span class="node-index">成本边界</span><span class="evidence-tag derived">假设情景</span></div>
+            <h3>售价 $44 → 落地成本 ≤ $10.42</h3>
+            <p>这是反推红线，不是供应商真实报价或利润预测。</p>
+          </button>
+
+          <button class="node" type="button" data-node="validation" data-group="execution" style="--x:1480px;--y:800px;--w:330px;--h:150px">
+            <div class="node-kicker"><span class="node-index">验证方案</span><span class="evidence-tag">下一道门槛</span></div>
+            <h3>同光线、同姿势视觉盲测</h3>
+            <p>10 位目标女性、至少 2 条样裤，同一候选获得 ≥60% 盲选才通过。</p>
+          </button>
+
+          <button class="node" type="button" data-node="boundary" data-group="risk" style="--x:1480px;--y:980px;--w:330px;--h:100px">
+            <div class="node-kicker"><span class="node-index">验证结果回流</span><span class="evidence-tag blocked">形成闭环</span></div>
+            <h3>新证据继续回到采集与报告</h3>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="full-report" id="fullReport" aria-labelledby="fullReportTitle">
+      <header class="full-report-head">
+        <div>
+          <span class="full-report-eyebrow">FULL REPORT · EXPANDABLE CONTENT LAYER</span>
+          <h2 id="fullReportTitle">完整报告内容层</h2>
+          <p>白板负责解释研究如何发生；下面把完整报告收敛成卖家最关心的 6 个问题。点击任意问题，查看详细结论、证据边界、原始来源和下一步验证。</p>
+        </div>
+        <div class="report-version"><span id="registryStatus">当前合成报告</span><strong id="registryVersion">数据截至 2026-08-04</strong></div>
+      </header>
+
+      <section class="data-registry" aria-labelledby="dataRegistryTitle">
+        <div class="data-registry-title">
+          <h3 id="dataRegistryTitle">数据批次与更新注册表</h3>
+          <p>新数据以批次追加，旧报告和旧结论继续保留。</p>
+        </div>
+        <div class="batch-grid">
+          <article class="batch-card" data-registry-batch="BATCH-LIVE-WEB-20260801"><span>LIVE WEB RESEARCH</span><strong>15 次检索 · 8 个来源</strong><p>2026-08-01 完成；6 个已验证，2 个待复核。</p><small class="batch-id">BATCH-LIVE-WEB-20260801</small></article>
+          <article class="batch-card" data-registry-batch="BATCH-VOC-CURRENT-20260801"><span>CURRENT-RUN VOC</span><strong>13 条有效观察</strong><p>2 个 Reddit 页面；0 条重复；置信度 LOW。</p><small class="batch-id">BATCH-VOC-CURRENT-20260801</small></article>
+          <article class="batch-card is-partial" data-registry-batch="BATCH-VOC-HISTORICAL-20260728"><span>HISTORICAL VOC</span><strong>699 条累积语料</strong><p>跨 5 个平台；评论级记录已登记，仍保留历史 Run 边界。</p><small class="batch-id">BATCH-VOC-HISTORICAL-20260728</small></article>
+          <article class="batch-card is-partial" data-registry-batch="BATCH-PRICE-HISTORICAL-V1"><span>HISTORICAL PRICE SAMPLE</span><strong>7 个公开报价</strong><p>$27.99–$78，中位数 $42；仅汇总级追溯，不含销量权重。</p><small class="batch-id">BATCH-PRICE-HISTORICAL-V1</small></article>
+        </div>
+        <div class="update-flow" aria-label="数据更新流程">
+          <div class="update-step"><b>01 · APPEND</b>追加新数据批次</div>
+          <div class="update-step"><b>02 · TRACE</b>记录渠道、时间与查询</div>
+          <div class="update-step"><b>03 · DEDUPE</b>去重并保留旧数据</div>
+          <div class="update-step"><b>04 · VALIDATE</b>重新判定证据等级</div>
+          <div class="update-step"><b>05 · IMPACT</b>找出受影响章节与结论</div>
+          <div class="update-step"><b>06 · VERSION</b>生成新版报告并保存差异</div>
+        </div>
+      </section>
+
+      <section class="analysis-diff" id="analysisDiff" aria-labelledby="analysisDiffTitle" hidden>
+        <header class="analysis-diff-head">
+          <div>
+            <span class="analysis-diff-kicker">RECOMPUTED REPORT DIFF · 自动重算</span>
+            <h3 id="analysisDiffTitle">这次新增数据改变了什么</h3>
+            <p>系统追加证据后重新计算用户主题、产品要求、营销证明与行动边界。这里展示的是待审核结论草案，不会静默覆盖正式报告。</p>
+          </div>
+          <span class="analysis-diff-version" id="analysisDiffVersion">等待差异数据</span>
+        </header>
+        <div class="diff-metrics" id="analysisDiffMetrics"></div>
+        <div class="diff-grid">
+          <article class="diff-column">
+            <span class="diff-column-label">01 · 更新前</span>
+            <strong id="analysisDiffBeforeTitle">原有判断</strong>
+            <div id="analysisDiffBefore"></div>
+          </article>
+          <article class="diff-column">
+            <span class="diff-column-label">02 · 新增证据</span>
+            <strong id="analysisDiffEvidenceTitle">新增数据批次</strong>
+            <ul id="analysisDiffEvidence"></ul>
+          </article>
+          <article class="diff-column">
+            <span class="diff-column-label">03 · 更新后</span>
+            <strong id="analysisDiffAfterTitle">新的结论草案</strong>
+            <div id="analysisDiffAfter"></div>
+          </article>
+          <article class="diff-column">
+            <span class="diff-column-label">04 · 为什么变化</span>
+            <strong>证据覆盖面改变了优先级</strong>
+            <div id="analysisDiffReason"></div>
+          </article>
+        </div>
+        <p class="diff-boundary" id="analysisDiffBoundary"></p>
+      </section>
+
+      <section class="publication-desk" id="publicationDesk" aria-labelledby="publicationDeskTitle" hidden>
+        <header class="publication-desk-head">
+          <div>
+            <span class="publication-desk-kicker">CONCLUSION RELEASE DESK · 结论发布台</span>
+            <h3 id="publicationDeskTitle">草案不会直接变成正式结论</h3>
+            <p>自动重算只负责提出修改建议。人工审核、验证审批和二次确认全部通过后，系统才允许写入正式报告；每次发布都保存发布前快照。</p>
+          </div>
+          <div class="publication-actions">
+            <button class="publication-action" type="button" data-node="publicationReview">查看待审核草案</button>
+            <button class="publication-action" type="button" id="formalPublishButton" disabled>正式发布 · 等待审核</button>
+          </div>
+        </header>
+        <div class="publication-rail" aria-label="结论发布流程">
+          <article class="publication-stage is-ready"><span>01 · DRAFT READY</span><strong id="publicationDraftCount">草案已生成</strong><p>来自自动重算的版本差异，并绑定原正式结论。</p></article>
+          <article class="publication-stage is-pending"><span>02 · HUMAN REVIEW</span><strong>等待人工审核</strong><p>逐条确认文字、证据等级、适用范围和 Claim 边界。</p></article>
+          <article class="publication-stage is-locked"><span>03 · FORMAL RELEASE</span><strong>正式发布已锁定</strong><p>还需要验证审批和完整确认短语，不能一键越过。</p></article>
+          <article class="publication-stage is-locked"><span>04 · HISTORY / ROLLBACK</span><strong id="publicationHistoryCount">暂无新版本</strong><p>发布后保存前后快照；只有当前最新版本可以回滚。</p></article>
+        </div>
+        <div class="draft-ledger" id="draftLedger">
+          <div class="draft-ledger-head"><span>结论</span><span>当前正式版本</span><span>自动重算草案</span><span>状态</span></div>
+          <div id="draftLedgerRows"></div>
+        </div>
+        <p class="publication-boundary" id="publicationBoundary"></p>
+      </section>
+
+      <div class="chapter-grid">
+        <button class="chapter-card" type="button" data-node="chapterMarket"><span class="chapter-no">01 · MARKET & OPPORTUNITY</span><h3>市场与机会</h3><p>有没有市场、需求趋势、价格空间、竞争强度。</p><span class="chapter-open">查看市场结论与证据 →</span></button>
+        <button class="chapter-card" type="button" data-node="chapterCustomer"><span class="chapter-no">02 · CUSTOMER</span><h3>用户画像</h3><p>谁在买、什么场景触发、最焦虑什么、为什么下单。</p><span class="chapter-open">查看人群、场景与动机 →</span></button>
+        <button class="chapter-card" type="button" data-node="chapterCompetitor"><span class="chapter-no">03 · COMPETITOR</span><h3>竞品分析</h3><p>谁在卖、靠什么吸引点击、靠什么建立信任、靠什么成交。</p><span class="chapter-open">查看竞品转化链 →</span></button>
+        <button class="chapter-card" type="button" data-node="chapterPositioning"><span class="chapter-no">04 · PRODUCT</span><h3>产品方案</h3><p>应该做成什么样、必要产品要求、寻源关键词、不能踩的坑。</p><span class="chapter-open">查看产品定义与寻源 →</span></button>
+        <button class="chapter-card" type="button" data-node="chapterMarketing"><span class="chapter-no">05 · MARKETING</span><h3>营销打法</h3><p>核心价值主张、广告钩子、内容素材、可说与不可说。</p><span class="chapter-open">查看营销表达与边界 →</span></button>
+        <button class="chapter-card" type="button" data-node="chapterValidation"><span class="chapter-no">06 · VALIDATION</span><h3>验证方案</h3><p>买什么样品、测试什么、成本红线、通过和停止条件。</p><span class="chapter-open">查看样品、成本与验证门槛 →</span></button>
+      </div>
+    </section>
+
+    <div class="legend" aria-label="图例">
+      <span class="legend-item"><i class="legend-swatch source"></i>数据来源</span>
+      <span class="legend-item"><i class="legend-swatch process"></i>Agent 采集记录</span>
+      <span class="legend-item"><i class="legend-swatch analysis"></i>整理分析</span>
+      <span class="legend-item"><i class="legend-swatch report"></i>报告输出</span>
+      <span class="legend-item"><i class="legend-swatch execution"></i>执行动作</span>
+      <span class="legend-item"><i class="legend-swatch hypothesis"></i>假设或阻塞项</span>
+      <span class="legend-note">点击任意节点打开证据抽屉 · 拖动空白处移动 · Ctrl / ⌘ + 滚轮缩放</span>
+    </div>
+  </main>
+
+  <script src="generated/yoga-pants-evidence-registry.js"></script>
+  <script>
+    const details = {
+      chapterDecision: {
+        eyebrow: "01 · 一分钟生意判断",
+        title: "当前为什么仍然是 HOLD_SUPPLY",
+        summary: "这个方向值得继续补证和定义样品，但当前证据不支持选择供应商、正式采购、上架或广告投放。",
+        metrics: [["HOLD_SUPPLY", "正式 SKU 决策"], ["NO", "Listing"], ["NO", "广告测试"], ["41/100", "本次市场机会分"]],
+        sections: [
+          {title: "暂缓原因", html: `<ul><li>尚未选定正式目标 SKU 或供应商。</li><li>供应商页面只是候选入口，不是报价、资质或交付承诺。</li><li>需求和趋势证据有界且不具代表性。</li><li>目标商品的质量、合规和单位经济仍未知。</li></ul>`},
+          {title: "当前行动边界", html: `<table><tr><th>动作</th><th>状态</th><th>条件</th></tr><tr><td>补充研究</td><td>允许</td><td>保留查询、来源和失败记录</td></tr><tr><td>概念测试</td><td>允许</td><td>不得解释为产品已经有效</td></tr><tr><td>供应商询价</td><td>允许</td><td>不下单、不付款、不承诺</td></tr><tr><td>采购 / 上架 / 广告</td><td>禁止</td><td>等待样品、合规、Claim 和单位经济通过</td></tr></table>`}
+        ],
+        sources: [],
+        boundary: "最终判断只约束当前证据状态。任何方向性洞察、营销草案或规划分数都不能自动解除门禁。",
+        next: "取得两份完整供应商方案、至少两条目标样品、正式成本字段、合规文件和预注册测试结果。"
+      },
+      chapterMarket: {
+        eyebrow: "01 · 市场与机会",
+        title: "市场存在问题空间，但真实需求规模仍未知",
+        summary: "竞品供给和公开讨论证明塑形、舒适与自然轮廓问题真实存在；但本次没有代表性销量、搜索量或 GMV 数据，因此只能继续研究，不能宣称市场正在高速增长。",
+        metrics: [["45", "需求"], ["55", "竞争"], ["30", "趋势"], ["40", "变现"]],
+        sections: [
+          {title: "四维判断", html: `<table><tr><th>维度</th><th>本次判断</th><th>主要限制</th></tr><tr><td>需求</td><td>竞品与用户讨论显示问题存在</td><td>没有代表性需求量</td></tr><tr><td>竞争</td><td>至少两个 DTC 竞品覆盖相似需求</td><td>没有完整商品数量和销量分布</td></tr><tr><td>趋势</td><td>新旧讨论说明问题持续存在</td><td>Google Trends 数值未取得</td></tr><tr><td>变现</td><td>存在不同价格锚点</td><td>没有目标 SKU 成本和获客数据</td></tr></table>`},
+          {title: "价格口径", html: `<ul><li>本次运行观察：Silix 约 $27，Ionix 促销价 $49.90。</li><li>历史累积价格样本：7 个报价，$27.99–$78，中位数 $42。</li><li>历史样本不含销量权重，不能当作市场均价。</li><li>目标成交价在样品、成本、退货和获客假设明确前仍未解决。</li></ul>`}
+        ],
+        sources: [["Ionix Sculpt 3D 商品页", "https://getionix.com/products/3d-sculpting-anti-cellulite-leggings-instant-lift-smooth"], ["Silix 3D Activewear 官网", "https://silixwear.com/"]],
+        boundary: "市场机会分 41/100 是研究框架评分，不是成功概率。趋势数据缺失时不得使用“增长最快”“正在爆发”等表述。",
+        next: "接入 SEMrush、Google Trends 可读序列、平台商品量、销量或 GMV，并记录地区、时间范围和查询词。"
+      },
+      chapterCustomer: {
+        eyebrow: "02 · 用户画像",
+        title: "优先验证低干扰、低存在感塑形需求",
+        summary: "当前用户证据更支持‘少分心、少调整、结构更隐藏、长度更可预期’，而不是越夸张越好的提臀效果。",
+        metrics: [["13", "本次有效观察"], ["10", "负面或中性"], ["3", "正向或反证"], ["LOW", "本次置信度"]],
+        sections: [
+          {title: "主要痛点", html: `<ul><li>提臀褶皱带来的侵入感或不适。</li><li>运动或长时间穿着中需要反复调整。</li><li>裤长、内缝和尺码选择不稳定。</li><li>明显后缝在公共或日常场景中过于突出。</li></ul>`},
+          {title: "功能、情绪与社交动机", html: `<ul><li>稳定贴合，运动和日常穿着时少调整。</li><li>舒适、不透，并有清晰的裤长与尺码证据。</li><li>获得自然利落的轮廓，同时避免对明显提臀缝的尴尬。</li><li>健身房之外也能穿，不因造型过度而缩窄场景。</li></ul>`},
+          {title: "优先人群与任务链", html: `<ol><li>判断是短时训练、长时日常，还是连续穿着。</li><li>根据后缝可见度、体型证据和实际裤长选择候选。</li><li>在动作和时间变化中验证舒适、稳定与视觉接受度。</li><li>根据不适、长度和稳定性决定保留、换码或退货。</li></ol>`}
+        ],
+        sources: [["Reddit：Soft Motion 穿着不适", "https://www.reddit.com/r/OnerActive/comments/1r7wkt5/soft_motion_leggins_soo_uncomfortable/"], ["Reddit：提臀褶皱接受度", "https://www.reddit.com/r/Activewear/comments/17zdvap/ladies_butt_scrunch_or_no_butt_scrunch/"]],
+        boundary: "本次只有两个 Reddit 页面和一个来源家族，不能代表美国女性总体。历史 699 条与本次 13 条必须分别统计。",
+        next: "补充 Amazon 评论级证据和第二个独立平台家族，并按体型、裤长、场景和问题重新分层。"
+      },
+      chapterCompetitor: {
+        eyebrow: "03 · 竞品分析",
+        title: "点击、相信和下单必须分别分析",
+        summary: "Ionix 与 Silix 使用不同价格和表达方式进入相似塑形需求；竞品页面能说明它们怎么卖，不能证明它们真实卖得好。",
+        metrics: [["2", "本次竞品来源"], ["$27", "Silix 锚点"], ["$49.90", "Ionix 促销锚点"], ["0", "真实转化数据"]],
+        sections: [
+          {title: "竞品画像", html: `<table><tr><th>维度</th><th>Ionix</th><th>Silix</th></tr><tr><td>入口</td><td>外观焦虑、即时平滑</td><td>塑形与健康感表达</td></tr><tr><td>价格</td><td>促销约 $49.90</td><td>约 $27</td></tr><tr><td>风险逆转</td><td>保证、尺码范围</td><td>低价与款式选择</td></tr><tr><td>证据边界</td><td colspan="2">商家自述和见证未独立核验</td></tr></table>`},
+          {title: "转化链", html: `<ol><li><b>为什么点击：</b>外观焦虑、塑形与体感问题。</li><li><b>为什么相信：</b>即时效果、相似体型、用户故事和同条件对比。</li><li><b>为什么敢下单：</b>不透、尺码、舒适、退款、折扣和免邮。</li></ol>`}
+        ],
+        sources: [["Ionix 商品页", "https://getionix.com/products/3d-sculpting-anti-cellulite-leggings-instant-lift-smooth"], ["Silix 官网", "https://silixwear.com/"]],
+        boundary: "广告入口、商品证明和交易机制不能混成同一种畅销原因；当前没有广告原件表现、销量、换码或退款数据。",
+        next: "取得广告原件或平台投放数据，分别测试钩子、证明方式和风险逆转。"
+      },
+      chapterPositioning: {
+        eyebrow: "04 · 产品方案",
+        title: "视觉磨皮与自然轮廓管理款",
+        summary: "核心价值是减弱侧光下臀腿凹凸、腰腹断层和轮廓不连贯；面料密度、光泽、压力和剪裁只是实现手段。",
+        metrics: [["P0", "侧光视觉平滑"], ["P0", "深蹲不透"], ["P0", "舒适稳定"], ["P1", "多体型适配"]],
+        sections: [
+          {title: "目标人群与核心价值", html: `<ul><li>优先面向关注侧光、镜前和拍照轮廓，同时排斥夸张提臀结构的人。</li><li>先解决视觉凹凸和轮廓断层，再用不透、舒适和多体型实穿证明可信。</li></ul>`},
+          {title: "候选产品构想", html: `<ul><li>高密、哑光、低反光面料。</li><li>隐藏式或低存在感轮廓结构，并与无 scrunch 对照。</li><li>稳定高腰、无尴尬前缝、洗后回弹。</li><li>明确腰臀尺寸、实际裤长和多身高实穿记录。</li></ul>`},
+          {title: "必要产品要求与寻源关键词", html: `<p>视觉磨皮瑜伽裤、无前缝自然提臀、哑光防透运动紧身裤、隐藏提臀缝瑜伽裤、高密无痕 leggings。</p><ul><li>询问面料成分、克重、光泽、弹性和压缩分区。</li><li>确认前缝、后缝、高腰结构、裤长和尺码梯度。</li><li>索取样品费、MOQ、阶梯价格、包装和交期。</li></ul>`},
+          {title: "不能踩的坑", html: `<ul><li>不要把供应商目录页当作正式报价、产能或交付承诺。</li><li>不要为了视觉效果牺牲不透、舒适、稳定和耐久。</li><li>不要用夸张蜂窝纹、医疗压力或“消除橘皮”替代真实产品差异。</li><li>没有目标样品测试前，不把候选结构写成已经实现的性能。</li></ul>`}
+        ],
+        sources: [],
+        boundary: "这是待验证产品概念。没有目标样品时，任何结构、面料和性能要求都不能被写成已实现事实。",
+        next: "找到 2–3 个可比样品，并用同光线、同姿势、多体型和洗后测试验证。"
+      },
+      chapterMarketing: {
+        eyebrow: "05 · 营销打法",
+        title: "先表达可见结果，再提供可信证明",
+        summary: "营销草案只用于概念理解测试。可测试视觉平滑、自然轮廓与低存在感结构；不得使用医疗、循环、临床或永久改变身体的表达。",
+        metrics: [["35%", "概念选择率通过线"], ["8%", "有效留资率通过线"], ["+20%", "内容/广告相对提升"], ["0", "当前可公开 Claim"]],
+        sections: [
+          {title: "一句话价值主张", html: `<p>让侧光下的臀腿表面看起来更平滑、轮廓更自然，同时用真实深蹲、尺码和舒适测试证明它不是拍摄或文案制造的效果。</p>`},
+          {title: "表达结构", html: `<ol><li><b>钩子：</b>明显后缝、反复调整、裤长选错和侧光轮廓问题。</li><li><b>承诺：</b>轮廓利落、结构更隐藏、更自然。</li><li><b>证明：</b>相似体型、明确裤长、连续动作和同条件对比。</li><li><b>风险逆转：</b>尺码证据、换码和退款边界。</li></ol>`},
+          {title: "优先制作的内容素材", html: `<ul><li>同一体型、同一光线、同一姿势的穿着对比。</li><li>不同身高和尺码的裤长、腰臀贴合记录。</li><li>深蹲、拉伸、行走和长时间穿着中的防透与稳定测试。</li><li>未经修图的细节近景、面料拉伸和洗后回弹记录。</li></ul>`},
+          {title: "禁用 Claim", html: `<ul><li>改善循环、治疗炎症或其他医疗健康效果。</li><li>消除橘皮、脂肪或永久改变身形。</li><li>未经核验的认证、专利、性能数字和稀缺性。</li><li>样品验证前宣称不透、无不适、耐洗或适合所有体型。</li></ul>`}
+        ],
+        sources: [],
+        boundary: "Listing 和广告权限仍未开放。竞品话术也不能迁移成目标 SKU 可用 Claim。",
+        next: "先做三版概念理解测试；样品通过后再制作未经修图的同条件素材并逐条审核 Claim。"
+      },
+      chapterSourcing: {
+        eyebrow: "07 · 寻源与供应商验证",
+        title: "目录只用于发现候选，不能当作供应能力",
+        summary: "本次保留两个供应入口，但均为待复核目录页；正式供应商、目标 SKU、报价、MOQ、交期和合规文件全部未取得。",
+        metrics: [["2", "候选供应入口"], ["0", "正式报价"], ["0", "确认 MOQ"], ["2", "通过所需完整方案"]],
+        sections: [
+          {title: "询价字段", html: `<ul><li>面料成分、克重、光泽、弹性和压缩分区。</li><li>前缝、后缝、高腰结构、裤长和尺码梯度。</li><li>样品费、MOQ、阶梯价格、包装和交期。</li><li>原产地、护理标签、测试文件和责任主体信息。</li></ul>`},
+          {title: "供应商通过条件", html: `<table><tr><th>条件</th><th>通过标准</th></tr><tr><td>可比性</td><td>至少两份同口径完整方案</td></tr><tr><td>一致性</td><td>规格、价格和交期内部无冲突</td></tr><tr><td>身份</td><td>经营主体与联系方式可核验</td></tr><tr><td>付款</td><td>未经用户确认前不付款、不下单</td></tr></table>`}
+        ],
+        sources: [["Alibaba 供应商目录", "https://www.alibaba.com/yoga-pants-suppliers.html"], ["Legging Manufacturers 目录", "https://www.leggingmanufacturers.com/bulk/yoga-leggings-wholesale/"]],
+        boundary: "公开目录不构成报价、资质、产能或交付承诺，不能计算正式单位经济。",
+        next: "按统一询价模板取得两份方案，然后再决定是否购买样品。"
+      },
+      chapterEconomics: {
+        eyebrow: "08 · 价格与单位经济",
+        title: "当前只能反推成本红线，不能声称盈利",
+        summary: "竞品价格和历史价格样本可以帮助建立价格测试区间；正式利润必须等待目标 SKU 报价、物流、支付、退货、拒付和瑕疵数据。",
+        metrics: [["$27–$49.90", "本次竞品锚点"], ["$42", "历史样本中位数"], ["$44", "假设售价·推导值"], ["0", "正式成本情景"]],
+        sections: [
+          {title: "假设情景示例", html: `<table><tr><th>字段</th><th>数值</th><th>状态</th></tr><tr><td>售价</td><td>$44</td><td>假设</td></tr><tr><td>CPA 上限</td><td>$17.60</td><td>规划假设</td></tr><tr><td>目标贡献利润</td><td>$6.60</td><td>规划假设</td></tr><tr><td>落地成本红线</td><td>≤ $10.42</td><td>推导值</td></tr></table>`},
+          {title: "正式情景仍缺少", html: `<ul><li>产品出厂价、包装、头程、关税与仓储。</li><li>支付费用、尾程、退款、拒付和瑕疵准备金。</li><li>真实获客成本和平台费用。</li></ul>`}
+        ],
+        sources: [],
+        boundary: "所有 $44、$17.60、$6.60 和 $10.42 都是假设或推导值，不是供应商报价、真实 CPA 或利润预测。",
+        next: "用至少两份正式报价和完整 P0 成本字段生成保守、基准和乐观三种正式情景。"
+      },
+      chapterValidation: {
+        eyebrow: "06 · 验证方案",
+        title: "每个假设都有通过、失败和停止标准",
+        summary: "验证不以‘收集更多资料’结束，而是提前规定什么结果允许升级，什么结果需要重写、换样或停止。",
+        metrics: [["7 天", "概念测试"], ["10 天", "供应验证"], ["≥60%", "样裤视觉盲选"], ["P0", "性能必须全过"]],
+        sections: [
+          {title: "先买什么样品", html: `<ul><li>至少 2 条符合高密哑光、稳定高腰、防透方向的候选样裤。</li><li>至少包含 1 条低存在感提臀结构，并保留 1 条普通紧身裤作为对照。</li><li>优先选择规格、尺码、价格和交期能够被供应商完整说明的样品。</li></ul>`},
+          {title: "成本红线", html: `<p>当前仅按假设售价 $44、规划 CPA $17.60 和目标贡献利润 $6.60，反推落地成本需要 ≤ $10.42。它是筛选供应商和样品的规划红线，不是正式报价或盈利预测。</p>`},
+          {title: "关键实验", html: `<table><tr><th>实验</th><th>通过</th><th>失败</th></tr><tr><td>概念测试</td><td>选择率 ≥35%，留资率 ≥8%</td><td>选择率 &lt;20% 或无法复述价值</td></tr><tr><td>目标用户访谈</td><td>5/8 复现问题，4/8 愿意继续测试</td><td>少于 3/8 复现问题</td></tr><tr><td>内容/广告角度</td><td>高于账号或基准 20%</td><td>连续两轮低于基准</td></tr><tr><td>样品性能</td><td>所有 P0 通过且结果可重复</td><td>任一 P0 失败</td></tr><tr><td>Claim 审核</td><td>每条公开 Claim 有目标 SKU 证据</td><td>越过证据边界或属于禁用类别</td></tr></table>`},
+          {title: "视觉样裤测试", html: `<p>同一用户、相同侧光、机位和姿势，对普通紧身裤与至少两条候选样裤进行盲测；同一候选获得 ≥60% 盲选，且不明显牺牲舒适、稳定和不透表现才通过。</p>`}
+        ],
+        sources: [],
+        boundary: "样本身份、产品规格或测试条件不明确时停止；不得事后修改指标来解释结果。",
+        next: "先固定测试协议、样本资格和阈值，再开始采购样品或投放概念流量。"
+      },
+      chapterFirstPrinciples: {
+        eyebrow: "10 · 第一性原理机会重构",
+        title: "从‘3D 瑜伽裤’回到真正要解决的任务",
+        summary: "用户要的是运动到日常都自然、稳定、少分心的轮廓体验，而不是购买一个叫作‘3D’的技术名词。",
+        metrics: [["3", "原子需求"], ["3", "原子供给"], ["50/100", "推荐机会"], ["43/100", "备选机会"]],
+        sections: [
+          {title: "问题重述", html: `<p>如何让穿着者在不依赖侵入式后缝、反复调整、不确定裤长和未经支持的身体改变承诺时，获得适合健身与日常的自然利落轮廓？</p>`},
+          {title: "原子需求", html: `<ul><li>动作和长时间穿着中保持稳定，减少调整。</li><li>获得自然塑形，但不让后缝成为过度视觉焦点。</li><li>线上购买时能够预测裤长和尺码。</li></ul>`},
+          {title: "机会比较", html: `<table><tr><th>机会</th><th>分数</th><th>判断</th></tr><tr><td>低存在感塑形 + 证据化版型</td><td>50/100</td><td>优先验证</td></tr><tr><td>无 scrunch、版型优先日常裤</td><td>43/100</td><td>可能陷入普通紧身裤红海</td></tr></table>`},
+          {title: "约束", html: `<ul><li><b>硬约束：</b>美国服装安全、原产地和护理标签。</li><li><b>软约束：</b>明显 scrunch 会缩窄日常穿着场景。</li><li><b>伪约束：</b>不需要医疗或永久改变身体的 Claim 才能形成差异。</li></ul>`}
+        ],
+        sources: [],
+        boundary: "机会分数用于比较验证优先级，不是成功概率；推荐方向仍处于有界假设状态。",
+        next: "先验证低存在感塑形是否同时减少严重舒适和外观反对意见。"
+      },
+      chapterEvidence: {
+        eyebrow: "11 · 证据链、来源与未知项",
+        title: "每条结论必须能回到查询、来源和边界",
+        summary: "本次运行保留 15 次检索记录和 8 个唯一来源；历史价格与历史用户语料作为独立批次存在，不能倒推成本次新增。",
+        metrics: [["15", "检索记录"], ["8", "唯一来源"], ["6", "已验证"], ["2", "待复核"]],
+        sections: [
+          {title: "关键未知", html: `<ul><li>正式供应商和目标 SKU。</li><li>绑定报价、MOQ、包装、交期和落地成本。</li><li>目标商品面料、结构、标签与阻燃证据。</li><li>样品的版型、不透、缝线、腰头、洗后和多体型表现。</li><li>代表性需求量、平台销量和 Google Trends 数值。</li><li>Amazon US 评论级证据、真实广告、退货和转化数据。</li></ul>`},
+          {title: "结论更新治理", html: `<ul><li>新证据只有在主题、对象范围和漏斗阶段一致时，才可能更新旧结论。</li><li>必须明确声明覆盖、修正或补充关系。</li><li>被覆盖结论保留为历史记录，不参与当前章节。</li><li>竞品证据不能升级为目标商品事实。</li></ul>`}
+        ],
+        sources: [["Ionix 商品页", "https://getionix.com/products/3d-sculpting-anti-cellulite-leggings-instant-lift-smooth"], ["Silix 官网", "https://silixwear.com/"], ["Alibaba 供应商目录", "https://www.alibaba.com/yoga-pants-suppliers.html"], ["Legging Manufacturers", "https://www.leggingmanufacturers.com/bulk/yoga-leggings-wholesale/"], ["CPSC Clothing FAQ", "https://www.cpsc.gov/FAQ/Clothing"], ["FTC Care Labeling Rule", "https://www.ftc.gov/business-guidance/resources/clothes-captioning-complying-care-labeling-rule"], ["Reddit OnerActive", "https://www.reddit.com/r/OnerActive/comments/1r7wkt5/soft_motion_leggins_soo_uncomfortable/"], ["Reddit Activewear", "https://www.reddit.com/r/Activewear/comments/17zdvap/ladies_butt_scrunch_or_no_butt_scrunch/"]],
+        boundary: "来源数量和搜索次数只是过程指标，不能替代独立性、代表性、反证和目标对象匹配。",
+        next: "为历史 699 条用户语料和 7 个价格点补齐批次 ID、来源链、采集时间和内容哈希。"
+      },
+      chapterUpdates: {
+        eyebrow: "12 · 数据追加与报告更新",
+        title: "新数据以批次追加，不覆盖旧数据",
+        summary: "以后补充 500 或 1000 条评论时，系统应先登记新批次，再去重、验证、计算影响范围，最后生成新版报告和差异记录。",
+        metrics: [["Append-only", "数据策略"], ["Batch ID", "批次身份"], ["Impact Map", "影响章节"], ["Version Diff", "版本差异"]],
+        sections: [
+          {title: "每个数据批次必须记录", html: `<table><tr><th>字段</th><th>示例</th></tr><tr><td>批次身份</td><td>VOC-AMAZON-2026-08-B02</td></tr><tr><td>渠道与对象</td><td>Amazon US / 指定 ASIN</td></tr><tr><td>采集方式</td><td>API、导入文件或网页采集</td></tr><tr><td>时间与查询</td><td>开始、结束、关键词和过滤条件</td></tr><tr><td>计数</td><td>原始、解析、重复、排除、有效</td></tr><tr><td>完整性</td><td>内容哈希、来源 URL、发布日期</td></tr></table>`},
+          {title: "补充评论后的处理", html: `<ol><li>把新 500 条登记为新批次，旧 699 条保持不动。</li><li>按评论 ID、URL、文本哈希和近似文本去重。</li><li>重新计算有效分母、主题频次、平台覆盖和反例。</li><li>找出受影响的用户痛点、人群、产品和营销结论。</li><li>未受影响章节保持原样，变化章节显示前后差异和原因。</li><li>生成新的报告版本，同时允许查看旧版本。</li></ol>`},
+          {title: "更新不会自动发生的事情", html: `<ul><li>新增评论不会自动证明目标样品性能。</li><li>数量增加不会自动提高置信度，来源可能仍然单一。</li><li>新数据不会静默覆盖旧结论，必须通过结论治理规则。</li><li>用户确认前，不会因为报告更新而自动采购、上架或投放。</li></ul>`}
+        ],
+        sources: [],
+        boundary: "当前页面演示的是最终产品的数据模型与交互形态，并未真的导入额外 500 或 1000 条评论。",
+        next: "下一步把批次注册表、去重器、影响分析器和报告版本记录接入真实数据 Schema。"
+      },
+      marketEvidence: {
+        eyebrow: "本次市场与竞品入口",
+        title: "市场证据从哪里进入 Research Run",
+        summary: "本次运行从 Ionix 商品页和 Silix 官网取得两个已验证竞品来源；Google Trends 查询被阻塞，因此没有读取、推断或补写任何趋势数值。",
+        metrics: [["2", "唯一竞品来源"], ["2", "已验证来源"], ["1", "Trends 阻塞"], ["0", "趋势数值"]],
+        sources: [
+          ["Ionix Sculpt 3D 商品页", "https://getionix.com/products/3d-sculpting-anti-cellulite-leggings-instant-lift-smooth"],
+          ["Silix 3D Activewear 官网", "https://silixwear.com/"]
+        ],
+        boundary: "竞品商品页可以证明商家当前如何表达产品，不能证明其销量、广告效果、消费者真实体验或目标 SKU 的表现。",
+        next: "接入可读取的趋势与平台销量数据，并保留查询时间、地区、关键词和原始返回值。"
+      },
+      customerEvidence: {
+        eyebrow: "本次用户证据入口",
+        title: "历史 699 条与本次 13 条必须分开",
+        summary: "本次可审计新增来自两个 Reddit 页面，共形成 13 条有效观察。报告中的 699 条是过去积累的多平台语料，不能倒推成本次运行新抓取的数据。",
+        metrics: [["2", "本次来源页面"], ["13", "本次有效观察"], ["0", "本次重复"], ["699", "历史累积语料"]],
+        sources: [
+          ["Reddit：Soft Motion 穿着不适讨论", "https://www.reddit.com/r/OnerActive/comments/1r7wkt5/soft_motion_leggins_soo_uncomfortable/"],
+          ["Reddit：提臀褶皱接受度讨论", "https://www.reddit.com/r/Activewear/comments/17zdvap/ladies_butt_scrunch_or_no_butt_scrunch/"]
+        ],
+        boundary: "本次样本只来自一个平台家族，置信度为 LOW；历史语料与本次新增不能合并后冒充同一次采集。",
+        next: "补充第二个独立平台家族，并为历史 699 条逐步补齐来源、采集时间与可追溯记录。"
+      },
+      supplyEvidence: {
+        eyebrow: "供应与合规入口",
+        title: "落地证据从哪里获得",
+        summary: "本次运行保留两个供应商发现入口和两个美国官方规则页面。供应来源只能用于发现候选，正式报价、MOQ、样品与交期仍未取得。",
+        metrics: [["2", "供应来源·待复核"], ["2", "官方来源·已验证"], ["0", "正式报价"], ["0", "目标样品"]],
+        sources: [
+          ["Alibaba Yoga Pants Supplier Directory", "https://www.alibaba.com/yoga-pants-suppliers.html"],
+          ["Legging Manufacturers 批发目录", "https://www.leggingmanufacturers.com/bulk/yoga-leggings-wholesale/"],
+          ["CPSC Clothing Requirements FAQ", "https://www.cpsc.gov/FAQ/Clothing"],
+          ["FTC Care Labeling Rule", "https://www.ftc.gov/business-guidance/resources/clothes-captioning-complying-care-labeling-rule"]
+        ],
+        boundary: "目录页不是目标供应商承诺，官方通用规则也不能代替目标产品的材料、标签和宣称合规审查。",
+        next: "取得两份同口径正式方案，并把报价、MOQ、包装、交期、面料和样品结果写回证据链。"
+      },
+      marketProcess: {
+        eyebrow: "Agent 检索流水账",
+        title: "市场与竞品证据如何被找到",
+        summary: "北京时间 2026-08-01 20:50–20:56 共执行 5 次相关检索。2 次产生保留来源，2 次没有相关结果，1 次 Google Trends 查询被阻塞。",
+        metrics: [["5", "执行检索"], ["2", "产生来源"], ["2", "无相关结果"], ["1", "被阻塞"]],
+        sources: [],
+        boundary: "没有结果和被阻塞的检索同样保留在 search_log.json 中，不能只展示成功搜索，也不能把搜索摘要当作证据正文。",
+        next: "在实时产品中逐条展示查询词、执行时间、搜索界面、保留来源和失败原因。"
+      },
+      vocProcess: {
+        eyebrow: "Agent 用户反馈处理",
+        title: "用户反馈如何提取、去重与验证",
+        summary: "北京时间 2026-08-01 20:54–20:57 执行 4 次用户反馈检索，保留 2 个唯一 Reddit 页面；从页面正文形成 13 条观察，重复 0 条，有效 13 条。",
+        metrics: [["4", "检索次数"], ["13", "提取观察"], ["0", "重复观察"], ["13", "有效观察"]],
+        sources: [],
+        boundary: "13 条是本次运行的可审计分母，不能用历史 699 条替换；Amazon 检索没有形成可追溯评论页，因此未保留。",
+        next: "接入新的平台后，继续沿用相同的提取、去重、反例标记和有效性检查。"
+      },
+      screenProcess: {
+        eyebrow: "Agent 来源筛选",
+        title: "供应与合规来源如何去重",
+        summary: "北京时间 2026-08-01 20:51–20:53 执行 6 次检索，产生 7 次保留引用；按来源 ID 去重后得到 4 个唯一来源，其中 2 个官方来源已验证、2 个供应来源待复核。",
+        metrics: [["6", "检索次数"], ["7", "保留引用"], ["3", "重复引用"], ["4", "唯一来源"]],
+        sources: [],
+        boundary: "重复引用只表示多个查询命中了同一来源，不能重复计入证据数量；待复核来源也不能与官方已验证来源等权使用。",
+        next: "为每个来源继续记录内容哈希、访问状态、证据状态与目标实体，防止重复和错配。"
+      },
+      auditProcess: {
+        eyebrow: "本轮采集总账",
+        title: "这次 Agent 到底做了多少工作",
+        summary: "Research Run 从北京时间 20:49:37 初始化，到 20:59:32 完成。期间执行 15 次检索，形成 12 次保留引用，去重后得到 8 个唯一来源。",
+        metrics: [["15", "总检索次数"], ["12", "保留引用"], ["8", "唯一来源"], ["约 10 分钟", "运行时间"]],
+        sources: [],
+        boundary: "工作量不等于结论质量。最终仍要看来源独立性、证据等级、覆盖范围、反例和关键数据缺口。",
+        next: "把这组总账做成实时进度组件，并允许用户展开查看每一条查询和来源状态。"
+      },
+      voice: {
+        eyebrow: "真实买家反馈",
+        title: "699 条有效观察来自哪里",
+        summary: "当前有界语料跨 5 个平台、4 个来源族。它能回答用户反复提到什么，不能代表整个美国市场的真实发生率。",
+        metrics: [["528", "Amazon"], ["129", "SUUKSESS"], ["26", "Reddit"], ["12 + 4", "Trustpilot + DFYNE"]],
+        sources: [
+          ["Reddit：提臀褶皱紧身裤接受度", "https://www.reddit.com/r/OnerActive/comments/1res5l8/scrunch_butt_leggings_yes_or_no/"],
+          ["Reddit：运动服质量问题", "https://www.reddit.com/r/Activewear/comments/1i9a11t/hate_aybl_leggings_better_brand_recs/"],
+          ["Trustpilot：Oner Active 评论", "https://uk.trustpilot.com/review/oneractive.com"],
+          ["DFYNE Impact 商品评论", "https://dfyne.com/products/dfyne-impact-graphite-leggings-250205"]
+        ],
+        boundary: "评论来自竞品或品类，不能证明目标样裤具备同样优点或缺陷，也不能把 699 当作市场总体样本。",
+        next: "继续按体型、场景和问题拆分反馈，并用目标用户访谈验证哪些问题真正影响付费。"
+      },
+      prices: {
+        eyebrow: "公开报价结构",
+        title: "7 个价格点能回答什么",
+        summary: "已观察报价覆盖 $27.99–$78，中位数 $42。建议价格 $39–$49 横跨低位进入带和主流比较带。",
+        metrics: [["$27.99", "最低观察价"], ["$78", "最高观察价"], ["$42", "样本中位数"], ["7", "可用价格点"]],
+        sources: [
+          ["Aoxjox Scrunch Leggings", "https://aoxjox.com/collections/scrunch-leggings"],
+          ["Oner Active EffortlessLift", "https://us.oneractive.com/products/effortlesslift-seamless-leggings-with-white-logo-moss-brown"],
+          ["Ionix Sculpt 3D", "https://getionix.com/products/3d-sculpting-anti-cellulite-leggings-instant-lift-smooth"],
+          ["Paragon Sculptseam", "https://www.paragonfitwear.com/products/recstretch-original-sculptseam-legging-ink"]
+        ],
+        boundary: "公开报价不含销量权重，不能回答哪个价格带卖得最好、利润最高，也不能证明目标 SKU 在 $44 能成交。",
+        next: "接入销量或排名代理指标，并用正式报价与真实价格测试收窄目标成交价。"
+      },
+      competitorSources: {
+        eyebrow: "竞品证据",
+        title: "Ionix 与 Silix 的转化证据",
+        summary: "Ionix 以外观焦虑和视觉平滑切入；Silix 以循环、炎症和身体不适切入。它们是不同竞品，不能合成一条品类事实。",
+        metrics: [["2", "重点竞品"], ["3", "转化阶段"], ["1", "广告入口待复核"], ["0", "真实投放效果"]],
+        sources: [
+          ["Ionix 商品页", "https://getionix.com/products/3d-sculpting-anti-cellulite-leggings-instant-lift-smooth"],
+          ["Silix 商品页", "https://silixwear.com/products/3d-anti-cellulite-legging"],
+          ["Silix 独立评论记录", "https://www.trustpilot.com/review/silixwear.com?page=3"],
+          ["Meta 广告资料库查询", "https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=ALL&q=Ionix%20Labs&search_type=keyword_unordered"]
+        ],
+        boundary: "当前无法确认 Ionix 是否仍在投放、素材数量或表现；竞品表达也不能直接转成目标产品可用 Claim。",
+        next: "取得广告原件或平台数据后，再验证哪些钩子真正带来点击和成交。"
+      },
+      macro: {
+        eyebrow: "宏观参照",
+        title: "外观焦虑覆盖面很广",
+        summary: "医学综述显示成年女性橘皮纹常见发生率约为 80%–90%；美国 18–64 岁女性人口约 1.016 亿。",
+        metrics: [["80%–90%", "常见发生率"], ["约 1.016 亿", "美国 18–64 岁女性"], ["8100万–9100万", "人群映射推算"], ["$9 亿", "邻近塑身服市场估算"]],
+        sources: [
+          ["橘皮纹医学综述", "https://pmc.ncbi.nlm.nih.gov/articles/PMC10324940/"],
+          ["美国人口普查局 ACS B01001", "https://data.census.gov/table/ACSDT5Y2024.B01001"],
+          ["美国塑身服市场行业估算", "https://www.sphericalinsights.com/reports/united-states-shapewear-market"]
+        ],
+        boundary: "这些数据只能证明问题覆盖面和邻近付费市场存在，不能证明目标产品的购买人数、转化率或销售规模。",
+        next: "用搜索、平台商品和真实行为数据验证外观焦虑是否会转化为该产品方向的付费需求。"
+      },
+      missing: {
+        eyebrow: "关键未知",
+        title: "为什么现在还不能直接卖",
+        summary: "决定性供应、成本、样品性能和真实转化证据仍缺失，任何一项都可能推翻当前机会判断。",
+        metrics: [["0/10", "正式成本字段"], ["0", "正式单位经济情景"], ["0", "目标样品测试"], ["0", "真实广告数据"]],
+        sources: [],
+        boundary: "缺失不能按零处理，也不能用竞品售价、竞品评论或规划假设代替目标 SKU 的真实证据。",
+        next: "取得两份同口径供应商方案、至少两条候选样裤、完整成本字段和预注册样品测试。"
+      },
+      market: {
+        eyebrow: "市场与机会",
+        title: "有需求，但竞争偏高",
+        summary: "塑形、遮盖皮肤凹凸和日常穿搭需求反复出现，但这是成熟瑜伽裤市场，高腰、提臀、防透和无痕已接近基础配置。7 个公开报价属于历史累积资料，本次运行新增了两个竞品来源。",
+        metrics: [["$27.99", "最低观察价"], ["$78", "最高观察价"], ["$42", "样本中位数"], ["7", "公开价格点"]],
+        sources: [
+          ["Aoxjox Scrunch Leggings", "https://aoxjox.com/collections/scrunch-leggings"],
+          ["Oner Active EffortlessLift", "https://us.oneractive.com/products/effortlesslift-seamless-leggings-with-white-logo-moss-brown"],
+          ["Ionix Sculpt 3D", "https://getionix.com/products/3d-sculpting-anti-cellulite-leggings-instant-lift-smooth"],
+          ["Paragon Sculptseam", "https://www.paragonfitwear.com/products/recstretch-original-sculptseam-legging-ink"],
+          ["橘皮纹医学综述", "https://pmc.ncbi.nlm.nih.gov/articles/PMC10324940/"],
+          ["美国人口普查局 ACS B01001", "https://data.census.gov/table/ACSDT5Y2024.B01001"]
+        ],
+        boundary: "公开报价不含销量权重，也不是本次运行新抓取的完整价格样本；医学与人口资料只能说明问题覆盖面。Google Trends 数值仍未取得。",
+        next: "接入搜索量、平台销量或 GMV 数据，验证需求强度、趋势和竞争拥挤度。"
+      },
+      customer: {
+        eyebrow: "买家反馈与画像",
+        title: "699 条反馈指向哪些人和场景",
+        summary: "历史累积语料跨 5 个平台；本次运行从 2 个 Reddit 页面新增 13 条有效观察。综合资料后，优先验证在侧光、镜前或拍照时关注轮廓、同时排斥夸张提臀结构的人群。",
+        metrics: [["699", "历史累积语料"], ["13", "本次有效观察"], ["2", "本次来源页面"], ["LOW", "本次置信度"]],
+        sources: [
+          ["Reddit：提臀褶皱紧身裤接受度", "https://www.reddit.com/r/OnerActive/comments/1res5l8/scrunch_butt_leggings_yes_or_no/"],
+          ["Reddit：运动服质量问题", "https://www.reddit.com/r/Activewear/comments/1i9a11t/hate_aybl_leggings_better_brand_recs/"],
+          ["Trustpilot：Oner Active 评论", "https://uk.trustpilot.com/review/oneractive.com"],
+          ["DFYNE Impact 商品评论", "https://dfyne.com/products/dfyne-impact-graphite-leggings-250205"]
+        ],
+        boundary: "历史 699 条与本次 13 条来源边界不同，不能冒充同一次采集。本次样本仅来自一个平台家族，不能代表美国市场总体。",
+        next: "访谈 8–10 名符合场景的目标用户，确认问题复现率和愿意继续测试的比例。"
+      },
+      competitor: {
+        eyebrow: "竞品转化链",
+        title: "先分清点击、信任和成交",
+        summary: "广告入口解决‘为什么停下来’，商品效果和相似体型实拍解决‘为什么相信’，不透、尺码、退款、折扣和免邮解决‘为什么敢下单’。",
+        metrics: [["ATTENTION", "外观焦虑"], ["BELIEF", "即时效果与证明"], ["RISK", "产品和交易风险"], ["0", "真实转化数据"]],
+        sources: [
+          ["Ionix 商品页", "https://getionix.com/products/3d-sculpting-anti-cellulite-leggings-instant-lift-smooth"],
+          ["Silix 商品页", "https://silixwear.com/products/3d-anti-cellulite-legging"],
+          ["Silix 独立评论记录", "https://www.trustpilot.com/review/silixwear.com?page=3"],
+          ["Meta 广告资料库查询", "https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=ALL&q=Ionix%20Labs&search_type=keyword_unordered"]
+        ],
+        boundary: "Ionix 与 Silix 是不同竞品，不能合成一条品类事实。当前也无法确认广告素材数量与表现，这一链路只能指导假设设计。",
+        next: "分别测试广告钩子、证明方式和风险逆转，不再把它们混为同一种畅销原因。"
+      },
+      opportunity: {
+        eyebrow: "推荐方向",
+        title: "视觉磨皮与自然轮廓管理款",
+        summary: "核心价值是减弱侧光下臀腿凹凸、腰腹断层和轮廓不连贯；压力、针织密度、光泽和剪裁只是内部实现手段。",
+        metrics: [["78", "外观焦虑"], ["76", "触发场景"], ["58", "可感知效果"], ["35", "可信证明"]],
+        sources: [],
+        boundary: "这是待验证产品概念，不代表目标样裤已实现视觉平滑；可信证明和交付稳定性是当前薄弱项。",
+        next: "先做同光线、同姿势盲测，证明差异不是拍摄、姿势或修图造成。"
+      },
+      report: {
+        eyebrow: "可追溯报告输出",
+        title: "证据怎样变成一份选品报告",
+        summary: "市场、用户和竞品证据先被结构化，再形成市场机会、用户画像、竞品分析、候选方向、风险边界和执行建议。最终判断只是报告中的一个字段。",
+        metrics: [["3", "证据主线"], ["5", "核心报告模块"], ["1", "统一证据链"], ["持续", "新数据回流更新"]],
+        sources: [],
+        boundary: "报告只能总结已经取得的证据。没有平台销量、正式报价或样品测试时，相应结论必须标记为缺失、方向性证据或推导值。",
+        next: "把每个报告结论与证据 ID、原始链接、采集时间、证据等级和待补任务建立一一对应。"
+      },
+      decision: {
+        eyebrow: "正式行动边界",
+        title: "值得找样验证，不值得直接备货",
+        summary: "现阶段可以继续补证、概念测试、找供应商和买样前准备；不能正式采购、上架或投放广告。",
+        metrics: [["允许", "补充需求证据"], ["允许", "询价但不下单"], ["禁止", "正式采购上架"], ["禁止", "广告投放放量"]],
+        sources: [],
+        boundary: "心理链、产品方向和营销草案都不能自动改变正式决策状态。必须由目标 SKU、报价、样品、合规和单位经济共同解除门禁。",
+        next: "按寻源关键词找到 2–3 家供应商，获得可比规格、报价和样裤，再进入视觉与性能测试。"
+      },
+      product: {
+        eyebrow: "产品定义",
+        title: "候选产品应该做成什么样",
+        summary: "以高密哑光面料、隐藏式轮廓结构和稳定高腰实现视觉平滑，并用不透、无前缝、洗后回弹和真实体型记录证明。",
+        metrics: [["P0", "侧光视觉平滑"], ["P0", "深蹲不透"], ["P0", "舒适与稳定"], ["P1", "多体型适配"]],
+        sources: [],
+        boundary: "所有结构和性能描述都是候选方案，必须经过目标样品和多体型测试。",
+        next: "向供应商索要面料克重、成分、压缩分区、尺码、MOQ、样品费和交期。"
+      },
+      sourcing: {
+        eyebrow: "寻源起始卡",
+        title: "1688 与工厂沟通关键词",
+        summary: "优先寻找自然修饰轮廓、无前缝、防透、不卷腰和哑光高密面料的现货或轻定制款。",
+        metrics: [["6", "核心搜索词"], ["4", "组合搜索"], ["2–3", "可比供应商"], ["0", "当前正式报价"]],
+        sources: [],
+        boundary: "当前关键词用于找到候选样品，不能证明供应商真的具备产品效果或稳定交付能力。",
+        next: "搜索：视觉磨皮瑜伽裤、无前缝自然提臀、哑光防透运动紧身裤；排除医用压力和夸张蜂窝纹。"
+      },
+      marketing: {
+        eyebrow: "营销打法",
+        title: "可说什么、暂时不能说什么",
+        summary: "概念测试可以表达‘侧光下看起来更平滑、轮廓更自然’，并强调同条件实拍、深蹲和尺码证明。",
+        metrics: [["可测试", "视觉平滑"], ["可测试", "自然轮廓"], ["禁用", "去橘皮功效"], ["禁用", "循环与炎症"]],
+        sources: [],
+        boundary: "在样品验证和权限开放前，营销内容只用于概念理解测试，不能直接上架或投放。",
+        next: "准备三版一句话概念，做三秒复述测试；样品通过后再制作未经修图的同条件对比素材。"
+      },
+      validation: {
+        eyebrow: "验证门槛",
+        title: "同光线、同姿势视觉盲测",
+        summary: "同一用户在相同侧光、机位和姿势下分别穿普通紧身裤与候选样裤，不告知观察者产品身份。",
+        metrics: [["10", "目标女性"], ["≥2", "候选样裤"], ["≥60%", "通过盲选率"], ["P0", "舒适不能下降"]],
+        sources: [],
+        boundary: "如果选择接近随机、只有拍摄者能看出差异，或视觉改善依赖强压力并造成不适，则方向失败。",
+        next: "预先固定光线、机位、姿势、问题和通过阈值，再开始买样测试，避免事后挑选有利结果。"
+      },
+      boundary: {
+        eyebrow: "正式行动边界",
+        title: "通过下一道门槛前能做什么",
+        summary: "当前可以继续补证、概念理解测试、联系供应商和询价，但不能正式采购、上架销售或投放广告。",
+        metrics: [["允许", "补证与访谈"], ["允许", "询价但不下单"], ["禁止", "采购与上架"], ["禁止", "广告投放"]],
+        sources: [],
+        boundary: "任何市场评分、竞品售价、用户评论或规划假设都不能自动解除门禁，必须由目标 SKU 的供应、样品、成本、合规和验证结果共同决定。",
+        next: "取得两份同口径供应商方案、至少两条目标样品、完整正式成本字段、合规证据和预注册测试结果。"
+      },
+      economics: {
+        eyebrow: "假设情景示例",
+        title: "成本红线反推，不是利润预测",
+        summary: "基准售价按 $44，规划 CPA 上限 $17.60，目标广告后贡献利润 $6.60，反推总落地成本不高于 $10.42。",
+        metrics: [["$44", "假设售价"], ["$17.60", "规划 CPA"], ["$6.60", "目标贡献利润"], ["$10.42", "落地成本红线"]],
+        sources: [],
+        boundary: "所有数字都是规划假设或推导值；当前 10 个正式成本字段均未取得，不能据此声称盈利成立。",
+        next: "用至少两份正式报价和真实物流、支付、退款、拒付、瑕疵数据建立正式 CM1 情景。"
+      }
+    };
+
+    const workspace = document.querySelector("#workspace");
+    const canvas = document.querySelector("#canvas");
+    const stage = document.querySelector("#stage");
+    const drawer = document.querySelector("#drawer");
+    const drawerEyebrow = document.querySelector("#drawerEyebrow");
+    const drawerTitle = document.querySelector("#drawerTitle");
+    const drawerBody = document.querySelector("#drawerBody");
+    const zoomValue = document.querySelector("#zoomValue");
+    const researchIntake = document.querySelector("#researchIntake");
+    const scopeEditor = document.querySelector("#scopeEditor");
+    const scopeStatus = document.querySelector("#scopeStatus");
+    const scopeEditButton = document.querySelector("#scopeEditButton");
+    const scopeConfirmButton = document.querySelector("#scopeConfirmButton");
+    const scopeViewButton = document.querySelector("#scopeViewButton");
+    let scale = 1;
+
+    function setScopeState(state) {
+      researchIntake.dataset.scopeState = state;
+      const editing = state === "editing";
+      scopeStatus.textContent = editing ? "待重新确认" : "已确认 · SCOPE-v2";
+      scopeEditButton.textContent = editing ? "取消调整" : "调整研究范围";
+      document.querySelector("#scopeActionHint").textContent = editing
+        ? "修改范围不会覆盖已经完成的旧报告；确认后会形成新的范围版本，并重新启动受影响的研究任务。"
+        : "范围已锁定。只有确认后的商品定义、市场和边界才会进入数据采集、分析与报告生成。";
+    }
+
+    scopeEditButton.addEventListener("click", () => {
+      setScopeState(researchIntake.dataset.scopeState === "editing" ? "confirmed" : "editing");
+    });
+
+    scopeConfirmButton.addEventListener("click", () => {
+      const fields = Object.fromEntries(new FormData(scopeEditor).entries());
+      if (!String(fields.keyword).trim() || !String(fields.title).trim() || !String(fields.definition).trim() || !String(fields.market).trim()) {
+        scopeStatus.textContent = "请补全商品与市场";
+        return;
+      }
+      document.querySelector("#scopeKeywordDisplay").textContent = String(fields.keyword).trim();
+      document.querySelector("#scopeTitleDisplay").textContent = String(fields.title).trim();
+      document.querySelector("#scopeDefinitionDisplay").textContent = String(fields.definition).trim();
+      document.querySelector("#scopeMarketDisplay").textContent = String(fields.market).trim();
+      document.querySelector("#scopeIncludeDisplay").textContent = String(fields.include).trim();
+      document.querySelector("#scopeExcludeDisplay").textContent = String(fields.exclude).trim();
+      setScopeState("confirmed");
+    });
+
+    scopeViewButton.addEventListener("click", () => workspace.scrollIntoView({behavior: "smooth", block: "start"}));
+
+    const escapeHtml = value => String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+
+    const metricLabels = {
+      customerRecords: "用户观察",
+      sourceFamilies: "来源家族",
+      platforms: "覆盖平台",
+      negativeOrNeutral: "问题与中性反馈",
+      positiveOrCounter: "正向与反例",
+    };
+
+    function conclusionList(items, key) {
+      return `<ul>${items.map(item => `<li><b>${escapeHtml(item.label)}：</b>${escapeHtml(item[key])}</li>`).join("")}</ul>`;
+    }
+
+    function hydrateAnalysisDiff(registry) {
+      const analysis = registry.analysis;
+      const snapshot = analysis?.snapshot;
+      const diff = analysis?.latestMeaningfulDiff;
+      if (!snapshot || !diff) return;
+
+      const diffSection = document.querySelector("#analysisDiff");
+      diffSection.hidden = false;
+      document.querySelector("#analysisDiffVersion").textContent = `v${diff.fromVersion} → v${diff.toVersion} · ${diff.batchId}`;
+      document.querySelector("#analysisDiffMetrics").innerHTML = diff.metrics.map(item => {
+        const familyMissing = item.field === "sourceFamilies" && item.after === 0;
+        const after = familyMissing ? "历史批次未登记" : item.after;
+        return `<span class="diff-metric"><b>${escapeHtml(item.before)} → ${escapeHtml(after)}</b><span>${escapeHtml(metricLabels[item.field] || item.field)}</span></span>`;
+      }).join("");
+
+      const changedConclusions = diff.conclusions.filter(item => item.status === "changed");
+      document.querySelector("#analysisDiffBefore").innerHTML = conclusionList(changedConclusions, "before");
+      document.querySelector("#analysisDiffAfter").innerHTML = conclusionList(changedConclusions, "after");
+      document.querySelector("#analysisDiffEvidenceTitle").textContent = `追加 ${diff.metrics.find(item => item.field === "customerRecords")?.delta ?? 0} 条用户观察`;
+      document.querySelector("#analysisDiffEvidence").innerHTML = [
+        `批次：${diff.batchId}`,
+        ...diff.metrics.map(item => `${metricLabels[item.field] || item.field}：${item.before} → ${item.after}`),
+      ].map(item => `<li>${escapeHtml(item)}</li>`).join("");
+      document.querySelector("#analysisDiffReason").innerHTML = `<ul>${diff.topThemeChanges.slice(0, 4).map(item => `<li>“${escapeHtml(item.label)}”新增 ${escapeHtml(item.delta)} 条，进入新的优先级排序。</li>`).join("")}</ul>`;
+      document.querySelector("#analysisDiffBoundary").textContent = `边界：${diff.boundary}`;
+
+      const maxThemeCount = Math.max(...snapshot.topThemes.map(item => item.count), 1);
+      const themeHtml = `<div class="theme-rank">${snapshot.topThemes.slice(0, 8).map(item => `<div class="theme-rank-item"><span>${escapeHtml(item.label)}</span><span class="theme-rank-bar"><i style="width:${Math.max(3, item.count / maxThemeCount * 100).toFixed(1)}%"></i></span><b>${item.count} / ${snapshot.coverage.customerRecords}</b></div>`).join("")}</div>`;
+      const sourceFamilyValue = snapshot.coverage.sourceFamilies === 0 ? "未登记" : String(snapshot.coverage.sourceFamilies);
+
+      details.chapterCustomer.summary = snapshot.conclusions.customer;
+      details.chapterCustomer.metrics = [
+        [String(snapshot.coverage.customerRecords), "当前用户观察"],
+        [String(snapshot.coverage.platforms), "覆盖平台"],
+        [sourceFamilyValue, "来源家族"],
+        [snapshot.confidence, "当前覆盖置信度"],
+      ];
+      details.chapterCustomer.sections = [
+        {title: "自动重算后的主题排序", html: themeHtml},
+        ...details.chapterCustomer.sections,
+      ];
+      details.chapterCustomer.boundary = snapshot.boundary;
+
+      details.chapterPositioning.summary = snapshot.conclusions.product;
+      details.chapterPositioning.sections = [
+        {title: "新证据重算后的产品要求", html: `<p>${escapeHtml(snapshot.conclusions.product)}</p>`},
+        ...details.chapterPositioning.sections,
+      ];
+      details.chapterMarketing.summary = snapshot.conclusions.marketing;
+      details.chapterMarketing.sections = [
+        {title: "新证据重算后的证明重点", html: `<p>${escapeHtml(snapshot.conclusions.marketing)}</p>`},
+        ...details.chapterMarketing.sections,
+      ];
+      details.chapterUpdates.summary = `当前注册表已到 v${registry.version}。最近一次有意义的变化来自 ${diff.batchId}，系统保留了更新前、更新后和变化原因。`;
+      details.chapterUpdates.sections = [
+        {title: `真实版本差异 · v${diff.fromVersion} → v${diff.toVersion}`, html: conclusionList(changedConclusions, "after")},
+        ...details.chapterUpdates.sections,
+      ];
+      details.chapterUpdates.boundary = snapshot.boundary;
+      details.chapterUpdates.next = "将这些自动生成的结论草案送入人工审核；确认后才发布到正式报告，并保留旧版本和回滚入口。";
+
+    }
+
+    function hydrateReviewProposal(registry) {
+      const proposal = registry.reviewProposal;
+      if (!proposal) return;
+      const history = registry.publicationHistory;
+      document.querySelector("#publicationDesk").hidden = false;
+      document.querySelector("#publicationDraftCount").textContent = `${proposal.drafts.length} 条草案已生成`;
+      document.querySelector("#publicationHistoryCount").textContent = history?.metrics?.total
+        ? `${history.metrics.total} 个历史发布版本`
+        : "尚未发布新版本";
+      document.querySelector("#publicationBoundary").textContent = `当前状态：等待人工审核。${proposal.boundary}`;
+      document.querySelector("#formalPublishButton").title = "完成逐条人工审核和验证审批后，才可生成正式发布预览。";
+      document.querySelector("#draftLedgerRows").innerHTML = proposal.drafts.map(draft => `
+        <div class="draft-ledger-row">
+          <span class="draft-label">${escapeHtml(draft.label)}<br><small>${escapeHtml(draft.currentConclusionId)}</small></span>
+          <span>${escapeHtml(draft.currentStatement)}</span>
+          <span>${escapeHtml(draft.draftStatement)}</span>
+          <span class="draft-status">待审核</span>
+        </div>`).join("");
+
+      details.publicationReview = {
+        eyebrow: "结论发布台 · 待人工审核",
+        title: `${proposal.drafts.length} 条自动重算草案等待确认`,
+        summary: "系统已经把自动重算结果与当前正式结论逐条对齐，但没有改写正式报告。下面每一条都需要人工确认文字、证据等级和适用边界。",
+        metrics: [
+          [String(proposal.drafts.length), "待审核草案"],
+          [String(proposal.sourceRegistryVersion), "证据注册表版本"],
+          [history ? String(history.metrics.total) : "0", "历史发布版本"],
+          ["LOCKED", "正式发布"],
+        ],
+        sections: [
+          ...proposal.drafts.map(draft => ({
+            title: `${draft.label} · ${draft.currentConclusionId}`,
+            html: `<p><b>当前正式结论</b><br>${escapeHtml(draft.currentStatement)}</p><p style="margin-top:9px"><b>自动重算草案</b><br>${escapeHtml(draft.draftStatement)}</p><p style="margin-top:9px"><b>当前证据边界</b><br>${escapeHtml(draft.currentClaimBoundary)}</p>`,
+          })),
+          {title: "发布前必须完成", html: `<ol><li>人工逐条审核并允许修改草案文字。</li><li>确认新结论与证据对象、范围和漏斗阶段一致。</li><li>验证执行台批准这次结论更新。</li><li>生成发布预览，再输入完整确认短语。</li><li>写入成功后保存发布前后快照和回滚点。</li></ol>`},
+        ],
+        sources: [],
+        boundary: proposal.boundary,
+        next: "下一步先开发逐条审核状态与编辑能力；全部通过后，再调用现有原子发布服务生成正式发布预览。",
+      };
+
+      if (details.chapterUpdates) {
+        details.chapterUpdates.sections = [
+          {title: "结论发布状态", html: `<table><tr><th>环节</th><th>当前状态</th></tr><tr><td>自动重算草案</td><td>${proposal.drafts.length} 条已生成</td></tr><tr><td>人工审核</td><td>等待审核</td></tr><tr><td>验证审批</td><td>尚未通过</td></tr><tr><td>正式发布</td><td>锁定</td></tr><tr><td>历史与回滚</td><td>${history?.metrics?.total ?? 0} 个发布版本</td></tr></table>`},
+          ...details.chapterUpdates.sections,
+        ];
+      }
+    }
+
+    function hydrateEvidenceRegistry() {
+      const registry = window.__XUANPINMAO_EVIDENCE_REGISTRY__;
+      if (!registry || registry.runId !== "research-run-3d-yoga-pants-28f8bff32ab5-us") return;
+      const summaryItems = registry.batches.filter(item => item.fidelity === "summary_only").reduce((sum, item) => sum + item.counts.accepted, 0);
+      const recordItems = registry.totals.accepted - summaryItems;
+      document.querySelector("#registryStatus").textContent = `证据注册表 v${registry.version}`;
+      document.querySelector("#registryVersion").textContent = `${registry.totals.batches} 个批次 · ${recordItems} 条记录 + ${summaryItems} 个汇总项`;
+      document.querySelectorAll("[data-registry-batch]").forEach(card => {
+        const batch = registry.batches.find(item => item.batchId === card.dataset.registryBatch);
+        if (!batch) return;
+        card.dataset.registryState = "registered";
+        const unit = batch.fidelity === "summary_only" ? "个汇总项" : "条记录";
+        card.title = `已登记 · ${batch.counts.accepted} ${unit}接受 · ${batch.counts.duplicates} 条重复`;
+      });
+      if (details.chapterUpdates) {
+        details.chapterUpdates.metrics = [
+          [`v${registry.version}`, "当前注册表"],
+          [String(registry.totals.batches), "已登记批次"],
+          [String(registry.totals.duplicates), "累计重复"],
+          ["Version Diff", "版本差异"],
+        ];
+      }
+      if (details.chapterEvidence) {
+        details.chapterEvidence.metrics = [
+          [String(registry.totals.batches), "证据批次"],
+          [String(registry.totals.parsed), "逐条解析"],
+          [String(registry.totals.duplicates), "去重命中"],
+          [String(registry.version), "注册表版本"],
+        ];
+      }
+      hydrateAnalysisDiff(registry);
+      hydrateReviewProposal(registry);
+    }
+
+    function renderDrawer(detail) {
+      drawerEyebrow.textContent = detail.eyebrow;
+      drawerTitle.textContent = detail.title;
+      const metrics = detail.metrics.map(([value, label]) => `<div class="drawer-metric"><strong>${value}</strong><span>${label}</span></div>`).join("");
+      const sources = detail.sources.length
+        ? `<section class="drawer-section"><h3>可追溯来源</h3><ul class="source-list">${detail.sources.map(([label, url]) => `<li><a href="${url}" target="_blank" rel="noreferrer">${label} ↗</a></li>`).join("")}</ul></section>`
+        : "";
+      const sections = (detail.sections || []).map(section => `<section class="drawer-section"><h3>${section.title}</h3>${section.html}</section>`).join("");
+      drawerBody.innerHTML = `
+        <section class="drawer-section"><h3>结论</h3><p>${detail.summary}</p></section>
+        <section class="drawer-section"><h3>关键数据</h3><div class="drawer-metrics">${metrics}</div></section>
+        ${sections}
+        ${sources}
+        <section class="drawer-section"><h3>证据边界</h3><p class="boundary">${detail.boundary}</p></section>
+        <section class="drawer-section"><h3>下一步</h3><p class="next-action">${detail.next}</p></section>`;
+      drawer.scrollTop = 0;
+      drawer.classList.add("is-open");
+      drawer.setAttribute("aria-hidden", "false");
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove("is-open");
+      drawer.setAttribute("aria-hidden", "true");
+    }
+
+    function setScale(nextScale) {
+      scale = Math.min(1.45, Math.max(0.42, nextScale));
+      stage.style.transform = `scale(${scale})`;
+      stage.style.marginRight = `${stage.offsetWidth * (scale - 1)}px`;
+      stage.style.marginBottom = `${stage.offsetHeight * (scale - 1)}px`;
+      zoomValue.value = `${Math.round(scale * 100)}%`;
+      zoomValue.textContent = zoomValue.value;
+    }
+
+    function fitBoard() {
+      const available = canvas.clientWidth - 24;
+      setScale(Math.min(0.88, Math.max(0.62, available / 1850)));
+      canvas.scrollTo({left: 0, top: 0, behavior: "smooth"});
+    }
+
+    document.querySelector(".mode-switch").addEventListener("click", event => {
+      const button = event.target.closest("[data-mode]");
+      if (!button) return;
+      stage.dataset.mode = button.dataset.mode;
+      document.querySelectorAll("[data-mode]").forEach(item => item.setAttribute("aria-pressed", String(item === button)));
+    });
+
+    document.querySelector(".view-tools").addEventListener("click", event => {
+      const action = event.target.closest("button")?.dataset.action;
+      if (action === "zoom-in") setScale(scale + 0.08);
+      if (action === "zoom-out") setScale(scale - 0.08);
+      if (action === "reset") fitBoard();
+      if (action === "fullscreen") document.fullscreenElement ? document.exitFullscreen() : workspace.requestFullscreen?.();
+    });
+
+    stage.addEventListener("click", event => {
+      const node = event.target.closest("[data-node]");
+      if (node && details[node.dataset.node]) renderDrawer(details[node.dataset.node]);
+    });
+
+    document.querySelector("#fullReport").addEventListener("click", event => {
+      const node = event.target.closest("[data-node]");
+      if (node && details[node.dataset.node]) renderDrawer(details[node.dataset.node]);
+    });
+
+    drawer.addEventListener("click", event => {
+      if (event.target.closest("[data-action='close-drawer']")) closeDrawer();
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeDrawer();
+    });
+
+    canvas.addEventListener("wheel", event => {
+      if (!(event.ctrlKey || event.metaKey)) return;
+      event.preventDefault();
+      setScale(scale + (event.deltaY < 0 ? 0.07 : -0.07));
+    }, {passive: false});
+
+    let dragging = false;
+    let startX = 0;
+    let startY = 0;
+    let startLeft = 0;
+    let startTop = 0;
+
+    canvas.addEventListener("pointerdown", event => {
+      if (event.button !== 0 || event.target.closest("[data-node]")) return;
+      dragging = true;
+      startX = event.clientX;
+      startY = event.clientY;
+      startLeft = canvas.scrollLeft;
+      startTop = canvas.scrollTop;
+      canvas.classList.add("is-dragging");
+      canvas.setPointerCapture(event.pointerId);
+    });
+
+    canvas.addEventListener("pointermove", event => {
+      if (!dragging) return;
+      canvas.scrollLeft = startLeft - (event.clientX - startX);
+      canvas.scrollTop = startTop - (event.clientY - startY);
+    });
+
+    function stopDragging() { dragging = false; canvas.classList.remove("is-dragging"); }
+    canvas.addEventListener("pointerup", stopDragging);
+    canvas.addEventListener("pointercancel", stopDragging);
+
+    hydrateEvidenceRegistry();
+    requestAnimationFrame(() => requestAnimationFrame(fitBoard));
+    window.addEventListener("resize", fitBoard);
+  </script>
+</body>
+</html>
