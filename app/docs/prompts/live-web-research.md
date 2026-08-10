@@ -20,6 +20,7 @@ Requirements:
 6. Validate Claim-Source mappings and keep competitor facts isolated from target-product facts.
 7. Finalize the package and generate Markdown and HTML reports.
 8. Report the decision honestly; `HOLD_SUPPLY` and `REJECT` are acceptable outcomes.
+9. All seller-visible conclusions, evidence summaries, unknowns, action plans and generated report copy must be written in Simplified Chinese. Keep English only for executed search keywords, sourcing keywords, platform field names, exact product/model names, certification abbreviations and other terms whose original spelling is operationally necessary.
 
 After Atomic Claims are valid, continue the same Run without repeating web research or Source import:
 

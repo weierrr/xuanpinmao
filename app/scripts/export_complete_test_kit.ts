@@ -40,7 +40,7 @@ const main = async (): Promise<void> => {
   }],
   }, null, 2)}\n`, "utf8");
 
-  const readme = `# 选品猫完整测试包
+  const readme = `# 选品猫测试版
 
 这不是单独的提示词插件，而是可运行的完整测试环境，包含选品猫应用、实时调研白板、最新版 Codex 插件和本地 Marketplace。
 

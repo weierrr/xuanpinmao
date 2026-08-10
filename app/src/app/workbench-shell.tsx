@@ -37,11 +37,6 @@ export function WorkbenchShell({ active, children }: WorkbenchShellProps) {
           <PageIcon size={54} strokeWidth={1.3} aria-hidden="true" />
         </div>
 
-        <nav className="workspace-view-tabs" aria-label="选品工作台视图">
-          <Link className={active === "discover" ? "active" : ""} href="/discover">快速发现</Link>
-          <Link className={active === "projects" ? "active" : ""} href="/projects">选品记录</Link>
-        </nav>
-
         {children}
       </main>
     </div>

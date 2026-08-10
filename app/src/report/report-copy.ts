@@ -1,4 +1,54 @@
 const zhByOriginal: Record<string, string> = {
+  "Demand is installed-base driven and recurring, with a clear OEM price pain and repeated buyer comparison between OEM and compatible filters.": "需求来自已有冰箱的周期性换芯，原厂滤芯价格偏高，用户会反复比较原厂与兼容滤芯。",
+  "OEM and aftermarket competition is dense, model families are fragmented, and trust is already contested through certification and fit claims.": "原厂与兼容品牌竞争都很密集，适配型号高度分散，商家主要围绕认证与适配承诺争夺信任。",
+  "Replacement demand is visible, but no usable search trend, market-size time series or growth rate was obtained.": "周期性更换需求明确，但本轮没有取得可用的搜索趋势、市场规模时间序列或增长率数据。",
+  "Observed OEM prices near $50-$60 and compatible prices near $31-$40 create room for a value proposition, but landed cost, returns, insurance and channel fees are unknown.": "公开价格显示，原厂滤芯约为 50–60 美元，兼容滤芯约为 31–40 美元，存在价格价值空间；但落地成本、退货、保险和渠道费用仍未知。",
+  "Formal MOQ, ex-factory price, packaging, lead time and payment terms": "正式最低起订量、出厂价、包装、交期和付款条件",
+  "Landed cost, return allowance, product-liability insurance and contribution margin": "落地成本、退货准备金、产品责任险和单件贡献毛利",
+  "Representative purchase conversion and price acceptance": "具有代表性的购买转化率和价格接受度",
+  "Category growth trend and total market size": "品类增长趋势和总体市场规模",
+  "US households replacing filters in refrigerators with built-in water and ice dispensers, especially buyers resisting repeated OEM spend.": "使用内置饮水或制冰功能冰箱、需要定期更换滤芯的美国家庭，尤其是不愿持续承担原厂滤芯高价的用户。",
+  "Restore water and ice quality at lower recurring cost": "用更低的长期换芯成本，恢复饮水和制冰质量",
+  "OEM replacement feels expensive for a recurring consumable": "作为需要周期性更换的耗材，原厂滤芯价格让用户感觉负担较重",
+  "Uncertainty about whether a cheaper filter is truly certified": "担心便宜的兼容滤芯是否真的取得对应认证",
+  "Fear of leaks and property damage": "担心漏水并造成家庭财产损失",
+  "Slow flow, bad taste or hollow ice after replacement": "担心换芯后水流变慢、口感变差或冰块出现异常",
+  "Confusing fit matrices and electronic recognition": "适配型号表复杂，部分机型还存在电子识别问题",
+  "Time and water spent flushing a new filter": "安装新滤芯后需要花费较多时间和用水进行冲洗",
+  "Install a filter that seals, dispenses and is recognized immediately": "装上后能够正常密封、顺利出水并被冰箱识别",
+  "Maintain acceptable flow through the claimed life": "在标称使用周期内保持可接受的水流速度",
+  "Verify the exact contaminant reductions needed for the household": "能够核查该型号是否覆盖家庭真正关心的污染物过滤需求",
+  "Avoid feeling overcharged by a proprietary consumable": "避免因专用耗材被持续收取高价的不满",
+  "Feel confident that a bargain is not putting the home or family at risk": "确认省钱不会给家庭和住房带来额外风险",
+  "Avoid the anxiety of discovering a leak overnight": "避免夜间漏水后才发现问题的焦虑",
+  "The household already owns a refrigerator that creates periodic replacement demand.": "用户已经拥有需要周期换芯的冰箱，因此更换需求会持续发生。",
+  "The price gap makes comparison shopping worthwhile.": "原厂与兼容滤芯之间的价格差，使用户愿意主动比价。",
+  "A precise fit and certification story can reduce perceived downside.": "清晰的适配关系和可核验认证，可以降低用户对兼容滤芯的风险顾虑。",
+  "Competitors combine clean-tasting water, contaminant reduction, official or guaranteed fit, and recurring replacement reminders.": "竞品通常把改善水质口感、减少特定污染物、官方或承诺适配，以及周期换芯提醒组合成点击卖点。",
+  "Retailers show ratings and fit comments, but some positive reviews are incentivized and critical leak reports remain visible.": "零售页面会展示评分和适配反馈，但部分好评带有激励性质，漏水等严重差评也仍然可见。",
+  "Find your filter, check compatibility, add to cart or subscribe for scheduled replacement.": "先查找对应滤芯并核对适配型号，再加入购物车，或订阅周期性换芯服务。",
+  "Aftermarket savings are often communicated through 2- or 3-packs, while OEM pages emphasize subscriptions, scheduled replacement and brand fit.": "兼容品牌常用两件装或三件装突出省钱，原厂页面则更强调订阅、定期更换和品牌适配。",
+  "Observed single-filter public anchors range from about $31-$40 for compatible products and about $51-$60 for OEM examples; this is not a margin calculation.": "公开单支价格显示，兼容滤芯约为 31–40 美元，原厂滤芯约为 51–60 美元；这些价格只能作为参考，不能直接证明利润成立。",
+  "Exact target model and matching NSF or WQA certificate holder": "准确的目标型号及与之对应的 NSF 或 WQA 证书持有人",
+  "California registration status for the exact model and intended health claims": "准确型号及拟使用健康相关宣传在加州的注册状态",
+  "Exact fit, independently checkable model-level certification and controlled flow/leak performance at a lower recurring cost than OEM.": "以低于原厂的长期换芯成本，提供准确适配、可独立核验的型号级认证，以及可测试的水流和防漏表现。",
+  "Owners of one selected high-installed-base refrigerator interface family who want a lower recurring cost without giving up verifiable certification, fit confidence or flow.": "拥有某一高保有量冰箱接口、希望降低长期换芯成本，同时不愿牺牲认证可信度、适配把握和水流表现的用户。",
+  "Start with one interface family and publish a conservative compatibility matrix": "先聚焦一个接口族，并发布保守、准确的适配型号表",
+  "Link certification and PDS to the exact sellable model": "把认证和 PDS 性能数据表对应到准确的可售型号",
+  "Show pressure, leak and flow test evidence instead of generic quality language": "展示压力、防漏和水流测试证据，不使用空泛的质量描述",
+  "Provide unusually clear installation and flushing instructions": "提供比竞品更清晰的安装与冲洗说明",
+  "Defer chip-heavy GE XWFE until the mechanical and legal path is verified": "在机械适配和法律路径核实前，暂缓进入高度依赖芯片识别的 GE XWFE 系列",
+  "The market is organized by appliance-interface family rather than one universal cartridge. High-complexity chip families coexist with simpler mechanical interfaces.": "市场按冰箱接口族划分，并不存在真正通用的单一滤芯；复杂的芯片识别接口与较简单的机械接口同时存在。",
+  "Housing resin, O-ring material, weld method and dimensional tolerances": "外壳树脂、O 型圈材料、焊接方式和尺寸公差",
+  "No exact interface family, target supplier, formal quotation, private-label certificate path, sample performance, liability coverage or unit economics has been approved.": "目前尚未确定准确接口族和目标供应商，也未取得正式报价、贴牌认证路径、样品性能、责任保障及单位经济模型。",
+  "Recurring installed-base demand and the OEM price pain are well supported.": "已有冰箱带来的周期换芯需求，以及原厂滤芯价格痛点，都有较充分的证据支持。",
+  "The opportunity is not a universal filter line; it is a tightly scoped interface-family product with model-level proof.": "机会不在通用滤芯大系列，而在聚焦单一接口族，并为具体型号提供可核验证明。",
+  "At least one candidate manufacturer has independently visible NSF 42 and 53 model listings, making controlled sourcing research feasible.": "至少有一家候选制造商存在可独立查询的 NSF 42 和 NSF 53 型号记录，因此可以继续进行受控寻源研究。",
+  "Leak, flow, fit, chip and claim risks are material but can be addressed through document requests and comparative sample testing.": "漏水、水流、适配、芯片识别和宣传声明风险都很重要，但可以通过索取文件和对比样品测试逐项验证。",
+  "Which single interface family offers the best installed-base, return-risk and IP balance": "哪个单一接口族能在市场保有量、退货风险和知识产权风险之间取得最佳平衡",
+  "Whether certification can legally extend to the proposed private label": "现有认证能否依法延伸到拟使用的自有品牌",
+  "Pressure-cycle, burst, leak and long-duration flow performance": "压力循环、爆破、防漏和长时间水流表现",
+  "Chip compatibility and intellectual-property risk for XWFE or similar families": "XWFE 或类似接口族的芯片兼容性与知识产权风险",
   "The category has enough demand and emotional purchase motivation to justify controlled sampling, but it is not an easy generic-product opportunity. A viable offer needs subtler styling, verified fit/opacity/durability, and disciplined non-medical claims.":
     "这个品类有真实需求，也有明确的外观焦虑，值得进入小规模买样验证；但它不是随便找个通货就能卖的机会。当前主方向是做出肉眼可见的平滑与自然轮廓，不透、舒适、尺码和耐穿表现负责证明产品，而不是与主卖点并列。",
   "Shopify reports continued activewear demand and rising interest in butt-lifting styles; Amazon and social/community surfaces show active category vocabulary.":
@@ -140,7 +190,18 @@ const zhByOriginal: Record<string, string> = {
   "Judge.me and Fabletics review surfaces were inaccessible in the available extraction path.": "本轮可用的采集方式无法访问 Judge.me 和 Fabletics 的评论页面。"
 };
 
-export const reportTextZh = (value: string): string => zhByOriginal[value] ?? value;
+export const reportTextZh = (value: string): string => {
+  const exact = zhByOriginal[value];
+  if (exact) return exact;
+  return Object.entries(zhByOriginal).reduce(
+    (text, [original, translated]) => text.includes(original) ? text.replaceAll(original, translated) : text,
+    value,
+  )
+    .replaceAll("。；", "；")
+    .replaceAll("Claim", "宣传声明")
+    .replace(/([。；，：！？])\s+(?=[\u3400-\u9fff])/gu, "$1")
+    .replace(/是\s+(?=[\u3400-\u9fff])/gu, "是");
+};
 
 /** Merge overlapping execution requirements and decision gates into one reader-facing checklist. */
 export const mergedNextStageChecklistZh = (

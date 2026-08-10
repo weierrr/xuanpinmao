@@ -20,7 +20,7 @@ After submission, show the research-object passport inside `/discover/plan`, not
 | Audience | State the likely buyer group as a hypothesis before research. |
 | Included | Product forms covered by the Run. |
 | Excluded | Similar meanings, adjacent categories, and non-target variants. |
-| Questions | Preview the six seller questions below. |
+| Conclusions | Preview the six selection modules below. |
 
 Do not begin deep research until the user confirms or corrects the passport in the page. After confirmation, use the saved discovery plan as the authoritative input record.
 
@@ -108,7 +108,7 @@ When an API is added later, model it as another source adapter that produces the
 ## 6. Readability contract
 
 - Make core conclusions visible without opening drawers.
-- Keep primary navigation to the six seller modules.
+- Keep primary navigation to the six selection conclusions.
 - Put internal governance, schemas, search logs, and full source records in the traceability or appendix layer.
 - Use short headings, plain Chinese, and specific business judgments.
 - Preserve detailed information without forcing the seller to read the research process before seeing useful answers.

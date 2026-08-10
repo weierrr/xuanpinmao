@@ -79,6 +79,7 @@ src/app/discover/plan/actions.ts
 src/app/discover/plan/page.tsx
 src/app/discover/plan/ready/page.tsx
 src/app/discover/plan/whiteboard/page.tsx
+src/app/discover/plan/whiteboard/research-whiteboard-canvas.tsx
 src/app/discover/plan/whiteboard/whiteboard-auto-refresh.tsx
 src/app/globals.css
 src/app/layout.tsx

@@ -119,7 +119,7 @@ export default async function DiscoveryPlanPage({
         </div>
 
         <section className="workspace-scope-questions">
-          <header><span>确认后将回答</span><strong>6 个卖家问题</strong></header>
+          <header><span>确认后将获得</span><strong>6 项选品结论</strong></header>
           <ol>
             {sellerQuestions.map(([title, description], index) => (
               <li key={title}><b>{String(index + 1).padStart(2, "0")}</b><span><strong>{title}</strong><small>{description}</small></span></li>

@@ -7,7 +7,7 @@ This portable local Agent first confirms a combined keyword, image and competito
 - product-positioning recommendations;
 - evidence and risk boundaries;
 - a plain-language seller decision with explicit gaps;
-- a live traceable whiteboard and `reports/whiteboard-report.html` containing the six seller modules;
+- a live traceable whiteboard and `reports/whiteboard-report.html` containing the six selection conclusions;
 - evidence-bounded First-Principles opportunity portfolios and 7-14 day validation plans.
 
 ## Start

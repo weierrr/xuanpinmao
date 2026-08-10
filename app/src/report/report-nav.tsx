@@ -85,7 +85,7 @@ export function ReportNav({
       <div className="report-chrome-head">
         <Link className="report-back" href={backHref}>
           <ArrowLeft size={16} />
-          <span>返回选品记录</span>
+          <span>返回选品猫</span>
         </Link>
         <div className="report-identity">
           <h1>{title}</h1>

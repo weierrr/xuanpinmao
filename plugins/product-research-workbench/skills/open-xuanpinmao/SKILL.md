@@ -48,7 +48,7 @@ For a new category, use a UI-first flow by default. Do not replace the product i
 4. Show the workbench to the user so they can add, remove, or correct any of the three input groups.
 5. Keep the chat response short: say that the workbench has been opened and that research will continue after page confirmation. Do not duplicate the full form or scope passport in chat.
 
-Submitting the workbench must navigate to `/discover/plan`, where the page displays **确认研究对象** with the interpreted product, market, channel, input counts, evidence boundaries, and the six seller questions. The user confirms there by clicking **确认并继续研究**.
+Submitting the workbench must navigate to `/discover/plan`, where the page displays **确认研究对象** with the interpreted product, market, channel, input counts, evidence boundaries, and the six selection modules. The user confirms there by clicking **确认并继续研究**.
 
 This page confirmation is a required product step. Explicitly tell the user when this skill pauses for it. Do not create a live Research Run before the confirmation is saved.
 
@@ -136,12 +136,12 @@ Make the default report detailed but easy to scan. Present the process as a trac
 → 数据来源
 → Agent 采集记录
 → 整理分析
-→ 六大卖家问题报告
+→ 六大选品结论
 → 执行方案
 → 新证据回流
 ```
 
-The primary report must answer exactly these six seller questions in this order:
+The primary report must present exactly these six selection conclusions in this order:
 
 1. 市场与机会
 2. 用户画像

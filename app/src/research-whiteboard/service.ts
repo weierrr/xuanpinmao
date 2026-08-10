@@ -3,6 +3,7 @@ import path from "node:path";
 import type { OpportunityDiscoveryPlan } from "@/opportunity-discovery/types";
 import type { LiveResearchAnalysis, ResearchClaim } from "@/research/live-types";
 import type { EvidencePackage, ResearchSource } from "@/research/types";
+import { reportTextZh } from "@/report/report-copy";
 import {
   researchWhiteboardSchema,
   researchWhiteboardStageCodes,
@@ -159,63 +160,63 @@ export const buildWhiteboardReportModules = (
   return [
     {
       code: "market", title: "市场与机会", question: "有没有市场、需求趋势、价格空间、竞争强度。",
-      conclusion: analysis.marketOpportunity.verdict,
+      conclusion: reportTextZh(analysis.marketOpportunity.verdict),
       items: [
-        moduleItem(`需求：${analysis.marketOpportunity.demand.rationale}`, analysis.marketOpportunity.demand.sourceIds, "fact"),
-        moduleItem(`竞争：${analysis.marketOpportunity.competition.rationale}`, analysis.marketOpportunity.competition.sourceIds, "fact"),
-        moduleItem(`趋势：${analysis.marketOpportunity.trend.rationale}`, analysis.marketOpportunity.trend.sourceIds),
-        moduleItem(`价格与变现：${analysis.marketOpportunity.monetization.rationale}`, analysis.marketOpportunity.monetization.sourceIds),
+        moduleItem(`需求：${reportTextZh(analysis.marketOpportunity.demand.rationale)}`, analysis.marketOpportunity.demand.sourceIds, "fact"),
+        moduleItem(`竞争：${reportTextZh(analysis.marketOpportunity.competition.rationale)}`, analysis.marketOpportunity.competition.sourceIds, "fact"),
+        moduleItem(`趋势：${reportTextZh(analysis.marketOpportunity.trend.rationale)}`, analysis.marketOpportunity.trend.sourceIds),
+        moduleItem(`价格与变现：${reportTextZh(analysis.marketOpportunity.monetization.rationale)}`, analysis.marketOpportunity.monetization.sourceIds),
       ],
-      unknowns: unknowns.filter((item) => /market|trend|growth|price|cost|margin|市场|趋势|成本|利润/i.test(item)), updatedAt: at,
+      unknowns: unknowns.filter((item) => /market|trend|growth|price|cost|margin|市场|趋势|成本|利润/i.test(item)).map(reportTextZh), updatedAt: at,
     },
     {
       code: "customer", title: "用户画像", question: "谁在买、什么场景触发、最焦虑什么、为什么下单。",
-      conclusion: `${analysis.competitorInsight.targetAudience} 核心购买动机是 ${analysis.customerInsight.functionalMotives[0] ?? "解决明确使用问题"}。`,
+      conclusion: `${reportTextZh(analysis.competitorInsight.targetAudience)} 核心购买动机是${reportTextZh(analysis.customerInsight.functionalMotives[0] ?? "解决明确使用问题")}。`,
       items: [
-        ...analysis.customerInsight.painPoints.map((item) => moduleItem(`焦虑：${item}`, analysis.customerInsight.sourceIds, "fact")),
-        ...analysis.customerInsight.functionalMotives.map((item) => moduleItem(`下单理由：${item}`, analysis.customerInsight.sourceIds, "directional")),
-        ...analysis.customerInsight.emotionalMotives.map((item) => moduleItem(`情绪动机：${item}`, analysis.customerInsight.sourceIds, "directional")),
+        ...analysis.customerInsight.painPoints.map((item) => moduleItem(`焦虑：${reportTextZh(item)}`, analysis.customerInsight.sourceIds, "fact")),
+        ...analysis.customerInsight.functionalMotives.map((item) => moduleItem(`下单理由：${reportTextZh(item)}`, analysis.customerInsight.sourceIds, "directional")),
+        ...analysis.customerInsight.emotionalMotives.map((item) => moduleItem(`情绪动机：${reportTextZh(item)}`, analysis.customerInsight.sourceIds, "directional")),
       ],
-      unknowns: unknowns.filter((item) => /buyer|conversion|purchase|user|用户|购买|转化/i.test(item)), updatedAt: at,
+      unknowns: unknowns.filter((item) => /buyer|conversion|purchase|user|用户|购买|转化/i.test(item)).map(reportTextZh), updatedAt: at,
     },
     {
       code: "competitor", title: "竞品分析", question: "谁在卖、靠什么吸引点击、靠什么建立信任、靠什么成交。",
-      conclusion: analysis.competitorInsight.whyItSells.join("；"),
+      conclusion: analysis.competitorInsight.whyItSells.map(reportTextZh).join("；"),
       items: [
-        moduleItem(`点击钩子：${analysis.competitorInsight.homepageMessaging}`, analysis.competitorInsight.sourceIds, "fact"),
-        moduleItem(`信任机制：${analysis.competitorInsight.socialProof}`, analysis.competitorInsight.sourceIds, "fact"),
-        moduleItem(`成交方式：${analysis.competitorInsight.cta}；${analysis.competitorInsight.bundleStrategy}`, analysis.competitorInsight.sourceIds, "fact"),
-        moduleItem(`价格结构：${analysis.competitorInsight.pricePositioning}`, analysis.competitorInsight.sourceIds, "fact"),
+        moduleItem(`点击钩子：${reportTextZh(analysis.competitorInsight.homepageMessaging)}`, analysis.competitorInsight.sourceIds, "fact"),
+        moduleItem(`信任机制：${reportTextZh(analysis.competitorInsight.socialProof)}`, analysis.competitorInsight.sourceIds, "fact"),
+        moduleItem(`成交方式：${reportTextZh(analysis.competitorInsight.cta)}；${reportTextZh(analysis.competitorInsight.bundleStrategy)}`, analysis.competitorInsight.sourceIds, "fact"),
+        moduleItem(`价格结构：${reportTextZh(analysis.competitorInsight.pricePositioning)}`, analysis.competitorInsight.sourceIds, "fact"),
       ],
-      unknowns: unknowns.filter((item) => /competitor|brand|sku|model|竞品|品牌|型号/i.test(item)), updatedAt: at,
+      unknowns: unknowns.filter((item) => /competitor|brand|sku|model|竞品|品牌|型号/i.test(item)).map(reportTextZh), updatedAt: at,
     },
     {
       code: "product", title: "产品方案", question: "应该做成什么样、必要产品要求、寻源关键词、不能踩的坑。",
-      conclusion: `${analysis.positioning.coreSellingPoint} 当前建议：${analysis.productDecision.status === "PROCEED_TO_SAMPLE" ? "进入受控寻源与买样" : analysis.productDecision.status === "HOLD_SUPPLY" ? "继续补证后再寻源" : "暂不继续"}。`,
+      conclusion: `${reportTextZh(analysis.positioning.coreSellingPoint)} 当前建议：${analysis.productDecision.status === "PROCEED_TO_SAMPLE" ? "进入受控寻源与买样" : analysis.productDecision.status === "HOLD_SUPPLY" ? "继续补证后再寻源" : "暂不继续"}。`,
       items: [
-        moduleItem(`目标用户：${analysis.positioning.targetCustomer}`, analysis.productDecision.sourceIds, "directional"),
-        ...analysis.positioning.differentiation.map((item) => moduleItem(`产品要求：${item}`, analysis.productDecision.sourceIds, "hypothesis")),
-        moduleItem(`寻源起点：${analysis.competitorInsight.skuSummary}`, claimSourceIds("supplier"), "directional"),
+        moduleItem(`目标用户：${reportTextZh(analysis.positioning.targetCustomer)}`, analysis.productDecision.sourceIds, "directional"),
+        ...analysis.positioning.differentiation.map((item) => moduleItem(`产品要求：${reportTextZh(item)}`, analysis.productDecision.sourceIds, "hypothesis")),
+        moduleItem(`寻源起点：${reportTextZh(analysis.competitorInsight.skuSummary)}`, claimSourceIds("supplier"), "directional"),
       ],
-      unknowns: unknowns.filter((item) => /supplier|sku|model|material|moq|quote|供应|型号|材料|报价/i.test(item)), updatedAt: at,
+      unknowns: unknowns.filter((item) => /supplier|sku|model|material|moq|quote|供应|型号|材料|报价/i.test(item)).map(reportTextZh), updatedAt: at,
     },
     {
       code: "marketing", title: "营销打法", question: "核心价值主张、广告钩子、内容素材、可说与不可说。",
-      conclusion: translation?.valueProposition ?? analysis.positioning.coreSellingPoint,
+      conclusion: reportTextZh(translation?.valueProposition ?? analysis.positioning.coreSellingPoint),
       items: [
         ...(translation?.messagePillars ?? []).map((item) => moduleItem(`可测试表达：${item.marketingCopy}`, item.supportingClaimIds, item.evidenceStatus === "supported" ? "fact" : item.evidenceStatus === "hypothesis" ? "hypothesis" : "directional")),
         ...(translation?.prohibitedClaims ?? []).map((item) => moduleItem(`不可说：${item.claim}。${item.reason}`, [], "unknown")),
       ],
-      unknowns: translation?.usageBoundaries ?? [analysis.actionBoundary.reason], updatedAt: at,
+      unknowns: (translation?.usageBoundaries ?? [analysis.actionBoundary.reason]).map(reportTextZh), updatedAt: at,
     },
     {
       code: "validation", title: "验证方案", question: "买什么样品、测试什么、成本红线、通过和停止条件。",
-      conclusion: analysis.actionBoundary.reason,
+      conclusion: reportTextZh(analysis.actionBoundary.reason),
       items: [
-        ...analysis.productDecision.rationale.map((item) => moduleItem(item, analysis.productDecision.sourceIds, "directional")),
+        ...analysis.productDecision.rationale.map((item) => moduleItem(reportTextZh(item), analysis.productDecision.sourceIds, "directional")),
         ...(translation?.validationExperiments ?? []).map((item) => moduleItem(`${item.name}：通过 ${item.passThreshold}；停止 ${item.stopCondition}`, [], "hypothesis")),
       ],
-      unknowns, updatedAt: at,
+      unknowns: unknowns.map(reportTextZh), updatedAt: at,
     },
   ];
 };
@@ -251,7 +252,7 @@ export const syncWhiteboardFromResearch = async (
     };
   }
   const reportModules = buildWhiteboardReportModules(analysis, claims, now);
-  stages.synthesis = { ...stages.synthesis, status: "complete", sourceCount: evidencePackage.sources.length, recordCount: claims.length, summary: "已把市场、用户、竞品、供应与合规证据整理为六大卖家问题。", updatedAt: at };
+  stages.synthesis = { ...stages.synthesis, status: "complete", sourceCount: evidencePackage.sources.length, recordCount: claims.length, summary: "已把市场、用户、竞品、供应与合规证据整理为六大选品结论。", updatedAt: at };
   for (const reportModule of reportModules) {
     const code = `${reportModule.code}_report` as ResearchWhiteboardStageCode;
     stages[code] = { ...stages[code], status: "complete", sourceCount: new Set(reportModule.items.flatMap((item) => item.sourceIds)).size, recordCount: reportModule.items.length, summary: reportModule.conclusion, updatedAt: at };
