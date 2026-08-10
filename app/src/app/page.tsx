@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Gem, Home, Search } from "lucide-react";
 import { ContactAuthor } from "./contact-author";
+import { WorkbenchLink } from "./workbench-link";
 
 export const metadata: Metadata = {
   title: "选品猫｜把市场事实变成经营决策",
@@ -61,14 +62,14 @@ export default function HomePage() {
         <span className="landing-rail-label">应用</span>
         <nav aria-label="首页导航">
           <Link className="active" href="/"><Home size={16} />首页</Link>
-          <Link href="/discover"><Search size={16} />选品工作台</Link>
+          <WorkbenchLink><Search size={16} />选品工作台</WorkbenchLink>
         </nav>
       </aside>
 
       <main className="landing-main">
         <header className="landing-utilities">
           <ContactAuthor />
-          <Link className="primary" href="/discover">进入工作台 <ArrowRight size={15} /></Link>
+          <WorkbenchLink className="primary">进入工作台 <ArrowRight size={15} /></WorkbenchLink>
         </header>
 
         <section className="landing-hero">
