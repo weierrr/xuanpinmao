@@ -93,12 +93,6 @@ export function ProductResearchAnimation() {
   const [isPlaying, setIsPlaying] = useState(true);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setIsPlaying(false);
-    }
-  }, []);
-
-  useEffect(() => {
     if (!isPlaying) return;
     const timer = window.setInterval(() => {
       setActiveStage((current) => (current + 1) % stages.length);
