@@ -10,6 +10,8 @@ describe("product-led public pages", () => {
 
     expect(html).toContain("数据都有出处");
     expect(html).toContain("选品心里有数");
+    expect(html).toContain("完整过程都在一张白板上实时展开");
+    expect(html).not.toContain("不是研究结束后才生成文档");
     expect(html).toContain("最让人有安全感的选品调研工具");
     expect(html).toContain("第一性原理");
     expect(html).toContain("第三方 MCP");
