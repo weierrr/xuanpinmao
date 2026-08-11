@@ -11075,12 +11075,12 @@ section > h2,
 .home-story-pill {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 8px 12px;
+  gap: 8px;
+  padding: 10px 15px;
   border: 1px solid var(--product-ink);
   border-radius: 999px;
   background: #fff;
-  font: 800 9px/1 var(--font-geist-mono);
+  font: 800 12px/1 var(--font-geist-mono);
   box-shadow: 2px 2px 0 var(--product-orange);
 }
 

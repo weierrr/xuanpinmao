@@ -126,7 +126,7 @@ export default function HomePage() {
 
       <main className="home-product-page">
         <section className="home-story-hero">
-          <span className="home-story-pill"><Sparkles size={13} />基于第一性原理的选品研究 Agent</span>
+          <span className="home-story-pill"><Sparkles size={15} />基于第一性原理的选品研究 Agent</span>
           <h1>把选品调研的全过程，<br />摊开给你看。</h1>
           <p>使用你自己的模型联网寻找市场、用户、竞品、供应与合规证据。从搜过什么，到为什么得出结论，再到下一步怎么验证，全部留在一张可追溯白板上。</p>
           <div className="home-product-actions">
