@@ -35,18 +35,35 @@ const exists = async (filePath: string): Promise<boolean> => {
   }
 };
 
+export type CurrentResearchRunCandidate = {
+  researchRunId: string;
+  packagePath: string;
+  createdAt: string;
+};
+
+export const resolveCurrentResearchRunCandidate = (
+  candidates: CurrentResearchRunCandidate[],
+): CurrentResearchRunCandidate | undefined =>
+  [...new Map(candidates.map((candidate) => [candidate.researchRunId, candidate])).values()]
+    .sort((a, b) => b.createdAt.localeCompare(a.createdAt) || b.researchRunId.localeCompare(a.researchRunId))[0];
+
 export const selectCurrentResearchRun = async (): Promise<{ researchRunId: string; packagePath: string }> => {
+  const candidates: CurrentResearchRunCandidate[] = [];
   if (await exists(currentRunFile)) {
     const current = JSON.parse(await readFile(currentRunFile, "utf8")) as { researchRunId?: string; packagePath?: string };
     if (current.researchRunId) {
       const packagePath = current.packagePath ?? researchPackagePath(current.researchRunId);
-      if (await exists(path.join(packagePath, "manifest.json"))) return { researchRunId: current.researchRunId, packagePath };
+      try {
+        const manifest = JSON.parse(await readFile(path.join(packagePath, "manifest.json"), "utf8")) as { createdAt?: string };
+        candidates.push({ researchRunId: current.researchRunId, packagePath, createdAt: manifest.createdAt ?? "" });
+      } catch {
+        // Ignore a stale pointer and recover from the available evidence packages below.
+      }
     }
   }
 
   const researchRoot = path.join(process.cwd(), "output", "research");
   const entries = await readdir(researchRoot, { withFileTypes: true });
-  const candidates: Array<{ researchRunId: string; packagePath: string; createdAt: string }> = [];
   for (const entry of entries) {
     if (!entry.isDirectory()) continue;
     const packagePath = path.join(researchRoot, entry.name);
@@ -60,7 +77,7 @@ export const selectCurrentResearchRun = async (): Promise<{ researchRunId: strin
       // Ignore incomplete directories when resolving the current completed run.
     }
   }
-  const selected = candidates.sort((a, b) => b.createdAt.localeCompare(a.createdAt))[0];
+  const selected = resolveCurrentResearchRunCandidate(candidates);
   if (!selected) throw new Error("No current Research Run could be resolved");
   await mkdir(path.dirname(currentRunFile), { recursive: true });
   await writeFile(currentRunFile, json({ researchRunId: selected.researchRunId, packagePath: selected.packagePath }), "utf8");

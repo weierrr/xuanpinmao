@@ -7,6 +7,8 @@ import { createEvidencePackage, evidencePackagePaths, readEvidencePackage, valid
 import { importResearchPackage } from "./import-service";
 import { createResearchPlan } from "./research-planner";
 import { initializeResearchPackage } from "./research-runner";
+import { liveResearchInputFromDiscovery } from "./confirmed-discovery";
+import { createOpportunityDiscoveryPlan } from "../opportunity-discovery/service";
 import { contentHash, dedupeResearchSources, normalizeResearchSource, normalizeUrl } from "./source-normalizer";
 import type { ResearchInput, ResearchSource, UnresolvedResearchItem } from "./types";
 
@@ -114,6 +116,25 @@ const createPackage = async (
 };
 
 describe("Research planner", () => {
+  it("starts a confirmed keyword-only discovery without inventing a competitor URL", () => {
+    const discovery = createOpportunityDiscoveryPlan({
+      categoryKeyword: "冰箱滤芯 LT700P 型号",
+      targetMarket: "US",
+      competitorUrls: [],
+      imageUrls: [],
+      referenceUrls: [],
+    });
+
+    const input = liveResearchInputFromDiscovery(discovery, {
+      description: undefined,
+      currency: undefined,
+    });
+
+    expect(input.productName).toBe("冰箱滤芯 LT700P 型号");
+    expect(input.competitors).toEqual([]);
+    expect(input.mode).toBe("live");
+  });
+
   it("creates grouped market-aware queries", () => {
     const plan = createResearchPlan(
       {
@@ -497,4 +518,3 @@ describe("Research source import", () => {
     cleanDb(databaseName);
   });
 });
-

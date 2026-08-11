@@ -17,6 +17,11 @@ const liveRunId = "research-run-3d-yoga-pants-dccf676c3167-us";
 const composedRunId = "research-run-3d-yoga-pants-28f8bff32ab5-us";
 
 describe("run report storyline", () => {
+  it("keeps a partial historical analysis renderable when an optional copy field is missing", () => {
+    expect(reportTextZh(undefined)).toBe("待研究确认");
+    expect(reportTextZh(null)).toBe("待研究确认");
+  });
+
   it("exposes exactly the eight mainline chapters in decision order", () => {
     const chapters = reportChapters();
     expect(chapters.map((chapter) => chapter.id)).toEqual([...reportChapterIds]);

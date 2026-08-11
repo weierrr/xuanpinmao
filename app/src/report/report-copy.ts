@@ -190,7 +190,8 @@ const zhByOriginal: Record<string, string> = {
   "Judge.me and Fabletics review surfaces were inaccessible in the available extraction path.": "本轮可用的采集方式无法访问 Judge.me 和 Fabletics 的评论页面。"
 };
 
-export const reportTextZh = (value: string): string => {
+export const reportTextZh = (value: string | null | undefined): string => {
+  if (!value) return "待研究确认";
   const exact = zhByOriginal[value];
   if (exact) return exact;
   return Object.entries(zhByOriginal).reduce(

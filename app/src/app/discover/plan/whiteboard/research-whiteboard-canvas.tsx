@@ -7,8 +7,8 @@ import {
   Minus,
   Plus,
   Radio,
-  Search,
   ShieldCheck,
+  X,
 } from "lucide-react";
 import type {
   ResearchWhiteboard,
@@ -28,6 +28,11 @@ type ResearchWhiteboardCanvasProps = Readonly<{
 
 const canvasWidth = 1660;
 const canvasHeight = 990;
+const minimumZoom = 0.35;
+const maximumZoom = 2.5;
+
+const clampZoom = (value: number): number =>
+  Math.min(maximumZoom, Math.max(minimumZoom, Number(value.toFixed(3))));
 
 const stageLabels: Record<ResearchWhiteboardStageCode, string> = {
   scope: "研究对象确认",
@@ -95,12 +100,38 @@ export function ResearchWhiteboardCanvas({
 }: ResearchWhiteboardCanvasProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
+  const zoomRef = useRef(0.72);
   const [mode, setMode] = useState<WhiteboardMode>("all");
   const [zoom, setZoom] = useState(0.72);
+  const [openSourceStage, setOpenSourceStage] = useState<ResearchWhiteboardStageCode | null>(null);
+
+  const setCanvasZoom = useCallback((value: number, clientX?: number, clientY?: number) => {
+    const viewport = viewportRef.current;
+    const currentZoom = zoomRef.current;
+    const nextZoom = clampZoom(value);
+    if (!viewport || nextZoom === currentZoom) return;
+
+    const rect = viewport.getBoundingClientRect();
+    const anchorX = clientX === undefined ? viewport.clientWidth / 2 : clientX - rect.left;
+    const anchorY = clientY === undefined ? viewport.clientHeight / 2 : clientY - rect.top;
+    const canvasX = (viewport.scrollLeft + anchorX) / currentZoom;
+    const canvasY = (viewport.scrollTop + anchorY) / currentZoom;
+
+    zoomRef.current = nextZoom;
+    setZoom(nextZoom);
+    window.requestAnimationFrame(() => {
+      viewport.scrollTo({
+        left: Math.max(0, canvasX * nextZoom - anchorX),
+        top: Math.max(0, canvasY * nextZoom - anchorY),
+      });
+    });
+  }, []);
 
   const fitCanvas = useCallback(() => {
     const width = viewportRef.current?.clientWidth ?? canvasWidth;
-    setZoom(Math.min(1, Math.max(0.5, (width - 34) / canvasWidth)));
+    const nextZoom = Math.min(1, Math.max(0.5, (width - 34) / canvasWidth));
+    zoomRef.current = nextZoom;
+    setZoom(nextZoom);
     viewportRef.current?.scrollTo({ left: 0, top: 0, behavior: "smooth" });
   }, []);
 
@@ -110,8 +141,30 @@ export function ResearchWhiteboardCanvas({
     return () => window.removeEventListener("resize", fitCanvas);
   }, [fitCanvas]);
 
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+    const handlePinch = (event: WheelEvent) => {
+      if (!event.ctrlKey) return;
+      event.preventDefault();
+      const scaleFactor = Math.exp(-event.deltaY * 0.008);
+      setCanvasZoom(zoomRef.current * scaleFactor, event.clientX, event.clientY);
+    };
+    viewport.addEventListener("wheel", handlePinch, { passive: false });
+    return () => viewport.removeEventListener("wheel", handlePinch);
+  }, [setCanvasZoom]);
+
+  useEffect(() => {
+    if (!openSourceStage) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpenSourceStage(null);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [openSourceStage]);
+
   const changeZoom = (delta: number) => {
-    setZoom((current) => Math.min(1.15, Math.max(0.45, Number((current + delta).toFixed(2)))));
+    setCanvasZoom(zoomRef.current + delta);
   };
 
   const toggleFullscreen = async () => {
@@ -149,6 +202,7 @@ export function ResearchWhiteboardCanvas({
       conclusion: reportTextZh(reportModule?.conclusion ?? whiteboard.stages[`${code}_report` as ResearchWhiteboardStageCode].summary),
     };
   });
+  const drawerStage = openSourceStage ? whiteboard.stages[openSourceStage] : null;
 
   return (
     <section className="whiteboard-canvas-frame" ref={frameRef}>
@@ -233,24 +287,15 @@ export function ResearchWhiteboardCanvas({
                   <div className="whiteboard-node-chips">
                     <span>有效记录 {stage.recordCount}</span>
                     {stage.sources.length > 0 ? (
-                      <details className="whiteboard-source-list">
-                        <summary>全部 {stage.sources.length} 个信源</summary>
-                        <div className="whiteboard-source-menu">
-                          {stage.sources.map((source) => (
-                            <a href={source.url} key={source.id} target="_blank" rel="noreferrer">
-                              <span><Search size={10} /><b>{source.label}</b></span>
-                              <small className={`status-${source.status}`}>
-                                {source.status === "verified"
-                                  ? "已核验"
-                                  : source.status === "blocked"
-                                    ? "访问受阻"
-                                    : "候选"}
-                              </small>
-                              <ExternalLink size={10} />
-                            </a>
-                          ))}
-                        </div>
-                      </details>
+                      <button
+                        type="button"
+                        className="whiteboard-source-trigger"
+                        aria-expanded={openSourceStage === code}
+                        aria-controls="whiteboard-source-drawer"
+                        onClick={() => setOpenSourceStage(code)}
+                      >
+                        全部 {stage.sources.length} 个信源
+                      </button>
                     ) : (
                       <span>暂无信源</span>
                     )}
@@ -307,6 +352,49 @@ export function ResearchWhiteboardCanvas({
           </section>
         </div>
       </div>
+
+      {drawerStage && openSourceStage ? (
+        <>
+          <button
+            type="button"
+            className="whiteboard-source-drawer-backdrop"
+            aria-label="关闭信源抽屉"
+            onClick={() => setOpenSourceStage(null)}
+          />
+          <aside
+            id="whiteboard-source-drawer"
+            className="whiteboard-source-drawer"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="whiteboard-source-drawer-title"
+          >
+            <header>
+              <div>
+                <span>全部信源</span>
+                <h2 id="whiteboard-source-drawer-title">{stageLabels[openSourceStage]}</h2>
+                <p>{drawerStage.queryCount} 次检索 · {drawerStage.sources.length} 个保留信源 · {drawerStage.recordCount} 条有效判断</p>
+              </div>
+              <button type="button" aria-label="关闭信源抽屉" onClick={() => setOpenSourceStage(null)}><X size={18} /></button>
+            </header>
+            <div className="whiteboard-source-drawer-list">
+              {drawerStage.sources.map((source, index) => (
+                <a href={source.url} key={source.id} target="_blank" rel="noreferrer">
+                  <b>{String(index + 1).padStart(2, "0")}</b>
+                  <span><strong>{source.label}</strong><small>{source.url}</small></span>
+                  <em className={`status-${source.status}`}>
+                    {source.status === "verified"
+                      ? "已核验"
+                      : source.status === "blocked"
+                        ? "访问受阻"
+                        : "候选"}
+                  </em>
+                  <ExternalLink size={13} />
+                </a>
+              ))}
+            </div>
+          </aside>
+        </>
+      ) : null}
     </section>
   );
 }
