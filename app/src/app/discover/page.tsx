@@ -4,7 +4,7 @@ import { WorkbenchShell } from "../workbench-shell";
 
 export const metadata: Metadata = {
   title: "快速发现｜选品猫",
-  description: "组合关键词、图片与商品链接，开始证据化选品。",
+  description: "同时提交关键词、图片和商品链接，确认研究对象后回到 Codex 继续调研。",
 };
 
 const resultLayers = [
@@ -30,14 +30,18 @@ export default async function DiscoveryEntryPage({
   const error = firstParam(query.error);
 
   return (
-    <WorkbenchShell active="discover">
+    <WorkbenchShell active="discover" hideTitle>
       <section className="workspace-discover-hero">
         <div>
-          <span>发现 → 对标 → 验证 → 决策</span>
-          <h2>把手上的线索放在一起，开始证据化选品</h2>
-          <p>关键词负责说明你想找什么，图片补充外观与结构，商品链接提供竞品和标杆。三类线索可以同时提交，系统会先确认研究对象，再开始深度调研。</p>
+          <span>开始前先看这三步</span>
+          <h2>三步开始一轮选品调研</h2>
+          <p>关键词、图片和商品链接可以一起填，也可以只填一项。</p>
         </div>
-        <div className="workspace-discover-mark"><Search size={72} strokeWidth={1.8} /></div>
+        <ol className="workspace-discover-steps">
+          <li><b>01</b><span><strong>填写线索</strong><small>填关键词、商品图片或商品链接。</small></span></li>
+          <li><b>02</b><span><strong>确认研究对象</strong><small>检查产品、市场和销售渠道是否正确。</small></span></li>
+          <li><b>03</b><span><strong>回到 Codex 继续</strong><small>让选品猫开始收集证据并更新白板。</small></span></li>
+        </ol>
       </section>
 
       <form id="discovery-inputs" action="/discover/plan" method="get" className="workspace-discover-form">

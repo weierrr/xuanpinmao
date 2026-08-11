@@ -9587,7 +9587,7 @@ section > h2,
 
 .workspace-discover-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(270px, 0.65fr);
+  grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
   gap: 24px;
   padding: 28px;
   border: 1px solid var(--workspace-ink);
@@ -9618,6 +9618,34 @@ section > h2,
   font-size: 15px;
   line-height: 1.7;
 }
+
+.workspace-discover-steps {
+  display: grid;
+  align-content: stretch;
+  gap: 1px;
+  margin: 0;
+  padding: 1px;
+  border-radius: 12px;
+  background: var(--workspace-ink);
+  list-style: none;
+  box-shadow: 5px 5px 0 var(--workspace-ink);
+}
+
+.workspace-discover-steps li {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  background: #fff;
+}
+
+.workspace-discover-steps li:first-child { border-radius: 11px 11px 0 0; }
+.workspace-discover-steps li:last-child { border-radius: 0 0 11px 11px; }
+.workspace-discover-steps b { color: var(--workspace-orange); font: 900 11px/1 var(--font-geist-mono); }
+.workspace-discover-steps span { display: grid; gap: 4px; }
+.workspace-discover-steps strong { font-size: 15px; line-height: 1.15; }
+.workspace-discover-steps small { color: #666; font-size: 11px; line-height: 1.4; }
 
 .workspace-discover-mark {
   min-height: 172px;
@@ -10721,6 +10749,7 @@ section > h2,
   .workspace-title-row h1 { font-size: 44px; }
   .workspace-title-row > svg { display: none; }
   .workspace-discover-hero { grid-template-columns: minmax(0, 1fr); padding: 22px; }
+  .workspace-discover-steps { margin-top: 4px; }
   .workspace-discover-mark { min-height: 130px; }
   .workspace-discover-form { grid-template-columns: minmax(0, 1fr); }
   .workspace-signal-grid { grid-template-columns: minmax(0, 1fr); }
