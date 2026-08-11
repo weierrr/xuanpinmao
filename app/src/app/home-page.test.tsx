@@ -36,5 +36,9 @@ describe("product-led public pages", () => {
     expect(html).toContain("关键词");
     expect(html).toContain("商品图片");
     expect(html).toContain("竞品链接");
+    expect(html).toContain("演示在 Codex 对话中唤醒选品猫");
+    expect(html).toContain("演示同时填写关键词、商品图片和竞品链接");
+    expect(html).toContain("演示确认研究对象后开始调研");
+    expect(html).toContain("演示调研过程在实时白板中持续更新");
   });
 });
