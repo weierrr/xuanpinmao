@@ -16,6 +16,8 @@ describe("product-led public pages", () => {
     expect(html).toContain("暂停流程动画");
     expect(html).not.toContain("RESEARCH AGENT / 调研过程");
     expect(html).toContain("常见问题");
+    expect(html).toContain("能力档位和费用都由你控制");
+    expect(html).toContain("继续追问、补充证据和更新结论");
     expect(html).toContain("home-source-logo");
     expect(html).toContain("site-top-brand-logo");
     expect(html).toContain('href="/guide"');

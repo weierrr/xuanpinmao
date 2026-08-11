@@ -157,7 +157,7 @@ export default function HomePage() {
           <header><span className="home-product-kicker">常见问题</span><h2>开始之前，你可能还想知道</h2></header>
           <div>
             <details><summary>选品猫会直接告诉我应该卖什么吗？</summary><p>它会给出是否值得继续、机会在哪里、竞争强度如何，以及下一步验证建议；不会把证据不足的方向包装成确定会成功的商品。</p></details>
-            <details><summary>为什么要使用我自己的模型？</summary><p>这样研究消耗的是你自己的模型额度，数据和报告留在自己的环境中，也便于根据团队需要更换或升级模型。</p></details>
+            <details><summary>为什么要使用我自己的模型？</summary><p>如果模型由平台替你决定，你很难知道它优先考虑的是研究效果还是成本。使用自己的模型，能力档位和费用都由你控制，愿意投入更多，也可以直接选择更强的模型。对话记录、研究过程和报告会留在自己的电脑里，后续可以沿着原来的任务继续追问、补充证据和更新结论。</p></details>
             <details><summary>联网搜索到的内容都算有效证据吗？</summary><p>不是。搜索结果只是发现入口，保留的证据必须打开并核验来源。无法访问、只看到摘要或属于竞品自述的内容会单独标记边界。</p></details>
             <details><summary>以后接入 SEMrush 或 FastMoss，需要重做报告吗？</summary><p>不需要推翻原报告。新接口数据会作为新的证据批次加入，再重新计算受影响的市场、竞品或营销结论并生成新版本。</p></details>
           </div>
