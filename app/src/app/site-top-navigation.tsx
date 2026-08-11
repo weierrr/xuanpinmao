@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookOpen, Gem, Home, Search } from "lucide-react";
+import { BookOpen, Bot, Home, Search } from "lucide-react";
 import { WorkbenchLink } from "./workbench-link";
 
 type SiteTopNavigationProps = Readonly<{
@@ -12,7 +12,7 @@ export function SiteTopNavigation({ active, actions }: SiteTopNavigationProps) {
     <header className="site-top-navigation">
       <div className="site-top-navigation-inner">
         <Link className="site-top-brand" href="/" aria-label="选品猫首页">
-          <Gem size={20} strokeWidth={2.4} />
+          <Bot size={22} strokeWidth={2.4} />
           <strong>选品猫</strong>
         </Link>
 
