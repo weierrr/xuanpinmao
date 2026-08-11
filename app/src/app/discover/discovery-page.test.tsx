@@ -15,5 +15,13 @@ describe("discovery entry instructions", () => {
     expect(html).toContain("确认研究对象");
     expect(html).toContain("回到 Codex 继续");
     expect(html).toContain('id="discovery-inputs"');
+    expect(html).toContain("一组线索，六份调研结果");
+    expect(html).toContain("市场与机会");
+    expect(html).toContain("用户画像");
+    expect(html).toContain("竞品分析");
+    expect(html).toContain("产品方案");
+    expect(html).toContain("营销打法");
+    expect(html).toContain("验证方案");
+    expect(html).not.toContain("四层结果");
   });
 });

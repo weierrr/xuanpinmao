@@ -8,10 +8,12 @@ export const metadata: Metadata = {
 };
 
 const resultLayers = [
-  ["01 / 发现", "识别与扩展", "从关键词、图片和页面共同识别商品方向、同款、相似款与替代方案。"],
-  ["02 / 矩阵", "标杆商品矩阵", "按市场、渠道、价格、定位和证据边界组织，而不是堆搜索结果。"],
-  ["03 / 验证", "建议与验证动作", "每条建议显示证据类型、可信程度、来源，以及下一步最小测试。"],
-  ["04 / 决策", "决策边界", "区分方向性机会、打样、正式供货、上架与广告权限。"],
+  ["01", "市场与机会", "有没有市场、需求趋势、价格空间与竞争强度。"],
+  ["02", "用户画像", "谁在买、什么场景触发、最焦虑什么、为什么下单。"],
+  ["03", "竞品分析", "谁在卖、靠什么吸引点击、建立信任并促成成交。"],
+  ["04", "产品方案", "应该做成什么样、必要产品要求、寻源关键词和避坑边界。"],
+  ["05", "营销打法", "核心价值主张、广告钩子、内容素材，以及可说与不可说。"],
+  ["06", "验证方案", "买什么样品、测试什么、成本红线、通过和停止条件。"],
 ] as const;
 
 const firstParam = (value: string | string[] | undefined): string =>
@@ -97,8 +99,8 @@ export default async function DiscoveryEntryPage({
 
       <section className="workspace-result-section">
         <div className="workspace-section-head">
-          <h2>一组线索，四层结果</h2>
-          <span>市场 · 平台 · 社媒 · 供应候选</span>
+          <h2>一组线索，六份调研结果</h2>
+          <span>从市场判断到验证方案</span>
         </div>
         <div className="workspace-result-grid">
           {resultLayers.map(([index, title, description]) => (
