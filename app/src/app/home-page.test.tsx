@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import HomePage from "./page";
@@ -40,5 +41,15 @@ describe("product-led public pages", () => {
     expect(html).toContain("演示同时填写关键词、商品图片和竞品链接");
     expect(html).toContain("演示确认研究对象后开始调研");
     expect(html).toContain("演示调研过程在实时白板中持续更新");
+  });
+
+  it("keeps interface text at or above the 16px readability floor", () => {
+    const css = readFileSync("src/app/globals.css", "utf8");
+    const fontDeclarations = css.match(/(?:font-size|font)\s*:[^;{}]+/g) ?? [];
+    const undersized = fontDeclarations.filter((declaration) =>
+      [...declaration.matchAll(/([0-9]*\.?[0-9]+)px/g)].some((match) => Number(match[1]) < 16),
+    );
+
+    expect(undersized).toEqual([]);
   });
 });
