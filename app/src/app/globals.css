@@ -11258,7 +11258,7 @@ section > h2,
   background-color: #e9e9e2;
   background-image: radial-gradient(rgba(11, 13, 11, .16) .8px, transparent .8px);
   background-size: 16px 16px;
-  box-shadow: 8px 8px 0 var(--demo-ink);
+  box-shadow: 8px 8px 0 var(--demo-orange);
 }
 
 .research-demo-window-bar {
@@ -11524,7 +11524,7 @@ section > h2,
 }
 
 @media (max-width: 720px) {
-  .research-demo-window { box-shadow: 5px 5px 0 var(--demo-ink); }
+  .research-demo-window { box-shadow: 5px 5px 0 var(--demo-orange); }
   .research-demo-window-bar { grid-template-columns: auto minmax(0, 1fr); gap: 10px; padding: 9px 11px; }
   .research-demo-window-bar > span:nth-child(2),
   .research-demo-bar-actions > b { display: none; }
