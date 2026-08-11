@@ -10993,10 +10993,10 @@ section > h2,
 .home-product-cta .home-product-button { color: var(--product-ink); }
 
 .guide-hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(330px, .75fr); gap: 20px; }
-.guide-hero > div { min-height: 450px; display: flex; flex-direction: column; justify-content: center; padding: 48px; border: 1px solid var(--product-ink); background: var(--product-lime); box-shadow: 8px 8px 0 var(--product-ink); }
+.guide-hero > div { min-height: 350px; display: flex; flex-direction: column; justify-content: center; padding: 34px 40px; border: 1px solid var(--product-ink); background: var(--product-lime); box-shadow: 8px 8px 0 var(--product-ink); }
 .guide-hero > div > span,
 .guide-steps > header > span { color: var(--product-orange); font: 850 10px/1 var(--font-geist-mono); letter-spacing: .07em; }
-.guide-hero h1 { margin: 18px 0 22px; font-size: clamp(58px, 7vw, 94px); line-height: .93; letter-spacing: -.07em; }
+.guide-hero h1 { margin: 14px 0 16px; font-size: clamp(58px, 7vw, 86px); line-height: .93; letter-spacing: -.07em; }
 .guide-hero > div > p { max-width: 680px; margin: 0; color: #373923; font-size: 15px; line-height: 1.75; }
 .guide-hero aside { display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; border: 1px solid var(--product-ink); background: #111827; color: #fff; box-shadow: 8px 8px 0 var(--product-orange); }
 .guide-hero aside svg { margin-bottom: auto; color: var(--product-lime); }
@@ -11034,7 +11034,7 @@ section > h2,
   .home-source-system { grid-template-columns: minmax(0,1fr); }
   .home-report-preview > header { grid-template-columns: minmax(0,1fr); gap: 20px; }
   .home-report-board { overflow-x: auto; }
-  .guide-hero aside { min-height: 300px; }
+  .guide-hero aside { min-height: 240px; }
 }
 
 @media (max-width: 720px) {
@@ -11074,7 +11074,7 @@ section > h2,
   .home-report-board-foot { align-items: flex-start; flex-direction: column; }
   .home-product-cta { grid-template-columns: minmax(0,1fr); align-items: start; padding: 26px 22px; box-shadow: 5px 5px 0 var(--product-ink); }
   .home-product-cta .home-product-button { width: 100%; }
-  .guide-hero aside { min-height: 250px; padding: 24px; }
+  .guide-hero aside { min-height: 210px; padding: 24px; }
   .guide-input-strip { grid-template-columns: minmax(0,1fr); gap: 8px; padding: 14px; }
   .guide-input-strip > i { text-align: center; line-height: .7; }
   .guide-steps li { grid-template-columns: minmax(0,1fr); gap: 20px; padding: 24px 20px; }
