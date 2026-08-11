@@ -1,0 +1,1134 @@
+{
+  "schemaVersion": "1.0",
+  "discoveryId": "discovery-3d-yoga-pants-999d4e8e5cc2-us",
+  "researchRunId": "research-run-3d-yoga-pants-dccf676c3167-us",
+  "product": "3D 瑜伽裤示例报告",
+  "market": "US",
+  "channel": "独立站 / TikTok Shop（示例）",
+  "status": "completed",
+  "createdAt": "2026-08-11T04:26:46.067Z",
+  "updatedAt": "2026-08-11T04:26:46.067Z",
+  "stages": {
+    "scope": {
+      "code": "scope",
+      "status": "complete",
+      "queryCount": 0,
+      "sourceCount": 0,
+      "recordCount": 0,
+      "summary": "研究对象、市场与输入线索已经确认。",
+      "sources": [],
+      "updatedAt": "2026-08-11T04:26:46.067Z"
+    },
+    "market": {
+      "code": "market",
+      "status": "complete",
+      "queryCount": 10,
+      "sourceCount": 22,
+      "recordCount": 8,
+      "summary": "本轮保留 22 个来源，并形成 8 条可追溯判断。",
+      "sources": [
+        {
+          "id": "SRC-005",
+          "label": "Shopify Trending Products - Activewear",
+          "url": "https://www.shopify.com/blog/trending-products",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-006",
+          "label": "ASINsight Amazon US Scrunch Butt Leggings Report",
+          "url": "https://www.asinsight.com/report/US/scrunch-butt-leggings",
+          "kind": "market",
+          "status": "candidate"
+        },
+        {
+          "id": "SRC-007",
+          "label": "TikTok Shop Search - Butt Lifting Leggings",
+          "url": "https://shop.tiktok.com/us/k/tiktok-butt-lifting-leggings",
+          "kind": "market",
+          "status": "candidate"
+        },
+        {
+          "id": "SRC-008",
+          "label": "Reddit - Are Butt Scrunch Leggings Cute?",
+          "url": "https://www.reddit.com/r/TheGirlSurvivalGuide/comments/193u6sk/alright_be_honest_are_the_leggings_with_the_butt/",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-009",
+          "label": "Reddit Activewear - Scrunch or No Scrunch",
+          "url": "https://www.reddit.com/r/Activewear/comments/17zdvap/ladies_butt_scrunch_or_no_butt_scrunch/",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-012",
+          "label": "Google Trends Explore Attempt",
+          "url": "https://trends.google.com/trends/explore?date=today%205-y&geo=US&q=butt%20lifting%20leggings%2Cscrunch%20leggings",
+          "kind": "market",
+          "status": "blocked"
+        },
+        {
+          "id": "SRC-VOC-014",
+          "label": "Reddit OnerActive: Scrunch butt leggings yes or no",
+          "url": "https://www.reddit.com/r/OnerActive/comments/1res5l8/scrunch_butt_leggings_yes_or_no/",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-015",
+          "label": "Reddit Activewear: AYBL complaints and alternatives",
+          "url": "https://www.reddit.com/r/Activewear/comments/1i9a11t/hate_aybl_leggings_better_brand_recs/",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-016",
+          "label": "Reddit OnerActive: recurring quality issues",
+          "url": "https://www.reddit.com/r/OnerActive/comments/1qzmga2/consistent_quality_issues_just_me/",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-017",
+          "label": "Reddit OnerActive: quality counterevidence discussion",
+          "url": "https://www.reddit.com/r/OnerActive/comments/1ty0ti8/its_not_as_bad_as_it_seems/",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-018",
+          "label": "Reddit OnerActive: see-through leggings experiences",
+          "url": "https://www.reddit.com/r/OnerActive/comments/1qznl0b/do_not_buy_so_very_see_through/",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-019",
+          "label": "DFYNE Impact Leggings customer reviews",
+          "url": "https://dfyne.com/products/dfyne-impact-graphite-leggings-250205",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-020",
+          "label": "Trustpilot Oner Active customer reviews",
+          "url": "https://uk.trustpilot.com/review/oneractive.com",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-021",
+          "label": "Trustpilot DFYNE customer reviews",
+          "url": "https://www.trustpilot.com/review/dfyne.com",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-022",
+          "label": "Amazon scrunch leggings comment-level access attempt",
+          "url": "https://www.amazon.com/s?k=scrunch+butt+leggings",
+          "kind": "market",
+          "status": "blocked"
+        },
+        {
+          "id": "SRC-VOC-023",
+          "label": "SUUKSESS public customer reviews",
+          "url": "https://suuksess.com/products/all-seamless-scrunch-leggings",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-024",
+          "label": "Amazon customer reviews for ASIN B0DPKK4LF1",
+          "url": "https://www.amazon.com/dp/B0DPKK4LF1",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-025",
+          "label": "Amazon customer reviews for ASIN B0DBCT57TY",
+          "url": "https://www.amazon.com/dp/B0DBCT57TY",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-026",
+          "label": "Amazon customer reviews for ASIN B0B3RCPPQ4",
+          "url": "https://www.amazon.com/dp/B0B3RCPPQ4",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-027",
+          "label": "Amazon customer reviews for ASIN B0F6YJXG1N",
+          "url": "https://www.amazon.com/dp/B0F6YJXG1N",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-028",
+          "label": "Amazon customer reviews for ASIN B0D7SDS364",
+          "url": "https://www.amazon.com/dp/B0D7SDS364",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-029",
+          "label": "Amazon customer reviews for ASIN B0D49BN9GS",
+          "url": "https://www.amazon.com/dp/B0D49BN9GS",
+          "kind": "market",
+          "status": "verified"
+        }
+      ],
+      "updatedAt": "2026-08-11T04:26:46.067Z"
+    },
+    "customer": {
+      "code": "customer",
+      "status": "complete",
+      "queryCount": 10,
+      "sourceCount": 18,
+      "recordCount": 3,
+      "summary": "本轮保留 18 个来源，并形成 3 条可追溯判断。",
+      "sources": [
+        {
+          "id": "SRC-008",
+          "label": "Reddit - Are Butt Scrunch Leggings Cute?",
+          "url": "https://www.reddit.com/r/TheGirlSurvivalGuide/comments/193u6sk/alright_be_honest_are_the_leggings_with_the_butt/",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-009",
+          "label": "Reddit Activewear - Scrunch or No Scrunch",
+          "url": "https://www.reddit.com/r/Activewear/comments/17zdvap/ladies_butt_scrunch_or_no_butt_scrunch/",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-014",
+          "label": "Reddit OnerActive: Scrunch butt leggings yes or no",
+          "url": "https://www.reddit.com/r/OnerActive/comments/1res5l8/scrunch_butt_leggings_yes_or_no/",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-015",
+          "label": "Reddit Activewear: AYBL complaints and alternatives",
+          "url": "https://www.reddit.com/r/Activewear/comments/1i9a11t/hate_aybl_leggings_better_brand_recs/",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-016",
+          "label": "Reddit OnerActive: recurring quality issues",
+          "url": "https://www.reddit.com/r/OnerActive/comments/1qzmga2/consistent_quality_issues_just_me/",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-017",
+          "label": "Reddit OnerActive: quality counterevidence discussion",
+          "url": "https://www.reddit.com/r/OnerActive/comments/1ty0ti8/its_not_as_bad_as_it_seems/",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-018",
+          "label": "Reddit OnerActive: see-through leggings experiences",
+          "url": "https://www.reddit.com/r/OnerActive/comments/1qznl0b/do_not_buy_so_very_see_through/",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-019",
+          "label": "DFYNE Impact Leggings customer reviews",
+          "url": "https://dfyne.com/products/dfyne-impact-graphite-leggings-250205",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-020",
+          "label": "Trustpilot Oner Active customer reviews",
+          "url": "https://uk.trustpilot.com/review/oneractive.com",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-021",
+          "label": "Trustpilot DFYNE customer reviews",
+          "url": "https://www.trustpilot.com/review/dfyne.com",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-022",
+          "label": "Amazon scrunch leggings comment-level access attempt",
+          "url": "https://www.amazon.com/s?k=scrunch+butt+leggings",
+          "kind": "market",
+          "status": "blocked"
+        },
+        {
+          "id": "SRC-VOC-023",
+          "label": "SUUKSESS public customer reviews",
+          "url": "https://suuksess.com/products/all-seamless-scrunch-leggings",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-024",
+          "label": "Amazon customer reviews for ASIN B0DPKK4LF1",
+          "url": "https://www.amazon.com/dp/B0DPKK4LF1",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-025",
+          "label": "Amazon customer reviews for ASIN B0DBCT57TY",
+          "url": "https://www.amazon.com/dp/B0DBCT57TY",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-026",
+          "label": "Amazon customer reviews for ASIN B0B3RCPPQ4",
+          "url": "https://www.amazon.com/dp/B0B3RCPPQ4",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-027",
+          "label": "Amazon customer reviews for ASIN B0F6YJXG1N",
+          "url": "https://www.amazon.com/dp/B0F6YJXG1N",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-028",
+          "label": "Amazon customer reviews for ASIN B0D7SDS364",
+          "url": "https://www.amazon.com/dp/B0D7SDS364",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-029",
+          "label": "Amazon customer reviews for ASIN B0D49BN9GS",
+          "url": "https://www.amazon.com/dp/B0D49BN9GS",
+          "kind": "market",
+          "status": "verified"
+        }
+      ],
+      "updatedAt": "2026-08-11T04:26:46.067Z"
+    },
+    "competitor": {
+      "code": "competitor",
+      "status": "complete",
+      "queryCount": 10,
+      "sourceCount": 4,
+      "recordCount": 9,
+      "summary": "本轮保留 4 个来源，并形成 9 条可追溯判断。",
+      "sources": [
+        {
+          "id": "SRC-001",
+          "label": "Ionix Labs Homepage",
+          "url": "https://getionix.com/",
+          "kind": "competitor",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-002",
+          "label": "Ionix Sculpt 3D Lift & Smooth Leggings",
+          "url": "https://getionix.com/products/3d-sculpting-anti-cellulite-leggings-instant-lift-smooth",
+          "kind": "competitor",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-003",
+          "label": "Ionix Returns & Warranty",
+          "url": "https://getionix.com/pages/returns-warranty",
+          "kind": "competitor",
+          "status": "candidate"
+        },
+        {
+          "id": "SRC-004",
+          "label": "BRXL Scrunch Butt Lifting Leggings",
+          "url": "https://www.brxl.com/collections/new-arrivals/products/scrunch-butt-lifting-tummy-control-high-waist-workout-leggings?variant=51335275315482",
+          "kind": "competitor",
+          "status": "verified"
+        }
+      ],
+      "updatedAt": "2026-08-11T04:26:46.067Z"
+    },
+    "supply": {
+      "code": "supply",
+      "status": "complete",
+      "queryCount": 10,
+      "sourceCount": 1,
+      "recordCount": 2,
+      "summary": "本轮保留 1 个来源，并形成 2 条可追溯判断。",
+      "sources": [
+        {
+          "id": "SRC-013",
+          "label": "Alibaba Scrunch Leggings Supplier Candidate",
+          "url": "https://www.alibaba.com/product-detail/Sport-Leggins-Custom-Logo-90-Nylon_1601585507362.html",
+          "kind": "supplier",
+          "status": "candidate"
+        }
+      ],
+      "updatedAt": "2026-08-11T04:26:46.067Z"
+    },
+    "compliance": {
+      "code": "compliance",
+      "status": "complete",
+      "queryCount": 10,
+      "sourceCount": 2,
+      "recordCount": 3,
+      "summary": "本轮保留 2 个来源，并形成 3 条可追溯判断。",
+      "sources": [
+        {
+          "id": "SRC-010",
+          "label": "FTC Apparel and Labeling",
+          "url": "https://www.ftc.gov/news-events/topics/tools-consumers/apparel-labeling",
+          "kind": "official",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-011",
+          "label": "FTC Health Products Compliance Guidance",
+          "url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance",
+          "kind": "official",
+          "status": "verified"
+        }
+      ],
+      "updatedAt": "2026-08-11T04:26:46.067Z"
+    },
+    "synthesis": {
+      "code": "synthesis",
+      "status": "complete",
+      "queryCount": 0,
+      "sourceCount": 29,
+      "recordCount": 22,
+      "summary": "已把市场、用户、竞品、供应与合规证据整理为六大选品结论。",
+      "sources": [],
+      "updatedAt": "2026-08-11T04:26:46.067Z"
+    },
+    "market_report": {
+      "code": "market_report",
+      "status": "complete",
+      "queryCount": 0,
+      "sourceCount": 7,
+      "recordCount": 4,
+      "summary": "这个品类有真实需求，也有明确的外观焦虑，值得进入小规模买样验证；但它不是随便找个通货就能卖的机会。当前主方向是做出肉眼可见的平滑与自然轮廓，不透、舒适、尺码和耐穿表现负责证明产品，而不是与主卖点并列。",
+      "sources": [],
+      "updatedAt": "2026-08-11T04:26:46.067Z"
+    },
+    "customer_report": {
+      "code": "customer_report",
+      "status": "complete",
+      "queryCount": 0,
+      "sourceCount": 4,
+      "recordCount": 11,
+      "summary": "主要面向希望立刻看到塑形效果、在意外观与腿部负担感，并需要更宽尺码覆盖的女性。 核心购买动机是高腰支撑舒适，既能运动也能日常穿着。",
+      "sources": [],
+      "updatedAt": "2026-08-11T04:26:46.067Z"
+    },
+    "competitor_report": {
+      "code": "competitor_report",
+      "status": "complete",
+      "queryCount": 0,
+      "sourceCount": 4,
+      "recordCount": 4,
+      "summary": "把肉眼可见的即时塑形效果，与“穿上更自信”的情绪叙事结合起来；90 天保证降低了用户对版型和效果不合适的担忧；用长篇证明内容逐一回应不透、尺码、舒适度和可信度问题；系列搭配销售和免邮门槛有助于提高客单价；把普通紧身裤重新包装成一个解决具体问题的差异化方案。",
+      "sources": [],
+      "updatedAt": "2026-08-11T04:26:46.067Z"
+    },
+    "product_report": {
+      "code": "product_report",
+      "status": "complete",
+      "queryCount": 0,
+      "sourceCount": 8,
+      "recordCount": 7,
+      "summary": "用克制的塑形缝线、深蹲不透测试和真实体型实穿建立卖点，不使用医疗或永久改变身材的承诺。 当前建议：进入受控寻源与买样。",
+      "sources": [],
+      "updatedAt": "2026-08-11T04:26:46.067Z"
+    },
+    "marketing_report": {
+      "code": "marketing_report",
+      "status": "complete",
+      "queryCount": 0,
+      "sourceCount": 5,
+      "recordCount": 10,
+      "summary": "提供自然塑形效果，同时用目标款实测降低用户对透视、舒适和尺码的担忧。",
+      "sources": [],
+      "updatedAt": "2026-08-11T04:26:46.067Z"
+    },
+    "validation_report": {
+      "code": "validation_report",
+      "status": "complete",
+      "queryCount": 0,
+      "sourceCount": 8,
+      "recordCount": 12,
+      "summary": "现在可以按这个方向买少量样品，但在目标款通过实物测试、标签合规确认、成本核算和卖点验证前，仍不能正式上架或投放广告。",
+      "sources": [],
+      "updatedAt": "2026-08-11T04:26:46.067Z"
+    },
+    "execution": {
+      "code": "execution",
+      "status": "complete",
+      "queryCount": 0,
+      "sourceCount": 0,
+      "recordCount": 0,
+      "summary": "后续新增评论、价格、API 数据、供应商回复或样品结果时，以新证据批次回流并生成新版本。",
+      "sources": [],
+      "updatedAt": "2026-08-11T04:26:46.067Z"
+    }
+  },
+  "activity": [
+    {
+      "id": "example-01",
+      "at": "2026-08-11T04:09:46.067Z",
+      "stage": "scope",
+      "status": "complete",
+      "message": "已确认示例对象：美国市场 3D 塑形瑜伽裤。"
+    },
+    {
+      "id": "example-02",
+      "at": "2026-08-11T04:10:46.067Z",
+      "stage": "market",
+      "status": "complete",
+      "message": "核对运动服需求、公开价格带和趋势边界。"
+    },
+    {
+      "id": "example-03",
+      "at": "2026-08-11T04:11:46.067Z",
+      "stage": "market",
+      "status": "complete",
+      "message": "保留 Shopify、Amazon 代理数据和 Google Trends 受阻记录。"
+    },
+    {
+      "id": "example-04",
+      "at": "2026-08-11T04:12:46.067Z",
+      "stage": "customer",
+      "status": "complete",
+      "message": "整理 Reddit 与公开用户反馈中的外观、舒适和耐穿焦虑。"
+    },
+    {
+      "id": "example-05",
+      "at": "2026-08-11T04:13:46.067Z",
+      "stage": "customer",
+      "status": "complete",
+      "message": "区分真实用户表达与推断画像。"
+    },
+    {
+      "id": "example-06",
+      "at": "2026-08-11T04:14:46.067Z",
+      "stage": "competitor",
+      "status": "complete",
+      "message": "拆解 Ionix、BRXL 等竞品的点击钩子、信任证明和成交方式。"
+    },
+    {
+      "id": "example-07",
+      "at": "2026-08-11T04:15:46.067Z",
+      "stage": "competitor",
+      "status": "complete",
+      "message": "保留商家自述边界，不把竞品效果迁移到目标商品。"
+    },
+    {
+      "id": "example-08",
+      "at": "2026-08-11T04:16:46.067Z",
+      "stage": "supply",
+      "status": "complete",
+      "message": "记录公开供应商候选与寻源语言，未将公开页面视为正式报价。"
+    },
+    {
+      "id": "example-09",
+      "at": "2026-08-11T04:17:46.067Z",
+      "stage": "compliance",
+      "status": "complete",
+      "message": "核对 FTC 服装标签和健康宣传边界。"
+    },
+    {
+      "id": "example-10",
+      "at": "2026-08-11T04:18:46.067Z",
+      "stage": "synthesis",
+      "status": "complete",
+      "message": "把 29 个来源和 22 条原子判断整理为价格、用户、竞品与机会结论。"
+    },
+    {
+      "id": "example-11",
+      "at": "2026-08-11T04:19:46.067Z",
+      "stage": "market_report",
+      "status": "complete",
+      "message": "生成市场与机会结论。"
+    },
+    {
+      "id": "example-12",
+      "at": "2026-08-11T04:20:46.067Z",
+      "stage": "customer_report",
+      "status": "complete",
+      "message": "生成用户画像结论。"
+    },
+    {
+      "id": "example-13",
+      "at": "2026-08-11T04:21:46.067Z",
+      "stage": "competitor_report",
+      "status": "complete",
+      "message": "生成竞品分析结论。"
+    },
+    {
+      "id": "example-14",
+      "at": "2026-08-11T04:22:46.067Z",
+      "stage": "product_report",
+      "status": "complete",
+      "message": "生成产品方案与中英文寻源起点。"
+    },
+    {
+      "id": "example-15",
+      "at": "2026-08-11T04:23:46.067Z",
+      "stage": "marketing_report",
+      "status": "complete",
+      "message": "生成可测试营销表达和禁用宣传边界。"
+    },
+    {
+      "id": "example-16",
+      "at": "2026-08-11T04:24:46.067Z",
+      "stage": "validation_report",
+      "status": "complete",
+      "message": "生成买样、测试、通过与停止条件。"
+    },
+    {
+      "id": "example-17",
+      "at": "2026-08-11T04:25:46.067Z",
+      "stage": "execution",
+      "status": "complete",
+      "message": "示例报告已按最新白板 UI 重新排版。"
+    }
+  ],
+  "reportModules": [
+    {
+      "code": "market",
+      "title": "市场与机会",
+      "question": "有没有市场、需求趋势、价格空间、竞争强度。",
+      "conclusion": "这个品类有真实需求，也有明确的外观焦虑，值得进入小规模买样验证；但它不是随便找个通货就能卖的机会。当前主方向是做出肉眼可见的平滑与自然轮廓，不透、舒适、尺码和耐穿表现负责证明产品，而不是与主卖点并列。",
+      "items": [
+        {
+          "text": "需求：运动服需求仍在持续，提臀塑形款也保持讨论热度；亚马逊、社交平台和社区里仍有大量相关购买与使用讨论。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-005",
+            "SRC-006",
+            "SRC-007"
+          ]
+        },
+        {
+          "text": "竞争：竞争非常拥挤：平台上有大量 30 美元以下的平价替代品，成熟独立站则集中在 40–50 美元及以上。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-006"
+          ]
+        },
+        {
+          "text": "趋势：趋势方向偏正面，长期社交讨论仍在；但目前缺少可核查的 Google Trends 数值，TikTok 证据也较弱，因此不能把热度说得过满。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-005",
+            "SRC-007",
+            "SRC-012"
+          ]
+        },
+        {
+          "text": "价格与变现：独立站竞品证明用户可能接受 39.99–49.90 美元甚至更高的价格，但前提是质量、版型、实测证明和售后承诺足够有区别；目前正式成本和利润仍未知。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-006",
+            "SRC-013"
+          ]
+        }
+      ],
+      "unknowns": [
+        "落地成本、关税、履约费用、退货准备金、单件贡献毛利、盈亏平衡获客成本和广告回报率",
+        "可靠的当前 Google Trends 时间序列和平台一方销售数据"
+      ],
+      "updatedAt": "2026-08-11T04:26:46.067Z"
+    },
+    {
+      "code": "customer",
+      "title": "用户画像",
+      "question": "谁在买、什么场景触发、最焦虑什么、为什么下单。",
+      "conclusion": "主要面向希望立刻看到塑形效果、在意外观与腿部负担感，并需要更宽尺码覆盖的女性。 核心购买动机是高腰支撑舒适，既能运动也能日常穿着。",
+      "items": [
+        {
+          "text": "焦虑：普通紧身裤容易把臀腿压平或出现松垮，无法形成自然轮廓。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-008",
+            "SRC-009"
+          ]
+        },
+        {
+          "text": "焦虑：明显的提臀褶皱线可能过于暴露，视觉效果也容易显得夸张。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-008",
+            "SRC-009"
+          ]
+        },
+        {
+          "text": "焦虑：用户担心面料透、腰头卷边、版型不合身、摩擦不适，以及洗后变形失效。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-008",
+            "SRC-009"
+          ]
+        },
+        {
+          "text": "焦虑：部分用户会因腿部或臀部外观而感到不自信。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-008",
+            "SRC-009"
+          ]
+        },
+        {
+          "text": "下单理由：高腰支撑舒适，既能运动也能日常穿着。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-008",
+            "SRC-009"
+          ]
+        },
+        {
+          "text": "下单理由：深蹲时不透，面料拉伸后能恢复。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-008",
+            "SRC-009"
+          ]
+        },
+        {
+          "text": "下单理由：无需频繁整理，也能保持自然修饰效果。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-008",
+            "SRC-009"
+          ]
+        },
+        {
+          "text": "下单理由：尺码覆盖更广，选码结果更稳定。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-008",
+            "SRC-009"
+          ]
+        },
+        {
+          "text": "情绪动机：穿紧身运动服时更自信。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-008",
+            "SRC-009"
+          ]
+        },
+        {
+          "text": "情绪动机：降低对身材暴露和衣物失效的焦虑。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-008",
+            "SRC-009"
+          ]
+        },
+        {
+          "text": "情绪动机：无需侵入式手段，也能获得肉眼可见的修饰效果。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-008",
+            "SRC-009"
+          ]
+        }
+      ],
+      "unknowns": [],
+      "updatedAt": "2026-08-11T04:26:46.067Z"
+    },
+    {
+      "code": "competitor",
+      "title": "竞品分析",
+      "question": "谁在卖、靠什么吸引点击、靠什么建立信任、靠什么成交。",
+      "conclusion": "把肉眼可见的即时塑形效果，与“穿上更自信”的情绪叙事结合起来；90 天保证降低了用户对版型和效果不合适的担忧；用长篇证明内容逐一回应不透、尺码、舒适度和可信度问题；系列搭配销售和免邮门槛有助于提高客单价；把普通紧身裤重新包装成一个解决具体问题的差异化方案。",
+      "items": [
+        {
+          "text": "点击钩子：让身体状态更进一步，把舒适健康融入日常生活。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-001",
+            "SRC-002",
+            "SRC-003",
+            "SRC-004"
+          ]
+        },
+        {
+          "text": "信任机制：页面展示评分、顾客数量、退货率、保证政策和“已验证顾客”标签，但这些数据缺少独立核查。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-001",
+            "SRC-002",
+            "SRC-003",
+            "SRC-004"
+          ]
+        },
+        {
+          "text": "成交方式：Shop Now, Try Risk-Free - 90 Days, and Add to cart.；用“经常一起购买”搭配短裤、运动内衣和上衣，并通过满 55 美元免邮鼓励用户一次多买。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-001",
+            "SRC-002",
+            "SRC-003",
+            "SRC-004"
+          ]
+        },
+        {
+          "text": "价格结构：促销价 49.90 美元，明显高于平台通货，也高于 BRXL 的 39.99 美元促销价。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-001",
+            "SRC-002",
+            "SRC-003",
+            "SRC-004"
+          ]
+        }
+      ],
+      "unknowns": [
+        "最终供应商和准确的目标款"
+      ],
+      "updatedAt": "2026-08-11T04:26:46.067Z"
+    },
+    {
+      "code": "product",
+      "title": "产品方案",
+      "question": "应该做成什么样、必要产品要求、寻源关键词、不能踩的坑。",
+      "conclusion": "用克制的塑形缝线、深蹲不透测试和真实体型实穿建立卖点，不使用医疗或永久改变身材的承诺。 当前建议：进入受控寻源与买样。",
+      "items": [
+        {
+          "text": "目标用户：希望紧身裤兼顾健身和日常、喜欢自然塑形，并且不相信夸张身体改变宣传的美国女性。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-005",
+            "SRC-006",
+            "SRC-008",
+            "SRC-009",
+            "SRC-011",
+            "SRC-013"
+          ]
+        },
+        {
+          "text": "产品要求：使用低存在感或隐藏式塑形缝，不做夸张明显的提臀褶皱。",
+          "level": "hypothesis",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-005",
+            "SRC-006",
+            "SRC-008",
+            "SRC-009",
+            "SRC-011",
+            "SRC-013"
+          ]
+        },
+        {
+          "text": "产品要求：展示多种体型的实穿，以及深蹲、洗涤和腰头稳定性测试。",
+          "level": "hypothesis",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-005",
+            "SRC-006",
+            "SRC-008",
+            "SRC-009",
+            "SRC-011",
+            "SRC-013"
+          ]
+        },
+        {
+          "text": "产品要求：提供清晰的腰围、臀围、裤长数据和方便换码的政策。",
+          "level": "hypothesis",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-005",
+            "SRC-006",
+            "SRC-008",
+            "SRC-009",
+            "SRC-011",
+            "SRC-013"
+          ]
+        },
+        {
+          "text": "产品要求：对外先讲肉眼可见的平滑和自然轮廓；舒适、不透和多场景穿着作为证明与降低犹豫的理由，不直接使用去橘皮或改善循环等功效说法。",
+          "level": "hypothesis",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-005",
+            "SRC-006",
+            "SRC-008",
+            "SRC-009",
+            "SRC-011",
+            "SRC-013"
+          ]
+        },
+        {
+          "text": "产品要求：样品对比后，再决定是否增加口袋或无前中缝方案。",
+          "level": "hypothesis",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-005",
+            "SRC-006",
+            "SRC-008",
+            "SRC-009",
+            "SRC-011",
+            "SRC-013"
+          ]
+        },
+        {
+          "text": "寻源起点：以 Sculpt 3D 紧身裤为主款，再延伸到短裤、运动内衣、上衣和泳装，方便做系列搭配和交叉销售。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-013"
+          ]
+        }
+      ],
+      "unknowns": [
+        "最终供应商和准确的目标款",
+        "正式报价、最低起订量、包装信息、生产交期和质量条款"
+      ],
+      "updatedAt": "2026-08-11T04:26:46.067Z"
+    },
+    {
+      "code": "marketing",
+      "title": "营销打法",
+      "question": "核心价值主张、广告钩子、内容素材、可说与不可说。",
+      "conclusion": "提供自然塑形效果，同时用目标款实测降低用户对透视、舒适和尺码的担忧。",
+      "items": [
+        {
+          "text": "可测试表达：中高克重的尼龙或聚酰胺弹性面料候选，并通过不透和洗后回弹测试，帮助目标用户在明亮健身房进行深蹲、拉伸和大幅度下肢动作获得更安心、可控的体验。",
+          "level": "directional",
+          "sourceIds": [
+            "CLM-009",
+            "CLM-012"
+          ]
+        },
+        {
+          "text": "可测试表达：低存在感的后腰塑形结构，避免形成夸张、明显的提臀缝外观，帮助目标用户在训练结束后继续通勤、购物或长时间日常穿着获得更安心、可控的体验。",
+          "level": "directional",
+          "sourceIds": [
+            "CLM-014",
+            "CLM-015"
+          ]
+        },
+        {
+          "text": "可测试表达：无前中缝候选结构，并检查卡裆、压迫和摩擦表现，帮助目标用户在无法试穿时，根据页面信息选择腰围、臀围、尺码和裤长获得更安心、可控的体验。",
+          "level": "directional",
+          "sourceIds": [
+            "CLM-016"
+          ]
+        },
+        {
+          "text": "可测试表达：稳定的高腰腰头，并验证卷边、下滑、压迫和长时间舒适度，帮助目标用户在明亮健身房进行深蹲、拉伸和大幅度下肢动作获得更安心、可控的体验。",
+          "level": "hypothesis",
+          "sourceIds": [
+            "CLM-009"
+          ]
+        },
+        {
+          "text": "不可说：医疗、改善循环、治疗或健康效果。当前运行没有目标商品的临床或科学实证。",
+          "level": "unknown",
+          "sourceIds": []
+        },
+        {
+          "text": "不可说：永久塑形、永久改变身体或消除脂肪。服装外观效果不能表述为永久身体改变。",
+          "level": "unknown",
+          "sourceIds": []
+        },
+        {
+          "text": "不可说：未经核验的认证、专利、性能数字或限量稀缺性。认证、专利、数字性能和稀缺性必须逐项取得可审计证据。",
+          "level": "unknown",
+          "sourceIds": []
+        },
+        {
+          "text": "不可说：不使用改善循环、消除橘皮、临床效果或永久改变身形等未经证明的说法。当前目标 SKU 与 Claim 证据尚未完成验证。",
+          "level": "unknown",
+          "sourceIds": []
+        },
+        {
+          "text": "不可说：不把竞品面料、测试结果或用户评价迁移为目标样品事实。当前目标 SKU 与 Claim 证据尚未完成验证。",
+          "level": "unknown",
+          "sourceIds": []
+        },
+        {
+          "text": "不可说：样品实测完成前，不宣称不透、无卡裆、耐洗或适合所有体型。当前目标 SKU 与 Claim 证据尚未完成验证。",
+          "level": "unknown",
+          "sourceIds": []
+        }
+      ],
+      "unknowns": [
+        "当前结论只适用于买样前机会判断，不代表供应商、样品、大货、单位经济或投放已经通过。",
+        "不属于当前产品阶段。",
+        "不属于当前产品阶段。",
+        "现在可以按这个方向买少量样品，但在目标款通过实物测试、标签合规确认、成本核算和卖点验证前，仍不能正式上架或投放广告。"
+      ],
+      "updatedAt": "2026-08-11T04:26:46.067Z"
+    },
+    {
+      "code": "validation",
+      "title": "验证方案",
+      "question": "买什么样品、测试什么、成本红线、通过和停止条件。",
+      "conclusion": "现在可以按这个方向买少量样品，但在目标款通过实物测试、标签合规确认、成本核算和卖点验证前，仍不能正式上架或投放广告。",
+      "items": [
+        {
+          "text": "现有需求与情绪动机足以支持一次小范围、设有边界的买样测试。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-005",
+            "SRC-006",
+            "SRC-008",
+            "SRC-009",
+            "SRC-011",
+            "SRC-013"
+          ]
+        },
+        {
+          "text": "独立站价格锚点说明，相比平台通货存在一定溢价空间。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-005",
+            "SRC-006",
+            "SRC-008",
+            "SRC-009",
+            "SRC-011",
+            "SRC-013"
+          ]
+        },
+        {
+          "text": "夸张提臀风格评价两极，为更克制、以实测证明为主的设计留下差异化空间。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-005",
+            "SRC-006",
+            "SRC-008",
+            "SRC-009",
+            "SRC-011",
+            "SRC-013"
+          ]
+        },
+        {
+          "text": "已有供应商候选，但最终款式、正式报价、落地成本和质量证据都尚未核实。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-005",
+            "SRC-006",
+            "SRC-008",
+            "SRC-009",
+            "SRC-011",
+            "SRC-013"
+          ]
+        },
+        {
+          "text": "现阶段必须排除健康、临床、专利、消除橘皮、改善循环或肿胀、永久改变身形等宣传。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-002",
+            "SRC-004",
+            "SRC-005",
+            "SRC-006",
+            "SRC-008",
+            "SRC-009",
+            "SRC-011",
+            "SRC-013"
+          ]
+        },
+        {
+          "text": "落地页概念测试：通过 目标概念选择率达到 35%，且有效留资率达到 8%；停止 样本不足 30 人，或流量明显偏离目标人群时停止解释结果。",
+          "level": "hypothesis",
+          "sourceIds": []
+        },
+        {
+          "text": "广告角度测试：通过 优胜角度点击率至少高于基准 20%，且停留不下降；停止 单角度达到预设小额预算上限且无方向性信号时停止。",
+          "level": "hypothesis",
+          "sourceIds": []
+        },
+        {
+          "text": "价格与价值主张测试：通过 中位价格锚点的购买意愿不低于低价锚点的 80%；停止 正式落地成本未知时，不把结果解释为盈利成立。",
+          "level": "hypothesis",
+          "sourceIds": []
+        },
+        {
+          "text": "目标用户访谈：通过 至少 5/8 名合格受访者复现核心问题，且 4/8 愿意进一步测试；停止 受访者不属于目标场景时停止累计样本。",
+          "level": "hypothesis",
+          "sourceIds": []
+        },
+        {
+          "text": "内容点击或保存率测试：通过 至少一个钩子的保存率或点击率高于账号基准 20%；停止 平台分发不足以形成最低样本量时停止归因。",
+          "level": "hypothesis",
+          "sourceIds": []
+        },
+        {
+          "text": "样品性能验证：通过 所有 P0 性能项通过，且无严重安全、舒适或耐久失败；停止 样品身份、规格或测试条件不明确时停止。",
+          "level": "hypothesis",
+          "sourceIds": []
+        },
+        {
+          "text": "Claim 合规审核：通过 所有公开 Claim 均有目标 SKU 证据并通过适用市场审核；停止 证据对象、目标市场或最终文案版本不确定时停止审核。",
+          "level": "hypothesis",
+          "sourceIds": []
+        }
+      ],
+      "unknowns": [
+        "最终供应商和准确的目标款",
+        "正式报价、最低起订量、包装信息、生产交期和质量条款",
+        "落地成本、关税、履约费用、退货准备金、单件贡献毛利、盈亏平衡获客成本和广告回报率",
+        "目标样品的不透表现、缝线耐久、洗后回弹、腰头卷边、摩擦卡裆、尴尬勒痕和版型表现",
+        "目标商品的成分、洗护和原产地标签",
+        "为健康、循环、橘皮、压缩性能、临床或专利等宣传取得目标商品专属证据",
+        "可靠的当前 Google Trends 时间序列和平台一方销售数据"
+      ],
+      "updatedAt": "2026-08-11T04:26:46.067Z"
+    }
+  ]
+}

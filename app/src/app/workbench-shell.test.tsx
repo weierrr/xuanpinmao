@@ -37,11 +37,29 @@ describe("branded workbench shell", () => {
     );
 
     expect(html).toContain("多入口商品发现");
-    expect(html).toContain('href="/discover"');
+    expect(html).toContain("查看示例报告");
+    expect(html).toContain(
+      'href="/discover/plan/whiteboard?discoveryId=discovery-3d-yoga-pants-999d4e8e5cc2-us"',
+    );
     expect(html).not.toContain('href="/projects"');
     expect(html).not.toContain("选品记录");
     expect(html).not.toContain('href="/discover/network"');
     expect(html).not.toContain("人群需求网络");
+    expect(html).toContain('class="site-top-navigation"');
+    expect(html).toContain("首页");
+    expect(html).toContain("选品工作台");
+    expect(html).not.toContain("workspace-rail");
     expect(html).toContain("记录内容");
+  });
+
+  it("can remove the generic workbench title on a product-specific report page", () => {
+    const html = renderToStaticMarkup(
+      <WorkbenchShell active="discover" hideTitle><p>3D 瑜伽裤报告</p></WorkbenchShell>,
+    );
+
+    expect(html).not.toContain("PRODUCT RESEARCH WORKBENCH");
+    expect(html).not.toContain("多入口商品发现");
+    expect(html).toContain("workspace-main-titleless");
+    expect(html).toContain("3D 瑜伽裤报告");
   });
 });

@@ -1,7 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import type { CSSProperties } from "react";
 import {
+  ArrowRight,
   ExternalLink,
   Maximize2,
   Minus,
@@ -21,15 +23,13 @@ type WhiteboardMode = "all" | "evidence" | "execution";
 
 type ResearchWhiteboardCanvasProps = Readonly<{
   whiteboard: ResearchWhiteboard;
-  keyword: string;
-  imageCount: number;
-  competitorUrlCount: number;
 }>;
 
 const canvasWidth = 1660;
 const canvasHeight = 990;
-const minimumZoom = 0.35;
+const minimumZoom = 0.5;
 const maximumZoom = 2.5;
+const fitHorizontalGutter = 48;
 
 const clampZoom = (value: number): number =>
   Math.min(maximumZoom, Math.max(minimumZoom, Number(value.toFixed(3))));
@@ -67,13 +67,15 @@ const stageStatusLabels = {
   blocked: "遇到阻塞",
 } as const;
 
-const evidenceStages: ResearchWhiteboardStageCode[] = [
+const evidenceStages = [
   "market",
   "customer",
   "competitor",
   "supply",
   "compliance",
-];
+] as const satisfies readonly ResearchWhiteboardStageCode[];
+
+type EvidenceStageCode = (typeof evidenceStages)[number];
 
 const reportOrder: ResearchWhiteboardReportModule["code"][] = [
   "market",
@@ -83,6 +85,27 @@ const reportOrder: ResearchWhiteboardReportModule["code"][] = [
   "marketing",
   "validation",
 ];
+
+const sourceCardTitles: Record<EvidenceStageCode, string> = {
+  market: "市场、价格与趋势资料",
+  customer: "评论与社区讨论",
+  competitor: "品牌、商品页与成交路径",
+  supply: "供应商与公开货盘",
+  compliance: "官方规则与宣传边界",
+};
+
+const sourceSiteSummary = (sources: ResearchWhiteboard["stages"][ResearchWhiteboardStageCode]["sources"]): string => {
+  const sites = [...new Set(sources.map((source) => {
+    try {
+      return new URL(source.url).hostname.replace(/^www\./, "").replace(/^uk\./, "");
+    } catch {
+      return "未知站点";
+    }
+  }))];
+  if (sites.length === 0) return "本轮尚未保留可追溯信源。";
+  const visibleSites = sites.slice(0, 3).join("、");
+  return sites.length > 3 ? `来自 ${visibleSites} 等 ${sites.length} 个站点。` : `来自 ${visibleSites}。`;
+};
 
 const shortText = (value: string, limit = 86): string =>
   value.length > limit ? `${value.slice(0, limit)}…` : value;
@@ -94,16 +117,13 @@ const moduleByCode = (
 
 export function ResearchWhiteboardCanvas({
   whiteboard,
-  keyword,
-  imageCount,
-  competitorUrlCount,
 }: ResearchWhiteboardCanvasProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
   const zoomRef = useRef(0.72);
   const [mode, setMode] = useState<WhiteboardMode>("all");
   const [zoom, setZoom] = useState(0.72);
-  const [openSourceStage, setOpenSourceStage] = useState<ResearchWhiteboardStageCode | null>(null);
+  const [openSourceStage, setOpenSourceStage] = useState<EvidenceStageCode | null>(null);
 
   const setCanvasZoom = useCallback((value: number, clientX?: number, clientY?: number) => {
     const viewport = viewportRef.current;
@@ -114,14 +134,16 @@ export function ResearchWhiteboardCanvas({
     const rect = viewport.getBoundingClientRect();
     const anchorX = clientX === undefined ? viewport.clientWidth / 2 : clientX - rect.left;
     const anchorY = clientY === undefined ? viewport.clientHeight / 2 : clientY - rect.top;
-    const canvasX = (viewport.scrollLeft + anchorX) / currentZoom;
+    const currentCanvasOffsetX = Math.max(0, (viewport.clientWidth - canvasWidth * currentZoom) / 2);
+    const canvasX = (viewport.scrollLeft + anchorX - currentCanvasOffsetX) / currentZoom;
     const canvasY = (viewport.scrollTop + anchorY) / currentZoom;
+    const nextCanvasOffsetX = Math.max(0, (viewport.clientWidth - canvasWidth * nextZoom) / 2);
 
     zoomRef.current = nextZoom;
     setZoom(nextZoom);
     window.requestAnimationFrame(() => {
       viewport.scrollTo({
-        left: Math.max(0, canvasX * nextZoom - anchorX),
+        left: Math.max(0, canvasX * nextZoom + nextCanvasOffsetX - anchorX),
         top: Math.max(0, canvasY * nextZoom - anchorY),
       });
     });
@@ -129,7 +151,7 @@ export function ResearchWhiteboardCanvas({
 
   const fitCanvas = useCallback(() => {
     const width = viewportRef.current?.clientWidth ?? canvasWidth;
-    const nextZoom = Math.min(1, Math.max(0.5, (width - 34) / canvasWidth));
+    const nextZoom = Math.min(1, Math.max(minimumZoom, (width - fitHorizontalGutter) / canvasWidth));
     zoomRef.current = nextZoom;
     setZoom(nextZoom);
     viewportRef.current?.scrollTo({ left: 0, top: 0, behavior: "smooth" });
@@ -219,25 +241,35 @@ export function ResearchWhiteboardCanvas({
           ))}
         </nav>
         <div className="whiteboard-canvas-controls">
-          <button type="button" onClick={() => changeZoom(-0.1)} aria-label="缩小白板"><Minus size={15} /></button>
+          <button type="button" onClick={() => changeZoom(-0.1)} aria-label="缩小白板" disabled={zoom <= minimumZoom}><Minus size={15} /></button>
           <output>{Math.round(zoom * 100)}%</output>
-          <button type="button" onClick={() => changeZoom(0.1)} aria-label="放大白板"><Plus size={15} /></button>
+          <button type="button" onClick={() => changeZoom(0.1)} aria-label="放大白板" disabled={zoom >= maximumZoom}><Plus size={15} /></button>
           <button type="button" onClick={fitCanvas}>适应画布</button>
           <button type="button" onClick={toggleFullscreen}><Maximize2 size={14} />全屏</button>
         </div>
       </header>
 
-      <div className="whiteboard-canvas-viewport" ref={viewportRef}>
-        <div
-          className={`whiteboard-canvas mode-${mode}`}
+      <div
+        className="whiteboard-canvas-viewport"
+        ref={viewportRef}
+        style={{
+          "--whiteboard-dot-grid": `${18 * zoom}px`,
+          "--whiteboard-major-grid": `${72 * zoom}px`,
+          "--whiteboard-dot-radius": `${zoom}px`,
+          "--whiteboard-dot-fade": `${1.4 * zoom}px`,
+          "--whiteboard-grid-line": `${zoom}px`,
+          "--whiteboard-scaled-height": `${canvasHeight * zoom}px`,
+        } as CSSProperties}
+      >
+        <div className="whiteboard-canvas-stage" style={{ width: canvasWidth * zoom, height: canvasHeight * zoom }}>
+          <div
+            className={`whiteboard-canvas mode-${mode}`}
           style={{
             width: canvasWidth,
             height: canvasHeight,
             transform: `scale(${zoom})`,
-            marginRight: canvasWidth * (zoom - 1),
-            marginBottom: canvasHeight * (zoom - 1),
           }}
-        >
+          >
           <svg className="whiteboard-connectors" viewBox={`0 0 ${canvasWidth} ${canvasHeight}`} aria-hidden="true">
             {[152, 306, 460, 614, 768].map((y) => <path key={`source-${y}`} className="line-evidence" d={`M 286 ${y} C 305 ${y}, 306 ${y}, 326 ${y}`} />)}
             <path className="line-analysis" d="M 588 152 C 630 152, 622 196, 665 196" />
@@ -257,20 +289,30 @@ export function ResearchWhiteboardCanvas({
           <div className="whiteboard-lane-label lane-execution"><span>05</span>执行方案</div>
 
           <section className="whiteboard-node-stack source-stack" data-lane="evidence">
-            <article className="whiteboard-node source-card scope-card">
-              <header><span>市场与商品入口</span><b>当前调研版本</b></header>
-              <h3>{keyword}</h3>
-              <p>{whiteboard.market} · {whiteboard.channel ?? "渠道待确认"} · 图片 {imageCount} 条 · 链接 {competitorUrlCount} 条</p>
-              <div className="whiteboard-node-chips"><span>{whiteboard.stages.market.sourceCount} 个市场来源</span><span>{whiteboard.researchRunId ? "已建立证据档案" : "准备建立证据档案"}</span></div>
-            </article>
-            {evidenceStages.filter((code) => code !== "market").map((code) => {
+            {evidenceStages.map((code) => {
               const stage = whiteboard.stages[code];
+              const verifiedCount = stage.sources.filter((source) => source.status === "verified").length;
+              const blockedCount = stage.sources.filter((source) => source.status === "blocked").length;
               return (
                 <article className={`whiteboard-node source-card status-${stage.status}`} key={code}>
-                  <header><span>{stageLabels[code]}入口</span><b>{stageStatusLabels[stage.status]}</b></header>
-                  <h3>{stageLabels[code]}</h3>
-                  <p>{shortText(stage.summary, 70)}</p>
-                  <div className="whiteboard-node-chips"><span>{stage.sourceCount} 个来源</span><span>{stage.recordCount} 条判断</span></div>
+                  <header><span>{stageLabels[code]}来源</span><b>{stageStatusLabels[stage.status]}</b></header>
+                  <h3>{sourceCardTitles[code]}</h3>
+                  <p>{sourceSiteSummary(stage.sources)}</p>
+                  <div className="whiteboard-node-chips">
+                    <span>{stage.sources.length} 个信源</span>
+                    <span>{verifiedCount} 个已核验</span>
+                    {blockedCount > 0 ? <span>{blockedCount} 个受阻</span> : null}
+                  </div>
+                  {stage.sources.length > 0 ? (
+                    <button
+                      type="button"
+                      className="whiteboard-source-card-hitarea"
+                      aria-label={`查看${stageLabels[code]}的全部 ${stage.sources.length} 个信源`}
+                      aria-expanded={openSourceStage === code}
+                      aria-controls="whiteboard-source-drawer"
+                      onClick={() => setOpenSourceStage(code)}
+                    />
+                  ) : null}
                 </article>
               );
             })}
@@ -282,23 +324,11 @@ export function ResearchWhiteboardCanvas({
               return (
                 <article className={`whiteboard-node collection-card status-${stage.status}`} key={code}>
                   <header><span>{stageLabels[code]}处理</span><b>{stage.updatedAt.slice(0, 10)}</b></header>
-                  <h3>{stage.queryCount} 次检索 → {stage.sourceCount} 个来源</h3>
-                  <p>{shortText(stage.summary, 76)}</p>
+                  <h3>{stage.queryCount} 次检索与核查</h3>
+                  <p>完成检索、筛选、去重和有效性判断，形成可用于本轮分析的证据记录。</p>
                   <div className="whiteboard-node-chips">
-                    <span>有效记录 {stage.recordCount}</span>
-                    {stage.sources.length > 0 ? (
-                      <button
-                        type="button"
-                        className="whiteboard-source-trigger"
-                        aria-expanded={openSourceStage === code}
-                        aria-controls="whiteboard-source-drawer"
-                        onClick={() => setOpenSourceStage(code)}
-                      >
-                        全部 {stage.sources.length} 个信源
-                      </button>
-                    ) : (
-                      <span>暂无信源</span>
-                    )}
+                    <span>保留 {stage.sourceCount} 个来源</span>
+                    <span>形成 {stage.recordCount} 条判断</span>
                   </div>
                 </article>
               );
@@ -325,7 +355,10 @@ export function ResearchWhiteboardCanvas({
                 return (
                   <li key={code}>
                     <span>{String(index + 1).padStart(2, "0")}</span>
-                    <a href={`#whiteboard-report-${code}`}>{reportModule?.title ?? stageLabels[`${code}_report` as ResearchWhiteboardStageCode]}</a>
+                    <a href={`#whiteboard-report-${code}`}>
+                      {reportModule?.title ?? stageLabels[`${code}_report` as ResearchWhiteboardStageCode]}
+                      <ArrowRight size={14} aria-hidden="true" />
+                    </a>
                   </li>
                 );
               })}
@@ -350,6 +383,7 @@ export function ResearchWhiteboardCanvas({
               <p>{shortText(whiteboard.stages.execution.summary, 76)}</p>
             </article>
           </section>
+          </div>
         </div>
       </div>
 
@@ -372,7 +406,12 @@ export function ResearchWhiteboardCanvas({
               <div>
                 <span>全部信源</span>
                 <h2 id="whiteboard-source-drawer-title">{stageLabels[openSourceStage]}</h2>
-                <p>{drawerStage.queryCount} 次检索 · {drawerStage.sources.length} 个保留信源 · {drawerStage.recordCount} 条有效判断</p>
+                <p>
+                  {drawerStage.sources.length} 个保留信源 · {drawerStage.sources.filter((source) => source.status === "verified").length} 个已核验
+                  {drawerStage.sources.some((source) => source.status === "blocked")
+                    ? ` · ${drawerStage.sources.filter((source) => source.status === "blocked").length} 个访问受阻`
+                    : ""}
+                </p>
               </div>
               <button type="button" aria-label="关闭信源抽屉" onClick={() => setOpenSourceStage(null)}><X size={18} /></button>
             </header>

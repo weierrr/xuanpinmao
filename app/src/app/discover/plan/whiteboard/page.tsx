@@ -3,17 +3,25 @@ import { Radio, ShieldCheck } from "lucide-react";
 import { notFound } from "next/navigation";
 import { opportunityDiscoveryPaths } from "@/opportunity-discovery/service";
 import { opportunityDiscoveryPlanSchema } from "@/opportunity-discovery/types";
-import { reportTextZh } from "@/report/report-copy";
 import { readResearchWhiteboard } from "@/research-whiteboard/service";
-import type { ResearchWhiteboard, ResearchWhiteboardStageCode } from "@/research-whiteboard/types";
+import {
+  researchWhiteboardSchema,
+  type ResearchWhiteboard,
+  type ResearchWhiteboardStageCode,
+} from "@/research-whiteboard/types";
 import { WorkbenchShell } from "../../../workbench-shell";
 import { ResearchWhiteboardCanvas } from "./research-whiteboard-canvas";
+import { ResearchWhiteboardReport } from "./research-whiteboard-report";
 import { WhiteboardAutoRefresh } from "./whiteboard-auto-refresh";
+import yogaPantsExamplePlan from "./yoga-pants-example-plan.json";
+import yogaPantsExampleWhiteboard from "./yoga-pants-example-whiteboard.json";
 
 export const dynamic = "force-dynamic";
 
 const firstParam = (value: string | string[] | undefined): string =>
   Array.isArray(value) ? value[0] ?? "" : value ?? "";
+
+const yogaPantsExampleDiscoveryId = "discovery-3d-yoga-pants-999d4e8e5cc2-us";
 
 const statusLabels: Record<ResearchWhiteboard["status"], string> = {
   waiting: "等待 Agent 开始",
@@ -47,13 +55,6 @@ const versionDate = (value: string): string => new Intl.DateTimeFormat("zh-CN", 
   day: "numeric",
   timeZone: "Asia/Shanghai",
 }).format(new Date(value));
-const evidenceLevelLabel = {
-  fact: "事实证据",
-  directional: "方向性证据",
-  hypothesis: "待验证假设",
-  unknown: "未知 / 缺口",
-} as const;
-
 export default async function ResearchWhiteboardPage({
   searchParams,
 }: Readonly<{ searchParams: Promise<Record<string, string | string[] | undefined>> }>) {
@@ -62,15 +63,23 @@ export default async function ResearchWhiteboardPage({
   if (!/^discovery-[a-z0-9-]+$/.test(discoveryId)) notFound();
 
   try {
-    const [rawPlan, whiteboard] = await Promise.all([
-      readFile(opportunityDiscoveryPaths(discoveryId).plan, "utf8"),
-      readResearchWhiteboard(discoveryId),
-    ]);
-    const plan = opportunityDiscoveryPlanSchema.parse(JSON.parse(rawPlan));
+    const [plan, whiteboard] = discoveryId === yogaPantsExampleDiscoveryId
+      ? [
+          opportunityDiscoveryPlanSchema.parse(yogaPantsExamplePlan),
+          researchWhiteboardSchema.parse(yogaPantsExampleWhiteboard),
+        ]
+      : await Promise.all([
+          readFile(opportunityDiscoveryPaths(discoveryId).plan, "utf8")
+            .then((rawPlan) => opportunityDiscoveryPlanSchema.parse(JSON.parse(rawPlan))),
+          readResearchWhiteboard(discoveryId),
+        ]);
     const latestActivity = [...whiteboard.activity].reverse();
+    const reportSources = [...new Map(
+      Object.values(whiteboard.stages).flatMap((stage) => stage.sources).map((source) => [source.id, source]),
+    ).values()];
 
     return (
-      <WorkbenchShell active="discover">
+      <WorkbenchShell active="discover" hideTitle>
         <WhiteboardAutoRefresh status={whiteboard.status} />
         <section className="research-whiteboard">
           <header className="research-whiteboard-head">
@@ -97,44 +106,10 @@ export default async function ResearchWhiteboardPage({
             </div>
           </dl>
 
-          <ResearchWhiteboardCanvas
-            whiteboard={whiteboard}
-            keyword={plan.categoryKeyword}
-            imageCount={plan.imageUrls.length}
-            competitorUrlCount={plan.competitorUrls.length}
-          />
+          <ResearchWhiteboardCanvas whiteboard={whiteboard} />
 
           {whiteboard.reportModules.length > 0 ? (
-            <section className="research-whiteboard-report" aria-label="六大选品结论">
-              <header>
-                <span>选品结论</span>
-                <h3>六大选品结论</h3>
-                <p>先看每个模块的核心结论；需要核查时，再展开证据、来源和仍未解决的问题。</p>
-              </header>
-              <div className="research-whiteboard-report-grid">
-                {whiteboard.reportModules.map((module, index) => (
-                  <article key={module.code} id={`whiteboard-report-${module.code}`}>
-                    <header><span>{String(index + 1).padStart(2, "0")}</span><div><h4>{module.title}</h4><p>{module.question}</p></div></header>
-                    <strong>{reportTextZh(module.conclusion)}</strong>
-                    <details>
-                      <summary>展开证据与缺口</summary>
-                      <ul>
-                        {module.items.map((item, itemIndex) => (
-                          <li key={`${module.code}-${itemIndex}`}>
-                            <b className={`level-${item.level}`}>{evidenceLevelLabel[item.level]}</b>
-                            <span>{reportTextZh(item.text)}</span>
-                            {item.sourceIds.length > 0 ? <small>来源：{item.sourceIds.join("、")}</small> : null}
-                          </li>
-                        ))}
-                      </ul>
-                      {module.unknowns.length > 0 ? (
-                        <div className="research-whiteboard-unknowns"><b>仍需补证</b><ul>{module.unknowns.map((item, itemIndex) => <li key={`${item}-${itemIndex}`}>{reportTextZh(item)}</li>)}</ul></div>
-                      ) : null}
-                    </details>
-                  </article>
-                ))}
-              </div>
-            </section>
+            <ResearchWhiteboardReport modules={whiteboard.reportModules} sources={reportSources} />
           ) : null}
 
           <details className="research-whiteboard-activity">

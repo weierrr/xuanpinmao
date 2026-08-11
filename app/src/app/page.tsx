@@ -1,141 +1,255 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Gem, Home, Search } from "lucide-react";
+import {
+  ArrowRight,
+  BarChart3,
+  Blocks,
+  Bot,
+  CheckCircle2,
+  Database,
+  ExternalLink,
+  FileSearch,
+  FlaskConical,
+  Globe2,
+  Layers3,
+  Megaphone,
+  Network,
+  PackageSearch,
+  RefreshCw,
+  Search,
+  ShieldCheck,
+  Sparkles,
+  Users,
+} from "lucide-react";
 import { ContactAuthor } from "./contact-author";
+import { SiteTopNavigation } from "./site-top-navigation";
 import { WorkbenchLink } from "./workbench-link";
 
 export const metadata: Metadata = {
-  title: "选品猫｜把市场事实变成经营决策",
-  description: "从真实问题出发，以联网证据、第一性原理和行动边界完成买样前选品研究。",
+  title: "选品猫｜让每一条选品结论都有来源",
+  description: "使用自己的模型完成联网研究，把市场、用户、竞品和供应证据整理为可追溯的选品白板。",
 };
 
-const promises = [
-  {
-    index: "01 / 插件原生",
-    status: "现在 + 路线图",
-    title: "插件即用，让每一次研究都能接着聊",
-    body: "可以直接作为 Codex 插件使用，每次对话对应一项独立调研，研究材料、证据版本和报告留在你的项目环境里。",
-    foot: "当前：Codex · 后续：更多插件市场",
-    tone: "paper",
-  },
-  {
-    index: "02 / 永久免费",
-    status: "永久免费",
-    title: "我们不卖功能，只消耗你自己的模型额度",
-    body: "选品猫不会为功能设置付费墙。你为自己的模型与算力买单，而不是为使用选品工具重复付费。",
-    foot: "你的额度 · 你的数据 · 你的报告",
-    tone: "lime",
-  },
-  {
-    index: "03 / 商家优先",
-    status: "第一性原理",
-    title: "从商家的真实痛点出发，不止推荐一个商品",
-    body: "报告不只回答“卖什么”，还会覆盖市场信号、竞品结构、用户动机、风险与成本，并继续推导相邻选品机会。",
-    foot: "市场 → 用户 → 产品 → 生意 → 延伸机会",
-    tone: "paper",
-  },
-  {
-    index: "04 / 真实网络证据",
-    status: "证据优先",
-    title: "真实联网研究，让结论可以追溯、质疑和补证",
-    body: "广泛检索公开用户评论、社区讨论、竞品页面、市场资料与供应候选。报告同时标明来源、可信程度与未知项。",
-    foot: "来源可见 · 结论可查 · 未知可补",
-    tone: "peach",
-  },
+const reportModules = [
+  { title: "市场与机会", body: "有没有市场、需求趋势、价格空间与竞争强度。", icon: BarChart3, tone: "market" },
+  { title: "用户画像", body: "谁在买、什么场景触发、最焦虑什么、为什么下单。", icon: Users, tone: "customer" },
+  { title: "竞品分析", body: "谁在卖、如何吸引点击、建立信任并完成成交。", icon: FileSearch, tone: "competitor" },
+  { title: "产品方案", body: "应该做成什么样、必要要求、寻源关键词与风险。", icon: PackageSearch, tone: "product" },
+  { title: "营销打法", body: "核心价值主张、广告钩子、内容素材与表达边界。", icon: Megaphone, tone: "marketing" },
+  { title: "验证方案", body: "买什么样品、测试什么、成本红线与停止条件。", icon: FlaskConical, tone: "validation" },
 ] as const;
 
-const method = [
-  ["01 / 提问", "定义真实决策", "从关键词、图片或链接背后，识别商家真正想验证的问题和约束。"],
-  ["02 / 研究", "联网寻找事实", "检索市场、竞品、用户讨论与供应候选，并记录来源和访问边界。"],
-  ["03 / 推理", "回到第一性原理", "区分事实、推断与未知，解释需求为何存在、机会如何成立。"],
-  ["04 / 决策", "给出行动边界", "明确是否值得买样、应该补什么证据，以及哪些动作暂时不能做。"],
-] as const;
+function ReportPreview() {
+  return (
+    <div className="home-report-board" aria-label="选品猫报告结构示意图">
+      <div className="home-report-board-head">
+        <div>
+          <span>实时研究白板 / 示例结构</span>
+          <strong>从证据收集到执行方案，所有过程都在一张白板上</strong>
+        </div>
+        <b><span />调研进行中</b>
+      </div>
+
+      <div className="home-report-flow">
+        <section className="home-report-lane input">
+          <small>01 · 研究对象</small>
+          <article>
+            <Search size={16} />
+            <div><b>关键词 + 图片 + 链接</b><span>市场、渠道、目标用户</span></div>
+          </article>
+        </section>
+
+        <i aria-hidden="true" />
+
+        <section className="home-report-lane sources">
+          <small>02 · 数据来源</small>
+          <article><Globe2 size={15} /><b>市场资料</b><span>9 个来源</span></article>
+          <article><Database size={15} /><b>用户反馈</b><span>699 条</span></article>
+          <article><Blocks size={15} /><b>竞品页面</b><span>8 个来源</span></article>
+        </section>
+
+        <i aria-hidden="true" />
+
+        <section className="home-report-lane agent">
+          <small>03 · Agent 采集</small>
+          <article>
+            <Bot size={17} />
+            <div><b>检索、筛选、去重</b><span>保留关键词、时间与结果</span></div>
+          </article>
+          <ul><li>搜索记录 22</li><li>有效信源 29</li><li>原子判断 22</li></ul>
+        </section>
+
+        <i aria-hidden="true" />
+
+        <section className="home-report-lane synthesis">
+          <small>04 · 整理分析</small>
+          <article><b>价格、趋势与竞争强度</b><span>区分事实、推断与未知</span></article>
+          <article><b>买家人群与真实焦虑</b><span>同时保留反向证据</span></article>
+        </section>
+
+        <i aria-hidden="true" />
+
+        <section className="home-report-lane output">
+          <small>05 · 六份报告</small>
+          <div>
+            {reportModules.map((module, index) => (
+              <span key={module.title}><b>0{index + 1}</b>{module.title}<ArrowRight size={11} /></span>
+            ))}
+          </div>
+        </section>
+      </div>
+
+      <div className="home-report-board-foot">
+        <span><ShieldCheck size={14} />结论保留来源、证据等级、反向证据与待补缺口</span>
+        <span>补充新数据后可生成新版本 <ExternalLink size={13} /></span>
+      </div>
+    </div>
+  );
+}
 
 export default function HomePage() {
   return (
     <div className="landing-shell">
-      <aside className="landing-rail">
-        <Link className="landing-brand" href="/" aria-label="选品猫首页">
-          <Gem size={20} strokeWidth={2.4} />
-          <strong>选品猫</strong>
-        </Link>
-        <span className="landing-rail-label">应用</span>
-        <nav aria-label="首页导航">
-          <Link className="active" href="/"><Home size={16} />首页</Link>
-          <WorkbenchLink><Search size={16} />选品工作台</WorkbenchLink>
-        </nav>
-      </aside>
+      <SiteTopNavigation
+        active="home"
+        actions={(
+          <>
+            <ContactAuthor />
+            <WorkbenchLink className="primary">开始选品 <ArrowRight size={15} /></WorkbenchLink>
+          </>
+        )}
+      />
 
-      <main className="landing-main">
-        <header className="landing-utilities">
-          <ContactAuthor />
-          <WorkbenchLink className="primary">进入工作台 <ArrowRight size={15} /></WorkbenchLink>
-        </header>
-
-        <section className="landing-hero">
-          <div className="landing-hero-copy">
-            <div className="landing-kicker">选品猫 · 为商家而生</div>
-            <h1>选品不该是猜爆款，而是把生意重新想明白</h1>
-            <p>我们做选品猫，是因为商家真正缺少的从来不是另一张“可能会卖”的商品榜单，而是一套能持续追问、联网求证，并把市场事实变成经营决策的研究方法。</p>
-            <div className="landing-actions">
-              <Link className="landing-button dark" href="/discover">开始一次第一性原理选品 <ArrowRight size={15} /></Link>
-              <Link className="landing-button light" href="/projects">查看已有报告</Link>
-            </div>
+      <main className="home-product-page">
+        <section className="home-story-hero">
+          <span className="home-story-pill"><Sparkles size={13} />基于第一性原理的选品研究 Agent</span>
+          <h1>把选品调研的全过程，<br />摊开给你看。</h1>
+          <p>使用你自己的模型联网寻找市场、用户、竞品、供应与合规证据。从搜过什么，到为什么得出结论，再到下一步怎么验证，全部留在一张可追溯白板上。</p>
+          <div className="home-product-actions">
+            <Link className="home-product-button dark" href="/discover">开始一次调研 <ArrowRight size={16} /></Link>
+            <Link className="home-product-button light" href="/guide">查看使用说明</Link>
           </div>
-          <aside className="landing-principle">
-            <span className="landing-principle-label">第一性原理 / 01</span>
-            <blockquote>先问商家要做什么决定，再决定应该查什么数据。</blockquote>
-            <div className="landing-trace">
-              <span><b>真实问题</b><em>不是先猜答案</em></span>
-              <span><b>真实证据</b><em>不是复制结论</em></span>
-              <span><b>行动边界</b><em>不是盲目下注</em></span>
-            </div>
-          </aside>
+          <div className="home-story-proof">
+            <span><Bot size={16} /><b>你的模型</b><small>使用自己的额度与环境</small></span>
+            <span><Globe2 size={16} /><b>真实联网</b><small>基于当前公开资料求证</small></span>
+            <span><ShieldCheck size={16} /><b>来源透明</b><small>结论可点击追溯信源</small></span>
+            <span><RefreshCw size={16} /><b>持续更新</b><small>新数据进入新的报告版本</small></span>
+          </div>
         </section>
 
-        <section className="landing-origin">
-          <div className="landing-origin-number">00</div>
+        <section className="home-story-product-view">
+          <header>
+            <span className="home-product-kicker">报告从开始就已经出现</span>
+            <h2>不是研究结束后才生成文档，而是边调研、边形成一张决策白板。</h2>
+            <p>白板同时承担调研过程、证据索引与最终报告。用户可以看到 Agent 正在查什么、用了哪些来源、形成了哪些判断，以及还有什么没有被证明。</p>
+          </header>
+          <ReportPreview />
+        </section>
+
+        <section className="home-story-modules">
+          <header>
+            <span className="home-product-kicker">一整轮研究，不是一份资料汇总</span>
+            <h2>六个经营问题，共同指向“下一步该不该做”。</h2>
+            <p>每个模块默认先说人话给出核心判断，再把证据、反向证据、未知项和来源放进可展开的审计层。</p>
+          </header>
+          <div className="home-module-grid">
+            {reportModules.map((module, index) => {
+              const Icon = module.icon;
+              return (
+                <article className={module.tone} key={module.title}>
+                  <header><span>0{index + 1}</span><Icon size={22} /></header>
+                  <h3>{module.title}</h3>
+                  <p>{module.body}</p>
+                  <b>查看结论与证据 <ArrowRight size={13} /></b>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="home-agent-section">
+          <header>
+            <span>RESEARCH AGENT / 调研过程</span>
+            <h2>它查了什么、用了什么证据，你都能看见。</h2>
+            <p>它不会在聊天里直接甩给你一个答案。搜了哪些关键词、找到哪些来源、删掉哪些无效信息、为什么得出这个结论，都会显示在白板上。</p>
+          </header>
+          <div className="home-agent-flow">
+            <article><b>确认研究对象</b><span>消除关键词、图片和链接的理解歧义</span></article>
+            <i />
+            <article><b>分路收集证据</b><span>市场、用户、竞品、供应、合规互不混用</span></article>
+            <i />
+            <article><b>记录检索过程</b><span>关键词、时间、来源、有效与去重数量</span></article>
+            <i />
+            <article><b>形成判断</b><span>区分事实、推断、假设、未知和反向证据</span></article>
+            <i />
+            <article><b>输出行动方案</b><span>明确买样、测试、成本红线与停止条件</span></article>
+          </div>
+        </section>
+
+        <section className="home-first-principles">
+          <header>
+            <div><span className="home-product-kicker">为什么报告更有参考价值</span><h2>不是先找一个看起来能卖的商品，再为它补理由。</h2></div>
+            <p>选品不该是猜爆款，而是把生意重新想明白。第一性原理让研究从真实需求与经营约束出发，而不是从平台榜单或竞品话术倒推答案。</p>
+          </header>
           <div>
-            <div className="landing-kicker">我们为什么做它 / 品牌缘起</div>
-            <h2>传统选品工具，常常回答了错误的问题</h2>
-            <p>“什么能卖”当然重要，但它不是商家唯一的问题。你还想知道市场刚刚发生了什么、竞品为什么能卖、用户为什么购买或放弃、哪个价格带值得进入，以及买样前还缺什么证据。</p>
-            <p>所以我们把选品重新拆回最基本的事实与假设：先理解决策，再寻找证据；先承认未知，再给出建议。</p>
+            <article><Network size={24} /><span>01 / 机制</span><h3>需求为什么存在？</h3><p>拆解使用场景、触发原因、替代方案和支付意愿，判断问题是否真实且持续。</p></article>
+            <article><Layers3 size={24} /><span>02 / 边界</span><h3>证据究竟证明什么？</h3><p>竞品页面不能证明目标商品效果，供应页面不能代表正式报价，方向性机会不能冒充确定市场。</p></article>
+            <article><CheckCircle2 size={24} /><span>03 / 行动</span><h3>下一步凭什么继续？</h3><p>把结论转成可以买什么样品、应该测试什么、何时通过，以及什么时候必须停止。</p></article>
           </div>
         </section>
 
-        <section className="landing-promises">
-          <div className="landing-section-head">
-            <h2>我们想守住的四个产品承诺</h2>
-            <p>不是用更多功能制造复杂，而是让研究更连续、成本更透明、推理更可信、结论更接近真实经营。</p>
+        <section className="home-source-system">
+          <div className="home-source-copy">
+            <span className="home-product-kicker">接入你的数据工具栈</span>
+            <h2>生而开放，让信源能力跟着你的工具一起生长。</h2>
+            <p>选品猫先使用公开网络完成基础调研。以后可以接入自己的 MCP、数据库或 API，让同一套研究逻辑获得更广、更深、更及时的证据。</p>
+            <ul>
+              <li><b>现在</b><span>公开网页、平台页面、用户讨论、品牌与供应信息</span></li>
+              <li><b>可扩展</b><span>SEMrush、FastMoss、平台 API、评论数据库、供应链系统</span></li>
+              <li><b>不变</b><span>所有新数据仍保留来源、时间、批次和影响范围</span></li>
+            </ul>
           </div>
-          <div className="landing-promise-grid">
-            {promises.map((item) => (
-              <article className={`landing-promise ${item.tone}`} key={item.index}>
-                <div className="landing-promise-head"><span>{item.index}</span><small>{item.status}</small></div>
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
-                <div className="landing-promise-foot">{item.foot}</div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="landing-method">
-          <div className="landing-method-head"><h2>我们如何把一条线索变成决策</h2><span>提问 → 研究 → 推理 → 决策</span></div>
-          <div className="landing-method-grid">
-            {method.map(([index, title, body]) => (
-              <article key={index}><span>{index}</span><h3>{title}</h3><p>{body}</p></article>
-            ))}
+          <div className="home-source-map" aria-label="可扩展数据源结构">
+            <div className="home-source-core"><Bot size={28} /><strong>选品猫研究 Agent</strong><span>统一证据结构</span></div>
+            <span className="source-orbit web"><Globe2 size={17} /><b>公开网络</b></span>
+            <span className="source-orbit mcp"><Network size={17} /><b>第三方 MCP</b></span>
+            <span className="source-orbit api"><Blocks size={17} /><b>业务 API</b></span>
+            <span className="source-orbit data"><Database size={17} /><b>自有数据库</b></span>
           </div>
         </section>
 
-        <section className="landing-manifesto">
+        <section className="home-update-loop">
+          <header>
+            <div>
+              <span className="home-product-kicker">报告不会在导出那一刻失效</span>
+              <h2>补充新证据，只更新真正受到影响的结论。</h2>
+            </div>
+            <p>后来又多了 500 条评论、一个供应商报价，或一批 SEMrush 数据，都可以作为新的证据批次进入原调研。旧版本保留，新版本说明变化来自哪里。</p>
+          </header>
+          <div className="home-update-diagram">
+            <article><span>V1</span><b>现有报告</b><small>原始证据与结论保持不变</small></article>
+            <i><ArrowRight size={18} /></i>
+            <article className="new-data"><span>NEW</span><b>新增证据批次</b><small>来源、时间、数量与去重记录</small></article>
+            <i><ArrowRight size={18} /></i>
+            <article className="recompute"><span>影响分析</span><b>只重算相关模块</b><small>同时检查反向证据与结论降级</small></article>
+            <i><ArrowRight size={18} /></i>
+            <article className="next-version"><span>V2</span><b>生成新版本</b><small>明确展示更新前、更新后和变化原因</small></article>
+          </div>
+        </section>
+
+        <section className="home-faq">
+          <header><span className="home-product-kicker">常见问题</span><h2>开始之前，你可能还想知道</h2></header>
           <div>
-            <span>我们相信</span>
-            <h2>好的选品报告，不替商家下注，而是让每一次下注更有依据。</h2>
-            <p>选品猫会明确标注来源、可信程度、缺口与报告边界。我们不把竞品证据冒充目标商品事实，也不把方向性机会包装成确定性答案。</p>
+            <details><summary>选品猫会直接告诉我应该卖什么吗？</summary><p>它会给出是否值得继续、机会在哪里、竞争强度如何，以及下一步验证建议；不会把证据不足的方向包装成确定会成功的商品。</p></details>
+            <details><summary>为什么要使用我自己的模型？</summary><p>这样研究消耗的是你自己的模型额度，数据和报告留在自己的环境中，也便于根据团队需要更换或升级模型。</p></details>
+            <details><summary>联网搜索到的内容都算有效证据吗？</summary><p>不是。搜索结果只是发现入口，保留的证据必须打开并核验来源。无法访问、只看到摘要或属于竞品自述的内容会单独标记边界。</p></details>
+            <details><summary>以后接入 SEMrush 或 FastMoss，需要重做报告吗？</summary><p>不需要推翻原报告。新接口数据会作为新的证据批次加入，再重新计算受影响的市场、竞品或营销结论并生成新版本。</p></details>
           </div>
-          <Link className="landing-button lime" href="/discover">开始选品 <ArrowRight size={15} /></Link>
+        </section>
+
+        <section className="home-product-cta">
+          <div><span>从一条关键词、一张图片或一个竞品链接开始</span><h2>把一轮选品调研的全过程，真正掌握在自己手里。</h2></div>
+          <Link className="home-product-button lime" href="/discover">打开选品工作台 <ArrowRight size={16} /></Link>
         </section>
       </main>
     </div>

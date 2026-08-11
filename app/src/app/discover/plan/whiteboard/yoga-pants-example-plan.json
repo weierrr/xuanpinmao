@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "1.0",
+  "discoveryId": "discovery-3d-yoga-pants-999d4e8e5cc2-us",
+  "mode": "CATEGORY_OPPORTUNITY_DISCOVERY",
+  "categoryKeyword": "3D yoga pants 示例报告",
+  "targetMarket": "US",
+  "targetAudience": "希望运动裤兼顾自然塑形、舒适和日常穿着的美国女性（示例画像）",
+  "salesChannel": "independent_dtc / TikTok Shop",
+  "imageUrls": [],
+  "competitorUrls": [
+    "https://getionix.com/"
+  ],
+  "referenceUrls": [
+    "https://getionix.com/"
+  ],
+  "coverageTargets": {
+    "minimumBrands": 10,
+    "minimumAsins": 20,
+    "maximumAsins": 50,
+    "minimumValidReviews": 500,
+    "minimumRedditThreads": 20,
+    "minimumPriceBands": 3
+  },
+  "queryGroups": {
+    "amazonCategoryDiscovery": [
+      "Amazon US 3D yoga pants 示例报告 best sellers",
+      "Amazon US 3D yoga pants 示例报告 new releases",
+      "3D yoga pants 示例报告 Amazon one star reviews",
+      "3D yoga pants 示例报告 Amazon sizing material style comparison"
+    ],
+    "redditDemandDiscovery": [
+      "site:reddit.com 3D yoga pants 示例报告 problems",
+      "site:reddit.com 3D yoga pants 示例报告 recommendations",
+      "site:reddit.com 3D yoga pants 示例报告 alternatives",
+      "site:reddit.com 3D yoga pants 示例报告 wish existed"
+    ],
+    "independentReviewDiscovery": [
+      "3D yoga pants 示例报告 Trustpilot reviews",
+      "3D yoga pants 示例报告 independent review complaints",
+      "3D yoga pants 示例报告 brand reviews durability sizing"
+    ],
+    "alternativeAndWorkaroundDiscovery": [
+      "3D yoga pants 示例报告 workaround",
+      "3D yoga pants 示例报告 substitute product",
+      "3D yoga pants 示例报告 what do you use instead"
+    ]
+  },
+  "stages": [
+    {
+      "code": "CATEGORY_MAP",
+      "title": "建立品类地图",
+      "output": "品牌、ASIN、价格带、款式与结构分类"
+    },
+    {
+      "code": "VOC_COLLECTION",
+      "title": "收集用户之声",
+      "output": "亚马逊、Reddit、独立评论平台的有界评论语料"
+    },
+    {
+      "code": "NEED_CLUSTERING",
+      "title": "聚类未满足需求",
+      "output": "痛点、期望结果、替代方案与反证"
+    },
+    {
+      "code": "SATURATION_CHECK",
+      "title": "判断满足度与饱和度",
+      "output": "现有产品覆盖、同质化和差异化空白"
+    },
+    {
+      "code": "CONCEPT_GENERATION",
+      "title": "生成候选商品概念",
+      "output": "3–5 个有证据边界的候选方向"
+    },
+    {
+      "code": "RESEARCH_HANDOFF",
+      "title": "创建独立尽调任务",
+      "output": "优先方向的新 Research Run 输入"
+    }
+  ],
+  "decisionGuardrails": [
+    "评论数量和搜索排名不能单独证明市场机会。",
+    "非互斥痛点不能用饼图表示为总体占比。",
+    "推断出的相邻商品只能保持研究假设状态。",
+    "每个候选方向必须同时展示反证、替代方案和证据缺口。",
+    "没有独立 Research Run，不得给出买样、上架或广告测试结论。"
+  ],
+  "createdAt": "2026-08-11T04:26:46.067Z"
+}

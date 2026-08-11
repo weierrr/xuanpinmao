@@ -45,23 +45,24 @@ afterEach(() => {
 
 describe("research whiteboard canvas interactions", () => {
   it("opens every source for a lane in a right-side drawer and closes it with Escape", async () => {
-    const { plan, whiteboard } = whiteboardFixture();
-    render(<ResearchWhiteboardCanvas whiteboard={whiteboard} keyword={plan.categoryKeyword} imageCount={0} competitorUrlCount={0} />);
+    const { whiteboard } = whiteboardFixture();
+    render(<ResearchWhiteboardCanvas whiteboard={whiteboard} />);
 
-    fireEvent.click(screen.getByRole("button", { name: "全部 2 个信源" }));
+    fireEvent.click(screen.getByRole("button", { name: "查看市场证据的全部 2 个信源" }));
 
     const drawer = screen.getByRole("dialog", { name: "市场证据" });
-    expect(drawer).toHaveTextContent("18 次检索 · 2 个保留信源 · 3 条有效判断");
+    expect(drawer).toHaveTextContent("2 个保留信源 · 1 个已核验");
     expect(screen.getByRole("link", { name: /LG LT700P 官方商品页/ })).toHaveAttribute("href", "https://www.lg.com/lt700p");
     expect(screen.getByRole("link", { name: /NSF 认证目录/ })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "全部 2 个信源" })).not.toBeInTheDocument();
 
     fireEvent.keyDown(window, { key: "Escape" });
     await waitFor(() => expect(screen.queryByRole("dialog", { name: "市场证据" })).not.toBeInTheDocument());
   });
 
   it("uses a control-wheel trackpad pinch to zoom around the gesture point", async () => {
-    const { plan, whiteboard } = whiteboardFixture();
-    const { container } = render(<ResearchWhiteboardCanvas whiteboard={whiteboard} keyword={plan.categoryKeyword} imageCount={0} competitorUrlCount={0} />);
+    const { whiteboard } = whiteboardFixture();
+    const { container } = render(<ResearchWhiteboardCanvas whiteboard={whiteboard} />);
     const viewport = container.querySelector<HTMLElement>(".whiteboard-canvas-viewport");
     const zoomOutput = screen.getByText(/%$/);
     expect(viewport).not.toBeNull();
@@ -74,5 +75,24 @@ describe("research whiteboard canvas interactions", () => {
 
     await waitFor(() => expect(Number(zoomOutput.textContent?.replace("%", ""))).toBeGreaterThan(initialZoom));
     expect(pinch.defaultPrevented).toBe(true);
+    expect(Number.parseFloat(viewport?.style.getPropertyValue("--whiteboard-dot-grid") ?? "0")).toBeGreaterThan(18 * initialZoom / 100);
+    expect(Number.parseFloat(viewport?.style.getPropertyValue("--whiteboard-dot-radius") ?? "0")).toBeGreaterThan(initialZoom / 100);
+  });
+
+  it("keeps the fitted canvas centered and prevents unreadably small zoom levels", async () => {
+    const { whiteboard } = whiteboardFixture();
+    const { container } = render(<ResearchWhiteboardCanvas whiteboard={whiteboard} />);
+    const viewport = container.querySelector<HTMLElement>(".whiteboard-canvas-viewport");
+    const stage = container.querySelector<HTMLElement>(".whiteboard-canvas-stage");
+    const zoomOutput = screen.getByText(/%$/);
+
+    await waitFor(() => expect(zoomOutput).toHaveTextContent("57%"));
+    expect(Number.parseFloat(stage?.style.width ?? "0")).toBeCloseTo(952, 5);
+    expect(Number.parseFloat(viewport?.style.getPropertyValue("--whiteboard-scaled-height") ?? "0")).toBeCloseTo(567.76, 1);
+    expect(container.querySelectorAll(".whiteboard-report-node li a svg")).toHaveLength(6);
+
+    fireEvent.click(screen.getByRole("button", { name: "缩小白板" }));
+    await waitFor(() => expect(zoomOutput).toHaveTextContent("50%"));
+    expect(screen.getByRole("button", { name: "缩小白板" })).toBeDisabled();
   });
 });

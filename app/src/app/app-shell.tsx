@@ -12,8 +12,9 @@ export const isStandaloneReportPath = (pathname: string): boolean =>
 export const isStandaloneReadingPath = (pathname: string): boolean =>
   /^\/research\/[^/]+\/(?:report|opportunities)\/?$/.test(pathname);
 
-/** The public landing page owns its editorial navigation and canvas. */
-export const isStandaloneLandingPath = (pathname: string): boolean => pathname === "/";
+/** Public product pages own the branded top navigation and editorial canvas. */
+export const isStandaloneLandingPath = (pathname: string): boolean =>
+  pathname === "/" || pathname === "/guide";
 
 /** Public workbench entry points share the branded workspace chrome. */
 export const isStandaloneWorkbenchPath = (pathname: string): boolean =>
