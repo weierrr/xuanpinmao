@@ -15,6 +15,7 @@ describe("product-led public pages", () => {
     expect(html).toContain("暂停流程动画");
     expect(html).toContain("它查了什么、用了什么证据");
     expect(html).toContain("常见问题");
+    expect(html).toContain("home-source-logo");
     expect(html).toContain('href="/guide"');
     expect(html).toContain("查看示例报告");
     expect(html).toContain(
