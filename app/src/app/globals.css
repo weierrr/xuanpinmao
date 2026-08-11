@@ -11539,11 +11539,11 @@ section > h2,
 }
 
 .home-module-grid article {
-  min-height: 285px;
+  min-height: 245px;
   display: flex;
   flex-direction: column;
   grid-column: span 4;
-  padding: 25px;
+  padding: 22px 24px;
   border: 1px solid var(--product-ink);
   background: #fff;
   box-shadow: 5px 5px 0 var(--product-ink);
@@ -11556,10 +11556,10 @@ section > h2,
 .home-module-grid article.marketing { background: #fff0e8; color: #b64c2b; }
 .home-module-grid article.validation { background: #fff7cf; color: #8b6b09; }
 .home-module-grid article header { display: flex; align-items: center; justify-content: space-between; }
-.home-module-grid article header span { font: 850 10px/1 var(--font-geist-mono); }
-.home-module-grid h3 { margin: 52px 0 13px; color: var(--product-ink); font-size: 28px; letter-spacing: -.045em; }
-.home-module-grid p { margin: 0; color: #50545a; font-size: 12px; line-height: 1.7; }
-.home-module-grid article > b { display: flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 24px; color: currentColor; font-size: 10px; }
+.home-module-grid article header span { font: 850 11px/1 var(--font-geist-mono); }
+.home-module-grid h3 { margin: 34px 0 11px; color: var(--product-ink); font-size: 29px; line-height: 1.08; letter-spacing: -.045em; }
+.home-module-grid p { margin: 0; color: #454a50; font-size: 14px; line-height: 1.6; }
+.home-module-grid article > b { display: flex; align-items: center; gap: 7px; margin-top: auto; padding-top: 18px; color: currentColor; font-size: 12px; }
 
 .home-agent-section {
   margin-top: 90px;
@@ -11655,7 +11655,7 @@ section > h2,
   .home-faq { margin-top: 58px; }
   .home-module-grid { grid-template-columns: minmax(0, 1fr); }
   .home-module-grid article,
-  .home-module-grid article:nth-child(n) { min-height: 250px; grid-column: auto; }
+  .home-module-grid article:nth-child(n) { min-height: 225px; grid-column: auto; }
   .home-agent-section { padding: 30px 20px; box-shadow: 5px 5px 0 var(--product-orange); }
   .home-first-principles > div { grid-template-columns: minmax(0, 1fr); }
   .home-first-principles article { min-height: 230px; }
