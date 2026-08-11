@@ -102,25 +102,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="home-agent-section">
-          <header>
-            <span>RESEARCH AGENT / 调研过程</span>
-            <h2>它查了什么、用了什么证据，你都能看见。</h2>
-            <p>它不会在聊天里直接甩给你一个答案。搜了哪些关键词、找到哪些来源、删掉哪些无效信息、为什么得出这个结论，都会显示在白板上。</p>
-          </header>
-          <div className="home-agent-flow">
-            <article><b>确认研究对象</b><span>消除关键词、图片和链接的理解歧义</span></article>
-            <i />
-            <article><b>分路收集证据</b><span>市场、用户、竞品、供应、合规互不混用</span></article>
-            <i />
-            <article><b>记录检索过程</b><span>关键词、时间、来源、有效与去重数量</span></article>
-            <i />
-            <article><b>形成判断</b><span>区分事实、推断、假设、未知和反向证据</span></article>
-            <i />
-            <article><b>输出行动方案</b><span>明确买样、测试、成本红线与停止条件</span></article>
-          </div>
-        </section>
-
         <section className="home-first-principles">
           <header>
             <div><span className="home-product-kicker">为什么报告更有参考价值</span><h2>不是先找一个看起来能卖的商品，再为它补理由。</h2></div>

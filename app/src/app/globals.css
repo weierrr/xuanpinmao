@@ -11628,7 +11628,6 @@ section > h2,
 
 .home-story-product-view h2,
 .home-story-modules h2,
-.home-agent-section h2,
 .home-first-principles h2,
 .home-update-loop h2,
 .home-faq h2 {
@@ -11693,26 +11692,6 @@ section > h2,
 .home-module-grid p { margin: 0; color: #454a50; font-size: 16px; line-height: 1.6; }
 .home-module-grid article > b { display: flex; align-items: center; gap: 7px; margin-top: auto; padding-top: 18px; color: currentColor; font-size: 16px; }
 
-.home-agent-section {
-  margin-top: 90px;
-  padding: 52px;
-  border: 1px solid var(--product-ink);
-  background: #111827;
-  color: #fff;
-  box-shadow: 8px 8px 0 var(--product-orange);
-}
-
-.home-agent-section > header { max-width: 920px; display: grid; gap: 17px; margin: 0 auto 44px; text-align: center; }
-.home-agent-section > header > span { color: var(--product-lime); font: 800 16px/1 var(--font-geist-mono); letter-spacing: .08em; }
-.home-agent-section h2 { color: #fff; }
-.home-agent-section > header p { max-width: 720px; margin: 0 auto; color: #bfc5ce; font-size: 16px; line-height: 1.7; }
-.home-agent-flow { display: grid; grid-template-columns: 1fr 32px 1fr 32px 1fr 32px 1fr 32px 1fr; align-items: center; }
-.home-agent-flow article { min-height: 150px; display: flex; flex-direction: column; justify-content: space-between; padding: 18px; border: 1px solid #667085; background: #182234; }
-.home-agent-flow article b { color: var(--product-lime); font-size: 16px; }
-.home-agent-flow article span { color: #c1c8d2; font-size: 16px; line-height: 1.55; }
-.home-agent-flow > i { position: relative; height: 1px; background: #73809a; }
-.home-agent-flow > i::after { content: ""; position: absolute; top: -4px; right: 0; width: 8px; height: 8px; border-top: 1px solid #73809a; border-right: 1px solid #73809a; transform: rotate(45deg); }
-
 .home-first-principles { margin-top: 92px; }
 .home-first-principles > header { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(300px, .7fr); gap: 55px; align-items: end; margin-bottom: 29px; }
 .home-first-principles > header > div { display: grid; gap: 16px; }
@@ -11755,10 +11734,6 @@ section > h2,
   .home-story-modules > header { grid-template-columns: minmax(0, 1fr); gap: 14px; }
   .home-module-grid article,
   .home-module-grid article:nth-child(n) { grid-column: span 6; }
-  .home-agent-flow { grid-template-columns: minmax(0, 1fr); gap: 9px; }
-  .home-agent-flow > i { width: 1px; height: 24px; margin: 0 auto; }
-  .home-agent-flow > i::after { top: auto; right: -4px; bottom: 0; transform: rotate(135deg); }
-  .home-agent-flow article { min-height: 120px; }
   .home-first-principles > header,
   .home-update-loop > header { grid-template-columns: minmax(0, 1fr); gap: 18px; }
   .home-update-diagram { grid-template-columns: minmax(0, 1fr); gap: 8px; }
@@ -11776,19 +11751,16 @@ section > h2,
   .home-story-product-view { margin-top: 48px; }
   .home-story-product-view h2,
   .home-story-modules h2,
-  .home-agent-section h2,
   .home-first-principles h2,
   .home-update-loop h2,
   .home-faq h2 { font-size: 40px; }
   .home-story-modules,
-  .home-agent-section,
   .home-first-principles,
   .home-update-loop,
   .home-faq { margin-top: 58px; }
   .home-module-grid { grid-template-columns: minmax(0, 1fr); }
   .home-module-grid article,
   .home-module-grid article:nth-child(n) { min-height: 225px; grid-column: auto; }
-  .home-agent-section { padding: 30px 20px; box-shadow: 5px 5px 0 var(--product-orange); }
   .home-first-principles > div { grid-template-columns: minmax(0, 1fr); }
   .home-first-principles article { min-height: 230px; }
   .home-update-diagram { padding: 18px; box-shadow: 5px 5px 0 var(--product-ink); }

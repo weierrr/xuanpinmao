@@ -14,7 +14,7 @@ describe("product-led public pages", () => {
     expect(html).toContain("第三方 MCP");
     expect(html).toContain("六份报告");
     expect(html).toContain("暂停流程动画");
-    expect(html).toContain("它查了什么、用了什么证据");
+    expect(html).not.toContain("RESEARCH AGENT / 调研过程");
     expect(html).toContain("常见问题");
     expect(html).toContain("home-source-logo");
     expect(html).toContain("site-top-brand-logo");
