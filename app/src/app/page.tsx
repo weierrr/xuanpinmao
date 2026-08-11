@@ -23,7 +23,6 @@ import {
 } from "lucide-react";
 import { ContactAuthor } from "./contact-author";
 import { SiteTopNavigation } from "./site-top-navigation";
-import { WorkbenchLink } from "./workbench-link";
 
 export const metadata: Metadata = {
   title: "选品猫｜让每一条选品结论都有来源",
@@ -115,7 +114,12 @@ export default function HomePage() {
         actions={(
           <>
             <ContactAuthor />
-            <WorkbenchLink className="primary">开始选品 <ArrowRight size={15} /></WorkbenchLink>
+            <Link
+              className="primary"
+              href="/discover/plan/whiteboard?discoveryId=discovery-3d-yoga-pants-999d4e8e5cc2-us"
+            >
+              查看示例报告 <ArrowRight size={15} />
+            </Link>
           </>
         )}
       />

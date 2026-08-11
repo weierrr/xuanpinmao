@@ -14,6 +14,10 @@ describe("product-led public pages", () => {
     expect(html).toContain("它查了什么、用了什么证据");
     expect(html).toContain("常见问题");
     expect(html).toContain('href="/guide"');
+    expect(html).toContain("查看示例报告");
+    expect(html).toContain(
+      'href="/discover/plan/whiteboard?discoveryId=discovery-3d-yoga-pants-999d4e8e5cc2-us"',
+    );
 
     expect(html.indexOf("把选品调研的全过程")).toBeLessThan(html.indexOf("六个经营问题"));
     expect(html.indexOf("六个经营问题")).toBeLessThan(html.indexOf("接入你的数据工具栈"));
