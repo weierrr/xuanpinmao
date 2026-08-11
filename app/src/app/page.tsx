@@ -76,7 +76,7 @@ export default function HomePage() {
           <header>
             <span className="home-product-kicker">报告从开始就已经出现</span>
             <h2>不是研究结束后才生成文档，而是边调研、边形成一张决策白板。</h2>
-            <p>白板同时承担调研过程、证据索引与最终报告。用户可以看到 Agent 正在查什么、用了哪些来源、形成了哪些判断，以及还有什么没有被证明。</p>
+            <p>这可能是市面上最让人有安全感的选品调研工具。调研过程、证据来源和最终报告都在同一张白板上。查了什么、依据什么、哪些结论还没有被证明，你都看得见。</p>
           </header>
           <ProductResearchAnimation />
         </section>
