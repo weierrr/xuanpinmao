@@ -7,7 +7,8 @@ describe("product-led public pages", () => {
   it("explains the product through evidence, research depth, extensibility, and report output", () => {
     const html = renderToStaticMarkup(<HomePage />);
 
-    expect(html).toContain("把选品调研的全过程");
+    expect(html).toContain("数据都有出处");
+    expect(html).toContain("选品心里有数");
     expect(html).toContain("第一性原理");
     expect(html).toContain("第三方 MCP");
     expect(html).toContain("六份报告");
@@ -19,7 +20,7 @@ describe("product-led public pages", () => {
       'href="/discover/plan/whiteboard?discoveryId=discovery-3d-yoga-pants-999d4e8e5cc2-us"',
     );
 
-    expect(html.indexOf("把选品调研的全过程")).toBeLessThan(html.indexOf("六个经营问题"));
+    expect(html.indexOf("数据都有出处")).toBeLessThan(html.indexOf("六个经营问题"));
     expect(html.indexOf("六个经营问题")).toBeLessThan(html.indexOf("接入你的数据工具栈"));
   });
 

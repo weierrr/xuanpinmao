@@ -7,7 +7,6 @@ import {
   Bot,
   CheckCircle2,
   Database,
-  ExternalLink,
   FileSearch,
   FlaskConical,
   Globe2,
@@ -16,12 +15,12 @@ import {
   Network,
   PackageSearch,
   RefreshCw,
-  Search,
   ShieldCheck,
   Sparkles,
   Users,
 } from "lucide-react";
 import { ContactAuthor } from "./contact-author";
+import { ProductResearchAnimation } from "./product-research-animation";
 import { SiteTopNavigation } from "./site-top-navigation";
 
 export const metadata: Metadata = {
@@ -37,74 +36,6 @@ const reportModules = [
   { title: "营销打法", body: "核心价值主张、广告钩子、内容素材与表达边界。", icon: Megaphone, tone: "marketing" },
   { title: "验证方案", body: "买什么样品、测试什么、成本红线与停止条件。", icon: FlaskConical, tone: "validation" },
 ] as const;
-
-function ReportPreview() {
-  return (
-    <div className="home-report-board" aria-label="选品猫报告结构示意图">
-      <div className="home-report-board-head">
-        <div>
-          <span>实时研究白板 / 示例结构</span>
-          <strong>从证据收集到执行方案，所有过程都在一张白板上</strong>
-        </div>
-        <b><span />调研进行中</b>
-      </div>
-
-      <div className="home-report-flow">
-        <section className="home-report-lane input">
-          <small>01 · 研究对象</small>
-          <article>
-            <Search size={16} />
-            <div><b>关键词 + 图片 + 链接</b><span>市场、渠道、目标用户</span></div>
-          </article>
-        </section>
-
-        <i aria-hidden="true" />
-
-        <section className="home-report-lane sources">
-          <small>02 · 数据来源</small>
-          <article><Globe2 size={15} /><b>市场资料</b><span>9 个来源</span></article>
-          <article><Database size={15} /><b>用户反馈</b><span>699 条</span></article>
-          <article><Blocks size={15} /><b>竞品页面</b><span>8 个来源</span></article>
-        </section>
-
-        <i aria-hidden="true" />
-
-        <section className="home-report-lane agent">
-          <small>03 · Agent 采集</small>
-          <article>
-            <Bot size={17} />
-            <div><b>检索、筛选、去重</b><span>保留关键词、时间与结果</span></div>
-          </article>
-          <ul><li>搜索记录 22</li><li>有效信源 29</li><li>原子判断 22</li></ul>
-        </section>
-
-        <i aria-hidden="true" />
-
-        <section className="home-report-lane synthesis">
-          <small>04 · 整理分析</small>
-          <article><b>价格、趋势与竞争强度</b><span>区分事实、推断与未知</span></article>
-          <article><b>买家人群与真实焦虑</b><span>同时保留反向证据</span></article>
-        </section>
-
-        <i aria-hidden="true" />
-
-        <section className="home-report-lane output">
-          <small>05 · 六份报告</small>
-          <div>
-            {reportModules.map((module, index) => (
-              <span key={module.title}><b>0{index + 1}</b>{module.title}<ArrowRight size={11} /></span>
-            ))}
-          </div>
-        </section>
-      </div>
-
-      <div className="home-report-board-foot">
-        <span><ShieldCheck size={14} />结论保留来源、证据等级、反向证据与待补缺口</span>
-        <span>补充新数据后可生成新版本 <ExternalLink size={13} /></span>
-      </div>
-    </div>
-  );
-}
 
 export default function HomePage() {
   return (
@@ -127,7 +58,7 @@ export default function HomePage() {
       <main className="home-product-page">
         <section className="home-story-hero">
           <span className="home-story-pill"><Sparkles size={15} />基于第一性原理的选品研究 Agent</span>
-          <h1>把选品调研的全过程，<br />摊开给你看。</h1>
+          <h1>数据都有出处，<br />选品心里有数。</h1>
           <p>使用你自己的模型联网寻找市场、用户、竞品、供应与合规证据。从搜过什么，到为什么得出结论，再到下一步怎么验证，全部留在一张可追溯白板上。</p>
           <div className="home-product-actions">
             <Link className="home-product-button dark" href="/discover">开始一次调研 <ArrowRight size={16} /></Link>
@@ -147,7 +78,7 @@ export default function HomePage() {
             <h2>不是研究结束后才生成文档，而是边调研、边形成一张决策白板。</h2>
             <p>白板同时承担调研过程、证据索引与最终报告。用户可以看到 Agent 正在查什么、用了哪些来源、形成了哪些判断，以及还有什么没有被证明。</p>
           </header>
-          <ReportPreview />
+          <ProductResearchAnimation />
         </section>
 
         <section className="home-story-modules">
