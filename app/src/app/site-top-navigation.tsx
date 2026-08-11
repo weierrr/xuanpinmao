@@ -12,7 +12,7 @@ export function SiteTopNavigation({ active, actions }: SiteTopNavigationProps) {
     <header className="site-top-navigation">
       <div className="site-top-navigation-inner">
         <Link className="site-top-brand" href="/" aria-label="选品猫首页">
-          <Bot size={22} strokeWidth={2.4} />
+          <Bot className="site-top-brand-logo" size={27} strokeWidth={2.5} />
           <strong>选品猫</strong>
         </Link>
 

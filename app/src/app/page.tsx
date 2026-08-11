@@ -145,7 +145,7 @@ export default function HomePage() {
             </ul>
           </div>
           <div className="home-source-map" aria-label="可扩展数据源结构">
-            <div className="home-source-core"><Bot className="home-source-logo" size={36} strokeWidth={2.4} /><strong>选品猫研究 Agent</strong><span>统一证据结构</span></div>
+            <div className="home-source-core"><Bot className="home-source-logo" size={46} strokeWidth={2.5} /><strong>选品猫研究 Agent</strong><span>统一证据结构</span></div>
             <span className="source-orbit web"><Globe2 size={17} /><b>公开网络</b></span>
             <span className="source-orbit mcp"><Network size={17} /><b>第三方 MCP</b></span>
             <span className="source-orbit api"><Blocks size={17} /><b>业务 API</b></span>
