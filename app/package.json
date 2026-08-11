@@ -9,7 +9,7 @@
     "build": "next build",
     "lint": "eslint .",
     "test": "vitest run",
-    "test:portable": "vitest run src/research-whiteboard/research-whiteboard.test.ts src/opportunity-discovery/opportunity-discovery.test.ts src/app/workbench-shell.test.tsx",
+    "test:portable": "vitest run src/research-whiteboard/research-whiteboard.test.ts src/opportunity-discovery/opportunity-discovery.test.ts src/app/workbench-shell.test.tsx src/app/discover/plan/whiteboard/research-whiteboard-canvas.test.tsx",
     "db:generate": "prisma generate",
     "db:migrate": "tsx prisma/migrate.ts",
     "db:seed": "tsx prisma/seed.ts",

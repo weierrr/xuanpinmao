@@ -5,7 +5,7 @@ import os from "node:os";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { FirstPrinciplesView } from "./first-principles-view";
-import { firstPrinciplesSummaryMarkdown, persistFirstPrinciplesStage } from "./service";
+import { firstPrinciplesSummaryMarkdown, persistFirstPrinciplesStage, resolveCurrentResearchRunCandidate } from "./service";
 import type { FirstPrinciplesBundle } from "./types";
 import { validateFirstPrinciplesBundle, type FirstPrinciplesValidationContext } from "./validation";
 import { generateLiveResearchReports } from "../research/live-report";
@@ -13,6 +13,17 @@ import type { EvidencePackage } from "../research/types";
 import type { LiveResearchAnalysis } from "../research/live-types";
 
 const runId = "research-run-test-current-us";
+
+describe("current Research Run selection", () => {
+  it("recovers from a valid but stale pointer by selecting the newest evidence package", () => {
+    const selected = resolveCurrentResearchRunCandidate([
+      { researchRunId: "research-run-old-us", packagePath: "/tmp/old", createdAt: "2026-08-10T07:11:52.889Z" },
+      { researchRunId: "research-run-lt700p-us", packagePath: "/tmp/lt700p", createdAt: "2026-08-10T14:20:29.193Z" },
+    ]);
+
+    expect(selected?.researchRunId).toBe("research-run-lt700p-us");
+  });
+});
 const score = (value = 60) => ({
   score: value,
   status: "scored" as const,

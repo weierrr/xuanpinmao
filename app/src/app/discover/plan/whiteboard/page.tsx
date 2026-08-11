@@ -128,7 +128,7 @@ export default async function ResearchWhiteboardPage({
                         ))}
                       </ul>
                       {module.unknowns.length > 0 ? (
-                        <div className="research-whiteboard-unknowns"><b>仍需补证</b><ul>{module.unknowns.map((item) => <li key={item}>{reportTextZh(item)}</li>)}</ul></div>
+                        <div className="research-whiteboard-unknowns"><b>仍需补证</b><ul>{module.unknowns.map((item, itemIndex) => <li key={`${item}-${itemIndex}`}>{reportTextZh(item)}</li>)}</ul></div>
                       ) : null}
                     </details>
                   </article>

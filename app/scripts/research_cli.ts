@@ -4,6 +4,7 @@ import { ResearchRunner, initializeResearchPackage, importResearchRunPackage, va
 import { opportunityDiscoveryPaths } from "../src/opportunity-discovery/service";
 import { opportunityDiscoveryPlanSchema } from "../src/opportunity-discovery/types";
 import { readFile } from "node:fs/promises";
+import { liveResearchInputFromDiscovery } from "../src/research/confirmed-discovery";
 
 const readOption = (name: string): string | undefined => {
   const index = process.argv.indexOf(`--${name}`);
@@ -57,21 +58,11 @@ const main = async (): Promise<void> => {
     const discoveryPlan = opportunityDiscoveryPlanSchema.parse(JSON.parse(
       await readFile(opportunityDiscoveryPaths(discoveryId).plan, "utf8"),
     ));
-    const productName = discoveryPlan.categoryKeyword;
-    const targetMarket = discoveryPlan.targetMarket;
     const description = readOption("description");
     const currency = readOption("currency");
-    const targetAudience = discoveryPlan.targetAudience;
-    const imagePaths = discoveryPlan.imageUrls;
-    const competitors = discoveryPlan.competitorUrls.length > 0
-      ? discoveryPlan.competitorUrls
-      : discoveryPlan.referenceUrls.filter((url) => !discoveryPlan.imageUrls.includes(url));
     const resume = hasFlag("resume");
-    if (competitors.length === 0) {
-      throw new Error("The confirmed discovery plan needs at least one product or competitor URL before creating a live Research Run.");
-    }
     const result = await ResearchRunner.run(
-      { mode: "live", productName, targetMarket, description, currency, targetAudience, imagePaths, competitors, ...resourceOptions() },
+      liveResearchInputFromDiscovery(discoveryPlan, { description, currency, ...resourceOptions() }),
       { resume },
     );
     await linkResearchToDiscovery(result.packagePath, discoveryId, result.researchRunId);
