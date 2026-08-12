@@ -76,6 +76,14 @@ const evidenceStages = [
 ] as const satisfies readonly ResearchWhiteboardStageCode[];
 
 type EvidenceStageCode = (typeof evidenceStages)[number];
+type AnalysisCode = "market" | "customer" | "competitor";
+
+const evidenceLevelLabels: Record<ResearchWhiteboardReportModule["items"][number]["level"], string> = {
+  fact: "已核验事实",
+  directional: "方向性证据",
+  hypothesis: "待验证假设",
+  unknown: "仍待确认",
+};
 
 const reportOrder: ResearchWhiteboardReportModule["code"][] = [
   "market",
@@ -124,6 +132,7 @@ export function ResearchWhiteboardCanvas({
   const [mode, setMode] = useState<WhiteboardMode>("all");
   const [zoom, setZoom] = useState(0.72);
   const [openSourceStage, setOpenSourceStage] = useState<EvidenceStageCode | null>(null);
+  const [openAnalysisCode, setOpenAnalysisCode] = useState<AnalysisCode | null>(null);
 
   const setCanvasZoom = useCallback((value: number, clientX?: number, clientY?: number) => {
     const viewport = viewportRef.current;
@@ -177,13 +186,16 @@ export function ResearchWhiteboardCanvas({
   }, [setCanvasZoom]);
 
   useEffect(() => {
-    if (!openSourceStage) return;
+    if (!openSourceStage && !openAnalysisCode) return;
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpenSourceStage(null);
+      if (event.key === "Escape") {
+        setOpenSourceStage(null);
+        setOpenAnalysisCode(null);
+      }
     };
     window.addEventListener("keydown", closeOnEscape);
     return () => window.removeEventListener("keydown", closeOnEscape);
-  }, [openSourceStage]);
+  }, [openAnalysisCode, openSourceStage]);
 
   const changeZoom = (delta: number) => {
     setCanvasZoom(zoomRef.current + delta);
@@ -197,24 +209,31 @@ export function ResearchWhiteboardCanvas({
 
   const analysisCards = useMemo(() => [
     {
+      code: "market" as const,
       title: "价格、趋势与竞争强度",
-      summary: reportTextZh(moduleByCode(whiteboard.reportModules, "market")?.conclusion
-        ?? whiteboard.stages.synthesis.summary),
+      module: moduleByCode(whiteboard.reportModules, "market"),
       tag: "市场结构",
     },
     {
+      code: "customer" as const,
       title: "购买人群与真实焦虑",
-      summary: reportTextZh(moduleByCode(whiteboard.reportModules, "customer")?.conclusion
-        ?? "等待用户证据形成可追溯洞察。"),
+      module: moduleByCode(whiteboard.reportModules, "customer"),
       tag: "用户动机",
     },
     {
+      code: "competitor" as const,
       title: "竞品路径与机会缺口",
-      summary: reportTextZh(moduleByCode(whiteboard.reportModules, "competitor")?.conclusion
-        ?? "等待竞品证据形成点击、信任与成交路径。"),
+      module: moduleByCode(whiteboard.reportModules, "competitor"),
       tag: "竞争机会",
     },
-  ], [whiteboard]);
+  ].map((card) => ({
+    ...card,
+    summary: reportTextZh(card.module?.conclusion ?? (card.code === "market"
+      ? whiteboard.stages.synthesis.summary
+      : card.code === "customer"
+        ? "等待用户证据形成可追溯洞察。"
+        : "等待竞品证据形成点击、信任与成交路径。")),
+  })), [whiteboard]);
 
   const executionCards = reportOrder.slice(3).map((code) => {
     const reportModule = moduleByCode(whiteboard.reportModules, code);
@@ -225,6 +244,9 @@ export function ResearchWhiteboardCanvas({
     };
   });
   const drawerStage = openSourceStage ? whiteboard.stages[openSourceStage] : null;
+  const drawerAnalysis = openAnalysisCode
+    ? analysisCards.find((card) => card.code === openAnalysisCode) ?? null
+    : null;
 
   return (
     <section className="whiteboard-canvas-frame" ref={frameRef}>
@@ -310,7 +332,10 @@ export function ResearchWhiteboardCanvas({
                       aria-label={`查看${stageLabels[code]}的全部 ${stage.sources.length} 个信源`}
                       aria-expanded={openSourceStage === code}
                       aria-controls="whiteboard-source-drawer"
-                      onClick={() => setOpenSourceStage(code)}
+                      onClick={() => {
+                        setOpenAnalysisCode(null);
+                        setOpenSourceStage(code);
+                      }}
                     />
                   ) : null}
                 </article>
@@ -340,7 +365,18 @@ export function ResearchWhiteboardCanvas({
               <article className="whiteboard-node analysis-card" key={card.title}>
                 <header><span>{card.tag}</span><b>证据 + 本次</b></header>
                 <h3>{card.title}</h3>
-                <p>{shortText(card.summary, 110)}</p>
+                <span className="analysis-card-action">查看完整分析 <ArrowRight size={14} aria-hidden="true" /></span>
+                <button
+                  type="button"
+                  className="whiteboard-analysis-card-hitarea"
+                  aria-label={`查看${card.title}的完整分析`}
+                  aria-expanded={openAnalysisCode === card.code}
+                  aria-controls="whiteboard-analysis-drawer"
+                  onClick={() => {
+                    setOpenSourceStage(null);
+                    setOpenAnalysisCode(card.code);
+                  }}
+                />
               </article>
             ))}
           </section>
@@ -430,6 +466,60 @@ export function ResearchWhiteboardCanvas({
                   <ExternalLink size={13} />
                 </a>
               ))}
+            </div>
+          </aside>
+        </>
+      ) : null}
+
+      {drawerAnalysis && openAnalysisCode ? (
+        <>
+          <button
+            type="button"
+            className="whiteboard-source-drawer-backdrop"
+            aria-label="关闭分析抽屉"
+            onClick={() => setOpenAnalysisCode(null)}
+          />
+          <aside
+            id="whiteboard-analysis-drawer"
+            className="whiteboard-source-drawer whiteboard-analysis-drawer"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="whiteboard-analysis-drawer-title"
+          >
+            <header>
+              <div>
+                <span>完整分析</span>
+                <h2 id="whiteboard-analysis-drawer-title">{drawerAnalysis.title}</h2>
+                <p>{drawerAnalysis.tag} · 基于本轮保留证据整理</p>
+              </div>
+              <button type="button" aria-label="关闭分析抽屉" onClick={() => setOpenAnalysisCode(null)}><X size={18} /></button>
+            </header>
+            <div className="whiteboard-analysis-drawer-body">
+              <section className="whiteboard-analysis-conclusion">
+                <span>核心结论</span>
+                <p>{drawerAnalysis.summary}</p>
+              </section>
+              {drawerAnalysis.module?.items.length ? (
+                <section>
+                  <h3>支持判断</h3>
+                  <ul>
+                    {drawerAnalysis.module.items.map((item, index) => (
+                      <li key={`${item.text}-${index}`}>
+                        <div><span>{evidenceLevelLabels[item.level]}</span><em>{item.sourceIds.length} 个来源</em></div>
+                        <p>{reportTextZh(item.text)}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ) : null}
+              {drawerAnalysis.module?.unknowns.length ? (
+                <section className="whiteboard-analysis-unknowns">
+                  <h3>尚未证明</h3>
+                  <ul>
+                    {drawerAnalysis.module.unknowns.map((unknown) => <li key={unknown}>{reportTextZh(unknown)}</li>)}
+                  </ul>
+                </section>
+              ) : null}
             </div>
           </aside>
         </>
