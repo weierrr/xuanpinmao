@@ -65,13 +65,13 @@ describe("product-led public pages", () => {
     expect(undersized).toEqual([]);
   });
 
-  it("keeps the product research animation visually compact", () => {
+  it("keeps the product research animation compact but legible", () => {
     const css = readFileSync("src/app/globals.css", "utf8");
 
-    expect(css).toContain("font: 750 9px/1 var(--font-geist-mono)");
-    expect(css).toContain(".research-demo-stage > header b { font-size: 13px");
-    expect(css).toContain(".research-demo-terminal span { padding: 8px");
-    expect(css).toContain("font: 7px/1.35 var(--font-geist-mono)");
+    expect(css).toContain(".research-demo-window-bar { font-size: 11px; }");
+    expect(css).toContain(".research-demo-stage > header b { font-size: 14px; }");
+    expect(css).toContain(".research-demo-terminal span { font-size: 9px; }");
+    expect(css).toContain(".research-demo-footer > p { font-size: 11px; }");
   });
 
   it("keeps whiteboard scope metadata compact and lighter", () => {

@@ -11532,6 +11532,34 @@ section > h2,
 .research-demo-footer > p { margin: 0; color: #a9a9a3; font-size: 9px; line-height: 1.4; }
 .research-demo-footer > b { color: var(--demo-orange); font: 900 12px/1 var(--font-geist-mono); }
 
+/* The demo is a miniature interface, but its key content still needs to remain legible. */
+.research-demo-window-bar { font-size: 11px; }
+.research-demo-window-bar .research-demo-controls button { font-size: 10px; }
+.research-demo-stage > header > span { font-size: 11px; }
+.research-demo-stage > header b { font-size: 14px; }
+.research-demo-stage > header small { font-size: 10px; }
+.research-demo-stage > header em { font-size: 9px; }
+.research-demo-query b { font-size: 13px; }
+.research-demo-query small,
+.research-demo-inputs span { font-size: 10px; }
+.research-demo-object p { font-size: 11px; }
+.research-demo-source-list b { font-size: 12px; }
+.research-demo-source-list small { font-size: 9px; }
+.research-demo-agent-head { font-size: 12px; }
+.research-demo-terminal span { font-size: 9px; }
+.research-demo-agent-metrics span { font-size: 9px; }
+.research-demo-agent-metrics b { font-size: 13px; }
+.research-demo-analysis article span { font-size: 11px; }
+.research-demo-analysis article b { font-size: 9px; }
+.research-demo-insight p { font-size: 10px; }
+.research-demo-insight b { font-size: 11px; }
+.research-demo-report article span { font-size: 9px; }
+.research-demo-report article b { font-size: 11px; }
+.research-demo-footer > span { font-size: 10px; }
+.research-demo-footer > strong { font-size: 12px; }
+.research-demo-footer > p { font-size: 11px; }
+.research-demo-footer > b { font-size: 13px; }
+
 @keyframes research-demo-pulse { 50% { opacity: .35; transform: scale(.75); } }
 @keyframes research-demo-document { 50% { transform: translateX(4px) rotate(7deg); } }
 @keyframes research-demo-body-in { from { opacity: .15; transform: translateY(13px); } to { opacity: 1; transform: translateY(0); } }
