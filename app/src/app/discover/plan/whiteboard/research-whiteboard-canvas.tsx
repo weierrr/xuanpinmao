@@ -26,8 +26,8 @@ type ResearchWhiteboardCanvasProps = Readonly<{
   whiteboard: ResearchWhiteboard;
 }>;
 
-const canvasWidth = 1660;
-const canvasHeight = 940;
+const canvasWidth = 1598;
+const canvasHeight = 900;
 const minimumZoom = 0.5;
 const maximumZoom = 2.5;
 const fitHorizontalGutter = 48;
@@ -294,7 +294,7 @@ export function ResearchWhiteboardCanvas({
             <path className="line-analysis" d="M 588 768 C 632 768, 625 726, 665 726" />
             {[196, 462, 726].map((y) => <path key={`analysis-${y}`} className="line-report" d={`M 915 ${y} C 952 ${y}, 948 495, 986 495`} />)}
             {[168, 352, 536, 720].map((y) => <path key={`execution-${y}`} className="line-execution" d={`M 1242 495 C 1274 495, 1264 ${y}, 1302 ${y}`} />)}
-            <path className="line-feedback" d="M 1578 814 C 1578 890, 1480 918, 1235 918 L 145 918 C 70 918, 48 870, 48 822" />
+            <path className="line-feedback" d="M 1578 814 C 1578 852, 1480 878, 1235 878 L 145 878 C 70 878, 48 854, 48 822" />
           </svg>
 
           <div className="whiteboard-lane-label lane-source"><span>01</span>数据来源</div>
