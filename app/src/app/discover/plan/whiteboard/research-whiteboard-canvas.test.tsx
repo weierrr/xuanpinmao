@@ -81,6 +81,24 @@ describe("research whiteboard canvas interactions", () => {
     await waitFor(() => expect(screen.queryByRole("dialog", { name: "价格、趋势与竞争强度" })).not.toBeInTheDocument());
   });
 
+  it("keeps collection cards inside their bounds and moves process details into a drawer", async () => {
+    const { whiteboard } = whiteboardFixture();
+    render(<ResearchWhiteboardCanvas whiteboard={whiteboard} />);
+
+    expect(screen.queryByText("完成检索、筛选、去重和有效性判断，形成可用于本轮分析的证据记录。")).not.toBeInTheDocument();
+    expect(screen.queryByText("保留 2 个来源")).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "查看市场证据的采集详情" }));
+
+    const drawer = screen.getByRole("dialog", { name: "市场证据处理" });
+    expect(drawer).toHaveTextContent("18 次");
+    expect(drawer).toHaveTextContent("2 个");
+    expect(drawer).toHaveTextContent("3 条");
+    expect(drawer).toHaveTextContent("筛除无关、重复或无法核验的内容");
+
+    fireEvent.keyDown(window, { key: "Escape" });
+    await waitFor(() => expect(screen.queryByRole("dialog", { name: "市场证据处理" })).not.toBeInTheDocument());
+  });
+
   it("uses a control-wheel trackpad pinch to zoom around the gesture point", async () => {
     const { whiteboard } = whiteboardFixture();
     const { container } = render(<ResearchWhiteboardCanvas whiteboard={whiteboard} />);

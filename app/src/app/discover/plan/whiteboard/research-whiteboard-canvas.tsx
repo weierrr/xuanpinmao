@@ -119,6 +119,7 @@ export function ResearchWhiteboardCanvas({
   const [mode, setMode] = useState<WhiteboardMode>("all");
   const [zoom, setZoom] = useState(0.72);
   const [openSourceStage, setOpenSourceStage] = useState<EvidenceStageCode | null>(null);
+  const [openCollectionStage, setOpenCollectionStage] = useState<EvidenceStageCode | null>(null);
   const [openAnalysisCode, setOpenAnalysisCode] = useState<AnalysisCode | null>(null);
 
   const setCanvasZoom = useCallback((value: number, clientX?: number, clientY?: number) => {
@@ -173,16 +174,17 @@ export function ResearchWhiteboardCanvas({
   }, [setCanvasZoom]);
 
   useEffect(() => {
-    if (!openSourceStage && !openAnalysisCode) return;
+    if (!openSourceStage && !openCollectionStage && !openAnalysisCode) return;
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setOpenSourceStage(null);
+        setOpenCollectionStage(null);
         setOpenAnalysisCode(null);
       }
     };
     window.addEventListener("keydown", closeOnEscape);
     return () => window.removeEventListener("keydown", closeOnEscape);
-  }, [openAnalysisCode, openSourceStage]);
+  }, [openAnalysisCode, openCollectionStage, openSourceStage]);
 
   const changeZoom = (delta: number) => {
     setCanvasZoom(zoomRef.current + delta);
@@ -231,6 +233,7 @@ export function ResearchWhiteboardCanvas({
     };
   });
   const drawerStage = openSourceStage ? whiteboard.stages[openSourceStage] : null;
+  const drawerCollectionStage = openCollectionStage ? whiteboard.stages[openCollectionStage] : null;
   const drawerAnalysis = openAnalysisCode
     ? analysisCards.find((card) => card.code === openAnalysisCode) ?? null
     : null;
@@ -317,6 +320,7 @@ export function ResearchWhiteboardCanvas({
                       aria-expanded={openSourceStage === code}
                       aria-controls="whiteboard-source-drawer"
                       onClick={() => {
+                        setOpenCollectionStage(null);
                         setOpenAnalysisCode(null);
                         setOpenSourceStage(code);
                       }}
@@ -334,11 +338,19 @@ export function ResearchWhiteboardCanvas({
                 <article className={`whiteboard-node collection-card status-${stage.status}`} key={code}>
                   <header><span>{stageLabels[code]}处理</span><b>{stage.updatedAt.slice(0, 10)}</b></header>
                   <h3>{stage.queryCount} 次检索与核查</h3>
-                  <p>完成检索、筛选、去重和有效性判断，形成可用于本轮分析的证据记录。</p>
-                  <div className="whiteboard-node-chips">
-                    <span>保留 {stage.sourceCount} 个来源</span>
-                    <span>形成 {stage.recordCount} 条判断</span>
-                  </div>
+                  <span className="collection-card-action">查看采集详情 <ArrowRight size={14} aria-hidden="true" /></span>
+                  <button
+                    type="button"
+                    className="whiteboard-collection-card-hitarea"
+                    aria-label={`查看${stageLabels[code]}的采集详情`}
+                    aria-expanded={openCollectionStage === code}
+                    aria-controls="whiteboard-collection-drawer"
+                    onClick={() => {
+                      setOpenSourceStage(null);
+                      setOpenAnalysisCode(null);
+                      setOpenCollectionStage(code);
+                    }}
+                  />
                 </article>
               );
             })}
@@ -358,6 +370,7 @@ export function ResearchWhiteboardCanvas({
                   aria-controls="whiteboard-analysis-drawer"
                   onClick={() => {
                     setOpenSourceStage(null);
+                    setOpenCollectionStage(null);
                     setOpenAnalysisCode(card.code);
                   }}
                 />
@@ -450,6 +463,54 @@ export function ResearchWhiteboardCanvas({
                   <ExternalLink size={13} />
                 </a>
               ))}
+            </div>
+          </aside>
+        </>
+      ) : null}
+
+      {drawerCollectionStage && openCollectionStage ? (
+        <>
+          <button
+            type="button"
+            className="whiteboard-source-drawer-backdrop"
+            aria-label="关闭采集详情抽屉"
+            onClick={() => setOpenCollectionStage(null)}
+          />
+          <aside
+            id="whiteboard-collection-drawer"
+            className="whiteboard-source-drawer whiteboard-collection-drawer"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="whiteboard-collection-drawer-title"
+          >
+            <header>
+              <div>
+                <span>采集详情</span>
+                <h2 id="whiteboard-collection-drawer-title">{stageLabels[openCollectionStage]}处理</h2>
+                <p>最后更新于 {drawerCollectionStage.updatedAt.slice(0, 10)}</p>
+              </div>
+              <button type="button" aria-label="关闭采集详情抽屉" onClick={() => setOpenCollectionStage(null)}><X size={18} /></button>
+            </header>
+            <div className="whiteboard-collection-drawer-body">
+              <dl>
+                <div><dt>检索与核查</dt><dd>{drawerCollectionStage.queryCount} 次</dd></div>
+                <div><dt>保留来源</dt><dd>{drawerCollectionStage.sourceCount} 个</dd></div>
+                <div><dt>有效记录</dt><dd>{drawerCollectionStage.recordCount} 条</dd></div>
+                <div><dt>当前状态</dt><dd>{stageStatusLabels[drawerCollectionStage.status]}</dd></div>
+              </dl>
+              <section>
+                <span>处理过程</span>
+                <ol>
+                  <li>执行关键词检索与来源访问</li>
+                  <li>筛除无关、重复或无法核验的内容</li>
+                  <li>保留可追溯来源并记录证据状态</li>
+                  <li>整理为可用于本轮分析的有效记录</li>
+                </ol>
+              </section>
+              <section>
+                <span>本轮进展</span>
+                <p>{drawerCollectionStage.summary}</p>
+              </section>
             </div>
           </aside>
         </>
