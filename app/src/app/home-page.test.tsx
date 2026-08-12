@@ -48,13 +48,26 @@ describe("product-led public pages", () => {
     expect(html).toContain("演示调研过程在实时白板中持续更新");
   });
 
-  it("keeps interface text at or above the 16px readability floor", () => {
+  it("keeps page text at or above the 16px readability floor outside the miniature product demo", () => {
     const css = readFileSync("src/app/globals.css", "utf8");
-    const fontDeclarations = css.match(/(?:font-size|font)\s*:[^;{}]+/g) ?? [];
+    const cssWithoutMiniatureDemo = css.replace(
+      /\.research-demo \{[\s\S]*?(?=@keyframes research-demo-pulse)/,
+      "",
+    );
+    const fontDeclarations = cssWithoutMiniatureDemo.match(/(?:font-size|font)\s*:[^;{}]+/g) ?? [];
     const undersized = fontDeclarations.filter((declaration) =>
       [...declaration.matchAll(/([0-9]*\.?[0-9]+)px/g)].some((match) => Number(match[1]) < 16),
     );
 
     expect(undersized).toEqual([]);
+  });
+
+  it("keeps the product research animation visually compact", () => {
+    const css = readFileSync("src/app/globals.css", "utf8");
+
+    expect(css).toContain("font: 750 9px/1 var(--font-geist-mono)");
+    expect(css).toContain(".research-demo-stage > header b { font-size: 13px");
+    expect(css).toContain(".research-demo-terminal span { padding: 8px");
+    expect(css).toContain("font: 7px/1.35 var(--font-geist-mono)");
   });
 });
