@@ -2,3 +2,13 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
+.exampleDisclosure {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border-left: 3px solid #7153c6;
+  background: #f5f0ff;
+  color: #5f517d;
+  font-size: 13px;
+  line-height: 1.5;
+}

@@ -120,6 +120,14 @@ const stageCodes: ResearchWhiteboardStageCode[] = [
   "validation_report", "execution",
 ];
 
+const exampleQueryCounts: Partial<Record<ResearchWhiteboardStageCode, number>> = {
+  market: 12,
+  customer: 16,
+  competitor: 10,
+  supply: 8,
+  compliance: 9,
+};
+
 const reportModules: ResearchWhiteboardReportModule[] = [
   {
     code: "market", title: "市场与机会", question: "有没有市场、需求趋势、价格空间、竞争强度。",
@@ -198,7 +206,7 @@ export const refrigeratorFilterExampleWhiteboard: ResearchWhiteboard = {
     return [code, {
       code,
       status: "complete",
-      queryCount: ["market", "customer", "competitor", "supply", "compliance"].includes(code) ? 4 : 0,
+      queryCount: exampleQueryCounts[code] ?? 0,
       sourceCount: stageSources.length,
       recordCount: stageSources.length,
       summary: stageSummary[code],

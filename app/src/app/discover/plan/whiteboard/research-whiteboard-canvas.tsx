@@ -31,6 +31,7 @@ const canvasHeight = 990;
 const minimumZoom = 0.5;
 const maximumZoom = 2.5;
 const fitHorizontalGutter = 48;
+const refrigeratorFilterExampleDiscoveryId = "discovery-refrigerator-water-filter-demo-us";
 
 const clampZoom = (value: number): number =>
   Math.min(maximumZoom, Math.max(minimumZoom, Number(value.toFixed(3))));
@@ -114,6 +115,7 @@ const moduleByCode = (
 export function ResearchWhiteboardCanvas({
   whiteboard,
 }: ResearchWhiteboardCanvasProps) {
+  const isPublicExample = whiteboard.discoveryId === refrigeratorFilterExampleDiscoveryId;
   const viewportRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
   const zoomRef = useRef(0.72);
@@ -338,7 +340,7 @@ export function ResearchWhiteboardCanvas({
               return (
                 <article className={`whiteboard-node collection-card status-${stage.status}`} key={code}>
                   <header><span>{stageLabels[code]}处理</span><b>{stage.updatedAt.slice(0, 10)}</b></header>
-                  <h3>{stage.queryCount} 次检索与核查</h3>
+                  <h3>{stage.queryCount} {isPublicExample ? "组示例检索与核查" : "次检索与核查"}</h3>
                   <span className="collection-card-action">查看采集详情 <ArrowRight size={14} aria-hidden="true" /></span>
                   <button
                     type="button"
@@ -486,7 +488,7 @@ export function ResearchWhiteboardCanvas({
           >
             <header>
               <div>
-                <span>采集详情</span>
+                <span>{isPublicExample ? "演示采集详情" : "采集详情"}</span>
                 <h2 id="whiteboard-collection-drawer-title">{stageLabels[openCollectionStage]}处理</h2>
                 <p>最后更新于 {drawerCollectionStage.updatedAt.slice(0, 10)}</p>
               </div>
@@ -494,11 +496,14 @@ export function ResearchWhiteboardCanvas({
             </header>
             <div className="whiteboard-collection-drawer-body">
               <dl>
-                <div><dt>检索与核查</dt><dd>{drawerCollectionStage.queryCount} 次</dd></div>
+                <div><dt>{isPublicExample ? "示例检索与核查" : "检索与核查"}</dt><dd>{drawerCollectionStage.queryCount} {isPublicExample ? "组" : "次"}</dd></div>
                 <div><dt>保留来源</dt><dd>{drawerCollectionStage.sourceCount} 个</dd></div>
                 <div><dt>有效记录</dt><dd>{drawerCollectionStage.recordCount} 条</dd></div>
                 <div><dt>当前状态</dt><dd>{stageStatusLabels[drawerCollectionStage.status]}</dd></div>
               </dl>
+              {isPublicExample ? (
+                <p className={styles.exampleDisclosure}>演示数据用于展示一轮完整调研的工作量与界面结构，不等同于真实执行日志。</p>
+              ) : null}
               <section>
                 <span>处理过程</span>
                 <ol>
