@@ -1,0 +1,42 @@
+.transitionArrow {
+  position: absolute;
+  z-index: 3;
+  top: 49%;
+  right: -25px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: conic-gradient(var(--demo-orange) var(--stage-angle, 0deg), rgba(11, 13, 11, .16) 0);
+  color: var(--demo-ink);
+  transform: translateY(-50%);
+  box-shadow: 1px 1px 0 rgba(11, 13, 11, .18);
+}
+
+.transitionArrow::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid var(--demo-ink);
+  border-radius: inherit;
+  background: #fff;
+}
+
+.active {
+  color: #fff;
+  box-shadow: 0 0 0 2px #fff, 2px 2px 0 var(--demo-ink);
+}
+
+.active::before { background: var(--demo-orange); }
+.transitionArrow > svg { position: relative; z-index: 1; }
+.active > svg { animation: arrowNudge 900ms ease-in-out infinite; }
+.paused { filter: grayscale(.75); }
+
+@keyframes arrowNudge {
+  50% { transform: translateX(2px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .active > svg { animation: none; }
+}

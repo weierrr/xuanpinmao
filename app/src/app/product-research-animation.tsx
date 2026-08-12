@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   Bot,
@@ -16,6 +16,9 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
+import styles from "./product-research-animation.module.css";
+
+const stageDuration = 2600;
 
 const stages = [
   { number: "01", label: "研究对象", caption: "确认输入与研究边界" },
@@ -91,18 +94,38 @@ function StageBody({ index }: Readonly<{ index: number }>) {
 export function ProductResearchAnimation() {
   const [activeStage, setActiveStage] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [stageProgress, setStageProgress] = useState(0);
+  const elapsedRef = useRef(0);
 
   useEffect(() => {
     if (!isPlaying) return;
-    const timer = window.setInterval(() => {
-      setActiveStage((current) => (current + 1) % stages.length);
-    }, 2600);
+    let previousTime = performance.now();
+    const tick = () => {
+      const currentTime = performance.now();
+      elapsedRef.current += currentTime - previousTime;
+      previousTime = currentTime;
+      if (elapsedRef.current >= stageDuration) {
+        elapsedRef.current %= stageDuration;
+        setActiveStage((current) => (current + 1) % stages.length);
+      }
+      setStageProgress(Math.min(100, (elapsedRef.current / stageDuration) * 100));
+    };
+    const timer = window.setInterval(tick, 50);
     return () => window.clearInterval(timer);
   }, [isPlaying]);
 
   const restart = () => {
+    elapsedRef.current = 0;
+    setStageProgress(0);
     setActiveStage(0);
     setIsPlaying(true);
+  };
+
+  const selectStage = (index: number) => {
+    elapsedRef.current = 0;
+    setStageProgress(0);
+    setActiveStage(index);
+    setIsPlaying(false);
   };
 
   return (
@@ -135,7 +158,7 @@ export function ProductResearchAnimation() {
                 className={`research-demo-stage ${state}`}
                 type="button"
                 key={stage.number}
-                onClick={() => { setActiveStage(index); setIsPlaying(false); }}
+                onClick={() => selectStage(index)}
                 aria-current={state === "active" ? "step" : undefined}
               >
                 <header>
@@ -144,7 +167,15 @@ export function ProductResearchAnimation() {
                   <em>{state === "complete" ? <Check size={13} /> : state === "active" ? "运行中" : "等待"}</em>
                 </header>
                 <div className="research-demo-stage-body"><StageBody index={index} /></div>
-                {index < stages.length - 1 ? <ArrowRight className="research-demo-arrow" size={18} /> : null}
+                {index < stages.length - 1 ? (
+                  <span
+                    className={`${styles.transitionArrow} ${state === "active" ? styles.active : ""} ${state === "active" && !isPlaying ? styles.paused : ""}`}
+                    style={{ "--stage-angle": `${(state === "active" ? stageProgress : index < activeStage ? 100 : 0) * 3.6}deg` } as React.CSSProperties}
+                    aria-hidden="true"
+                  >
+                    <ArrowRight size={17} />
+                  </span>
+                ) : null}
               </button>
             );
           })}
