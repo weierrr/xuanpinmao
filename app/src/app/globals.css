@@ -11769,7 +11769,7 @@ section > h2,
 }
 
 .home-module-grid article {
-  min-height: 245px;
+  min-height: 210px;
   display: flex;
   flex-direction: column;
   grid-column: span 4;
@@ -11789,7 +11789,6 @@ section > h2,
 .home-module-grid article header span { font: 850 16px/1 var(--font-geist-mono); }
 .home-module-grid h3 { margin: 34px 0 11px; color: var(--product-ink); font-size: 29px; line-height: 1.08; letter-spacing: -.045em; }
 .home-module-grid p { margin: 0; color: #454a50; font-size: 16px; line-height: 1.6; }
-.home-module-grid article > b { display: flex; align-items: center; gap: 7px; margin-top: auto; padding-top: 18px; color: currentColor; font-size: 16px; }
 
 .home-first-principles { margin-top: 92px; }
 .home-first-principles > header { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(300px, .7fr); gap: 55px; align-items: end; margin-bottom: 29px; }
@@ -11860,7 +11859,7 @@ section > h2,
   .home-faq { margin-top: 58px; }
   .home-module-grid { grid-template-columns: minmax(0, 1fr); }
   .home-module-grid article,
-  .home-module-grid article:nth-child(n) { min-height: 225px; grid-column: auto; }
+  .home-module-grid article:nth-child(n) { min-height: 190px; grid-column: auto; }
   .home-first-principles > div { grid-template-columns: minmax(0, 1fr); }
   .home-first-principles article { min-height: 230px; }
   .home-update-diagram { padding: 18px; box-shadow: 5px 5px 0 var(--product-ink); }

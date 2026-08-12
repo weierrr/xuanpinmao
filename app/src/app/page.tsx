@@ -98,7 +98,6 @@ export default function HomePage() {
                   <header><span>0{index + 1}</span><Icon size={22} /></header>
                   <h3>{module.title}</h3>
                   <p>{module.body}</p>
-                  <b>查看结论与证据 <ArrowRight size={13} /></b>
                 </article>
               );
             })}
