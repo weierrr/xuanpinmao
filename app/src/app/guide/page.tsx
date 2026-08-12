@@ -14,6 +14,7 @@ import {
   Search,
 } from "lucide-react";
 import { SiteTopNavigation } from "../site-top-navigation";
+import styles from "./guide-step-visual.module.css";
 
 export const metadata: Metadata = {
   title: "使用说明｜选品猫",
@@ -54,7 +55,7 @@ const steps = [
 function GuideStepVisual({ kind }: { kind: string }) {
   if (kind === "chat") {
     return (
-      <div className="guide-step-visual guide-visual-chat" aria-label="演示在 Codex 对话中唤醒选品猫">
+      <div className={`guide-step-visual guide-visual-chat ${styles.centeredChat}`} aria-label="演示在 Codex 对话中唤醒选品猫">
         <header><span><i /><i /><i /></span><b>Codex 对话</b><small>新任务</small></header>
         <div className="guide-visual-chat-body">
           <p>帮我研究美国市场的冰箱替换滤芯<span className="guide-typing-cursor" /></p>
@@ -155,7 +156,7 @@ export default function GuidePage() {
 
         <section className="guide-chat-example">
           <header><MessageSquareText size={22} /><span>可以直接这样告诉 Codex</span></header>
-          <blockquote>“调用选品猫，帮我研究美国 TikTok Shop 的塑形瑜伽裤。我有一个关键词、两张参考图片和三个竞品链接。”</blockquote>
+          <blockquote>“调用选品猫，帮我研究美国市场的冰箱滤芯替换件。我有一个关键词、两张参考图片和三个竞品链接。”</blockquote>
           <Link href="/discover">打开工作台试一试 <ArrowRight size={15} /></Link>
         </section>
       </main>

@@ -1,0 +1,9 @@
+.centeredChat {
+  display: flex;
+  flex-direction: column;
+}
+
+.centeredChat > div {
+  flex: 1;
+  align-content: center;
+}
