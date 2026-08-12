@@ -11708,12 +11708,21 @@ section > h2,
 
 .home-story-product-view { margin-top: 28px; }
 .home-story-product-view > header {
-  max-width: 980px;
+  max-width: 1180px;
   display: grid;
   justify-items: center;
   gap: 16px;
   margin: 0 auto 30px;
   text-align: center;
+}
+
+.home-story-product-view .home-whiteboard-headline {
+  font-size: clamp(42px, 4.7vw, 64px);
+}
+
+.home-whiteboard-headline > span {
+  display: block;
+  white-space: nowrap;
 }
 
 .home-story-product-view h2,
@@ -11844,6 +11853,7 @@ section > h2,
   .home-first-principles h2,
   .home-update-loop h2,
   .home-faq h2 { font-size: 40px; }
+  .home-whiteboard-headline > span { white-space: normal; }
   .home-story-modules,
   .home-first-principles,
   .home-update-loop,
