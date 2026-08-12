@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { ZCOOL_QingKe_HuangYou } from "next/font/google";
+import { Noto_Sans_SC } from "next/font/google";
 import { BookOpen, Bot, Home, Search } from "lucide-react";
 import { WorkbenchLink } from "./workbench-link";
 
-const brandFont = ZCOOL_QingKe_HuangYou({
-  weight: "400",
+const brandFont = Noto_Sans_SC({
+  weight: "900",
   subsets: ["latin"],
   display: "swap",
   fallback: ["PingFang SC", "Microsoft YaHei", "sans-serif"],
@@ -23,8 +23,8 @@ export function SiteTopNavigation({ active, actions }: SiteTopNavigationProps) {
           <Bot className="site-top-brand-logo" size={27} strokeWidth={2.5} />
           <strong
             className={brandFont.className}
-            data-brand-font="zcool-qingke-huangyou"
-            style={{ fontSize: 22, fontWeight: 400, letterSpacing: "0.05em" }}
+            data-brand-font="noto-sans-sc-black"
+            style={{ fontSize: 20, fontWeight: 900, letterSpacing: "-0.06em" }}
           >
             选品猫
           </strong>
