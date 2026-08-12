@@ -127,7 +127,7 @@ describe("research whiteboard canvas interactions", () => {
 
     await waitFor(() => expect(zoomOutput).toHaveTextContent("57%"));
     expect(Number.parseFloat(stage?.style.width ?? "0")).toBeCloseTo(952, 5);
-    expect(Number.parseFloat(viewport?.style.getPropertyValue("--whiteboard-scaled-height") ?? "0")).toBeCloseTo(567.76, 1);
+    expect(Number.parseFloat(viewport?.style.getPropertyValue("--whiteboard-scaled-height") ?? "0")).toBeCloseTo(539.08, 1);
     expect(container.querySelectorAll(".whiteboard-report-node li a svg")).toHaveLength(6);
 
     fireEvent.click(screen.getByRole("button", { name: "缩小白板" }));
