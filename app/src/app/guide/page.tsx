@@ -82,15 +82,17 @@ function GuideStepVisual({ kind }: { kind: string }) {
 
   if (kind === "confirm") {
     return (
-      <div className="guide-step-visual guide-visual-confirm" aria-label="演示确认研究对象后开始调研">
-        <header><FileSearch size={17} /><b>确认研究对象</b><span>待确认</span></header>
-        <dl>
-          <div><dt>商品</dt><dd>冰箱替换滤芯</dd></div>
-          <div><dt>市场</dt><dd>美国 · Amazon</dd></div>
-          <div><dt>排除</dt><dd>整机净水器</dd></div>
-        </dl>
-        <button type="button">确认并继续研究 <ArrowRight size={14} /></button>
-        <MousePointer2 className="guide-confirm-pointer" size={22} />
+      <div className={`guide-step-visual guide-visual-confirm ${styles.centeredConfirm}`} aria-label="演示确认研究对象后开始调研">
+        <div className={styles.confirmPanel}>
+          <header><FileSearch size={17} /><b>确认研究对象</b><span>待确认</span></header>
+          <dl>
+            <div><dt>商品</dt><dd>冰箱替换滤芯</dd></div>
+            <div><dt>市场</dt><dd>美国 · Amazon</dd></div>
+            <div><dt>排除</dt><dd>整机净水器</dd></div>
+          </dl>
+          <button type="button">确认并继续研究 <ArrowRight size={14} /></button>
+          <MousePointer2 className="guide-confirm-pointer" size={22} />
+        </div>
       </div>
     );
   }

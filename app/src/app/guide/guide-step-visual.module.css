@@ -7,3 +7,14 @@
   flex: 1;
   align-content: center;
 }
+
+.centeredConfirm {
+  display: flex;
+  align-items: center;
+  padding: 12px !important;
+}
+
+.confirmPanel {
+  position: relative;
+  width: 100%;
+}
