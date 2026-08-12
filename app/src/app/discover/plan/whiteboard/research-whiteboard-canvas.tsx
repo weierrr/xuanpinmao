@@ -18,6 +18,7 @@ import type {
   ResearchWhiteboardStageCode,
 } from "@/research-whiteboard/types";
 import { reportTextZh } from "@/report/report-copy";
+import styles from "./research-whiteboard-canvas.module.css";
 
 type WhiteboardMode = "all" | "evidence" | "execution";
 
@@ -289,8 +290,8 @@ export function ResearchWhiteboardCanvas({
             <path className="line-analysis" d="M 588 460 C 632 460, 625 462, 665 462" />
             <path className="line-analysis" d="M 588 614 C 632 614, 625 726, 665 726" />
             <path className="line-analysis" d="M 588 768 C 632 768, 625 726, 665 726" />
-            {[196, 462, 726].map((y) => <path key={`analysis-${y}`} className="line-report" d={`M 915 ${y} C 952 ${y}, 948 480, 986 480`} />)}
-            {[168, 352, 536, 720].map((y) => <path key={`execution-${y}`} className="line-execution" d={`M 1242 480 C 1274 480, 1264 ${y}, 1302 ${y}`} />)}
+            {[196, 462, 726].map((y) => <path key={`analysis-${y}`} className="line-report" d={`M 915 ${y} C 952 ${y}, 948 495, 986 495`} />)}
+            {[168, 352, 536, 720].map((y) => <path key={`execution-${y}`} className="line-execution" d={`M 1242 495 C 1274 495, 1264 ${y}, 1302 ${y}`} />)}
             <path className="line-feedback" d="M 1578 814 C 1578 930, 1480 940, 1235 940 L 145 940 C 58 940, 48 874, 48 822" />
           </svg>
 
@@ -378,7 +379,7 @@ export function ResearchWhiteboardCanvas({
             ))}
           </section>
 
-          <section className="whiteboard-report-node" data-lane="report">
+          <section className={`whiteboard-report-node ${styles.centeredReportNode}`} data-lane="report">
             <header><span>选品猫研究报告</span><b>{whiteboard.reportModules.length === 6 ? "可追溯输出" : "生成中"}</b></header>
             <h2>把证据转成一份可读报告</h2>
             <p>每个结论保留来源、证据等级、反向证据和待补缺口。</p>
