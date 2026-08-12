@@ -10136,7 +10136,7 @@ section > h2,
 
 .source-card,
 .collection-card { height: 140px; padding: 15px; }
-.source-card { position: relative; color: #4d79dd; background: #eef4ff; transition: transform .14s ease, box-shadow .14s ease, background-color .14s ease; }
+.source-card { position: relative; display: flex; flex-direction: column; color: #4d79dd; background: #eef4ff; transition: transform .14s ease, box-shadow .14s ease, background-color .14s ease; }
 .collection-card { color: #8a73d5; background: #f5f0ff; }
 .source-card.status-blocked,
 .collection-card.status-blocked { color: #e16948; background: #fff0e9; }
@@ -10178,6 +10178,17 @@ section > h2,
 .whiteboard-source-trigger[aria-expanded="true"] { border-color: #2f5bd3; background: #eef3ff; color: #234cad; }
 
 .whiteboard-source-card-hitarea { position: absolute; z-index: 4; inset: 0; width: 100%; height: 100%; border: 0; background: transparent; cursor: pointer; }
+.source-card h3 { max-width: 210px; margin-top: 20px; font-size: 18px; }
+.source-card-action,
+.source-card-empty {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: auto;
+  color: #2f5bd3;
+  font: 760 14px/1.2 var(--font-geist-sans);
+}
+.source-card-empty { color: #77849a; }
 .source-card:has(.whiteboard-source-card-hitarea:hover),
 .source-card:has(.whiteboard-source-card-hitarea[aria-expanded="true"]) { transform: translateY(-2px); background: #e6efff; box-shadow: 6px 8px 0 rgba(47, 91, 211, .16); }
 .whiteboard-source-card-hitarea:focus-visible { outline: 3px solid #2f5bd3; outline-offset: 3px; }
@@ -10208,14 +10219,14 @@ section > h2,
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 20px;
-  padding: 22px;
+  gap: 18px;
+  padding: 18px 20px;
   border-bottom: 1px solid #d9dee8;
   background: #f4f6fb;
 }
-.whiteboard-source-drawer > header span { color: #2f5bd3; font: 850 16px/1 var(--font-geist-mono); letter-spacing: .08em; }
-.whiteboard-source-drawer > header h2 { margin: 8px 0 6px; color: #172036; font-size: 25px; }
-.whiteboard-source-drawer > header p { margin: 0; color: #68758c; font-size: 16px; }
+.whiteboard-source-drawer > header span { color: #2f5bd3; font: 850 13px/1 var(--font-geist-mono); letter-spacing: .08em; }
+.whiteboard-source-drawer > header h2 { margin: 7px 0 5px; color: #172036; font-size: 22px; }
+.whiteboard-source-drawer > header p { margin: 0; color: #68758c; font-size: 14px; line-height: 1.45; }
 .whiteboard-source-drawer > header button {
   display: grid;
   place-items: center;
@@ -10229,22 +10240,22 @@ section > h2,
 }
 .whiteboard-source-drawer-list {
   overflow: auto;
-  padding: 10px 18px 24px;
+  padding: 6px 16px 20px;
 }
 .whiteboard-source-drawer-list a {
   display: grid;
-  grid-template-columns: 28px minmax(0, 1fr) auto auto;
-  gap: 10px;
+  grid-template-columns: 24px minmax(0, 1fr) auto auto;
+  gap: 8px;
   align-items: center;
-  padding: 14px 4px;
+  padding: 11px 3px;
   color: #26334d;
   border-bottom: 1px solid #e4e8ef;
 }
-.whiteboard-source-drawer-list a > b { color: #77849a; font: 800 16px/1 var(--font-geist-mono); }
-.whiteboard-source-drawer-list a > span { display: grid; gap: 5px; min-width: 0; }
-.whiteboard-source-drawer-list strong { overflow: hidden; font-size: 16px; text-overflow: ellipsis; white-space: nowrap; }
-.whiteboard-source-drawer-list small { overflow: hidden; color: #78859a; font: 650 16px/1.35 var(--font-geist-mono); text-overflow: ellipsis; white-space: nowrap; }
-.whiteboard-source-drawer-list em { padding: 4px 6px; font: 750 16px/1 var(--font-geist-mono); font-style: normal; white-space: nowrap; }
+.whiteboard-source-drawer-list a > b { color: #77849a; font: 800 13px/1 var(--font-geist-mono); }
+.whiteboard-source-drawer-list a > span { display: grid; gap: 4px; min-width: 0; }
+.whiteboard-source-drawer-list strong { overflow: hidden; font-size: 14px; line-height: 1.35; text-overflow: ellipsis; white-space: nowrap; }
+.whiteboard-source-drawer-list small { overflow: hidden; color: #78859a; font: 650 12px/1.3 var(--font-geist-mono); text-overflow: ellipsis; white-space: nowrap; }
+.whiteboard-source-drawer-list em { padding: 4px 6px; font: 750 12px/1 var(--font-geist-mono); font-style: normal; white-space: nowrap; }
 .whiteboard-source-drawer-list em.status-verified { color: #226d4c; background: #e6f8ed; }
 .whiteboard-source-drawer-list em.status-candidate { color: #6c5710; background: #fff5c7; }
 .whiteboard-source-drawer-list em.status-blocked { color: #a1432d; background: #ffebe5; }
@@ -10318,7 +10329,9 @@ section > h2,
 
 .whiteboard-analysis-drawer { width: min(520px, 92vw); }
 .whiteboard-analysis-drawer > header { background: #edfafd; }
-.whiteboard-analysis-drawer > header span { color: #18758a; }
+.whiteboard-analysis-drawer > header span { color: #18758a; font-size: 16px; }
+.whiteboard-analysis-drawer > header h2 { font-size: 25px; }
+.whiteboard-analysis-drawer > header p { font-size: 16px; }
 .whiteboard-analysis-drawer-body { overflow: auto; padding: 22px; color: #26334d; }
 .whiteboard-analysis-drawer-body section + section { margin-top: 28px; }
 .whiteboard-analysis-drawer-body h3 { margin: 0 0 12px; color: #172036; font-size: 20px; }
@@ -10822,11 +10835,14 @@ section > h2,
   .source-card,
   .collection-card { height: 164px; }
   .analysis-card { height: 212px; }
-  .whiteboard-source-drawer > header span,
-  .whiteboard-source-drawer-list a > b,
+  .whiteboard-source-drawer > header span { font-size: 13px; line-height: 1.2; }
+  .whiteboard-source-drawer > header p { font-size: 14px; line-height: 1.45; }
+  .whiteboard-source-drawer-list a > b { font-size: 13px; line-height: 1.2; }
+  .whiteboard-source-drawer-list strong { font-size: 14px; }
   .whiteboard-source-drawer-list small,
-  .whiteboard-source-drawer-list em { font-size: 16px; line-height: 1.35; }
-  .whiteboard-source-drawer > header p { font-size: 16px; line-height: 1.5; }
+  .whiteboard-source-drawer-list em { font-size: 12px; line-height: 1.3; }
+  .whiteboard-analysis-drawer > header span,
+  .whiteboard-analysis-drawer > header p { font-size: 16px; }
   .whiteboard-report-node li span,
   .whiteboard-report-status,
   .execution-card > a { font-size: 16px; line-height: 1.35; }

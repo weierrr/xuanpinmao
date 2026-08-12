@@ -102,19 +102,6 @@ const sourceCardTitles: Record<EvidenceStageCode, string> = {
   compliance: "官方规则与宣传边界",
 };
 
-const sourceSiteSummary = (sources: ResearchWhiteboard["stages"][ResearchWhiteboardStageCode]["sources"]): string => {
-  const sites = [...new Set(sources.map((source) => {
-    try {
-      return new URL(source.url).hostname.replace(/^www\./, "").replace(/^uk\./, "");
-    } catch {
-      return "未知站点";
-    }
-  }))];
-  if (sites.length === 0) return "本轮尚未保留可追溯信源。";
-  const visibleSites = sites.slice(0, 3).join("、");
-  return sites.length > 3 ? `来自 ${visibleSites} 等 ${sites.length} 个站点。` : `来自 ${visibleSites}。`;
-};
-
 const shortText = (value: string, limit = 86): string =>
   value.length > limit ? `${value.slice(0, limit)}…` : value;
 
@@ -313,18 +300,15 @@ export function ResearchWhiteboardCanvas({
           <section className="whiteboard-node-stack source-stack" data-lane="evidence">
             {evidenceStages.map((code) => {
               const stage = whiteboard.stages[code];
-              const verifiedCount = stage.sources.filter((source) => source.status === "verified").length;
-              const blockedCount = stage.sources.filter((source) => source.status === "blocked").length;
               return (
                 <article className={`whiteboard-node source-card status-${stage.status}`} key={code}>
                   <header><span>{stageLabels[code]}来源</span><b>{stageStatusLabels[stage.status]}</b></header>
                   <h3>{sourceCardTitles[code]}</h3>
-                  <p>{sourceSiteSummary(stage.sources)}</p>
-                  <div className="whiteboard-node-chips">
-                    <span>{stage.sources.length} 个信源</span>
-                    <span>{verifiedCount} 个已核验</span>
-                    {blockedCount > 0 ? <span>{blockedCount} 个受阻</span> : null}
-                  </div>
+                  {stage.sources.length > 0 ? (
+                    <span className="source-card-action">查看全部信源 <ArrowRight size={14} aria-hidden="true" /></span>
+                  ) : (
+                    <span className="source-card-empty">等待信源写入</span>
+                  )}
                   {stage.sources.length > 0 ? (
                     <button
                       type="button"

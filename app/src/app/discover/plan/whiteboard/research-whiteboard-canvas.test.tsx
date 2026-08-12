@@ -48,6 +48,10 @@ describe("research whiteboard canvas interactions", () => {
     const { whiteboard } = whiteboardFixture();
     render(<ResearchWhiteboardCanvas whiteboard={whiteboard} />);
 
+    expect(screen.queryByText("来自 lg.com、info.nsf.org。")).not.toBeInTheDocument();
+    expect(screen.queryByText("2 个信源")).not.toBeInTheDocument();
+    expect(screen.getAllByText("查看全部信源").length).toBeGreaterThan(0);
+
     fireEvent.click(screen.getByRole("button", { name: "查看市场证据的全部 2 个信源" }));
 
     const drawer = screen.getByRole("dialog", { name: "市场证据" });
