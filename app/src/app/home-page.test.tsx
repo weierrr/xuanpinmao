@@ -10,6 +10,9 @@ describe("product-led public pages", () => {
 
     expect(html).toContain("数据都有出处");
     expect(html).toContain("选品心里有数");
+    expect(html).not.toContain("数据都有出处，");
+    expect(html).not.toContain("选品心里有数。");
+    expect(html).toContain('class="home-story-proof" data-icon-size="22"');
     expect(html).toContain("完整过程都在一张白板上实时展开");
     expect(html).not.toContain("不是研究结束后才生成文档");
     expect(html).toContain("最让人有安全感的选品调研工具");
@@ -48,13 +51,13 @@ describe("product-led public pages", () => {
     expect(html).toContain("演示调研过程在实时白板中持续更新");
   });
 
-  it("keeps page text at or above the 16px readability floor outside the miniature product demo", () => {
+  it("keeps page text at or above the 16px readability floor outside compact product interfaces", () => {
     const css = readFileSync("src/app/globals.css", "utf8");
-    const cssWithoutMiniatureDemo = css.replace(
-      /\.research-demo \{[\s\S]*?(?=@keyframes research-demo-pulse)/,
-      "",
-    );
-    const fontDeclarations = cssWithoutMiniatureDemo.match(/(?:font-size|font)\s*:[^;{}]+/g) ?? [];
+    const cssWithoutCompactInterfaces = css
+      .replace(/\.research-demo \{[\s\S]*?(?=@keyframes research-demo-pulse)/, "")
+      .replace(/\.research-whiteboard-scope dt \{[^}]+\}/g, "")
+      .replace(/\.research-whiteboard-scope dd \{[^}]+\}/g, "");
+    const fontDeclarations = cssWithoutCompactInterfaces.match(/(?:font-size|font)\s*:[^;{}]+/g) ?? [];
     const undersized = fontDeclarations.filter((declaration) =>
       [...declaration.matchAll(/([0-9]*\.?[0-9]+)px/g)].some((match) => Number(match[1]) < 16),
     );
@@ -69,5 +72,12 @@ describe("product-led public pages", () => {
     expect(css).toContain(".research-demo-stage > header b { font-size: 13px");
     expect(css).toContain(".research-demo-terminal span { padding: 8px");
     expect(css).toContain("font: 7px/1.35 var(--font-geist-mono)");
+  });
+
+  it("keeps whiteboard scope metadata compact and lighter", () => {
+    const css = readFileSync("src/app/globals.css", "utf8");
+
+    expect(css).toContain(".research-whiteboard-scope dt { color: #777; font: 14px/1");
+    expect(css).toContain("font-size: 14px; font-weight: 650");
   });
 });

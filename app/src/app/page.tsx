@@ -58,17 +58,17 @@ export default function HomePage() {
       <main className="home-product-page">
         <section className="home-story-hero">
           <span className="home-story-pill"><Sparkles size={15} />基于第一性原理的选品研究 Agent</span>
-          <h1>数据都有出处，<br />选品心里有数。</h1>
+          <h1>数据都有出处<br />选品心里有数</h1>
           <p>使用你自己的模型联网寻找市场、用户、竞品、供应与合规证据。从搜过什么，到为什么得出结论，再到下一步怎么验证，全部留在一张可追溯白板上。</p>
           <div className="home-product-actions">
             <Link className="home-product-button dark" href="/discover">开始一次调研 <ArrowRight size={16} /></Link>
             <Link className="home-product-button light" href="/guide">查看使用说明</Link>
           </div>
-          <div className="home-story-proof">
-            <span><Bot size={16} /><b>你的模型</b><small>使用自己的额度与环境</small></span>
-            <span><Globe2 size={16} /><b>真实联网</b><small>基于当前公开资料求证</small></span>
-            <span><ShieldCheck size={16} /><b>来源透明</b><small>结论可点击追溯信源</small></span>
-            <span><RefreshCw size={16} /><b>持续更新</b><small>新数据进入新的报告版本</small></span>
+          <div className="home-story-proof" data-icon-size="22">
+            <span><Bot size={22} /><b>你的模型</b><small>使用自己的额度与环境</small></span>
+            <span><Globe2 size={22} /><b>真实联网</b><small>基于当前公开资料求证</small></span>
+            <span><ShieldCheck size={22} /><b>来源透明</b><small>结论可点击追溯信源</small></span>
+            <span><RefreshCw size={22} /><b>持续更新</b><small>新数据进入新的报告版本</small></span>
           </div>
         </section>
 
