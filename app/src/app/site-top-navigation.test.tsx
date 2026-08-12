@@ -15,5 +15,6 @@ describe("site top navigation brand", () => {
     expect(html).toContain("font-size:20px");
     expect(html).toContain("font-weight:900");
     expect(html).toContain("选品猫</strong>");
+    expect(html).not.toContain("选品工作台");
   });
 });
