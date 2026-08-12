@@ -39,7 +39,7 @@ describe("branded workbench shell", () => {
     expect(html).toContain("多入口商品发现");
     expect(html).toContain("查看示例报告");
     expect(html).toContain(
-      'href="/discover/plan/whiteboard?discoveryId=discovery-3d-yoga-pants-999d4e8e5cc2-us"',
+      'href="/discover/plan/whiteboard?discoveryId=discovery-refrigerator-water-filter-demo-us"',
     );
     expect(html).not.toContain('href="/projects"');
     expect(html).not.toContain("选品记录");
@@ -54,12 +54,12 @@ describe("branded workbench shell", () => {
 
   it("can remove the generic workbench title on a product-specific report page", () => {
     const html = renderToStaticMarkup(
-      <WorkbenchShell active="discover" hideTitle><p>3D 瑜伽裤报告</p></WorkbenchShell>,
+      <WorkbenchShell active="discover" hideTitle><p>冰箱滤芯报告</p></WorkbenchShell>,
     );
 
     expect(html).not.toContain("PRODUCT RESEARCH WORKBENCH");
     expect(html).not.toContain("多入口商品发现");
     expect(html).toContain("workspace-main-titleless");
-    expect(html).toContain("3D 瑜伽裤报告");
+    expect(html).toContain("冰箱滤芯报告");
   });
 });

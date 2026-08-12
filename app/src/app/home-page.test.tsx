@@ -29,7 +29,7 @@ describe("product-led public pages", () => {
     expect(html).toContain('href="/guide"');
     expect(html).toContain("查看示例报告");
     expect(html).toContain(
-      'href="/discover/plan/whiteboard?discoveryId=discovery-3d-yoga-pants-999d4e8e5cc2-us"',
+      'href="/discover/plan/whiteboard?discoveryId=discovery-refrigerator-water-filter-demo-us"',
     );
 
     expect(html.indexOf("数据都有出处")).toBeLessThan(html.indexOf("六个经营问题"));

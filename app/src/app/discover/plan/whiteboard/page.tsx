@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { Radio, ShieldCheck } from "lucide-react";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { opportunityDiscoveryPaths } from "@/opportunity-discovery/service";
 import { opportunityDiscoveryPlanSchema } from "@/opportunity-discovery/types";
 import { readResearchWhiteboard } from "@/research-whiteboard/service";
@@ -13,15 +13,22 @@ import { WorkbenchShell } from "../../../workbench-shell";
 import { ResearchWhiteboardCanvas } from "./research-whiteboard-canvas";
 import { ResearchWhiteboardReport } from "./research-whiteboard-report";
 import { WhiteboardAutoRefresh } from "./whiteboard-auto-refresh";
-import yogaPantsExamplePlan from "./yoga-pants-example-plan.json";
-import yogaPantsExampleWhiteboard from "./yoga-pants-example-whiteboard.json";
+import {
+  legacyYogaExampleDiscoveryId,
+  refrigeratorFilterExampleDiscoveryId,
+  refrigeratorFilterExamplePlan,
+  refrigeratorFilterExampleWhiteboard,
+} from "./refrigerator-filter-example";
 
 export const dynamic = "force-dynamic";
 
 const firstParam = (value: string | string[] | undefined): string =>
   Array.isArray(value) ? value[0] ?? "" : value ?? "";
 
-const yogaPantsExampleDiscoveryId = "discovery-3d-yoga-pants-999d4e8e5cc2-us";
+const exampleDiscoveryIds = new Set([
+  refrigeratorFilterExampleDiscoveryId,
+  legacyYogaExampleDiscoveryId,
+]);
 
 const statusLabels: Record<ResearchWhiteboard["status"], string> = {
   waiting: "等待 Agent 开始",
@@ -61,12 +68,16 @@ export default async function ResearchWhiteboardPage({
   const query = await searchParams;
   const discoveryId = firstParam(query.discoveryId);
   if (!/^discovery-[a-z0-9-]+$/.test(discoveryId)) notFound();
+  if (discoveryId === legacyYogaExampleDiscoveryId) {
+    redirect(`/discover/plan/whiteboard?discoveryId=${refrigeratorFilterExampleDiscoveryId}`);
+  }
 
   try {
-    const [plan, whiteboard] = discoveryId === yogaPantsExampleDiscoveryId
+    const isPublicExample = exampleDiscoveryIds.has(discoveryId);
+    const [plan, whiteboard] = isPublicExample
       ? [
-          opportunityDiscoveryPlanSchema.parse(yogaPantsExamplePlan),
-          researchWhiteboardSchema.parse(yogaPantsExampleWhiteboard),
+          opportunityDiscoveryPlanSchema.parse(refrigeratorFilterExamplePlan),
+          researchWhiteboardSchema.parse(refrigeratorFilterExampleWhiteboard),
         ]
       : await Promise.all([
           readFile(opportunityDiscoveryPaths(discoveryId).plan, "utf8")

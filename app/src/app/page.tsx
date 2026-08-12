@@ -46,7 +46,7 @@ export default function HomePage() {
             <ContactAuthor />
             <Link
               className="primary"
-              href="/discover/plan/whiteboard?discoveryId=discovery-3d-yoga-pants-999d4e8e5cc2-us"
+              href="/discover/plan/whiteboard?discoveryId=discovery-refrigerator-water-filter-demo-us"
             >
               查看示例报告 <ArrowRight size={15} />
             </Link>
