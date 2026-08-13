@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Noto_Sans_SC } from "next/font/google";
-import { BookOpen, Bot, Home } from "lucide-react";
+import { BookOpen, Bot, Home, Search } from "lucide-react";
+import { WorkbenchLink } from "./workbench-link";
 
 const brandFont = Noto_Sans_SC({
   weight: "900",
@@ -34,6 +35,10 @@ export function SiteTopNavigation({ active, actions }: SiteTopNavigationProps) {
             <Home size={16} />
             首页
           </Link>
+          <WorkbenchLink className={active === "workbench" ? "active" : undefined}>
+            <Search size={16} />
+            选品工作台
+          </WorkbenchLink>
           <Link className={active === "guide" ? "active" : undefined} href="/guide">
             <BookOpen size={16} />
             使用说明

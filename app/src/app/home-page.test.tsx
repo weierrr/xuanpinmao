@@ -32,8 +32,6 @@ describe("product-led public pages", () => {
     expect(html).toContain("site-top-brand-logo");
     expect(html).toContain('href="/guide"');
     expect(html).toContain("查看示例报告");
-    expect(html).not.toContain("开始一次调研");
-    expect(html).not.toContain("打开选品工作台");
     expect(html).toContain(
       'href="/discover/plan/whiteboard?discoveryId=discovery-refrigerator-water-filter-demo-us"',
     );

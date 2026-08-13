@@ -60,12 +60,7 @@ export default function HomePage() {
           <h1>数据都有出处<br />选品心里有数</h1>
           <p>使用你自己的模型联网寻找市场、用户、竞品、供应与合规证据。从搜过什么，到为什么得出结论，再到下一步怎么验证，全部留在一张可追溯白板上。</p>
           <div className="home-product-actions">
-            <Link
-              className="home-product-button dark"
-              href="/discover/plan/whiteboard?discoveryId=discovery-refrigerator-water-filter-demo-us"
-            >
-              查看示例报告 <ArrowRight size={16} />
-            </Link>
+            <Link className="home-product-button dark" href="/discover">开始一次调研 <ArrowRight size={16} /></Link>
             <Link className="home-product-button light" href="/guide">查看使用说明</Link>
           </div>
           <div className="home-story-proof" data-icon-size="22">
@@ -165,12 +160,7 @@ export default function HomePage() {
 
         <section className="home-product-cta">
           <div><span>从一条关键词、一张图片或一个竞品链接开始</span><h2>把一轮选品调研的全过程，真正掌握在自己手里。</h2></div>
-          <Link
-            className="home-product-button lime"
-            href="/discover/plan/whiteboard?discoveryId=discovery-refrigerator-water-filter-demo-us"
-          >
-            查看示例报告 <ArrowRight size={16} />
-          </Link>
+          <Link className="home-product-button lime" href="/discover">打开选品工作台 <ArrowRight size={16} /></Link>
         </section>
       </main>
     </div>
