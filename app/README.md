@@ -1,53 +1,40 @@
-# Cross-Border Product Due-Diligence Agent
+# 选品猫本地测试应用
 
-This portable local Agent first confirms a combined keyword, image and competitor-link input, then turns it into:
+这个可移植包包含选品猫本地应用、实时研究白板和最新版六 Tab 选品报告模板。
 
-- market-opportunity analysis;
-- competitor commercial insight;
-- product-positioning recommendations;
-- evidence and risk boundaries;
-- a plain-language seller decision with explicit gaps;
-- a live traceable whiteboard and `reports/whiteboard-report.html` containing the six selection conclusions;
-- evidence-bounded First-Principles opportunity portfolios and 7-14 day validation plans.
-
-## Start
+## 启动
 
 ```bash
 npm install
 npm run setup
 npm run doctor
-npm run dev
-```
-
-Open `http://localhost:3000`. See `QUICK_START.md` and `INSTALL.md` for details.
-
-Windows PowerShell, Windows cmd, macOS and Linux use the same commands. Setup creates `.env`; do not manually run `export`, `set` or configure `DATABASE_URL`.
-
-## Live Research Boundary
-
-No DeepSeek API Key is required. No OpenAI API Key is required. Real public-web collection runs through the `web-access` Skill in the recipient's Codex environment. The Skill is not bundled, is not a Node.js SDK and cannot be installed with npm.
-
-Doctor checks known local Skill paths only: PASS is not final proof, while a missing-path WARNING is non-fatal. Before using the Agent for a real decision, enable `web-access` in Codex and complete the fresh live Smoke Test in `docs/CODEX_USAGE.md`. The Smoke Test is the final acceptance check.
-
-## Data Safety
-
-The included `fixtures/T21` directory is a frozen regression fixture required by automated tests and the initial local workbench. It is not a new web-research result and must never be reused as evidence for another product.
-
-The portable package intentionally excludes all prior Evidence Packages, example reports, local databases, `.env` files, logs, caches, browser state and credentials.
-
-## Commands
-
-```bash
-npm run setup
-npm run doctor
 npm run test:portable
-npm run lint
-npm run build
 npm run dev
 ```
 
-The portable test command covers the clean discovery, workbench and live-whiteboard flow without requiring archived report outputs, which are intentionally not included.
+打开 `http://localhost:3000`。首页“查看示例报告”会进入最新版冰箱滤芯公开示例，其版式与 <https://xuanpinmao.cn/share/refrigerator-water-filter-latest> 一致。
 
-New live research must start from `/discover`, be confirmed on `/discover/plan`, and use the resulting discovery ID. Direct unconfirmed Research Runs are rejected. Live research commands are documented in `docs/CODEX_USAGE.md`.
+## 最新选品流程
 
-After a new live Run has valid Atomic Claims, use the Codex-native `workbench` commands documented there to create and validate `first-principles-bundle.json`. This stage uses only current-run evidence, does not call DeepSeek or OpenAI APIs, and cannot unlock Formal SKU, Listing, or Ad Test gates.
+```text
+组合填写关键词、图片和竞品链接
+→ 页面内确认研究对象
+→ 自动启动独立 Research Run 并打开实时白板
+→ 按市场、用户、竞品、供应、合规五条证据线采集
+→ 第一轮尽量补齐型号级连续趋势、跨平台价格矩阵、独立 VOC、官方认证目录和单位经济证据
+→ 使用真实检索、来源、提取、去重和有效记录数量更新白板
+→ 生成市场与机会、用户画像、竞品分析、产品方案、营销打法、验证方案
+→ 六个横向 Tab 分页展示图表、证据、模块判断、评分依据与满分缺口
+→ 通过 xuanpinmao.cn 一键分享同版式报告
+→ 新证据以批次回流并生成新报告版本
+```
+
+## 证据边界
+
+- 历史 Run、密钥、浏览器状态、本机数据库、日志和缓存不会进入分享包。
+- `fixtures/T21` 仅用于回归测试，不能作为新类目的研究证据。
+- 第三方销量或趋势估算必须明确标记，不能写成平台官方事实。
+- 公开供应页面只是候选线索，不能替代正式报价、目标 SKU 文件或样品验证。
+- 评分必须展示计算依据和满分缺口，不能遮盖关键未知项。
+
+新研究必须从 `/discover` 开始，在 `/discover/plan` 确认研究对象，并以实时白板作为主报告界面。

@@ -46,7 +46,7 @@ export default function HomePage() {
             <ContactAuthor />
             <Link
               className="primary"
-              href="/discover/plan/whiteboard?discoveryId=discovery-refrigerator-water-filter-demo-us"
+              href="/discover/plan/whiteboard?discoveryId=discovery-category-9ff30cf30ef8-us"
             >
               查看示例报告 <ArrowRight size={15} />
             </Link>
@@ -60,7 +60,12 @@ export default function HomePage() {
           <h1>数据都有出处<br />选品心里有数</h1>
           <p>使用你自己的模型联网寻找市场、用户、竞品、供应与合规证据。从搜过什么，到为什么得出结论，再到下一步怎么验证，全部留在一张可追溯白板上。</p>
           <div className="home-product-actions">
-            <Link className="home-product-button dark" href="/discover">开始一次调研 <ArrowRight size={16} /></Link>
+            <Link
+              className="home-product-button dark"
+              href="/discover#discovery-inputs"
+            >
+              在线分析 <ArrowRight size={16} />
+            </Link>
             <Link className="home-product-button light" href="/guide">查看使用说明</Link>
           </div>
           <div className="home-story-proof" data-icon-size="22">
@@ -108,7 +113,13 @@ export default function HomePage() {
             <div><span className="home-product-kicker">为什么报告更有参考价值</span><h2>不是先找一个看起来能卖的商品，再为它补理由。</h2></div>
             <p>选品不该是猜爆款，而是把生意重新想明白。第一性原理让研究从真实需求与经营约束出发，而不是从平台榜单或竞品话术倒推答案。</p>
           </header>
-          <div>
+          <aside className="home-report-quality" aria-label="报告质量公式">
+            <div className="home-report-quality-formula">
+              <strong>报告质量</strong><i>≈</i><span>数据相关性</span><i>×</i><span>数据可信度</span><i>×</i><span>数据时效性</span><i>×</i><span>证据覆盖</span><i>×</i><span>推理质量</span>
+            </div>
+            <p><b>这是乘法关系，不是数据量的加法。</b>任何一项接近零，整份报告的参考价值都会明显下降。数据再多，如果不相关、不可信、已经过时或没有覆盖关键决策，强模型也只能把不稳的材料讲得更顺。</p>
+          </aside>
+          <div className="home-first-principles-grid">
             <article><Network size={24} /><span>01 / 机制</span><h3>需求为什么存在？</h3><p>拆解使用场景、触发原因、替代方案和支付意愿，判断问题是否真实且持续。</p></article>
             <article><Layers3 size={24} /><span>02 / 边界</span><h3>证据究竟证明什么？</h3><p>竞品页面不能证明目标商品效果，供应页面不能代表正式报价，方向性机会不能冒充确定市场。</p></article>
             <article><CheckCircle2 size={24} /><span>03 / 行动</span><h3>下一步凭什么继续？</h3><p>把结论转成可以买什么样品、应该测试什么、何时通过，以及什么时候必须停止。</p></article>
@@ -160,7 +171,12 @@ export default function HomePage() {
 
         <section className="home-product-cta">
           <div><span>从一条关键词、一张图片或一个竞品链接开始</span><h2>把一轮选品调研的全过程，真正掌握在自己手里。</h2></div>
-          <Link className="home-product-button lime" href="/discover">打开选品工作台 <ArrowRight size={16} /></Link>
+          <Link
+            className="home-product-button lime"
+            href="/discover/plan/whiteboard?discoveryId=discovery-category-9ff30cf30ef8-us"
+          >
+            查看示例报告 <ArrowRight size={16} />
+          </Link>
         </section>
       </main>
     </div>

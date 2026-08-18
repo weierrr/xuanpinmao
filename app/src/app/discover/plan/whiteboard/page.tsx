@@ -3,6 +3,8 @@ import { Radio, ShieldCheck } from "lucide-react";
 import { notFound, redirect } from "next/navigation";
 import { opportunityDiscoveryPaths } from "@/opportunity-discovery/service";
 import { opportunityDiscoveryPlanSchema } from "@/opportunity-discovery/types";
+import { researchPackagePath } from "@/first-principles/service";
+import { readSearchLog } from "@/research/search-log";
 import { readResearchWhiteboard } from "@/research-whiteboard/service";
 import {
   researchWhiteboardSchema,
@@ -13,22 +15,21 @@ import { WorkbenchShell } from "../../../workbench-shell";
 import { ResearchWhiteboardCanvas } from "./research-whiteboard-canvas";
 import { ResearchWhiteboardReport } from "./research-whiteboard-report";
 import { WhiteboardAutoRefresh } from "./whiteboard-auto-refresh";
+import { WhiteboardAutoStart } from "./whiteboard-auto-start";
+import { ShareReportButton } from "../../../actions/ShareReportButton";
 import {
   legacyYogaExampleDiscoveryId,
   refrigeratorFilterExampleDiscoveryId,
-  refrigeratorFilterExamplePlan,
-  refrigeratorFilterExampleWhiteboard,
 } from "./refrigerator-filter-example";
+import latestPublicExamplePlan from "./latest-public-example-plan.json";
+import latestPublicExampleWhiteboard from "./latest-public-example-whiteboard.json";
 
 export const dynamic = "force-dynamic";
 
 const firstParam = (value: string | string[] | undefined): string =>
   Array.isArray(value) ? value[0] ?? "" : value ?? "";
 
-const exampleDiscoveryIds = new Set([
-  refrigeratorFilterExampleDiscoveryId,
-  legacyYogaExampleDiscoveryId,
-]);
+const latestPublicDiscoveryId = "discovery-category-9ff30cf30ef8-us";
 
 const statusLabels: Record<ResearchWhiteboard["status"], string> = {
   waiting: "等待 Agent 开始",
@@ -68,16 +69,16 @@ export default async function ResearchWhiteboardPage({
   const query = await searchParams;
   const discoveryId = firstParam(query.discoveryId);
   if (!/^discovery-[a-z0-9-]+$/.test(discoveryId)) notFound();
-  if (discoveryId === legacyYogaExampleDiscoveryId) {
-    redirect(`/discover/plan/whiteboard?discoveryId=${refrigeratorFilterExampleDiscoveryId}`);
+  if (discoveryId === legacyYogaExampleDiscoveryId || discoveryId === refrigeratorFilterExampleDiscoveryId) {
+    redirect(`/discover/plan/whiteboard?discoveryId=${latestPublicDiscoveryId}`);
   }
 
   try {
-    const isPublicExample = exampleDiscoveryIds.has(discoveryId);
+    const isPublicExample = discoveryId === latestPublicDiscoveryId;
     const [plan, whiteboard] = isPublicExample
       ? [
-          opportunityDiscoveryPlanSchema.parse(refrigeratorFilterExamplePlan),
-          researchWhiteboardSchema.parse(refrigeratorFilterExampleWhiteboard),
+          opportunityDiscoveryPlanSchema.parse(latestPublicExamplePlan),
+          researchWhiteboardSchema.parse(latestPublicExampleWhiteboard),
         ]
       : await Promise.all([
           readFile(opportunityDiscoveryPaths(discoveryId).plan, "utf8")
@@ -88,10 +89,26 @@ export default async function ResearchWhiteboardPage({
     const reportSources = [...new Map(
       Object.values(whiteboard.stages).flatMap((stage) => stage.sources).map((source) => [source.id, source]),
     ).values()];
+    const evidenceStageCodes: ResearchWhiteboardStageCode[] = ["market", "customer", "competitor", "supply", "compliance"];
+    const categorizedQueryCount = evidenceStageCodes.reduce((total, code) => total + whiteboard.stages[code].queryCount, 0);
+    const searchLog = !isPublicExample && whiteboard.researchRunId
+      ? await readSearchLog(researchPackagePath(whiteboard.researchRunId))
+      : null;
+    const reportQueryCount = searchLog && searchLog.fidelity !== "unrecorded"
+      ? searchLog.totals.total
+      : categorizedQueryCount;
+    const reportRecordCount = evidenceStageCodes.reduce((total, code) => total + whiteboard.stages[code].recordCount, 0);
 
     return (
       <WorkbenchShell active="discover" hideTitle>
-        <WhiteboardAutoRefresh status={whiteboard.status} />
+        {!isPublicExample && (
+          <WhiteboardAutoStart
+            discoveryId={discoveryId}
+            status={whiteboard.status}
+            researchRunId={whiteboard.researchRunId}
+          />
+        )}
+        <WhiteboardAutoRefresh status={whiteboard.status} updatedAt={whiteboard.updatedAt} />
         <section className="research-whiteboard">
           <header className="research-whiteboard-head">
             <div>
@@ -103,6 +120,12 @@ export default async function ResearchWhiteboardPage({
               {whiteboard.status === "completed" ? <ShieldCheck size={19} /> : <Radio size={19} />}
               <span><small>当前状态</small><strong>{statusLabels[whiteboard.status]}</strong></span>
             </aside>
+            {whiteboard.status === "completed" && whiteboard.researchRunId ? (
+              <ShareReportButton
+                runId={whiteboard.researchRunId}
+                shareUrl={isPublicExample ? "https://xuanpinmao.cn/share/refrigerator-water-filter-latest" : undefined}
+              />
+            ) : null}
           </header>
 
           <dl className="research-whiteboard-scope">
@@ -120,7 +143,19 @@ export default async function ResearchWhiteboardPage({
           <ResearchWhiteboardCanvas whiteboard={whiteboard} />
 
           {whiteboard.reportModules.length > 0 ? (
-            <ResearchWhiteboardReport modules={whiteboard.reportModules} sources={reportSources} />
+            <ResearchWhiteboardReport
+              modules={whiteboard.reportModules}
+              sources={reportSources}
+              scope={{
+                product: whiteboard.product,
+                market: whiteboard.market,
+                channel: whiteboard.channel,
+                researchRunId: whiteboard.researchRunId,
+                updatedAt: whiteboard.updatedAt,
+                queryCount: reportQueryCount,
+                recordCount: reportRecordCount,
+              }}
+            />
           ) : null}
 
           <details className="research-whiteboard-activity">

@@ -28,6 +28,16 @@ describe("Bright Data Amazon review adapter", () => {
     });
   });
 
+  it("uses the requested listing ASIN when the provider returns a parent ASIN", () => {
+    expect(normalizeBrightDataReview({
+      asin: "B00PARENT01",
+      review_id: "R-002",
+      review_text: "Fits my refrigerator and does not leak.",
+      rating: 5,
+      url: "https://www.amazon.com/dp/B08SLZPCCV?ref_=tracking",
+    })?.asin).toBe("B08SLZPCCV");
+  });
+
   it("runs an asynchronous snapshot and rejects incomplete rows", async () => {
     const fetchImpl = vi.fn()
       .mockResolvedValueOnce(new Response(JSON.stringify({ snapshot_id: "snap-123" }), { status: 200 }))

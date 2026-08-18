@@ -1,0 +1,2191 @@
+{
+  "schemaVersion": "1.0",
+  "discoveryId": "discovery-category-9ff30cf30ef8-us",
+  "researchRunId": "research-run-product-7f4ddc865607-us",
+  "product": "冰箱滤芯",
+  "market": "US",
+  "channel": "independent_dtc",
+  "status": "completed",
+  "createdAt": "2026-08-12T14:18:20.263Z",
+  "updatedAt": "2026-08-13T09:02:06.195Z",
+  "stages": {
+    "scope": {
+      "code": "scope",
+      "status": "complete",
+      "queryCount": 0,
+      "sourceCount": 0,
+      "recordCount": 0,
+      "summary": "研究对象、市场与输入线索已经确认。",
+      "sources": [],
+      "queryLabels": [],
+      "updatedAt": "2026-08-12T14:18:20.263Z"
+    },
+    "market": {
+      "code": "market",
+      "status": "complete",
+      "queryCount": 8,
+      "sourceCount": 11,
+      "recordCount": 16,
+      "summary": "本轮完成 8 组查询，保留 11 个来源与 16 条有效记录。",
+      "sources": [
+        {
+          "id": "SRC-REF-001",
+          "label": "Whirlpool everydrop EDR1RXD1 官方商品页",
+          "url": "https://www.whirlpool.com/accessories/kitchen-accessories/refrigerator/p.ice-and-water-refrigerator-filter-1.edr1rxd1.html",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-007",
+          "label": "Home Depot Waterdrop LT1000PC 6-pack",
+          "url": "https://www.homedepot.com/p/Waterdrop-LT1000PC-Refrigerator-Water-Filter-Replacement-for-LG-LT1000P-Kenmore-46-9980-Reduce-chlorine-bad-taste-odor-6-Pack-B-WD-F46-6/335295537",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-010",
+          "label": "Consumer Reports refrigerator water filter testing",
+          "url": "https://www.consumerreports.org/home-garden/water-filters/best-refrigerator-water-filters-a5405948154",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-015",
+          "label": "Walmart Everydrop category page",
+          "url": "https://www.walmart.com/c/kp/everydrop-ice-and-water-filter",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-021",
+          "label": "Amazon 冰箱内置滤芯 Best Sellers 类目页",
+          "url": "https://www.amazon.com/Best-Sellers-In-Refrigerator-Water-Filters/zgbs/hi/3741161",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-022",
+          "label": "ASINSIGHT everydrop filter 1 型号级需求代理",
+          "url": "https://www.asinsight.com/report/US/everydrop-filter-1",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-023",
+          "label": "ASINSIGHT LG LT1000P 型号级需求代理",
+          "url": "https://www.asinsight.com/report/US/lg-filter-lt1000p",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-029",
+          "label": "ASINSIGHT EDR1RXD1 相邻月趋势代理",
+          "url": "https://www.asinsight.com/report/US/everydrop-edr1rxd1",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-030",
+          "label": "ASINSIGHT HAF-QIN 相邻月趋势代理",
+          "url": "https://www.asinsight.com/report/US/samsung-water-filter-replacement",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-031",
+          "label": "ASINSIGHT XWFE 相邻月趋势代理",
+          "url": "https://www.asinsight.com/report/US/xwfe-refrigerator-water-filter",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-032",
+          "label": "ASINSIGHT LT1000P 相邻月趋势代理",
+          "url": "https://www.asinsight.com/report/US/lt1000p-water-filter",
+          "kind": "market",
+          "status": "verified"
+        }
+      ],
+      "queryLabels": [
+        "US refrigerator water filter replacement market brands official prices",
+        "Samsung LG refrigerator water filter official price NSF",
+        "Home Depot Waterdrop refrigerator filter price compatibility",
+        "Amazon keyword demand proxies for everydrop filter 1 and lg filter lt1000p",
+        "GE XWFE official and retail price replacement cycle",
+        "refrigerator filter supplier MOQ tier price sample lead time EDR HAF-QIN MWF",
+        "four refrigerator filter exact OEM ASIN adjacent-month trend proxies EDR1RXD1 HAF-QIN XWFE LT1000P",
+        "four refrigerator filter cross-platform OEM and compatible price matrix"
+      ],
+      "dataType": "价格、品牌与品类结构",
+      "updatedAt": "2026-08-13T09:02:06.192Z"
+    },
+    "customer": {
+      "code": "customer",
+      "status": "complete",
+      "queryCount": 4,
+      "sourceCount": 19,
+      "recordCount": 362,
+      "summary": "本轮完成 4 组查询，保留 19 个来源与 362 条有效记录。",
+      "sources": [
+        {
+          "id": "SRC-VOC-017",
+          "label": "Amazon customer reviews for ASIN B007FGGLAK",
+          "url": "https://www.amazon.com/dp/B007FGGLAK",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-018",
+          "label": "Amazon customer reviews for ASIN B0DKN5SV3V",
+          "url": "https://www.amazon.com/dp/B0DKN5SV3V",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-019",
+          "label": "Amazon customer reviews for ASIN B0123NK1GE",
+          "url": "https://www.amazon.com/dp/B0123NK1GE",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-020",
+          "label": "Amazon customer reviews for ASIN B0788YHH7F",
+          "url": "https://www.amazon.com/dp/B0788YHH7F",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-021",
+          "label": "Amazon customer reviews for ASIN B08BFHFM84",
+          "url": "https://www.amazon.com/dp/B08BFHFM84",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-022",
+          "label": "Amazon customer reviews for ASIN B0167MYKZA",
+          "url": "https://www.amazon.com/dp/B0167MYKZA",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-VOC-023",
+          "label": "Amazon customer reviews for ASIN B018AGORAY",
+          "url": "https://www.amazon.com/dp/B018AGORAY",
+          "kind": "market",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-011",
+          "label": "Reddit GE XWFE filter error discussion",
+          "url": "https://www.reddit.com/r/Appliances/comments/1gocy9n/ge_french_door_fridge_err_code_on_new_water_filter.json",
+          "kind": "community",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-012",
+          "label": "Reddit Samsung Bespoke filter flow discussion",
+          "url": "https://www.reddit.com/r/Appliances/comments/1p02l9q/samsung_bespoke_fridge_only_fills_water_pitcher",
+          "kind": "community",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-016",
+          "label": "Walmart Everydrop EDR4RXD1 reviews",
+          "url": "https://www.walmart.com/reviews/product/1153045808",
+          "kind": "community",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-017",
+          "label": "Reddit Kenmore 9081 filter fit and trust discussion",
+          "url": "https://www.reddit.com/r/Appliances/comments/1s5zi06/9081_kenmore_refrigerator_water_filter/",
+          "kind": "community",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-018",
+          "label": "Reddit Frigidaire filter stuck discussion",
+          "url": "https://www.reddit.com/r/Appliances/comments/1q2k790/fridgedaire_water_filter_stuck.json",
+          "kind": "community",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-019",
+          "label": "Reddit Whirlpool filter door installation discussion",
+          "url": "https://www.reddit.com/r/Appliances/comments/1m0maw9/help_with_putting_back_whirlpool_water_filter_door/",
+          "kind": "community",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-020",
+          "label": "Reddit LG refrigerator leak discussion",
+          "url": "https://www.reddit.com/r/Appliances/comments/1njin7y/why_is_my_lg_fridge_leaking_into_the_bottom_of/",
+          "kind": "community",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-033",
+          "label": "Home Depot EDR1RXD1 商品页",
+          "url": "https://www.homedepot.com/p/EveryDrop-Ice-and-Refrigerator-Water-Filter-1-EDR1RXD1/205738745",
+          "kind": "competitor",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-040",
+          "label": "Samsung AU HAF-QIN 官方评论",
+          "url": "https://www.samsung.com/au/home-appliance-accessories/hafqinexp-haf-qin-exp/",
+          "kind": "other",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-041",
+          "label": "Walmart XWFE 带芯片兼容品评论",
+          "url": "https://www.walmart.com/reviews/product/11488800302",
+          "kind": "community",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-043",
+          "label": "Best Buy LT1000P/LT1000PC 用户评论",
+          "url": "https://www.bestbuy.com/site/reviews/lt1000p-lt1000pc-water-filter-for-select-lg-refrigerators-white/12338913?page=5",
+          "kind": "other",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-044",
+          "label": "Walmart LT1000P Waterdrop 兼容品评论",
+          "url": "https://www.walmart.com/reviews/product/2243455370",
+          "kind": "community",
+          "status": "verified"
+        }
+      ],
+      "queryLabels": [
+        "Reddit refrigerator water filter complaints leak taste fit",
+        "Amazon refrigerator water filter reviews across OEM and aftermarket ASINs",
+        "Reddit refrigerator water filter fit stuck installation leak trust aftermarket",
+        "independent model-level VOC EDR1RXD1 HAF-QIN XWFE LT1000P OEM and compatible"
+      ],
+      "dataType": "评论与社区 VOC",
+      "updatedAt": "2026-08-13T09:02:06.192Z"
+    },
+    "competitor": {
+      "code": "competitor",
+      "status": "complete",
+      "queryCount": 3,
+      "sourceCount": 14,
+      "recordCount": 5,
+      "summary": "本轮完成 3 组查询，保留 14 个来源与 5 条有效记录。",
+      "sources": [
+        {
+          "id": "SRC-REF-002",
+          "label": "everydrop Filter Finder",
+          "url": "https://www.everydropwater.com/content/everydropv2/en_us/water-filter-finder",
+          "kind": "competitor",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-003",
+          "label": "Waterdrop Refrigerator Filters 官方集合页",
+          "url": "https://www.waterdropfilter.com/collections/refrigerator-filters",
+          "kind": "competitor",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-004",
+          "label": "Samsung HAF-CIN 2-Pack 官方商品页",
+          "url": "https://www.samsung.com/us/home-appliance-accessories/haf-cin-2p-exp-refrigerator-water-filter-sku-haf-cin-2p-exp",
+          "kind": "competitor",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-005",
+          "label": "LG LT1000P 官方商品页",
+          "url": "https://www.lg.com/us/appliances-accessories/lg-lt1000p-refrigerator-water-filter",
+          "kind": "competitor",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-006",
+          "label": "Home Depot Waterdrop LT1000P PFAS 3-pack",
+          "url": "https://www.homedepot.com/p/Waterdrop-Refrigerator-Water-Filter-Reduce-PFAS-Replacement-For-LG-LT1000P-LRFWS2906V-LRMVS3006S-3-pack-B-WDP-F46A01-3/330501776",
+          "kind": "competitor",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-024",
+          "label": "GE XWFE 官方零件页",
+          "url": "https://www.geapplianceparts.com/store/parts/spec/XWFE",
+          "kind": "competitor",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-025",
+          "label": "Home Depot GE XWFE 零售商品页",
+          "url": "https://www.homedepot.com/p/GE-Genuine-XWFE-Refrigerator-Water-Filter-for-GE-XWFE/312928339",
+          "kind": "competitor",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-033",
+          "label": "Home Depot EDR1RXD1 商品页",
+          "url": "https://www.homedepot.com/p/EveryDrop-Ice-and-Refrigerator-Water-Filter-1-EDR1RXD1/205738745",
+          "kind": "competitor",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-034",
+          "label": "Walmart EDR1RXD1 价格集合页",
+          "url": "https://www.walmart.com/c/kp/whirlpool-refrigerator-water-filter-edr1rxd1",
+          "kind": "competitor",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-035",
+          "label": "Samsung HAF-QIN 美国官方商品页",
+          "url": "https://www.samsung.com/us/home-appliance-accessories/haf-qin-refrigerator-water-filter-sku-haf-qin-exp/",
+          "kind": "competitor",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-036",
+          "label": "Walmart Samsung HAF-QIN OEM",
+          "url": "https://www.walmart.com/ip/SAMSUNG-Genuine-HAF-QIN-Refrigerator-Water-Filter-DA29-17376B-1-Pack/505423651",
+          "kind": "competitor",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-037",
+          "label": "Home Depot Samsung HAF-QINS",
+          "url": "https://www.homedepot.com/p/Samsung-Genuine-HAF-QINS-Water-Filter-for-Samsung-Refrigerators-HAF-QINS/302029386",
+          "kind": "competitor",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-038",
+          "label": "Home Depot LG LT1000PC OEM",
+          "url": "https://www.homedepot.com/p/LG-LT1000PC-Premium-Refrigerator-Water-Filter-for-LG-LT1000PC-6-Month-200-Gallon-Capacity-NSF42-NSF53-and-NSF401-LT1000PC/310861276",
+          "kind": "competitor",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-042",
+          "label": "GE XWFE RFID 与漏水检测说明",
+          "url": "https://products.geappliances.com/appliance/gea-support-search-content?contentId=000060638",
+          "kind": "competitor",
+          "status": "verified"
+        }
+      ],
+      "queryLabels": [
+        "US refrigerator water filter replacement market brands official prices",
+        "Samsung LG refrigerator water filter official price NSF",
+        "Home Depot Waterdrop refrigerator filter price compatibility"
+      ],
+      "dataType": "商品页与成交路径",
+      "updatedAt": "2026-08-13T09:02:06.192Z"
+    },
+    "supply": {
+      "code": "supply",
+      "status": "complete",
+      "queryCount": 1,
+      "sourceCount": 5,
+      "recordCount": 3,
+      "summary": "本轮完成 1 组核查，保留 5 个来源与 3 条有效记录。",
+      "sources": [
+        {
+          "id": "SRC-REF-013",
+          "label": "Alibaba Shanghai Bluetech refrigerator filter listing",
+          "url": "https://www.alibaba.com/product-detail/NSF-Certified-Fridge-Water-Filters-Manufacturer_1600833619039.html",
+          "kind": "supplier",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-014",
+          "label": "YUNDA refrigerator filter wholesale catalog",
+          "url": "https://www.waterfiltersfactory.com/fridge-water-filter-cartridges",
+          "kind": "supplier",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-026",
+          "label": "Bestpure/YUNDA 4396508 供应候选页",
+          "url": "https://www.waterfiltersfactory.com/products/refrigerator-filter-cartridges-wholesale-supplier/whirlpool-4396508-refrigerator-filter.html",
+          "kind": "supplier",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-027",
+          "label": "Pureza HAF-QIN 供应候选页",
+          "url": "https://www.purezafilters.com/wholesale-nsf-certified-refrigerator-water-filter",
+          "kind": "supplier",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-028",
+          "label": "Simen Aqua MWF 公开阶梯报价",
+          "url": "https://www.simenaqua.com/mwf-refrigerator-water-filter-nsf-certified-water-filter-p-7.html",
+          "kind": "supplier",
+          "status": "verified"
+        }
+      ],
+      "queryLabels": [
+        "refrigerator filter supplier MOQ tier price sample lead time EDR HAF-QIN MWF"
+      ],
+      "dataType": "供应候选核查",
+      "updatedAt": "2026-08-13T09:02:06.192Z"
+    },
+    "compliance": {
+      "code": "compliance",
+      "status": "complete",
+      "queryCount": 3,
+      "sourceCount": 7,
+      "recordCount": 5,
+      "summary": "本轮完成 3 组核查，保留 7 个来源与 5 条有效记录。",
+      "sources": [
+        {
+          "id": "SRC-REF-008",
+          "label": "NSF/ANSI 42、53、401 标准说明",
+          "url": "https://www.nsf.org/knowledge-library/nsf-ansi-42-53-and-401-filtration-systems-standards",
+          "kind": "official",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-009",
+          "label": "NSF Refrigerator Filter Official Listings",
+          "url": "https://info.nsf.org/Certified/DWTU/Listings.asp?ProductFunction=042%7CChlorine+Reduction&ProductFunction=058%7CTDS+Reduction&ProductType=Refrigerator+Filter&submit2=Search",
+          "kind": "official",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-045",
+          "label": "EveryDrop EDR1RXD1 官方性能数据表",
+          "url": "https://www.everydropwater.com/content/dam/business-unit/everydrop/en_us/pdf/updated_performance_sheets/w11392626.pdf",
+          "kind": "official",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-046",
+          "label": "NSF EDR1RXD1 官方目录",
+          "url": "https://info.nsf.org/Certified/dwtu/Listings.asp?TradeName=EDR1RXD1",
+          "kind": "official",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-047",
+          "label": "NSF Samsung HAF-QIN 官方目录",
+          "url": "https://info.nsf.org/Certified/DWTU/Listings.asp?Company=C0560112&Standard=042",
+          "kind": "official",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-048",
+          "label": "GE XWFE 官方认证说明",
+          "url": "https://www.geapplianceparts.com/xwfe-water-filter.html",
+          "kind": "official",
+          "status": "verified"
+        },
+        {
+          "id": "SRC-REF-049",
+          "label": "NSF LG LT1000P 官方目录",
+          "url": "https://info.nsf.org/Certified/DWTU/Listings.asp?Company=C0257345",
+          "kind": "official",
+          "status": "verified"
+        }
+      ],
+      "queryLabels": [
+        "Samsung LG refrigerator water filter official price NSF",
+        "NSF refrigerator water filter standards official listings",
+        "official NSF IAPMO certification directory exact EDR1RXD1 HAF-QIN XWFE LT1000P"
+      ],
+      "dataType": "标准与官方目录",
+      "updatedAt": "2026-08-13T09:02:06.192Z"
+    },
+    "synthesis": {
+      "code": "synthesis",
+      "status": "complete",
+      "queryCount": 17,
+      "sourceCount": 56,
+      "recordCount": 26,
+      "summary": "已把市场、用户、竞品、供应与合规证据整理为六大选品结论。",
+      "sources": [],
+      "queryLabels": [],
+      "updatedAt": "2026-08-13T09:02:06.192Z"
+    },
+    "market_report": {
+      "code": "market_report",
+      "status": "complete",
+      "queryCount": 0,
+      "sourceCount": 18,
+      "recordCount": 12,
+      "summary": "四个型号均有持续需求信号，但不是同一种生意：EDR1RXD1 需求信号较强且售后敏感，HAF-QIN 漏水反证最强，XWFE 受 RFID 双适配约束，LT1000P OEM 体验最稳定、兼容替代窗口最清晰。当前仅有相邻月份的第三方趋势估算，尚不足以证明全年需求稳定；建议优先验证 LT1000P 与 EDR1RXD1，HAF-QIN 和 XWFE 提高样测门槛。",
+      "sources": [],
+      "queryLabels": [],
+      "updatedAt": "2026-08-13T09:02:06.192Z"
+    },
+    "customer_report": {
+      "code": "customer_report",
+      "status": "complete",
+      "queryCount": 0,
+      "sourceCount": 21,
+      "recordCount": 17,
+      "summary": "需要按冰箱或原厂滤芯型号快速买对替换件的美国家庭用户。 核心购买动机是快速确认兼容。",
+      "sources": [],
+      "queryLabels": [],
+      "updatedAt": "2026-08-13T09:02:06.192Z"
+    },
+    "competitor_report": {
+      "code": "competitor_report",
+      "status": "complete",
+      "queryCount": 0,
+      "sourceCount": 29,
+      "recordCount": 5,
+      "summary": "替换是刚需型周期行为；型号错误会带来高退货和安装失败成本；信任与价格存在明确取舍",
+      "sources": [],
+      "queryLabels": [],
+      "updatedAt": "2026-08-13T09:02:06.192Z"
+    },
+    "product_report": {
+      "code": "product_report",
+      "status": "complete",
+      "queryCount": 0,
+      "sourceCount": 26,
+      "recordCount": 12,
+      "summary": "型号核对、防错安装、密封稳定与认证文件可追溯。 当前建议：进入受控寻源与买样。",
+      "sources": [],
+      "queryLabels": [],
+      "updatedAt": "2026-08-13T09:02:06.192Z"
+    },
+    "marketing_report": {
+      "code": "marketing_report",
+      "status": "complete",
+      "queryCount": 0,
+      "sourceCount": 10,
+      "recordCount": 6,
+      "summary": "型号核对、防错安装、密封稳定与认证文件可追溯。",
+      "sources": [],
+      "queryLabels": [],
+      "updatedAt": "2026-08-13T09:02:06.192Z"
+    },
+    "validation_report": {
+      "code": "validation_report",
+      "status": "complete",
+      "queryCount": 0,
+      "sourceCount": 33,
+      "recordCount": 9,
+      "summary": "现在可以带着 EDR1RXD1、HAF-QIN、XWFE、LT1000P 四型号优先级发 RFQ 并受控买样；营销概念可先测试“买对型号、防错安装、文件透明”，但性能 宣传声明、正式售价和投放仍需目标 SKU 证书、样品实测与单位经济闭环。",
+      "sources": [],
+      "queryLabels": [],
+      "updatedAt": "2026-08-13T09:02:06.192Z"
+    },
+    "execution": {
+      "code": "execution",
+      "status": "complete",
+      "queryCount": 0,
+      "sourceCount": 0,
+      "recordCount": 0,
+      "summary": "Live Web Research, evidence validation, commercial analysis, and report generation completed.",
+      "sources": [],
+      "queryLabels": [],
+      "updatedAt": "2026-08-13T09:02:06.195Z"
+    }
+  },
+  "activity": [
+    {
+      "id": "competitor-1786545904377",
+      "at": "2026-08-12T14:45:04.377Z",
+      "stage": "competitor",
+      "status": "in_progress",
+      "message": "已保留公开来源，继续扩充本证据线。"
+    },
+    {
+      "id": "competitor-1786545904574",
+      "at": "2026-08-12T14:45:04.574Z",
+      "stage": "competitor",
+      "status": "in_progress",
+      "message": "已保留公开来源，继续扩充本证据线。"
+    },
+    {
+      "id": "market-1786545904769",
+      "at": "2026-08-12T14:45:04.769Z",
+      "stage": "market",
+      "status": "in_progress",
+      "message": "已保留公开来源，继续扩充本证据线。"
+    },
+    {
+      "id": "compliance-1786545904968",
+      "at": "2026-08-12T14:45:04.968Z",
+      "stage": "compliance",
+      "status": "in_progress",
+      "message": "已保留公开来源，继续扩充本证据线。"
+    },
+    {
+      "id": "compliance-1786545905190",
+      "at": "2026-08-12T14:45:05.190Z",
+      "stage": "compliance",
+      "status": "in_progress",
+      "message": "已保留公开来源，继续扩充本证据线。"
+    },
+    {
+      "id": "market-1786545905393",
+      "at": "2026-08-12T14:45:05.393Z",
+      "stage": "market",
+      "status": "in_progress",
+      "message": "已保留公开来源，继续扩充本证据线。"
+    },
+    {
+      "id": "customer-1786545905626",
+      "at": "2026-08-12T14:45:05.626Z",
+      "stage": "customer",
+      "status": "in_progress",
+      "message": "已保留公开来源，继续扩充本证据线。"
+    },
+    {
+      "id": "customer-1786545905850",
+      "at": "2026-08-12T14:45:05.850Z",
+      "stage": "customer",
+      "status": "in_progress",
+      "message": "已保留公开来源，继续扩充本证据线。"
+    },
+    {
+      "id": "customer-1786545906106",
+      "at": "2026-08-12T14:45:06.106Z",
+      "stage": "customer",
+      "status": "in_progress",
+      "message": "已发现公开用户反馈涉及出水变慢、安装/兼容错误、异味和漏水风险；Amazon 评论级接口等待 BRIGHTDATA_API_TOKEN。"
+    },
+    {
+      "id": "competitor-1786545906335",
+      "at": "2026-08-12T14:45:06.335Z",
+      "stage": "competitor",
+      "status": "in_progress",
+      "message": "已建立 OEM 与 aftermarket 竞品价格、型号、认证和订阅补货对比。"
+    },
+    {
+      "id": "compliance-1786545906544",
+      "at": "2026-08-12T14:45:06.544Z",
+      "stage": "compliance",
+      "status": "in_progress",
+      "message": "已核查 NSF/ANSI 42、53、401 的声明边界与 NSF 官方目录；具体污染物声明需逐型号验证。"
+    },
+    {
+      "id": "supply-1786546056632",
+      "at": "2026-08-12T14:47:36.632Z",
+      "stage": "supply",
+      "status": "in_progress",
+      "message": "已发现 2 个公开供应候选与多组兼容型号语言，正在核查证书、MOQ、产能和正式报价。"
+    },
+    {
+      "id": "supply-1786546056871",
+      "at": "2026-08-12T14:47:36.871Z",
+      "stage": "supply",
+      "status": "in_progress",
+      "message": "已发现 2 个公开供应候选与多组兼容型号语言，正在核查证书、MOQ、产能和正式报价。"
+    },
+    {
+      "id": "market-1786546057086",
+      "at": "2026-08-12T14:47:37.086Z",
+      "stage": "market",
+      "status": "in_progress",
+      "message": "已扩充至 OEM、aftermarket、Walmart、Home Depot 与品牌官网价格和评分信号。"
+    },
+    {
+      "id": "customer-1786546057315",
+      "at": "2026-08-12T14:47:37.315Z",
+      "stage": "customer",
+      "status": "in_progress",
+      "message": "已加入 Walmart 163 条评论页面的主题摘要；继续扩充 Amazon 评论级证据和跨平台用户反馈。"
+    },
+    {
+      "id": "customer-1786547825375",
+      "at": "2026-08-12T15:17:05.375Z",
+      "stage": "customer",
+      "status": "in_progress",
+      "message": "Bright Data Amazon 评论已接入：197 条有效评论，11 个 ASIN 请求，7 个商品源；已按兼容性、漏水、口感异味、流速、过滤表现、寿命与认证重新归类。"
+    },
+    {
+      "id": "synthesis-1786547953191",
+      "at": "2026-08-12T15:19:13.191Z",
+      "stage": "synthesis",
+      "status": "in_progress",
+      "message": "已整理 23 个公开来源与 197 条有效 Amazon 评论：需求集中在型号兼容、过滤表现、口感异味；机会方向是防错配、密封稳定、认证文件透明，但真实销量、退货率、成本与利润仍未证实。"
+    },
+    {
+      "id": "market-1786547953419",
+      "at": "2026-08-12T15:19:13.419Z",
+      "stage": "market",
+      "status": "complete",
+      "message": "市场证据采集完成：OEM、aftermarket、Walmart、Home Depot、品牌官网与 NSF 资料已归档；价格带和兼容型号路径已建立。"
+    },
+    {
+      "id": "customer-1786547953638",
+      "at": "2026-08-12T15:19:13.638Z",
+      "stage": "customer",
+      "status": "complete",
+      "message": "用户证据采集完成：197 条有效 Amazon 评论级观察，另有 Walmart 与 Reddit 公开反馈；评论主题已按冰箱滤芯场景归类。"
+    },
+    {
+      "id": "synthesis-1786548131311",
+      "at": "2026-08-12T15:22:11.311Z",
+      "stage": "synthesis",
+      "status": "in_progress",
+      "message": "Validating evidence, claim mappings, and commercial analysis."
+    },
+    {
+      "id": "market_report-1786548131327",
+      "at": "2026-08-12T15:22:11.327Z",
+      "stage": "market_report",
+      "status": "in_progress",
+      "message": "Generating Markdown and HTML decision reports from validated live evidence."
+    },
+    {
+      "id": "report-1786548131330",
+      "at": "2026-08-12T15:22:11.330Z",
+      "stage": "execution",
+      "status": "complete",
+      "message": "六大模块白板报告已生成，所有结论保留来源与缺口。"
+    },
+    {
+      "id": "execution-1786548131332",
+      "at": "2026-08-12T15:22:11.332Z",
+      "stage": "execution",
+      "status": "complete",
+      "message": "Live Web Research, evidence validation, commercial analysis, and report generation completed."
+    },
+    {
+      "id": "market-1786552002284",
+      "at": "2026-08-12T16:26:42.284Z",
+      "stage": "market",
+      "status": "complete",
+      "message": "市场证据线完成 5 组公开检索，保留品牌官网、零售页、标准与价格资料；趋势数值仍待补齐。"
+    },
+    {
+      "id": "customer-1786552002497",
+      "at": "2026-08-12T16:26:42.497Z",
+      "stage": "customer",
+      "status": "complete",
+      "message": "用户证据线完成 3 组评论与社区核查，纳入 197 条 Amazon 有效观察、163 条 Walmart 评论摘要与 2 条 Reddit 讨论。"
+    },
+    {
+      "id": "competitor-1786552002702",
+      "at": "2026-08-12T16:26:42.702Z",
+      "stage": "competitor",
+      "status": "complete",
+      "message": "竞品证据线完成 3 组品牌、商品页与价格路径核查，保留 5 个核心竞品信源与 5 条价格/卖点记录。"
+    },
+    {
+      "id": "supply-1786552002900",
+      "at": "2026-08-12T16:26:42.900Z",
+      "stage": "supply",
+      "status": "complete",
+      "message": "供应证据线完成 1 组公开货盘检索，保留 2 个候选供应商信源与 2 条候选记录；MOQ、报价和证书仍待正式核验。"
+    },
+    {
+      "id": "compliance-1786552003098",
+      "at": "2026-08-12T16:26:43.098Z",
+      "stage": "compliance",
+      "status": "complete",
+      "message": "合规证据线完成 1 组官方标准与目录核查，保留 2 个官方信源与 2 条标准边界记录。"
+    },
+    {
+      "id": "report-1786552275408",
+      "at": "2026-08-12T16:31:15.408Z",
+      "stage": "execution",
+      "status": "complete",
+      "message": "六大模块白板报告已生成，所有结论保留来源与缺口。"
+    },
+    {
+      "id": "report-1786552480335",
+      "at": "2026-08-12T16:34:40.335Z",
+      "stage": "execution",
+      "status": "complete",
+      "message": "六大模块白板报告已生成，所有结论保留来源与缺口。"
+    },
+    {
+      "id": "report-1786552700021",
+      "at": "2026-08-12T16:38:20.021Z",
+      "stage": "execution",
+      "status": "complete",
+      "message": "六大模块白板报告已生成，所有结论保留来源与缺口。"
+    },
+    {
+      "id": "report-1786553341139",
+      "at": "2026-08-12T16:49:01.139Z",
+      "stage": "execution",
+      "status": "complete",
+      "message": "六大模块白板报告已生成，所有结论保留来源与缺口。"
+    },
+    {
+      "id": "report-1786553440540",
+      "at": "2026-08-12T16:50:40.540Z",
+      "stage": "execution",
+      "status": "complete",
+      "message": "六大模块白板报告已生成，所有结论保留来源与缺口。"
+    },
+    {
+      "id": "report-1786580884019",
+      "at": "2026-08-13T00:28:04.019Z",
+      "stage": "execution",
+      "status": "complete",
+      "message": "六大模块白板报告已生成，所有结论保留来源与缺口。"
+    },
+    {
+      "id": "synthesis-1786607111957",
+      "at": "2026-08-13T07:45:11.957Z",
+      "stage": "synthesis",
+      "status": "in_progress",
+      "message": "Validating evidence, claim mappings, and commercial analysis."
+    },
+    {
+      "id": "execution-1786607111978",
+      "at": "2026-08-13T07:45:11.978Z",
+      "stage": "execution",
+      "status": "blocked",
+      "message": "Evidence Package validation failed: CONTENT_HASH_MISMATCH, CONTENT_HASH_MISMATCH, CONTENT_HASH_MISMATCH, CONTENT_HASH_MISMATCH"
+    },
+    {
+      "id": "synthesis-1786607236735",
+      "at": "2026-08-13T07:47:16.735Z",
+      "stage": "synthesis",
+      "status": "in_progress",
+      "message": "Validating evidence, claim mappings, and commercial analysis."
+    },
+    {
+      "id": "market_report-1786607236751",
+      "at": "2026-08-13T07:47:16.751Z",
+      "stage": "market_report",
+      "status": "in_progress",
+      "message": "Generating Markdown and HTML decision reports from validated live evidence."
+    },
+    {
+      "id": "report-1786607236756",
+      "at": "2026-08-13T07:47:16.756Z",
+      "stage": "execution",
+      "status": "complete",
+      "message": "六大模块白板报告已生成，所有结论保留来源与缺口。"
+    },
+    {
+      "id": "execution-1786607236759",
+      "at": "2026-08-13T07:47:16.759Z",
+      "stage": "execution",
+      "status": "complete",
+      "message": "Live Web Research, evidence validation, commercial analysis, and report generation completed."
+    },
+    {
+      "id": "synthesis-1786607624564",
+      "at": "2026-08-13T07:53:44.564Z",
+      "stage": "synthesis",
+      "status": "in_progress",
+      "message": "Validating evidence, claim mappings, and commercial analysis."
+    },
+    {
+      "id": "market_report-1786607624600",
+      "at": "2026-08-13T07:53:44.600Z",
+      "stage": "market_report",
+      "status": "in_progress",
+      "message": "Generating Markdown and HTML decision reports from validated live evidence."
+    },
+    {
+      "id": "report-1786607624606",
+      "at": "2026-08-13T07:53:44.606Z",
+      "stage": "execution",
+      "status": "complete",
+      "message": "六大模块白板报告已生成，所有结论保留来源与缺口。"
+    },
+    {
+      "id": "execution-1786607624609",
+      "at": "2026-08-13T07:53:44.609Z",
+      "stage": "execution",
+      "status": "complete",
+      "message": "Live Web Research, evidence validation, commercial analysis, and report generation completed."
+    },
+    {
+      "id": "synthesis-1786609209209",
+      "at": "2026-08-13T08:20:09.209Z",
+      "stage": "synthesis",
+      "status": "in_progress",
+      "message": "Validating evidence, claim mappings, and commercial analysis."
+    },
+    {
+      "id": "market_report-1786609209236",
+      "at": "2026-08-13T08:20:09.236Z",
+      "stage": "market_report",
+      "status": "in_progress",
+      "message": "Generating Markdown and HTML decision reports from validated live evidence."
+    },
+    {
+      "id": "report-1786609209241",
+      "at": "2026-08-13T08:20:09.241Z",
+      "stage": "execution",
+      "status": "complete",
+      "message": "六大模块白板报告已生成，所有结论保留来源与缺口。"
+    },
+    {
+      "id": "execution-1786609209243",
+      "at": "2026-08-13T08:20:09.243Z",
+      "stage": "execution",
+      "status": "complete",
+      "message": "Live Web Research, evidence validation, commercial analysis, and report generation completed."
+    },
+    {
+      "id": "synthesis-1786609341716",
+      "at": "2026-08-13T08:22:21.716Z",
+      "stage": "synthesis",
+      "status": "in_progress",
+      "message": "Validating evidence, claim mappings, and commercial analysis."
+    },
+    {
+      "id": "market_report-1786609341736",
+      "at": "2026-08-13T08:22:21.736Z",
+      "stage": "market_report",
+      "status": "in_progress",
+      "message": "Generating Markdown and HTML decision reports from validated live evidence."
+    },
+    {
+      "id": "report-1786609341740",
+      "at": "2026-08-13T08:22:21.740Z",
+      "stage": "execution",
+      "status": "complete",
+      "message": "六大模块白板报告已生成，所有结论保留来源与缺口。"
+    },
+    {
+      "id": "execution-1786609341743",
+      "at": "2026-08-13T08:22:21.743Z",
+      "stage": "execution",
+      "status": "complete",
+      "message": "Live Web Research, evidence validation, commercial analysis, and report generation completed."
+    },
+    {
+      "id": "synthesis-1786611068822",
+      "at": "2026-08-13T08:51:08.822Z",
+      "stage": "synthesis",
+      "status": "in_progress",
+      "message": "Validating evidence, claim mappings, and commercial analysis."
+    },
+    {
+      "id": "market_report-1786611068849",
+      "at": "2026-08-13T08:51:08.849Z",
+      "stage": "market_report",
+      "status": "in_progress",
+      "message": "Generating Markdown and HTML decision reports from validated live evidence."
+    },
+    {
+      "id": "report-1786611068855",
+      "at": "2026-08-13T08:51:08.855Z",
+      "stage": "execution",
+      "status": "complete",
+      "message": "六大模块白板报告已生成，所有结论保留来源与缺口。"
+    },
+    {
+      "id": "execution-1786611068857",
+      "at": "2026-08-13T08:51:08.857Z",
+      "stage": "execution",
+      "status": "complete",
+      "message": "Live Web Research, evidence validation, commercial analysis, and report generation completed."
+    },
+    {
+      "id": "synthesis-1786611726149",
+      "at": "2026-08-13T09:02:06.149Z",
+      "stage": "synthesis",
+      "status": "in_progress",
+      "message": "Validating evidence, claim mappings, and commercial analysis."
+    },
+    {
+      "id": "market_report-1786611726184",
+      "at": "2026-08-13T09:02:06.184Z",
+      "stage": "market_report",
+      "status": "in_progress",
+      "message": "Generating Markdown and HTML decision reports from validated live evidence."
+    },
+    {
+      "id": "report-1786611726192",
+      "at": "2026-08-13T09:02:06.192Z",
+      "stage": "execution",
+      "status": "complete",
+      "message": "六大模块白板报告已生成，所有结论保留来源与缺口。"
+    },
+    {
+      "id": "execution-1786611726195",
+      "at": "2026-08-13T09:02:06.195Z",
+      "stage": "execution",
+      "status": "complete",
+      "message": "Live Web Research, evidence validation, commercial analysis, and report generation completed."
+    }
+  ],
+  "reportModules": [
+    {
+      "code": "market",
+      "title": "市场与机会",
+      "question": "有没有市场、需求趋势、价格空间、竞争强度。",
+      "conclusion": "四个型号均有持续需求信号，但不是同一种生意：EDR1RXD1 需求信号较强且售后敏感，HAF-QIN 漏水反证最强，XWFE 受 RFID 双适配约束，LT1000P OEM 体验最稳定、兼容替代窗口最清晰。当前仅有相邻月份的第三方趋势估算，尚不足以证明全年需求稳定；建议优先验证 LT1000P 与 EDR1RXD1，HAF-QIN 和 XWFE 提高样测门槛。",
+      "items": [
+        {
+          "text": "需求：四个优先型号均取得同一精确 OEM ASIN、同一页面口径的相邻月需求代理：EDR1RXD1 与 LT1000P 基本稳定，HAF-QIN 最新月回落，XWFE 最新月增长最强；均为第三方估算而非官方订单。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-REF-029",
+            "SRC-REF-030",
+            "SRC-REF-031",
+            "SRC-REF-032"
+          ]
+        },
+        {
+          "text": "竞争：跨平台价格矩阵显示 OEM 约 $30–$60/支、兼容品常见约 $7–$18/支；价格差足够吸引替代，但 HAF-QIN 漏水、XWFE RFID 和各型号适配尾部风险构成实质进入门槛。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-REF-033",
+            "SRC-REF-034",
+            "SRC-REF-035",
+            "SRC-REF-036",
+            "SRC-REF-037",
+            "SRC-REF-038",
+            "SRC-REF-041",
+            "SRC-REF-042"
+          ]
+        },
+        {
+          "text": "趋势：已形成四型号 2026 年相邻月份的月度趋势代理，不再停留在单月快照；公开页面仍未提供完整 12 个月逐月数值，因此只判断方向与量级。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-REF-029",
+            "SRC-REF-030",
+            "SRC-REF-031",
+            "SRC-REF-032"
+          ]
+        },
+        {
+          "text": "价格与变现：四型号已建立品牌官网、Amazon、Home Depot、Walmart 的同日价格矩阵，能识别 OEM 溢价、多件装和兼容品价格带；目标供应成本、履约与退货成本仍需 RFQ 闭环。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-REF-033",
+            "SRC-REF-034",
+            "SRC-REF-035",
+            "SRC-REF-036",
+            "SRC-REF-037",
+            "SRC-REF-038",
+            "SRC-REF-024",
+            "SRC-REF-025",
+            "SRC-REF-005"
+          ]
+        },
+        {
+          "text": "型号级证据：Amazon 当前冰箱内置滤芯 Best Sellers 前四名依次为 EDR1RXD1、HAF-QIN、XWFE 和 LT1000P。 采集时点的 Amazon #1–#4 排名可作为相对需求代理，但不提供绝对销量。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-REF-021"
+          ]
+        },
+        {
+          "text": "型号级证据：EDR1RXD1 在第三方 Amazon 估算中表现出强需求和高头部集中度。 ASINSIGHT 公开字段显示领先 ASIN 估算月订单 80,000+、近期周搜索量 1,153，Top-3 点击/转化份额为 79.55%/71.76%。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-REF-022"
+          ]
+        },
+        {
+          "text": "型号级证据：LT1000P 的 OEM 与兼容品在第三方 Amazon 估算中均有可见需求，且价格分层明显。 ASINSIGHT 公开字段显示 LG OEM ASIN 估算月销 40K、Waterdrop 兼容品 10K，对应公开价 $46.16 与 $22.99。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-REF-023"
+          ]
+        },
+        {
+          "text": "型号级证据：EDR1RXD1 的相邻月需求代理基本稳定。 同一 ASIN/同一页面口径下，2026-07 估算 90K，环比 +1.5%，反推 6 月约 88.7K。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-REF-029"
+          ]
+        },
+        {
+          "text": "型号级证据：HAF-QIN 的最新相邻月需求代理回落。 2026-08 估算 50K，环比 -16.7%，反推 7 月约 60K。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-REF-030"
+          ]
+        },
+        {
+          "text": "型号级证据：XWFE 的最新相邻月需求代理增长最强。 2026-07 估算 90K，环比 +50%，反推 6 月约 60K。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-REF-031"
+          ]
+        },
+        {
+          "text": "型号级证据：LT1000P 的相邻月需求代理基本稳定。 2026-07 估算 40K，环比 +1.5%，反推 6 月约 39.4K。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-REF-032"
+          ]
+        },
+        {
+          "text": "型号级证据：四型号 OEM 跨平台价格主要落在约 $30–$60/支，兼容品常以约 $7–$18/支或多件装竞争。 EDR1RXD1、HAF-QIN、XWFE、LT1000P 的品牌官网、Amazon、Home Depot 与 Walmart 同日价格矩阵显示稳定的 OEM/兼容品分层。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-REF-033"
+          ]
+        }
+      ],
+      "unknowns": [
+        "四型号完整 12 个月逐月趋势数值与真实转化率/退货率",
+        "目标供应商正式报价、包装、运费、关税与到岸成本"
+      ],
+      "updatedAt": "2026-08-13T09:02:06.192Z"
+    },
+    {
+      "code": "customer",
+      "title": "用户画像",
+      "question": "谁在买、什么场景触发、最焦虑什么、为什么下单。",
+      "conclusion": "需要按冰箱或原厂滤芯型号快速买对替换件的美国家庭用户。 核心购买动机是快速确认兼容。",
+      "items": [
+        {
+          "text": "型号对照：EDR1RXD1 的主要售后风险是错配、锁止困难、提前流量衰减和冲洗后异味。 Home Depot 约 5.1K 评论信号与 Walmart/品牌评论共同支持；兼容品另有漏水、颗粒和认证疑虑。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-REF-033",
+            "SRC-REF-011",
+            "SRC-REF-012",
+            "SRC-REF-017",
+            "SRC-REF-018",
+            "SRC-REF-019",
+            "SRC-REF-020"
+          ]
+        },
+        {
+          "text": "型号对照：HAF-QIN 在四型号中呈现最强的结构性漏水反证。 Best Buy 高推荐率与 Samsung 官方评论中的卡扣尺寸差异、密封失败和严重漏水形成明显平台偏差。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-REF-040",
+            "SRC-REF-011",
+            "SRC-REF-012",
+            "SRC-REF-017",
+            "SRC-REF-018",
+            "SRC-REF-019",
+            "SRC-REF-020"
+          ]
+        },
+        {
+          "text": "型号对照：XWFE 的核心进入门槛是机械接口与 RFID 电子握手双适配。 GE 官方解释 RFID 漏水检测用途；兼容品评论同时出现识别成功与个别失效、说明不清。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-REF-041",
+            "SRC-REF-011",
+            "SRC-REF-012",
+            "SRC-REF-017",
+            "SRC-REF-018",
+            "SRC-REF-019",
+            "SRC-REF-020"
+          ]
+        },
+        {
+          "text": "型号对照：LT1000P 的 OEM 用户体验最稳定，但兼容品仍存在错配和漏水尾部风险。 Best Buy 2,375 reviews、95% 推荐，安装与水质主题突出；Walmart 兼容品样本记录错货与连续漏水反证。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-REF-043",
+            "SRC-REF-011",
+            "SRC-REF-012",
+            "SRC-REF-017",
+            "SRC-REF-018",
+            "SRC-REF-019",
+            "SRC-REF-020"
+          ]
+        },
+        {
+          "text": "焦虑：EDR1RXD1：错配、锁止失败、提前流量衰减与冲洗后异味",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-011",
+            "SRC-REF-012",
+            "SRC-REF-016",
+            "SRC-REF-033",
+            "SRC-REF-039",
+            "SRC-REF-040",
+            "SRC-REF-041",
+            "SRC-REF-042",
+            "SRC-REF-043",
+            "SRC-REF-044",
+            "SRC-REF-017",
+            "SRC-REF-018",
+            "SRC-REF-019",
+            "SRC-REF-020"
+          ]
+        },
+        {
+          "text": "焦虑：HAF-QIN：卡扣尺寸差异、密封失败与严重漏水",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-011",
+            "SRC-REF-012",
+            "SRC-REF-016",
+            "SRC-REF-033",
+            "SRC-REF-039",
+            "SRC-REF-040",
+            "SRC-REF-041",
+            "SRC-REF-042",
+            "SRC-REF-043",
+            "SRC-REF-044",
+            "SRC-REF-017",
+            "SRC-REF-018",
+            "SRC-REF-019",
+            "SRC-REF-020"
+          ]
+        },
+        {
+          "text": "焦虑：XWFE：RFID/ERR、芯片识别与黑灰颗粒",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-011",
+            "SRC-REF-012",
+            "SRC-REF-016",
+            "SRC-REF-033",
+            "SRC-REF-039",
+            "SRC-REF-040",
+            "SRC-REF-041",
+            "SRC-REF-042",
+            "SRC-REF-043",
+            "SRC-REF-044",
+            "SRC-REF-017",
+            "SRC-REF-018",
+            "SRC-REF-019",
+            "SRC-REF-020"
+          ]
+        },
+        {
+          "text": "焦虑：LT1000P：OEM 高价，兼容品偶发错配与漏水",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-011",
+            "SRC-REF-012",
+            "SRC-REF-016",
+            "SRC-REF-033",
+            "SRC-REF-039",
+            "SRC-REF-040",
+            "SRC-REF-041",
+            "SRC-REF-042",
+            "SRC-REF-043",
+            "SRC-REF-044",
+            "SRC-REF-017",
+            "SRC-REF-018",
+            "SRC-REF-019",
+            "SRC-REF-020"
+          ]
+        },
+        {
+          "text": "焦虑：所有型号：认证与具体 SKU/后缀是否一致",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-011",
+            "SRC-REF-012",
+            "SRC-REF-016",
+            "SRC-REF-033",
+            "SRC-REF-039",
+            "SRC-REF-040",
+            "SRC-REF-041",
+            "SRC-REF-042",
+            "SRC-REF-043",
+            "SRC-REF-044",
+            "SRC-REF-017",
+            "SRC-REF-018",
+            "SRC-REF-019",
+            "SRC-REF-020"
+          ]
+        },
+        {
+          "text": "下单理由：快速确认兼容",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-011",
+            "SRC-REF-012",
+            "SRC-REF-016",
+            "SRC-REF-033",
+            "SRC-REF-039",
+            "SRC-REF-040",
+            "SRC-REF-041",
+            "SRC-REF-042",
+            "SRC-REF-043",
+            "SRC-REF-044",
+            "SRC-REF-017",
+            "SRC-REF-018",
+            "SRC-REF-019",
+            "SRC-REF-020"
+          ]
+        },
+        {
+          "text": "下单理由：装上即用",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-011",
+            "SRC-REF-012",
+            "SRC-REF-016",
+            "SRC-REF-033",
+            "SRC-REF-039",
+            "SRC-REF-040",
+            "SRC-REF-041",
+            "SRC-REF-042",
+            "SRC-REF-043",
+            "SRC-REF-044",
+            "SRC-REF-017",
+            "SRC-REF-018",
+            "SRC-REF-019",
+            "SRC-REF-020"
+          ]
+        },
+        {
+          "text": "下单理由：保持可接受流速",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-011",
+            "SRC-REF-012",
+            "SRC-REF-016",
+            "SRC-REF-033",
+            "SRC-REF-039",
+            "SRC-REF-040",
+            "SRC-REF-041",
+            "SRC-REF-042",
+            "SRC-REF-043",
+            "SRC-REF-044",
+            "SRC-REF-017",
+            "SRC-REF-018",
+            "SRC-REF-019",
+            "SRC-REF-020"
+          ]
+        },
+        {
+          "text": "下单理由：降低每支替换成本",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-011",
+            "SRC-REF-012",
+            "SRC-REF-016",
+            "SRC-REF-033",
+            "SRC-REF-039",
+            "SRC-REF-040",
+            "SRC-REF-041",
+            "SRC-REF-042",
+            "SRC-REF-043",
+            "SRC-REF-044",
+            "SRC-REF-017",
+            "SRC-REF-018",
+            "SRC-REF-019",
+            "SRC-REF-020"
+          ]
+        },
+        {
+          "text": "下单理由：按周期自动补货",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-011",
+            "SRC-REF-012",
+            "SRC-REF-016",
+            "SRC-REF-033",
+            "SRC-REF-039",
+            "SRC-REF-040",
+            "SRC-REF-041",
+            "SRC-REF-042",
+            "SRC-REF-043",
+            "SRC-REF-044",
+            "SRC-REF-017",
+            "SRC-REF-018",
+            "SRC-REF-019",
+            "SRC-REF-020"
+          ]
+        },
+        {
+          "text": "情绪动机：避免漏水和返工",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-011",
+            "SRC-REF-012",
+            "SRC-REF-016",
+            "SRC-REF-033",
+            "SRC-REF-039",
+            "SRC-REF-040",
+            "SRC-REF-041",
+            "SRC-REF-042",
+            "SRC-REF-043",
+            "SRC-REF-044",
+            "SRC-REF-017",
+            "SRC-REF-018",
+            "SRC-REF-019",
+            "SRC-REF-020"
+          ]
+        },
+        {
+          "text": "情绪动机：避免饮水安全不确定感",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-011",
+            "SRC-REF-012",
+            "SRC-REF-016",
+            "SRC-REF-033",
+            "SRC-REF-039",
+            "SRC-REF-040",
+            "SRC-REF-041",
+            "SRC-REF-042",
+            "SRC-REF-043",
+            "SRC-REF-044",
+            "SRC-REF-017",
+            "SRC-REF-018",
+            "SRC-REF-019",
+            "SRC-REF-020"
+          ]
+        },
+        {
+          "text": "情绪动机：相信自己买的是有效且真实的替换件",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-011",
+            "SRC-REF-012",
+            "SRC-REF-016",
+            "SRC-REF-033",
+            "SRC-REF-039",
+            "SRC-REF-040",
+            "SRC-REF-041",
+            "SRC-REF-042",
+            "SRC-REF-043",
+            "SRC-REF-044",
+            "SRC-REF-017",
+            "SRC-REF-018",
+            "SRC-REF-019",
+            "SRC-REF-020"
+          ]
+        }
+      ],
+      "unknowns": [
+        "第一轮已核查 Amazon、Walmart 与 Reddit 的公开用户反馈；各型号真实销量、搜索量、转化率和退货率属于平台后台数据，公开页面无法复核。"
+      ],
+      "updatedAt": "2026-08-13T09:02:06.192Z"
+    },
+    {
+      "code": "competitor",
+      "title": "竞品分析",
+      "question": "谁在卖、靠什么吸引点击、靠什么建立信任、靠什么成交。",
+      "conclusion": "替换是刚需型周期行为；型号错误会带来高退货和安装失败成本；信任与价格存在明确取舍",
+      "items": [
+        {
+          "text": "点击钩子：先确认买对，再展示认证范围、安装步骤和更换提醒。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-REF-002",
+            "SRC-REF-003",
+            "SRC-REF-004",
+            "SRC-REF-005",
+            "SRC-REF-006",
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-021",
+            "SRC-REF-022",
+            "SRC-REF-023",
+            "SRC-REF-024",
+            "SRC-REF-025",
+            "SRC-REF-033",
+            "SRC-REF-034",
+            "SRC-REF-035",
+            "SRC-REF-036",
+            "SRC-REF-037",
+            "SRC-REF-038",
+            "SRC-REF-039",
+            "SRC-REF-040",
+            "SRC-REF-041",
+            "SRC-REF-042",
+            "SRC-REF-043",
+            "SRC-REF-044"
+          ]
+        },
+        {
+          "text": "信任机制：评论平台之间存在系统性偏差：Best Buy 高推荐率受促销评论影响，品牌官网更聚集失败用户；报告保留双口径和反证，不合并成虚假的平均满意度。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-REF-002",
+            "SRC-REF-003",
+            "SRC-REF-004",
+            "SRC-REF-005",
+            "SRC-REF-006",
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-021",
+            "SRC-REF-022",
+            "SRC-REF-023",
+            "SRC-REF-024",
+            "SRC-REF-025",
+            "SRC-REF-033",
+            "SRC-REF-034",
+            "SRC-REF-035",
+            "SRC-REF-036",
+            "SRC-REF-037",
+            "SRC-REF-038",
+            "SRC-REF-039",
+            "SRC-REF-040",
+            "SRC-REF-041",
+            "SRC-REF-042",
+            "SRC-REF-043",
+            "SRC-REF-044"
+          ]
+        },
+        {
+          "text": "成交方式：输入冰箱型号，核对兼容后购买套装或订阅。；OEM 单支、2-pack/3-pack/6-pack 和订阅补货共同构成成交路径。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-REF-002",
+            "SRC-REF-003",
+            "SRC-REF-004",
+            "SRC-REF-005",
+            "SRC-REF-006",
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-021",
+            "SRC-REF-022",
+            "SRC-REF-023",
+            "SRC-REF-024",
+            "SRC-REF-025",
+            "SRC-REF-033",
+            "SRC-REF-034",
+            "SRC-REF-035",
+            "SRC-REF-036",
+            "SRC-REF-037",
+            "SRC-REF-038",
+            "SRC-REF-039",
+            "SRC-REF-040",
+            "SRC-REF-041",
+            "SRC-REF-042",
+            "SRC-REF-043",
+            "SRC-REF-044"
+          ]
+        },
+        {
+          "text": "价格结构：同日跨平台矩阵显示 OEM 大致 $30–$60/支，兼容品常以约 $7–$18/支或多件装成交。EDR1RXD1 OEM 约 $50.80–$59.99，HAF-QIN 约 $29.99–$37.89，XWFE 约 $49.02–$54.99，LT1000P 约 $43.99–$54.99；促销、库存和地区价格单独标注。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-REF-002",
+            "SRC-REF-003",
+            "SRC-REF-004",
+            "SRC-REF-005",
+            "SRC-REF-006",
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-021",
+            "SRC-REF-022",
+            "SRC-REF-023",
+            "SRC-REF-024",
+            "SRC-REF-025",
+            "SRC-REF-033",
+            "SRC-REF-034",
+            "SRC-REF-035",
+            "SRC-REF-036",
+            "SRC-REF-037",
+            "SRC-REF-038",
+            "SRC-REF-039",
+            "SRC-REF-040",
+            "SRC-REF-041",
+            "SRC-REF-042",
+            "SRC-REF-043",
+            "SRC-REF-044"
+          ]
+        },
+        {
+          "text": "型号优先级：首轮型号优先级：EDR1RXD1（榜单 #1、需求强但集中）、HAF-QIN（榜单 #2）、XWFE（榜单 #3、高 OEM 锚点）、LT1000P（榜单 #4、OEM 与兼容品均有量级代理）。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-REF-021",
+            "SRC-REF-022",
+            "SRC-REF-023",
+            "SRC-REF-024"
+          ]
+        }
+      ],
+      "unknowns": [
+        "第一轮已完成品牌官网、零售商品页和价格路径核查；各竞品 SKU 的真实销量、搜索量、转化率和退货率仍需平台数据或第三方付费面板。"
+      ],
+      "updatedAt": "2026-08-13T09:02:06.192Z"
+    },
+    {
+      "code": "product",
+      "title": "产品方案",
+      "question": "应该做成什么样、必要产品要求、寻源关键词、不能踩的坑。",
+      "conclusion": "型号核对、防错安装、密封稳定与认证文件可追溯。 当前建议：进入受控寻源与买样。",
+      "items": [
+        {
+          "text": "目标用户：美国市场中需要更换明确型号冰箱滤芯、愿意为安装确定性与文件透明付费的家庭用户。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-008",
+            "SRC-REF-009",
+            "SRC-REF-013",
+            "SRC-REF-014",
+            "SRC-REF-021",
+            "SRC-REF-022",
+            "SRC-REF-023",
+            "SRC-REF-024",
+            "SRC-REF-026",
+            "SRC-REF-027",
+            "SRC-REF-028",
+            "SRC-REF-029",
+            "SRC-REF-030",
+            "SRC-REF-031",
+            "SRC-REF-032",
+            "SRC-REF-046",
+            "SRC-REF-047",
+            "SRC-REF-048",
+            "SRC-REF-049"
+          ]
+        },
+        {
+          "text": "产品要求：型号查找器和防错配包装",
+          "level": "hypothesis",
+          "sourceIds": [
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-008",
+            "SRC-REF-009",
+            "SRC-REF-013",
+            "SRC-REF-014",
+            "SRC-REF-021",
+            "SRC-REF-022",
+            "SRC-REF-023",
+            "SRC-REF-024",
+            "SRC-REF-026",
+            "SRC-REF-027",
+            "SRC-REF-028",
+            "SRC-REF-029",
+            "SRC-REF-030",
+            "SRC-REF-031",
+            "SRC-REF-032",
+            "SRC-REF-046",
+            "SRC-REF-047",
+            "SRC-REF-048",
+            "SRC-REF-049"
+          ]
+        },
+        {
+          "text": "产品要求：逐 SKU 认证文件与声明边界",
+          "level": "hypothesis",
+          "sourceIds": [
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-008",
+            "SRC-REF-009",
+            "SRC-REF-013",
+            "SRC-REF-014",
+            "SRC-REF-021",
+            "SRC-REF-022",
+            "SRC-REF-023",
+            "SRC-REF-024",
+            "SRC-REF-026",
+            "SRC-REF-027",
+            "SRC-REF-028",
+            "SRC-REF-029",
+            "SRC-REF-030",
+            "SRC-REF-031",
+            "SRC-REF-032",
+            "SRC-REF-046",
+            "SRC-REF-047",
+            "SRC-REF-048",
+            "SRC-REF-049"
+          ]
+        },
+        {
+          "text": "产品要求：安装/冲洗/漏水测试内容",
+          "level": "hypothesis",
+          "sourceIds": [
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-008",
+            "SRC-REF-009",
+            "SRC-REF-013",
+            "SRC-REF-014",
+            "SRC-REF-021",
+            "SRC-REF-022",
+            "SRC-REF-023",
+            "SRC-REF-024",
+            "SRC-REF-026",
+            "SRC-REF-027",
+            "SRC-REF-028",
+            "SRC-REF-029",
+            "SRC-REF-030",
+            "SRC-REF-031",
+            "SRC-REF-032",
+            "SRC-REF-046",
+            "SRC-REF-047",
+            "SRC-REF-048",
+            "SRC-REF-049"
+          ]
+        },
+        {
+          "text": "产品要求：多件装与更换提醒",
+          "level": "hypothesis",
+          "sourceIds": [
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-008",
+            "SRC-REF-009",
+            "SRC-REF-013",
+            "SRC-REF-014",
+            "SRC-REF-021",
+            "SRC-REF-022",
+            "SRC-REF-023",
+            "SRC-REF-024",
+            "SRC-REF-026",
+            "SRC-REF-027",
+            "SRC-REF-028",
+            "SRC-REF-029",
+            "SRC-REF-030",
+            "SRC-REF-031",
+            "SRC-REF-032",
+            "SRC-REF-046",
+            "SRC-REF-047",
+            "SRC-REF-048",
+            "SRC-REF-049"
+          ]
+        },
+        {
+          "text": "寻源起点：首轮型号优先级：EDR1RXD1（榜单 #1、需求强但集中）、HAF-QIN（榜单 #2）、XWFE（榜单 #3、高 OEM 锚点）、LT1000P（榜单 #4、OEM 与兼容品均有量级代理）。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-REF-013",
+            "SRC-REF-026",
+            "SRC-REF-028"
+          ]
+        },
+        {
+          "text": "供应经济代理：页面公开参考 MOQ 1,000 件、可混装不同型号，并称付款后 2 个工作日内发样。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-REF-026"
+          ]
+        },
+        {
+          "text": "供应经济代理：页面阶梯价从 $4.70 降至 $3.75，并公开约 15–20 天交期。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-REF-028"
+          ]
+        },
+        {
+          "text": "认证核验：EDR1RXD1 在 NSF 官方目录精确命中 42、53、401。 持证主体 Whirlpool Corporation；系统 P8WB2L / 替换件 EDR1RXD1。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-REF-046"
+          ]
+        },
+        {
+          "text": "认证核验：HAF-QIN/EXP / DA97-17376B 在 NSF 官方目录精确命中 42、53、401。 持证主体 Samsung Electronics；EXP 与 XME 后缀不可混用。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-REF-047"
+          ]
+        },
+        {
+          "text": "认证核验：XWFE 的 GE 官方资料声明 IAPMO R&T 按 42、53、401、P473 认证，但精确目录证书号仍待取得。 GE 官方认证说明与性能资料明确标准；本轮未找到可审计的 XWFE 当前 IAPMO 目录行。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-REF-048"
+          ]
+        },
+        {
+          "text": "认证核验：LT1000P 型号族在 NSF 官方目录精确命中 42、53、401。 持证主体 LG Electronics；MDJ64844601 的替换件包含 LT1000P/LT1000PC/LT1000PCS/ADQ747935。",
+          "level": "fact",
+          "sourceIds": [
+            "SRC-REF-049"
+          ]
+        }
+      ],
+      "unknowns": [
+        "四型号完整 12 个月逐月趋势数值与真实转化率/退货率",
+        "XWFE 包含精确型号的当前 IAPMO 目录页或证书编号",
+        "目标供应商正式报价、包装、运费、关税与到岸成本",
+        "目标样品的型号公差、密封、流量、口感、RFID 与证书一致性"
+      ],
+      "updatedAt": "2026-08-13T09:02:06.192Z"
+    },
+    {
+      "code": "marketing",
+      "title": "营销打法",
+      "question": "核心价值主张、广告钩子、内容素材、可说与不可说。",
+      "conclusion": "型号核对、防错安装、密封稳定与认证文件可追溯。",
+      "items": [
+        {
+          "text": "首屏钩子：先输入冰箱型号，确认买对哪一支，再展示兼容关系。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-REF-002",
+            "SRC-REF-003"
+          ]
+        },
+        {
+          "text": "广告角度 A：买对型号，比低价更重要；用型号查找和卡口近景降低错配焦虑。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-REF-002",
+            "SRC-REF-011",
+            "SRC-REF-017"
+          ]
+        },
+        {
+          "text": "广告角度 B：装上后不漏水，展示密封检查、冲洗和连续出水测试，但不承诺目标 SKU 已通过测试。",
+          "level": "hypothesis",
+          "sourceIds": [
+            "SRC-REF-018",
+            "SRC-REF-019",
+            "SRC-REF-020"
+          ]
+        },
+        {
+          "text": "内容素材：拍清卡口、安装到位反馈、冲洗步骤、出水流速对照和包装型号标签。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-REF-011",
+            "SRC-REF-012",
+            "SRC-REF-018",
+            "SRC-REF-019"
+          ]
+        },
+        {
+          "text": "转化结构：型号确认 → 认证范围 → 安装演示 → 套装/提醒选项 → 低风险售后说明。",
+          "level": "hypothesis",
+          "sourceIds": [
+            "SRC-REF-002",
+            "SRC-REF-003",
+            "SRC-REF-008"
+          ]
+        },
+        {
+          "text": "上线前禁用：未经目标 SKU 文件或实测支持的 NSF、PFAS、污染物去除率、寿命和绝对效果承诺。",
+          "level": "unknown",
+          "sourceIds": [
+            "SRC-REF-008",
+            "SRC-REF-009"
+          ]
+        }
+      ],
+      "unknowns": [
+        "当前只允许概念测试，不允许把竞品认证、性能或评论外推为目标 SKU 宣传。",
+        "需用目标 SKU 的认证文件、安装实测和样品测试结果逐条升级 宣传声明。"
+      ],
+      "updatedAt": "2026-08-13T09:02:06.192Z"
+    },
+    {
+      "code": "validation",
+      "title": "验证方案",
+      "question": "买什么样品、测试什么、成本红线、通过和停止条件。",
+      "conclusion": "现在可以带着 EDR1RXD1、HAF-QIN、XWFE、LT1000P 四型号优先级发 RFQ 并受控买样；营销概念可先测试“买对型号、防错安装、文件透明”，但性能 宣传声明、正式售价和投放仍需目标 SKU 证书、样品实测与单位经济闭环。",
+      "items": [
+        {
+          "text": "四型号均有相邻月需求代理与跨平台价格矩阵",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-008",
+            "SRC-REF-009",
+            "SRC-REF-013",
+            "SRC-REF-014",
+            "SRC-REF-021",
+            "SRC-REF-022",
+            "SRC-REF-023",
+            "SRC-REF-024",
+            "SRC-REF-026",
+            "SRC-REF-027",
+            "SRC-REF-028",
+            "SRC-REF-029",
+            "SRC-REF-030",
+            "SRC-REF-031",
+            "SRC-REF-032",
+            "SRC-REF-046",
+            "SRC-REF-047",
+            "SRC-REF-048",
+            "SRC-REF-049"
+          ]
+        },
+        {
+          "text": "型号级 VOC 已能区分不同测试重点，不能再用同一套通用漏水测试覆盖全部型号",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-008",
+            "SRC-REF-009",
+            "SRC-REF-013",
+            "SRC-REF-014",
+            "SRC-REF-021",
+            "SRC-REF-022",
+            "SRC-REF-023",
+            "SRC-REF-024",
+            "SRC-REF-026",
+            "SRC-REF-027",
+            "SRC-REF-028",
+            "SRC-REF-029",
+            "SRC-REF-030",
+            "SRC-REF-031",
+            "SRC-REF-032",
+            "SRC-REF-046",
+            "SRC-REF-047",
+            "SRC-REF-048",
+            "SRC-REF-049"
+          ]
+        },
+        {
+          "text": "EDR1RXD1、HAF-QIN、LT1000P 已在 NSF 目录精确命中；XWFE 仍需补 IAPMO 精确目录证书号",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-008",
+            "SRC-REF-009",
+            "SRC-REF-013",
+            "SRC-REF-014",
+            "SRC-REF-021",
+            "SRC-REF-022",
+            "SRC-REF-023",
+            "SRC-REF-024",
+            "SRC-REF-026",
+            "SRC-REF-027",
+            "SRC-REF-028",
+            "SRC-REF-029",
+            "SRC-REF-030",
+            "SRC-REF-031",
+            "SRC-REF-032",
+            "SRC-REF-046",
+            "SRC-REF-047",
+            "SRC-REF-048",
+            "SRC-REF-049"
+          ]
+        },
+        {
+          "text": "正式到岸成本和目标样品表现仍决定最终进入顺序",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-VOC-017",
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-VOC-020",
+            "SRC-VOC-021",
+            "SRC-VOC-022",
+            "SRC-VOC-023",
+            "SRC-REF-008",
+            "SRC-REF-009",
+            "SRC-REF-013",
+            "SRC-REF-014",
+            "SRC-REF-021",
+            "SRC-REF-022",
+            "SRC-REF-023",
+            "SRC-REF-024",
+            "SRC-REF-026",
+            "SRC-REF-027",
+            "SRC-REF-028",
+            "SRC-REF-029",
+            "SRC-REF-030",
+            "SRC-REF-031",
+            "SRC-REF-032",
+            "SRC-REF-046",
+            "SRC-REF-047",
+            "SRC-REF-048",
+            "SRC-REF-049"
+          ]
+        },
+        {
+          "text": "样品矩阵：先买 2 个高需求型号族；每个型号各买 1 个 OEM 对照、2 个 aftermarket 样品，记录价格、批次和证书。",
+          "level": "hypothesis",
+          "sourceIds": [
+            "SRC-REF-001",
+            "SRC-REF-004",
+            "SRC-REF-005",
+            "SRC-REF-013"
+          ]
+        },
+        {
+          "text": "安装与密封测试：每个样品完成 3 次安装/拆卸，连续放水 10 分钟并观察接口、门内和底部是否渗漏。",
+          "level": "hypothesis",
+          "sourceIds": [
+            "SRC-REF-018",
+            "SRC-REF-019",
+            "SRC-REF-020"
+          ]
+        },
+        {
+          "text": "流速与口感测试：记录初始流速、冲洗后流速和 30 次取水后的变化；由至少 8 名目标用户盲测口感/异味。",
+          "level": "hypothesis",
+          "sourceIds": [
+            "SRC-VOC-018",
+            "SRC-VOC-019",
+            "SRC-REF-010"
+          ]
+        },
+        {
+          "text": "经济性闸门：取得正式报价、MOQ、到岸成本、平台费和退货假设后，毛利低于 35% 或售后成本无法解释则停止。",
+          "level": "unknown",
+          "sourceIds": []
+        },
+        {
+          "text": "执行时限：3 个工作日内向四个优先型号发同口径 RFQ；公开候选显示样品可在付款后 2 个工作日发出、批量交期约 12–20 天，实际时间以书面回复为准。",
+          "level": "directional",
+          "sourceIds": [
+            "SRC-REF-026",
+            "SRC-REF-027",
+            "SRC-REF-028"
+          ]
+        }
+      ],
+      "unknowns": [
+        "样品测试记录、正式报价、到岸成本和退货假设尚未回填，因此仍不能上架或投广告。",
+        "跨 Amazon、Walmart、Reddit 之外的更多独立来源三角验证仍应并行补证。",
+        "四型号完整 12 个月逐月趋势数值与真实转化率/退货率",
+        "XWFE 包含精确型号的当前 IAPMO 目录页或证书编号",
+        "目标供应商正式报价、包装、运费、关税与到岸成本",
+        "目标样品的型号公差、密封、流量、口感、RFID 与证书一致性"
+      ],
+      "updatedAt": "2026-08-13T09:02:06.192Z"
+    }
+  ]
+}

@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { Check, ImageIcon, Link2, Search, ShieldCheck } from "lucide-react";
 import { WorkbenchShell } from "../../workbench-shell";
 import { confirmDiscoveryPlan } from "./actions";
+import { ConfirmResearchButton } from "./confirm-research-button";
 
 const firstParam = (value: string | string[] | undefined): string =>
   Array.isArray(value) ? value[0] ?? "" : value ?? "";
@@ -67,7 +68,7 @@ export default async function DiscoveryPlanPage({
     || (competitorUrls.length > 0 ? "等待从商品链接识别的具体商品" : "等待从商品图片识别的具体商品");
 
   return (
-    <WorkbenchShell active="discover">
+    <WorkbenchShell active="discover" hideTitle>
       <section className="workspace-scope-confirmation">
         <header className="workspace-scope-head">
           <div>
@@ -135,7 +136,7 @@ export default async function DiscoveryPlanPage({
           <input type="hidden" name="channel" value={channel} />
           <input type="hidden" name="audience" value={audience} />
           <Link href={`/discover?${new URLSearchParams({ category, imageUrls: rawImageUrls.join("\n"), competitorUrls: rawCompetitorUrls.join("\n"), market, channel, audience }).toString()}`}>返回修改</Link>
-          <button type="submit" disabled={invalidUrls.length > 0}>确认并继续研究 →</button>
+          <ConfirmResearchButton disabled={invalidUrls.length > 0} />
         </form>
       </section>
     </WorkbenchShell>

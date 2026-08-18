@@ -95,6 +95,7 @@ node install-xuanpinmao.mjs
 → 页面内确认研究对象
 → 自动打开实时白板
 → 创建与白板绑定的独立 Research Run
+→ 当前 Codex 任务自动继续联网采集，无需用户再发一条消息
 → 可视化来源、查询、采集、去重和有效记录
 → 生成市场与机会、用户画像、竞品分析、产品方案、营销打法、验证方案
 → 默认交付白板页面与 reports/whiteboard-report.html
@@ -103,7 +104,9 @@ node install-xuanpinmao.mjs
 
 如果流程跳过页面确认、没有打开白板，或把旧版纵向报告当成主报告，请停止该轮并检查是否在安装插件后创建了新对话。
 
-历史 Run、密钥、浏览器状态和开发者本机数据库均未包含在分享包中。\`fixtures/T21\` 只用于回归测试，不能作为新类目的证据。
+页面自动创建 Research Run 只代表本轮资料目录已经初始化，不代表真实联网调研已经开始。Codex 必须在同一任务中继续执行 web-access，并在完成第一条真实查询后才把状态写成“正在研究”。
+
+历史 Run、密钥、浏览器状态和开发者本机数据库均未包含在分享包中。\`fixtures/T21\` 和 \`fixtures/research-runs\` 只用于回归测试，不能作为新类目的证据。
 `;
   await writeFile(path.join(target, "README.md"), readme, "utf8");
   await writeFile(path.join(target, "AGENTS.md"), `# 选品猫发行仓库\n\n当用户要求安装本仓库时：\n\n1. 执行 \`codex plugin marketplace add weierrr/xuanpinmao --ref main\`。\n2. 执行 \`codex plugin add product-research-workbench@xuanpinmao\`。\n3. 执行 \`node install-xuanpinmao.mjs\`，把应用同步到稳定目录 \`~/xuanpinmao-app\`。\n4. 在稳定目录运行 \`npm install\`；首次安装再运行 \`npm run setup && npm run test:portable\`。\n5. 告诉用户新建一个 Codex 对话，再调用选品猫。\n\n更新时再次运行安装器；它会保留 .env、数据库、output、logs、依赖和构建缓存。不要把 fixtures/T21 当作新类目的真实证据。\n`, "utf8");

@@ -36,6 +36,22 @@ const themeLabels: Record<string, string> = {
   "hidden scrunch": "隐藏式提臀缝",
   "intermediate inseam": "中间裤长需求",
   "grading changed over time": "尺码版型随批次变化",
+  "claim-and-use-boundary": "宣称与使用边界",
+  "clean-versus-disinfect-boundary": "清洁与消毒边界",
+  "daily-cleaning-performance": "日常清洁表现",
+  "daily-versus-deep-clean": "日常维护与深度清洁分层",
+  "hardware-and-service": "瓶器可靠性与售后",
+  "packaging-leakage": "包装密封与运输泄漏",
+  "refill-and-spray-convenience": "补充与喷雾便利",
+  "refill-convenience": "补充便利",
+  "scent-and-perceived-value": "气味与感知价值",
+  "scent-context-fit": "气味与使用场景适配",
+  "spray-and-grease-performance": "喷雾与去油表现",
+  "task-performance-and-scent-fit": "任务表现与气味适配",
+  "task-specific-dilution": "任务化稀释说明",
+  "surface-compatibility": "材质兼容边界",
+  "setup-and-surface-instructions": "启动步骤与适用表面",
+  "nozzle-lifecycle-and-service": "喷头寿命与备件服务",
 };
 
 const labelFor = (theme: string): string => themeLabels[theme] ?? theme;
@@ -55,15 +71,27 @@ const customerRecords = (batches: RegisteredEvidenceBatch[]) =>
   batches.flatMap((batch) => batch.records).filter((record) => record.evidenceType === "customer_observation" && record.status === "active");
 
 const proofForTheme = (theme: string): string => {
+  if (/claim|disinfect/iu.test(theme)) return "法规复核后的宣称矩阵、标签原文与任务边界测试";
+  if (/surface|dilution|setup/iu.test(theme)) return "按材质、浓度和步骤执行的同条件任务测试";
+  if (/scent/iu.test(theme)) return "按厨房和浴室场景分开的盲测与耐受反馈";
+  if (/hardware|nozzle|leak/iu.test(theme)) return "喷头循环、跌落密封、运输振动和替换成本测试";
+  if (/performance|deep-clean|grease/iu.test(theme)) return "标准污渍、接触时间和擦拭次数对照";
+  if (/refill|spray/iu.test(theme)) return "补充耗时、喷幅一致性和误操作率测试";
   if (/fit|sizing|length/iu.test(theme)) return "尺码表、不同身高体型试穿和裤长实测";
   if (/opacity|squat/iu.test(theme)) return "同光线深蹲与拉伸防透测试";
   if (/scrunch|seam|durability|fabric/iu.test(theme)) return "缝线拉伸、重复穿洗和耐久对照";
   if (/contour|appearance|visible/iu.test(theme)) return "同侧光、同姿势、未经修图的轮廓对照";
   if (/waist|adjustment/iu.test(theme)) return "动作中腰头位移与反复调整次数";
-  return "真实样裤、同条件对照和目标用户复测";
+  return "目标样品、同条件任务对照和目标用户复测";
 };
 
 const productActionForTheme = (theme: string): string => {
+  if (/claim|disinfect/iu.test(theme)) return "把清洁、去污与消毒宣称边界写进产品定义和标签门禁";
+  if (/surface|dilution|setup/iu.test(theme)) return "把材质适配、稀释比例和启动步骤做成可扫描的任务地图";
+  if (/scent/iu.test(theme)) return "按厨房和浴室分别验证气味，并保留无香或低气味路径";
+  if (/hardware|nozzle|leak/iu.test(theme)) return "把喷头寿命、密封运输和备件成本设为 P0 验收项";
+  if (/performance|deep-clean|grease/iu.test(theme)) return "分开定义日常维护与深度清洁的可测性能门槛";
+  if (/refill|spray/iu.test(theme)) return "降低补充和喷雾操作负担，并量化耗时与误操作";
   if (/fit|sizing|length/iu.test(theme)) return "把尺码、裤长和版型可预测性设为产品定义第一优先级";
   if (/opacity|squat/iu.test(theme)) return "把防透和深蹲表现设为不可妥协的 P0 指标";
   if (/scrunch discomfort|scrunch seam|visible styling/iu.test(theme)) return "降低提臀缝存在感，并同时验证舒适与耐久";
@@ -119,12 +147,19 @@ export const buildEvidenceAnalysisSnapshot = ({
   const customer = records.length === 0
     ? "尚未登记可用于重算的评论级用户证据。"
     : `当前 ${records.length} 条有界用户观察最集中在${topThree.map((item) => `“${item.label}”`).join("、")}；这些频次只描述当前语料，不代表市场总体发生率。`;
+  const productActions = [...new Set(topThree.map((item) => productActionForTheme(item.theme)))];
+  const proofGroups = new Map<string, string[]>();
+  for (const item of topThree) {
+    const proof = proofForTheme(item.theme);
+    proofGroups.set(proof, [...(proofGroups.get(proof) ?? []), item.label]);
+  }
+  const marketingProofs = [...proofGroups.entries()].map(([proof, labels]) => `“${labels.join(" / ")}”对应的${proof}`);
   const product = topThree.length === 0
     ? "暂不生成产品方向，等待评论级证据。"
-    : topThree.map((item) => productActionForTheme(item.theme)).join("；") + "。";
+    : productActions.join("；") + "。";
   const marketing = topThree.length === 0
     ? "暂不生成营销方向，等待评论级证据。"
-    : `营销表达应优先证明${topThree.map((item) => `“${item.label}”对应的${proofForTheme(item.theme)}`).join("、")}，不得把竞品评论改写成目标样品功效。`;
+    : `营销表达应优先证明${marketingProofs.join("、")}，不得把竞品评论改写成目标样品功效。`;
   const confidence = records.length >= 300 && platforms.size >= 3
     ? "HIGH"
     : records.length >= 80 && platforms.size >= 2
