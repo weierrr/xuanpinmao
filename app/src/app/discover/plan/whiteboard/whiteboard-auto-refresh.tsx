@@ -4,14 +4,13 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import type { ResearchWhiteboard } from "@/research-whiteboard/types";
 
-export function WhiteboardAutoRefresh({ status }: Readonly<{ status: ResearchWhiteboard["status"] }>) {
+export function WhiteboardAutoRefresh({ status, updatedAt }: Readonly<{ status: ResearchWhiteboard["status"]; updatedAt: string }>) {
   const router = useRouter();
 
   useEffect(() => {
-    if (status === "completed" || status === "blocked") return;
-    const timer = window.setInterval(() => router.refresh(), 4000);
+    const timer = window.setInterval(() => router.refresh(), status === "completed" || status === "blocked" ? 10000 : 4000);
     return () => window.clearInterval(timer);
-  }, [router, status]);
+  }, [router, status, updatedAt]);
 
   return null;
 }

@@ -52,6 +52,15 @@ const main = async () => {
     return;
   }
   const discoveryId = required("discovery");
+  if (command === "sync") {
+    const packagePath = required("package");
+    const [evidencePackage, artifacts] = await Promise.all([
+      readEvidencePackage(packagePath),
+      readLiveResearchArtifacts(packagePath),
+    ]);
+    console.log(JSON.stringify(await syncWhiteboardFromResearch(discoveryId, evidencePackage, artifacts.claims, artifacts.analysis), null, 2));
+    return;
+  }
   if (command === "init") {
     const raw = await readFile(opportunityDiscoveryPaths(discoveryId).plan, "utf8");
     const plan = opportunityDiscoveryPlanSchema.parse(JSON.parse(raw));
@@ -59,7 +68,7 @@ const main = async () => {
     return;
   }
   if (command !== "update") {
-    throw new Error("Usage: npm run research:whiteboard -- <init|update> --discovery <id> [...options], or backfill --package <path>");
+    throw new Error("Usage: npm run research:whiteboard -- <init|sync|update> --discovery <id> [...options], or backfill --package <path>");
   }
   const sourceUrl = readOption("source-url");
   const sourceLabel = readOption("source-label");

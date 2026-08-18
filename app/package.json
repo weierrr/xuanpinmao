@@ -29,6 +29,7 @@
     "evidence:update": "tsx scripts/evidence_update_cli.ts"
   },
   "dependencies": {
+    "@fontpkg/alimama-shu-hei-ti": "1.0.5",
     "@prisma/client": "^6.12.0",
     "lucide-react": "^0.468.0",
     "nanoid": "3.3.18",

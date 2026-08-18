@@ -39,7 +39,7 @@ describe("branded workbench shell", () => {
     expect(html).toContain("多入口商品发现");
     expect(html).toContain("查看示例报告");
     expect(html).toContain(
-      'href="/discover/plan/whiteboard?discoveryId=discovery-refrigerator-water-filter-demo-us"',
+      'href="/discover/plan/whiteboard?discoveryId=discovery-category-9ff30cf30ef8-us"',
     );
     expect(html).not.toContain('href="/projects"');
     expect(html).not.toContain("选品记录");
@@ -47,7 +47,8 @@ describe("branded workbench shell", () => {
     expect(html).not.toContain("人群需求网络");
     expect(html).toContain('class="site-top-navigation"');
     expect(html).toContain("首页");
-    expect(html).toContain("选品工作台");
+    expect(html).toContain("使用说明");
+    expect(html).not.toContain(">选品工作台<");
     expect(html).not.toContain("workspace-rail");
     expect(html).toContain("记录内容");
   });

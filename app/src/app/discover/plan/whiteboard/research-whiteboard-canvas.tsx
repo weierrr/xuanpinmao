@@ -32,6 +32,7 @@ const minimumZoom = 0.5;
 const maximumZoom = 2.5;
 const fitHorizontalGutter = 48;
 const refrigeratorFilterExampleDiscoveryId = "discovery-refrigerator-water-filter-demo-us";
+const reportNavigationEvent = "xuanpinmao:open-report-module";
 
 const clampZoom = (value: number): number =>
   Math.min(maximumZoom, Math.max(minimumZoom, Number(value.toFixed(3))));
@@ -199,6 +200,12 @@ export function ResearchWhiteboardCanvas({
     window.setTimeout(fitCanvas, 120);
   };
 
+  const openReportModule = (code: ResearchWhiteboardReportModule["code"]) => {
+    const hash = `#whiteboard-report-${code}`;
+    if (window.location.hash !== hash) window.history.pushState(null, "", hash);
+    window.dispatchEvent(new CustomEvent(reportNavigationEvent, { detail: { code } }));
+  };
+
   const analysisCards = useMemo(() => [
     {
       code: "market" as const,
@@ -308,12 +315,18 @@ export function ResearchWhiteboardCanvas({
               const stage = whiteboard.stages[code];
               return (
                 <article className={`whiteboard-node source-card status-${stage.status}`} key={code}>
-                  <header><span>{stageLabels[code]}来源</span><b>{stageStatusLabels[stage.status]}</b></header>
+                  <header>
+                    <span>{stageLabels[code]}来源</span>
+                    <b className={stage.status === "in_progress" ? "status-live-pill" : undefined}>
+                      {stage.status === "in_progress" ? <i aria-hidden="true" /> : null}
+                      {stageStatusLabels[stage.status]}
+                    </b>
+                  </header>
                   <h3>{sourceCardTitles[code]}</h3>
                   {stage.sources.length > 0 ? (
                     <span className="source-card-action">查看全部信源 <ArrowRight size={14} aria-hidden="true" /></span>
                   ) : (
-                    <span className="source-card-empty">等待信源写入</span>
+                  <span className="source-card-empty">{stage.status === "in_progress" ? "正在检索公开信源…" : "等待信源写入"}</span>
                   )}
                   {stage.sources.length > 0 ? (
                     <button
@@ -340,7 +353,7 @@ export function ResearchWhiteboardCanvas({
               return (
                 <article className={`whiteboard-node collection-card status-${stage.status}`} key={code}>
                   <header><span>{stageLabels[code]}处理</span><b>{stage.updatedAt.slice(0, 10)}</b></header>
-                  <h3>{stage.queryCount} {isPublicExample ? "组示例检索与核查" : "次检索与核查"}</h3>
+                  <h3>{stage.sourceCount} 个来源 · {stage.recordCount} 条有效记录</h3>
                   <span className="collection-card-action">查看采集详情 <ArrowRight size={14} aria-hidden="true" /></span>
                   <button
                     type="button"
@@ -391,7 +404,7 @@ export function ResearchWhiteboardCanvas({
                 return (
                   <li key={code}>
                     <span>{String(index + 1).padStart(2, "0")}</span>
-                    <a href={`#whiteboard-report-${code}`}>
+                    <a href={`#whiteboard-report-${code}`} onClick={(event) => { event.preventDefault(); openReportModule(code); }}>
                       {reportModule?.title ?? stageLabels[`${code}_report` as ResearchWhiteboardStageCode]}
                       <ArrowRight size={14} aria-hidden="true" />
                     </a>
@@ -410,7 +423,7 @@ export function ResearchWhiteboardCanvas({
               <article className="whiteboard-node execution-card" key={card.code}>
                 <header><span>{card.title}</span><b>可继续执行</b></header>
                 <h3>{shortText(card.conclusion, 38)}</h3>
-                <a href={`#whiteboard-report-${card.code}`}>查看完整模块 <ExternalLink size={11} /></a>
+                <a href={`#whiteboard-report-${card.code}`} onClick={(event) => { event.preventDefault(); openReportModule(card.code); }}>查看完整模块 <ExternalLink size={11} /></a>
               </article>
             ))}
             <article className="whiteboard-node execution-card feedback-card">
@@ -496,9 +509,10 @@ export function ResearchWhiteboardCanvas({
             </header>
             <div className="whiteboard-collection-drawer-body">
               <dl>
-                <div><dt>{isPublicExample ? "示例检索与核查" : "检索与核查"}</dt><dd>{drawerCollectionStage.queryCount} {isPublicExample ? "组" : "次"}</dd></div>
+                <div><dt>{isPublicExample ? "示例检索与核查" : "查询 / 核查组"}</dt><dd>{drawerCollectionStage.queryCount} 组</dd></div>
                 <div><dt>保留来源</dt><dd>{drawerCollectionStage.sourceCount} 个</dd></div>
                 <div><dt>有效记录</dt><dd>{drawerCollectionStage.recordCount} 条</dd></div>
+                <div><dt>数据类型</dt><dd>{drawerCollectionStage.dataType ?? "公开证据"}</dd></div>
                 <div><dt>当前状态</dt><dd>{stageStatusLabels[drawerCollectionStage.status]}</dd></div>
               </dl>
               {isPublicExample ? (
@@ -512,6 +526,12 @@ export function ResearchWhiteboardCanvas({
                   <li>保留可追溯来源并记录证据状态</li>
                   <li>整理为可用于本轮分析的有效记录</li>
                 </ol>
+              </section>
+              <section>
+                <span>具体查询</span>
+                {drawerCollectionStage.queryLabels?.length ? (
+                  <ol>{drawerCollectionStage.queryLabels.map((label) => <li key={label}>{label}</li>)}</ol>
+                ) : <p>本轮未记录独立查询名称。</p>}
               </section>
               <section>
                 <span>本轮进展</span>

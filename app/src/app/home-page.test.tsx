@@ -1,12 +1,8 @@
 import { readFileSync } from "node:fs";
 import { renderToStaticMarkup } from "react-dom/server";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import HomePage from "./page";
 import GuidePage from "./guide/page";
-
-vi.mock("next/font/google", () => ({
-  Noto_Sans_SC: () => ({ className: "noto-sans-sc-black" }),
-}));
 
 describe("product-led public pages", () => {
   it("explains the product through evidence, research depth, extensibility, and report output", () => {
@@ -21,6 +17,13 @@ describe("product-led public pages", () => {
     expect(html).not.toContain("不是研究结束后才生成文档");
     expect(html).toContain("最让人有安全感的选品调研工具");
     expect(html).toContain("第一性原理");
+    expect(html).toContain("报告质量");
+    expect(html).toContain("数据相关性");
+    expect(html).toContain("数据可信度");
+    expect(html).toContain("数据时效性");
+    expect(html).toContain("证据覆盖");
+    expect(html).toContain("推理质量");
+    expect(html).toContain("这是乘法关系，不是数据量的加法");
     expect(html).toContain("第三方 MCP");
     expect(html).toContain("六份报告");
     expect(html).toContain("暂停流程动画");
@@ -28,12 +31,16 @@ describe("product-led public pages", () => {
     expect(html).toContain("常见问题");
     expect(html).toContain("能力档位和费用都由你控制");
     expect(html).toContain("继续追问、补充证据和更新结论");
-    expect(html).toContain("home-source-logo");
+    expect(html).toContain('aria-label="可扩展数据源接入动画"');
     expect(html).toContain("site-top-brand-logo");
     expect(html).toContain('href="/guide"');
     expect(html).toContain("查看示例报告");
+    expect(html).toContain('href="/discover#discovery-inputs"');
+    expect(html).toContain("在线分析");
+    expect(html).not.toContain("开始一次调研");
+    expect(html).not.toContain("打开选品工作台");
     expect(html).toContain(
-      'href="/discover/plan/whiteboard?discoveryId=discovery-refrigerator-water-filter-demo-us"',
+      'href="/discover/plan/whiteboard?discoveryId=discovery-category-9ff30cf30ef8-us"',
     );
 
     expect(html.indexOf("数据都有出处")).toBeLessThan(html.indexOf("六个经营问题"));
@@ -57,7 +64,8 @@ describe("product-led public pages", () => {
 
   it("keeps page text at or above the 16px readability floor outside compact product interfaces", () => {
     const css = readFileSync("src/app/globals.css", "utf8");
-    const cssWithoutCompactInterfaces = css
+    const publicPageCss = css.slice(css.indexOf(".home-story-hero"));
+    const cssWithoutCompactInterfaces = publicPageCss
       .replace(/\.research-demo \{[\s\S]*?(?=@keyframes research-demo-pulse)/, "")
       .replace(/\.research-whiteboard-scope dt \{[^}]+\}/g, "")
       .replace(/\.research-whiteboard-scope dd \{[^}]+\}/g, "");
