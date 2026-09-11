@@ -1,0 +1,4 @@
+interface:
+  display_name: "选品先看人 · 内容研究"
+  short_description: "从第一性原理研究用户购买行为，制作选品猫跨平台连载内容与证据底稿"
+  default_prompt: "使用 $xuanpinmao-content，为选品猫制作一期用户需求研究内容，基于真实证据生成小红书、公众号和博客草稿。"
