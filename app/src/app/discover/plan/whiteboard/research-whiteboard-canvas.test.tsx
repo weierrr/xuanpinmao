@@ -19,6 +19,8 @@ const whiteboardFixture = () => {
     queryCount: 18,
     sourceCount: 2,
     recordCount: 3,
+    queryLabels: ["LG LT700P official price", "NSF LT700P listing"],
+    dataType: "价格与认证记录",
     sources: [
       { id: "SRC-LG", label: "LG LT700P 官方商品页", url: "https://www.lg.com/lt700p", kind: "competitor", status: "verified" },
       { id: "SRC-NSF", label: "NSF 认证目录", url: "https://info.nsf.org/", kind: "official", status: "candidate" },
@@ -40,6 +42,7 @@ beforeEach(() => {
 afterEach(() => {
   if (originalClientWidth) Object.defineProperty(HTMLElement.prototype, "clientWidth", originalClientWidth);
   if (originalClientHeight) Object.defineProperty(HTMLElement.prototype, "clientHeight", originalClientHeight);
+  window.history.replaceState(null, "", "/");
   vi.restoreAllMocks();
 });
 
@@ -90,9 +93,12 @@ describe("research whiteboard canvas interactions", () => {
     fireEvent.click(screen.getByRole("button", { name: "查看市场证据的采集详情" }));
 
     const drawer = screen.getByRole("dialog", { name: "市场证据处理" });
-    expect(drawer).toHaveTextContent("18 次");
+    expect(drawer).toHaveTextContent("18 组");
+    expect(screen.getByText("2 个来源 · 3 条有效记录")).toBeInTheDocument();
     expect(drawer).toHaveTextContent("2 个");
     expect(drawer).toHaveTextContent("3 条");
+    expect(drawer).toHaveTextContent("价格与认证记录");
+    expect(drawer).toHaveTextContent("LG LT700P official price");
     expect(drawer).toHaveTextContent("筛除无关、重复或无法核验的内容");
 
     fireEvent.keyDown(window, { key: "Escape" });
@@ -133,5 +139,21 @@ describe("research whiteboard canvas interactions", () => {
     fireEvent.click(screen.getByRole("button", { name: "缩小白板" }));
     await waitFor(() => expect(zoomOutput).toHaveTextContent("50%"));
     expect(screen.getByRole("button", { name: "缩小白板" })).toBeDisabled();
+  });
+
+  it("routes report and execution cards to the matching full report module", () => {
+    const { whiteboard } = whiteboardFixture();
+    const listener = vi.fn();
+    window.addEventListener("xuanpinmao:open-report-module", listener);
+    render(<ResearchWhiteboardCanvas whiteboard={whiteboard} />);
+
+    fireEvent.click(screen.getByRole("link", { name: /市场与机会/ }));
+    expect((listener.mock.calls[0][0] as CustomEvent).detail).toEqual({ code: "market" });
+    expect(window.location.hash).toBe("#whiteboard-report-market");
+
+    fireEvent.click(screen.getAllByRole("link", { name: /查看完整模块/ })[0]);
+    expect((listener.mock.calls[1][0] as CustomEvent).detail).toEqual({ code: "product" });
+    expect(window.location.hash).toBe("#whiteboard-report-product");
+    window.removeEventListener("xuanpinmao:open-report-module", listener);
   });
 });

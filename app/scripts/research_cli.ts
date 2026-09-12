@@ -1,10 +1,7 @@
 import { PrismaClient } from "@prisma/client";
-import { linkResearchToDiscovery, finalizeLiveResearch } from "../src/research/live-research";
+import { finalizeLiveResearch } from "../src/research/live-research";
+import { startLiveResearchForDiscovery } from "../src/research/live-research-start";
 import { ResearchRunner, initializeResearchPackage, importResearchRunPackage, validateResearchPackage } from "../src/research/research-runner";
-import { opportunityDiscoveryPaths } from "../src/opportunity-discovery/service";
-import { opportunityDiscoveryPlanSchema } from "../src/opportunity-discovery/types";
-import { readFile } from "node:fs/promises";
-import { liveResearchInputFromDiscovery } from "../src/research/confirmed-discovery";
 
 const readOption = (name: string): string | undefined => {
   const index = process.argv.indexOf(`--${name}`);
@@ -55,18 +52,8 @@ const main = async (): Promise<void> => {
     if (!discoveryId) {
       throw new Error("New live research must start from the confirmed page. Pass --discovery <id> from /discover/plan/whiteboard.");
     }
-    const discoveryPlan = opportunityDiscoveryPlanSchema.parse(JSON.parse(
-      await readFile(opportunityDiscoveryPaths(discoveryId).plan, "utf8"),
-    ));
-    const description = readOption("description");
-    const currency = readOption("currency");
-    const resume = hasFlag("resume");
-    const result = await ResearchRunner.run(
-      liveResearchInputFromDiscovery(discoveryPlan, { description, currency, ...resourceOptions() }),
-      { resume },
-    );
-    await linkResearchToDiscovery(result.packagePath, discoveryId, result.researchRunId);
-    console.log(JSON.stringify({ status: "awaiting_web_access", ...result }, null, 2));
+    const result = await startLiveResearchForDiscovery(discoveryId);
+    console.log(JSON.stringify({ runStatus: "awaiting_web_access", ...result }, null, 2));
     return;
   }
 

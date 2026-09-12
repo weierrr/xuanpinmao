@@ -52,7 +52,7 @@ export default async function DiscoveryEntryPage({
           <div className="workspace-signal-grid">
             <label className="workspace-signal-card">
               <span className="workspace-signal-head"><Search size={17} /><span><strong>商品关键词</strong><small>品类词、产品词、痛点词或使用场景</small></span></span>
-              <input name="category" defaultValue={category} placeholder="例如：冰箱滤芯、无缝提臀瑜伽裤" />
+              <input name="category" defaultValue={category} placeholder="例如：冰箱滤芯" />
             </label>
             <label className="workspace-signal-card">
               <span className="workspace-signal-head"><ImageIcon size={17} /><span><strong>商品图片</strong><small>粘贴公开可访问的图片网址，一行一个</small></span></span>

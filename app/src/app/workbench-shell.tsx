@@ -18,7 +18,7 @@ export function WorkbenchShell({ active, children, hideTitle = false }: Workbenc
         actions={(
           <Link
             className="primary"
-            href="/discover/plan/whiteboard?discoveryId=discovery-refrigerator-water-filter-demo-us"
+            href="/discover/plan/whiteboard?discoveryId=discovery-category-9ff30cf30ef8-us"
           >
             查看示例报告 <ArrowRight size={15} />
           </Link>

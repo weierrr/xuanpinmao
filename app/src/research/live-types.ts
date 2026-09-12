@@ -70,6 +70,35 @@ export const liveAnalysisSchema = z.object({
     emotionalMotives: z.array(z.string().trim().min(1)).min(1),
     socialMotives: z.array(z.string().trim().min(1)).min(1),
     sourceIds: z.array(z.string().trim().min(1)).min(1),
+    voc: z.object({
+      unit: z.enum(["discussion_thread", "review", "response", "mixed"]),
+      totalRecords: z.number().int().nonnegative(),
+      channels: z.array(z.object({
+        key: z.string().trim().min(1),
+        label: z.string().trim().min(1),
+        count: z.number().int().nonnegative(),
+        sourceIds: z.array(z.string().trim().min(1)),
+      }).strict()).min(1),
+      sentiments: z.array(z.object({
+        key: z.enum(["positive", "negative", "mixed", "neutral", "unknown"]),
+        label: z.string().trim().min(1),
+        count: z.number().int().nonnegative(),
+      }).strict()),
+      themes: z.array(z.object({
+        key: z.string().trim().min(1),
+        label: z.string().trim().min(1),
+        count: z.number().int().nonnegative(),
+        sourceIds: z.array(z.string().trim().min(1)),
+      }).strict()),
+      scenarios: z.array(z.object({
+        key: z.string().trim().min(1),
+        label: z.string().trim().min(1),
+        count: z.number().int().nonnegative(),
+        sourceIds: z.array(z.string().trim().min(1)),
+      }).strict()),
+      sampleBoundary: z.string().trim().min(10),
+      gaps: z.array(z.string().trim().min(3)),
+    }).strict().optional(),
   }),
   positioning: z.object({
     targetCustomer: z.string().trim().min(1),

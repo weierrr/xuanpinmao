@@ -22,6 +22,25 @@ Requirements:
 8. Report the decision honestly; `HOLD_SUPPLY` and `REJECT` are acceptable outcomes.
 9. All seller-visible conclusions, evidence summaries, unknowns, action plans and generated report copy must be written in Simplified Chinese. Keep English only for executed search keywords, sourcing keywords, platform field names, exact product/model names, certification abbreviations and other terms whose original spelling is operationally necessary.
 
+## Seller-analysis and report contract
+
+Every live Run must produce seller-facing analysis that is quantitative where the current evidence permits, but never manufacture a denominator or convert qualitative samples into population incidence.
+
+1. Put a visible research-basis strip above the six modules. It must show the research object, market, channel, snapshot time, executed-query count, retained-source count, verified-source count and current Run identity when available.
+2. Write each module in the order `core judgment -> current-run evidence -> commercial implication -> current action -> pass gate -> stop or non-upgrade condition`.
+3. Keep useful numbers next to the sentence they support. Every number must preserve its unit, time window, platform or source family, sample boundary, and whether it is observed, estimated or a test threshold.
+4. Break customer evidence down by independent source family or channel. Do not collapse marketplace reviews, communities, brand/support surfaces and specialist sources into one undifferentiated VOC total.
+   - Preserve the observation unit (`review`, `response`, `discussion_thread` or `mixed`), platform, source family, source ID, model/entity when known, themes, triggering scene and sentiment-coding status.
+   - Treat themes and scenes as multi-label unless the adapter explicitly guarantees exclusivity. Never sum overlapping theme counts into a sample denominator.
+   - When polarity was not coded record by record, display `unknown` rather than deriving positive/negative percentages from titles, aggregate ratings or analyst summaries.
+   - Keep source-family gaps visible, including zero marketplace reviews, zero brand/support records, zero specialist sources or missing purchase attribution.
+5. Compare competitors only on a shared basis. Preserve capture window, pack size, seller type, one-time versus subscription price, shipping treatment and missing fields; if the basis is not comparable, say so instead of ranking.
+6. Attach a measurable pass gate to every proposed action. A gate may be a required evidence package, a relative A/B result, a user-task threshold, a sample-test threshold, a formal-quote requirement or an economics threshold. Label it as a hypothesis until executed.
+7. Keep the four evidence labels visible: fact, directional evidence, hypothesis and unknown/gap. A high count never upgrades an unsupported target-SKU claim.
+8. Show which source families the active module actually cites and allow every visible conclusion to drill down to current-run sources.
+9. Keep conclusions scannable: one lead judgment followed by short complete-sentence points. Avoid dense bold paragraphs, decorative word clouds without normalization, unexplained sentiment percentages and charts without denominators.
+10. Validate the live whiteboard and the standalone export separately. PDF or print output must not split a chart or evidence card across pages or leave a mostly blank trailing page.
+
 After Atomic Claims are valid, continue the same Run without repeating web research or Source import:
 
 1. Run `npm run workbench -- prepare-first-principles --current --json`.

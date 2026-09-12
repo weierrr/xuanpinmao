@@ -40,6 +40,8 @@ export const researchWhiteboardStageSchema = z.object({
   recordCount: z.number().int().nonnegative(),
   summary: z.string(),
   sources: z.array(researchWhiteboardSourceSchema),
+  queryLabels: z.array(z.string().min(1)).optional().default([]),
+  dataType: z.string().min(1).optional(),
   updatedAt: z.iso.datetime(),
 }).strict();
 
@@ -64,6 +66,28 @@ export const researchWhiteboardReportItemSchema = z.object({
   sourceIds: z.array(z.string().min(1)).default([]),
 }).strict();
 
+const researchWhiteboardVocBreakdownSchema = z.object({
+  key: z.string().min(1),
+  label: z.string().min(1),
+  count: z.number().int().nonnegative(),
+  sourceIds: z.array(z.string().min(1)),
+}).strict();
+
+const researchWhiteboardVocSchema = z.object({
+  unit: z.enum(["discussion_thread", "review", "response", "mixed"]),
+  totalRecords: z.number().int().nonnegative(),
+  channels: z.array(researchWhiteboardVocBreakdownSchema),
+  sentiments: z.array(z.object({
+    key: z.enum(["positive", "negative", "mixed", "neutral", "unknown"]),
+    label: z.string().min(1),
+    count: z.number().int().nonnegative(),
+  }).strict()),
+  themes: z.array(researchWhiteboardVocBreakdownSchema),
+  scenarios: z.array(researchWhiteboardVocBreakdownSchema),
+  sampleBoundary: z.string().min(10),
+  gaps: z.array(z.string().min(3)),
+}).strict();
+
 export const researchWhiteboardReportModuleSchema = z.object({
   code: z.enum(["market", "customer", "competitor", "product", "marketing", "validation"]),
   title: z.string().min(2),
@@ -71,6 +95,7 @@ export const researchWhiteboardReportModuleSchema = z.object({
   conclusion: z.string().min(3),
   items: z.array(researchWhiteboardReportItemSchema),
   unknowns: z.array(z.string().min(1)),
+  voc: researchWhiteboardVocSchema.optional(),
   updatedAt: z.iso.datetime(),
 }).strict();
 

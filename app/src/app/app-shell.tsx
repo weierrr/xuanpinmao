@@ -14,7 +14,7 @@ export const isStandaloneReadingPath = (pathname: string): boolean =>
 
 /** Public product pages own the branded top navigation and editorial canvas. */
 export const isStandaloneLandingPath = (pathname: string): boolean =>
-  pathname === "/" || pathname === "/guide";
+  pathname === "/" || pathname === "/guide" || pathname === "/blog" || pathname.startsWith("/blog/");
 
 /** Public workbench entry points share the branded workspace chrome. */
 export const isStandaloneWorkbenchPath = (pathname: string): boolean =>

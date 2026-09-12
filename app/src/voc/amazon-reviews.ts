@@ -58,11 +58,11 @@ export const normalizeBrightDataReview = (
   fallbackAsin?: string,
 ): AmazonReviewRecord | null => {
   const row = object(payload);
-  const asin = first(text(row.asin), fallbackAsin ? normalizeAsin(fallbackAsin) : undefined);
+  const providerAsin = first(text(row.asin), fallbackAsin ? normalizeAsin(fallbackAsin) : undefined);
   const reviewId = first(text(row.review_id), text(row.reviewId), text(row.id));
   const reviewText = first(text(row.review_text), text(row.reviewText), text(row.text), text(row.body));
   const rating = first(number(row.rating), number(row.review_rating), number(row.stars));
-  if (!asin || !reviewId || !reviewText || rating === undefined || rating < 1 || rating > 5) return null;
+  if (!providerAsin || !reviewId || !reviewText || rating === undefined || rating < 1 || rating > 5) return null;
 
   const variationValue = first(
     text(row.product_variation),
@@ -70,7 +70,12 @@ export const normalizeBrightDataReview = (
     text(row.variation_info),
     Array.isArray(row.variationList) ? row.variationList.map(String).join("; ") : undefined,
   );
-  const productUrl = first(text(row.url), text(row.product_url)) ?? `https://www.amazon.com/dp/${asin}`;
+  const productUrl = first(text(row.url), text(row.product_url)) ?? `https://www.amazon.com/dp/${providerAsin}`;
+  const urlAsin = /\/dp\/([A-Z0-9]{10})(?:[/?]|$)/i.exec(productUrl)?.[1];
+  // Bright Data may expose the parent ASIN in `asin` while `url` identifies the
+  // exact requested listing. Use the listing ASIN so source pages and review
+  // observations retain the same canonical provenance URL.
+  const asin = normalizeAsin(urlAsin ?? providerAsin);
   return {
     asin: normalizeAsin(asin),
     reviewId,
@@ -173,19 +178,17 @@ const reviewHash = (review: AmazonReviewRecord): string =>
 export const themeFor = (value: string): string => {
   const body = value.toLowerCase();
   const themes: Array<[string, RegExp]> = [
-    ["opacity and squat-proof performance", /\b(see through|see-through|sheer|opaque|squat proof|squat-proof)\b/],
-    ["fit and sizing", /\b(size|sizing|fit|tight|loose|small|large|short|long)\b/],
-    ["scrunch seam durability", /\b(scrunch|seam|rip|ripped|tear|torn|hole|stitch)\b/],
-    ["fabric durability", /\b(pill|pilling|peel|peeling|lint|snag|fabric|material)\b/],
-    ["waistband stability", /\b(waist|waistband|roll|rolling|slide|slip)\b/],
-    ["compression and support", /\b(compression|compressive|support|hold)\b/],
-    ["comfort and handfeel", /\b(comfortable|comfort|soft|itch|scratch|smooth)\b/],
-    ["color consistency", /\b(color|colour|fade|fading|shade)\b/],
-    ["breathability and sweat", /\b(sweat|moisture|breathable|breathability|hot)\b/],
-    ["contour and appearance", /\b(flattering|booty|butt|glute|contour|cellulite|shape)\b/],
-    ["returns and service", /\b(return|refund|exchange|customer service|replacement)\b/],
+    ["compatibility and fit", /\b(fit|fits|compatible|compatibility|model|replace|replacement|install|installation|insert|housing)\b/],
+    ["leaks and sealing", /\b(leak|leaking|drip|seal|o-ring|oring|gasket|water on the floor)\b/],
+    ["water taste and odor", /\b(taste|tastes|odor|odour|smell|chlorine|flavor|flavour)\b/],
+    ["water flow and pressure", /\b(flow|pressure|slow|stream|dispens|fill rate|trickle)\b/],
+    ["filtration performance", /\b(filter|filtration|contaminant|lead|pfas|pfoa|pfos|sediment|particle|clean water|water quality)\b/],
+    ["service life and replacement interval", /\b(month|months|life|lifespan|last|lasting|frequency|change indicator)\b/],
+    ["certification and trust", /\b(nsf|ansi|certif|tested|oem|genuine|authentic|counterfeit)\b/],
+    ["value and price", /\b(price|cost|value|expensive|cheap|affordable|money|pack)\b/],
+    ["returns and service", /\b(return|refund|exchange|customer service|warranty)\b/],
   ];
-  return themes.find(([, pattern]) => pattern.test(body))?.[0] ?? "overall product experience";
+  return themes.find(([, pattern]) => pattern.test(body))?.[0] ?? "overall refrigerator-filter experience";
 };
 
 const observationFromReview = (
